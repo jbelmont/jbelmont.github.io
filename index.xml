@@ -306,13 +306,21 @@
     </item>
     
     <item>
-      <title>Software Testing Workshop</title>
-      <link>https://jbelmont.github.io/workshops/code_craftsmanship_saturdays/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <title>Learning New Programming Languages</title>
+      <link>https://jbelmont.github.io/project/learning-new-programming-languages/</link>
+      <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/workshops/code_craftsmanship_saturdays/</guid>
-      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
+      <guid>https://jbelmont.github.io/project/learning-new-programming-languages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Papers We Love</title>
+      <link>https://jbelmont.github.io/project/papers-we-love/</link>
+      <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/project/papers-we-love/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -339,6 +347,15 @@
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://jbelmont.github.io/talk/modern-web-node-react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Craftsmanship Saturdays</title>
+      <link>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</link>
+      <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</guid>
       <description></description>
     </item>
     
