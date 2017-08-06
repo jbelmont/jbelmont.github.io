@@ -299,5 +299,1188 @@
 </description>
     </item>
     
+    <item>
+      <title>A Review of No Silver Bullet paper</title>
+      <link>https://jbelmont.github.io/post/no_silver_bullet/</link>
+      <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/post/no_silver_bullet/</guid>
+      <description>
+
+&lt;h1 id=&#34;no-silver-bullet-essence-and-accident-in-software-engineering&#34;&gt;No Silver Bullet Essence and Accident in Software Engineering&lt;/h1&gt;
+
+&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#does-it-have-to-be-hard&#34;&gt;Does It Have To Be Hard&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#complexity&#34;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conformity&#34;&gt;Conformity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#changeability&#34;&gt;Changeability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#invisibility&#34;&gt;Invisibility&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#past-breakthroughs-solved-accidental-difficulties&#34;&gt;Past Breakthroughs Solved Accidental Difficulties&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#high-level-languages&#34;&gt;High-level languages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#time-sharing&#34;&gt;Time-sharing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unified-programming-environments&#34;&gt;Unified programming environments&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hopes-for-the-silver&#34;&gt;Hopes for the Silver&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#ada-and-other-high-level-language-advances&#34;&gt;Ada and other high-level language advances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#object-oriented-programming&#34;&gt;Object-oriented programming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#artificial-intelligence&#34;&gt;Artificial intelligence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#expert-systems&#34;&gt;Expert systems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#automatic-programming&#34;&gt;Automatic programming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graphical-programming&#34;&gt;Graphical Programming&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#program-verification&#34;&gt;Program verification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#environments-and-tools&#34;&gt;Environments and tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#workstations&#34;&gt;Workstations&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#promising-attacks-on-the-conceptual-essence&#34;&gt;Promising Attacks on the Conceptual Essence&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#buy-versus-build&#34;&gt;Buy versus build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#requirements-refinement-and-rapid-prototyping&#34;&gt;Requirements refinement and rapid prototyping&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#incremental-development-grow-not-build-software&#34;&gt;Incremental development grow not build software&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#great-designers&#34;&gt;Great designers&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There is no single development, in either technology or management technique, which by itself promises even one  order of magnitude improvement in productivity, in reliability, in simplicity.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Innovations in the software can yield an &amp;ldquo;order-of-magnitude&amp;rdquo; improvement&lt;/li&gt;
+&lt;li&gt;Example given in medicine where doctors where taught the benefits of cleanliness improving health of patients
+
+&lt;ul&gt;
+&lt;li&gt;In the same way improving processes in software can help improve software step by step&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;does-it-have-to-be-hard&#34;&gt;Does It Have To Be Hard&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Software can&amp;rsquo;t hope to see the gains that hardware has seen with improved chip design every 2 years.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Software construction really can&amp;rsquo;t be compared with hardware constructions.
+
+&lt;ol&gt;
+&lt;li&gt;Hardware advances in the last 30 years cannot be compared to any other technology&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Difficulties in Software:
+&amp;gt; I believe the hard part of building software to be the specification, design, and testing of this conceptual construct, not the labor of representing it and testing the fidelity of the representation.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Syntax errors in software pale in comparison to conceptual errors in a system&lt;/li&gt;
+&lt;li&gt;There is no silver bullet&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;complexity&#34;&gt;Complexity&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Computers themselves are among the most complicated things humans build&lt;/li&gt;
+&lt;li&gt;Software Construction is more than merely putting parts together
+
+&lt;ul&gt;
+&lt;li&gt;Elements of a software system interact in nonlinear ways&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Example given in mathematics where advances in math came for 3 straight centuries because of simplified models&lt;/li&gt;
+&lt;li&gt;Complexities in Software Construction create the following issues:
+
+&lt;ul&gt;
+&lt;li&gt;Communication among team members&lt;/li&gt;
+&lt;li&gt;In turn produces product flaws, cost overruns, schedule delays&lt;/li&gt;
+&lt;li&gt;Complexity in understanding all possible states of a system and enumerating the states of a system&lt;/li&gt;
+&lt;li&gt;This drives unreliability&lt;/li&gt;
+&lt;li&gt;Complexity thereby make programs hard to use&lt;/li&gt;
+&lt;li&gt;Complexity makes programs harder to extend newer functionality and consequently introducing side effects&lt;/li&gt;
+&lt;li&gt;Complexity also makes security of a software system more difficult to understand&lt;/li&gt;
+&lt;li&gt;Complexity also makes management more difficult&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;conformity&#34;&gt;Conformity&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Software engineers face added complexity because they must conform to decisions made by others&lt;/li&gt;
+&lt;li&gt;Conforming to other software components itself makes software systems more complex&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;changeability&#34;&gt;Changeability&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Since software is much more malleable and easier to change this by itself introduces more challenges&lt;/li&gt;
+&lt;li&gt;Users of a software system find new uses for software and thereby introduce new complexities&lt;/li&gt;
+&lt;li&gt;A combination of users of a software system, laws introduced, and new software machinery add difficulties as well&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;invisibility&#34;&gt;Invisibility&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Software is inherently invisible and hard to visualize if even possible&lt;/li&gt;
+&lt;li&gt;Attempts to visualize a system become difficult because of all the working pieces&lt;/li&gt;
+&lt;li&gt;Since software cannot be easily visualized this in turn adds more complexity to systems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;past-breakthroughs-solved-accidental-difficulties&#34;&gt;Past Breakthroughs Solved Accidental Difficulties&lt;/h2&gt;
+
+&lt;p&gt;The 3 Steps in software that have helped accidental difficulties:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;High-level Languages&lt;/li&gt;
+&lt;li&gt;Time-sharing&lt;/li&gt;
+&lt;li&gt;Unified programming environments&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;high-level-languages&#34;&gt;High-level languages&lt;/h4&gt;
+
+&lt;p&gt;High-level languages helps in the following ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Alleviates accidental complexity&lt;/li&gt;
+&lt;li&gt;Diminish complexities that arose from programming in assembly language and understanding machine code&lt;/li&gt;
+&lt;li&gt;Improve processes by the use of higher level concepts such as data structures and data types&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;time-sharing&#34;&gt;Time-sharing&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reduced compilation and execution times of software systems help keep program logic in context
+
+&lt;ul&gt;
+&lt;li&gt;This is true because a shorter feedback loop helps engineers keep focused on the task at hand&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;unified-programming-environments&#34;&gt;Unified programming environments&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Development of Unix and Interlisp helped with using software programs together and improving productivity&lt;/li&gt;
+&lt;li&gt;Unified file formats, and integrated libraries helped immeasurably as well&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;hopes-for-the-silver&#34;&gt;Hopes for the Silver&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Looking at possible silve bullets&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;ada-and-other-high-level-language-advances&#34;&gt;Ada and other high-level language advances&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ada is touted as a very influential programming language&lt;/li&gt;
+&lt;li&gt;Ada&amp;rsquo;s philosophy more than its features as a language have been influential&lt;/li&gt;
+&lt;li&gt;Fred Brooks makes a prediction that Ada will have an impact by training engineers with modern software practices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;object-oriented-programming&#34;&gt;Object-oriented programming&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Argues that object-oriented programming (OOP) helps remove boilerplate of previous software constructs&lt;/li&gt;
+&lt;li&gt;OOP helps with higher-order design of software systems&lt;/li&gt;
+&lt;li&gt;Argues that OOP can only help if some of the troubles of &lt;code&gt;type specification&lt;/code&gt; is reduced in systems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;artificial-intelligence&#34;&gt;Artificial intelligence&lt;/h4&gt;
+
+&lt;p&gt;Brooks examines argument made by &lt;code&gt;Parnas&lt;/code&gt; on AI&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The use of computers to solve problems that previously could only be solved by applying human intelligence.
+
+&lt;ol&gt;
+&lt;li&gt;Argument is made that what people consider is AI today can rapidly change, kind of like a floating goal.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;The use of a specific set of programming techniques knows as heuristic or rule-based programming.
+
+&lt;ol&gt;
+&lt;li&gt;Not detail expounded on rule based systems but I can surmise that there are unspoken challenges since this requires expert knowledge that must be gleaned from an actual expert&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;expert-systems&#34;&gt;Expert systems&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inference engines offer advantages over deterministic logic through application independence and varied use&lt;/li&gt;
+&lt;li&gt;Rule sets can encode universal ideas that can be applied to different applications thereby distributing complexity&lt;/li&gt;
+&lt;li&gt;Argues that separation of application complexity from the software program itself is an important advance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Applications for software tasks:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Suggest interface rules&lt;/li&gt;
+&lt;li&gt;Help with testing strategies&lt;/li&gt;
+&lt;li&gt;Optimization strategies&lt;/li&gt;
+&lt;li&gt;Argues that rule-based systems should become more hierarchically modularized in the same that a system does&lt;/li&gt;
+&lt;li&gt;Argues that test case generation is work that has to be done anyways and rules can help maintenance of a system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Difficulties in Expert Systems:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Difficult going from program structure specification to the semi-automatic generation of diagnostic rules&lt;/li&gt;
+&lt;li&gt;Knowledge Acquisation is difficult for several reasons:
+
+&lt;ol&gt;
+&lt;li&gt;Finding experts that are articulate enough and understand why they do things.&lt;/li&gt;
+&lt;li&gt;Extracting information from experts in order to distill into the rule bases is another&lt;/li&gt;
+&lt;li&gt;Experts are required&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Distilling knowledge to inexperienced programmers from the best programmers is also no simple task.&lt;/li&gt;
+&lt;li&gt;A tool that disseminates this knowledge is extremely important&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;automatic-programming&#34;&gt;Automatic programming&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;In short, automatic programming always has been a euphemism for programming with a higher-level language than was presently available to the programmer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Automatic Programming favorable qualities:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The problems are readily characterized by relatively few parameters.&lt;/li&gt;
+&lt;li&gt;There are many known methods of solution to provide a library of alternatives.&lt;/li&gt;
+&lt;li&gt;Extensive analysis has led to explicit rules for selecting solution techniques, given problem parameters&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Argues that such programming seems difficult to even achieve&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;graphical-programming&#34;&gt;Graphical Programming&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Argues that uses of flow-chart is a poor abstraction of software construction&lt;/li&gt;
+&lt;li&gt;Argues that it is a useless design tool used by programmers since it is used after writing programs not before&lt;/li&gt;
+&lt;li&gt;Argues that desktop computer sophistication is a hindrance to software systems underlying complexity
+
+&lt;ul&gt;
+&lt;li&gt;As this was written in 1986 many advances have occurred with software so not sure about this point&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Argues that software is very difficult to visualize
+
+&lt;ul&gt;
+&lt;li&gt;The following graphical tools:&lt;/li&gt;
+&lt;li&gt;Diagram control flow, varible scope nesting, variable cross-references, data flow, hierarchical data structures&lt;/li&gt;
+&lt;li&gt;Even with these tools it is difficult to get a global overview of a software system.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;A software systems cannot be visualized in the same way that hardware systems can&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;program-verification&#34;&gt;Program verification&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Argues that Program verification is powerful but labor intensive and very few programs have been proven correct&lt;/li&gt;
+&lt;li&gt;Argues that program verification can only assert that a program meets its specification&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The hardest part of the software task is arriving at a complete and consistent specification, and much of the essence of building a program is in fact the debugging of the specification.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;environments-and-tools&#34;&gt;Environments and tools&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Smart Editors at most can help with syntactic errors and simple semantic errors&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Integrated Database Systems&amp;rdquo; that keep track of details that programmer&amp;rsquo;s must understand
+
+&lt;ul&gt;
+&lt;li&gt;I am assuming here that &amp;ldquo;Object Relational Mappers&amp;rdquo; could be considered nice tools to extract business logic&lt;/li&gt;
+&lt;li&gt;Examples like linq instead of using Stored Procedures and Table Triggers&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;workstations&#34;&gt;Workstations&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The point is made that even with factor of 10 speed increases in developer workstations you still have think time
+
+&lt;ul&gt;
+&lt;li&gt;Think time being the time a developer uses modelling out business logic and program flow I assume&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;promising-attacks-on-the-conceptual-essence&#34;&gt;Promising Attacks on the Conceptual Essence&lt;/h2&gt;
+
+&lt;p&gt;Productivity Equation:&lt;/p&gt;
+
+&lt;p&gt;$$ \sum(Frequency)_i x (Time)_i $$&lt;/p&gt;
+
+&lt;p&gt;Focusing on the task at hand or the conceptual essence is not the silver bullet as well&lt;/p&gt;
+
+&lt;h4 id=&#34;buy-versus-build&#34;&gt;Buy versus build&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is cheaper to buy production ready software than try to write homegrown software
+
+&lt;ul&gt;
+&lt;li&gt;Argues that a software system costing $100,000 could be roughly equivalent to a yearly salary of a developer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Argument made that the ratio of hardware/software cost has changed dramatically
+
+&lt;ul&gt;
+&lt;li&gt;if you spent 2 million on a piece of hardware then spending another $250,000 on software is a drop in the bucket&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Development of spreadsheet and office technologies has enabled the mainline computer user to find new uses
+
+&lt;ul&gt;
+&lt;li&gt;Argues such office software has the possibility of being a force multiplier in advances through novel uses&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;requirements-refinement-and-rapid-prototyping&#34;&gt;Requirements refinement and rapid prototyping&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clients find it hard to nail down the exact requirements that they want&lt;/li&gt;
+&lt;li&gt;Will often take multiple versions of a prototype to nail down what the client wants&lt;/li&gt;
+&lt;li&gt;Points out that rapid prototype tools can assist greatly in solving software problems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The  purpose  of  the  prototype  is  to  make  real  the  conceptual  structure  specified,  so  that  the  client  can  test  it  for  consistency  and  usability&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Iterative development and the use of prototypes is key to building satisfactory software system&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;incremental-development-grow-not-build-software&#34;&gt;Incremental development grow not build software&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Calls for iterative development in software
+
+&lt;ul&gt;
+&lt;li&gt;Flesh out details bit by bit in a system&lt;/li&gt;
+&lt;li&gt;I would argue that TDD can help with such things by facilitating with incremental design&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;That is, the system should first be made to run, even though it does nothing useful except call the proper set of dummy subprograms.  Then, bit-by-bit it is fleshed out, with the subprograms in turn being developed into actions or calls to empty stubs in the level below&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The main point is see in this section is that having a running system at all times keeps you focused and attentive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;great-designers&#34;&gt;Great designers&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Good design can help drive quality of a system
+
+&lt;ul&gt;
+&lt;li&gt;Organizations like the Software Engineering Institute help promote good software systems&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Argues that great design minds (meaning individuals) can accomplish more than a committee of designers&lt;/li&gt;
+&lt;li&gt;Find ways to nurture highly creative minds as they can pave the way to the future
+
+&lt;ul&gt;
+&lt;li&gt;Examples are given with Unix, SmallTalk, Fortran and others that were largely individual efforts&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Argues that organizations must cultivate great designers just like they would with management prospects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Highlights the following ways to grow great designers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Systematically identify top designers as early as possible. The best are often not the most experienced&lt;/li&gt;
+&lt;li&gt;Assign a career mentor to be responsible for the development of the prospect, and keep a careful career file&lt;/li&gt;
+&lt;li&gt;Devise and maintain a career development plan for each prospect&lt;/li&gt;
+&lt;li&gt;including carefully selected apprenticeships with top designers, episodes of advanced formal education&lt;/li&gt;
+&lt;li&gt;short courses, all interspersed with solo design and technical leadership assignments&lt;/li&gt;
+&lt;li&gt;Provide opportunities for growing designers to interact with and stimulate each other&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Review of Little Manual of API Design paper</title>
+      <link>https://jbelmont.github.io/post/api-design/</link>
+      <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/post/api-design/</guid>
+      <description>
+
+&lt;h1 id=&#34;the-little-manual-of-api-design&#34;&gt;The Little Manual of API Design&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://people.mpi-inf.mpg.de/~jblanche/&#34; target=&#34;_blank&#34;&gt;Jasmin Blanchette&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#characteristics-of-good-apis&#34;&gt;Characteristics of Good APIs&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#easy-to-learn-and-memorize&#34;&gt;Easy to learn and memorize&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#leads-to-readable-code&#34;&gt;Leads to readable code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hard-to-misuse&#34;&gt;Hard to misuse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#easy-to-extend&#34;&gt;Easy to extend&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#complete&#34;&gt;Complete&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-design-process&#34;&gt;The Design Process&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#know-the-requirements&#34;&gt;Know the requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#write-use-cases-before-you-write-any-other-code&#34;&gt;Write use cases before you write any other code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#look-for-similar-apis-in-the-same-library&#34;&gt;Look for similar APIs in the same library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#define-the-api-before-you-implement-it&#34;&gt;Define the API before you implement it&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#have-your-peers-review-your-api&#34;&gt;Have your peers review your API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#write-several-examples-against-the-api&#34;&gt;Write several examples against the API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prepare-for-extensions&#34;&gt;Prepare for extensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#don&#39;-t-publish-internal-apis-without-review&#34;&gt;Don’t publish internal APIs without review&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#when-in-doubt-,-leave-it-out&#34;&gt;When in doubt, leave it out&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#design-guidelines&#34;&gt;Design Guidelines&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#choose-self-explanatory-names-and-signatures&#34;&gt;Choose self-explanatory names and signatures&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#choose-unambiguous-names-for-related-things&#34;&gt;Choose unambiguous names for related things&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#beware-of-false-consistency&#34;&gt;Beware of false consistency&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#avoid-abbreviations&#34;&gt;Avoid abbreviations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prefer-specific-names-to-general-names&#34;&gt;Prefer specific names to general names&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#don&#39;-t-be-a-slave-of-an-underlying-api&#39;-s-naming-practices&#34;&gt;Don&amp;rsquo;t be a slave of an underlying API&amp;rsquo;s naming practices&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Semantics
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#choose-good-defaults&#34;&gt;Choose good defaults&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#avoid-making-your-apis-overly-clever&#34;&gt;Avoid making your apis overly clever&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pay-attention-to-edge-cases&#34;&gt;Pay attention to edge cases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#be-careful-when-defining-virtual-apis&#34;&gt;Be careful when defining virtual APIs&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Structural
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#strive-for-property-based-apis&#34;&gt;Strive for property-based APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-best-api-is-no-api&#34;&gt;The best API is no API&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bread-crumb-navigation&#34;&gt;Bread Crumb Navigation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;An application programming interface, or API, is the set of symbols that are exported and available to the users of a library to write their applications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://people.csail.mit.edu/dnj/&#34; target=&#34;_blank&#34;&gt;Daniel Jackson&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Software is built on abstractions. Pick the right ones, and pro-gramming will flow naturally from design;
+modules will havesmall and simple interfaces; and new functionality will more likely fit in without extensive reorganization.
+Pick the wrongones, and programming will be a series of nasty surprises.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;characteristics-of-good-apis&#34;&gt;Characteristics of Good APIs&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Easy to learn and memorize&lt;/li&gt;
+&lt;li&gt;Leads to readable code&lt;/li&gt;
+&lt;li&gt;Hard to misuse&lt;/li&gt;
+&lt;li&gt;Easy to extend&lt;/li&gt;
+&lt;li&gt;Complete&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;API authors should strive for &amp;ldquo;minimal&amp;rdquo; and &amp;ldquo;consistent&amp;rdquo; APIs only to the extent that it helps the list above.&lt;/p&gt;
+
+&lt;p&gt;APIs should be consistent in the sense that similar concepts should be named the same while different concepts should have different names&lt;/p&gt;
+
+&lt;h3 id=&#34;easy-to-learn-and-memorize&#34;&gt;Easy to learn and memorize&lt;/h3&gt;
+
+&lt;p&gt;Implementation of &lt;code&gt;md5&lt;/code&gt; function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function md5({ str, encoding = &#39;hex&#39; }) {
+  return crypto
+    .createHash(&#39;md5&#39;)
+    .update(str)
+    .digest(encoding);
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unit test for &lt;code&gt;md5&lt;/code&gt; function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;test(&#39;mdf5 should compute challenge when given ha2, nonce, cnonce, and qop&#39;, assert =&amp;gt; {
+  const md5 = require(&#39;../../utils/md5&#39;).md5;
+  const ha2 = md5({
+    str: &#39;GET:/api/v1/digestScheme&#39;
+  });
+  const actual = md5({
+    str: `${ha2}:${process.env.NONCE}:${process.env.NONCE}:auth`
+  });
+  const expected = &#39;adc91a91ffaa68815d5a5d8e4ed8d9e9&#39;;
+  assert.is(actual, expected, `should return ${expected}`);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the &lt;code&gt;md5&lt;/code&gt; function takes an object with a property of &lt;code&gt;str&lt;/code&gt; and a string value.&lt;/p&gt;
+
+&lt;p&gt;I named this function in my api &lt;code&gt;md5&lt;/code&gt; because it computes a hash value when given a string value.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A minimal API is easy to memorize because there is little to remember.&lt;/li&gt;
+&lt;li&gt;A consistent API is easy to memorize because you can reapply what you learned in one part of the API when using a different part.&lt;/li&gt;
+&lt;li&gt;An API is not only the names of the classes and methods that compose it, but also their intended semantics.&lt;/li&gt;
+&lt;li&gt;An easy-to-learn API makes it possible to write the “hello world” example in just a few easy lines of code and to expand it incrementally to obtain more complex programs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;An easy-to-learn API features consistent naming conventions and patterns,economy of concepts, and predictability. It uses the same name for the sameconcept, and different names for different concepts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/MD5&#34; target=&#34;_blank&#34;&gt;MD5&lt;/a&gt;
+&amp;gt; The MD5 algorithm is a widely used hash function producing a 128-bit hash value. Although MD5 was initially designed to be used as a cryptographic hash function, it has been found to suffer from extensive vulnerabilities. It can still be used as a checksum to verify data integrity, but only against unintentional corruption.&lt;/p&gt;
+
+&lt;h3 id=&#34;leads-to-readable-code&#34;&gt;Leads to readable code&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Readable code is easier to document and maintain.&lt;/li&gt;
+&lt;li&gt;Readable code is always at the right level of abstraction.
+
+&lt;ul&gt;
+&lt;li&gt;it neither hides important things nor forces the programmer to specify irrelevant information&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Implement decode unsigned JSON web token function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function decodeUnsignedJWT(jwt) {
+  const [
+    headerB64,
+    payloadB64
+   ] = jwt.split(&#39;.&#39;);
+  const headerStr = new Buffer(headerB64, &#39;base64&#39;).toString();
+  const payloadStr = new Buffer(payloadB64, &#39;base64&#39;).toString();
+  return {
+    header: JSON.parse(headerStr),
+    payload: JSON.parse(payloadStr)
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unit test for decodeUnsignedJWT function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;test(&#39;decode should return base64 decoded string&#39;, assert =&amp;gt; {
+  const header = {
+    alg: &#39;HS256&#39;
+  };
+
+  const payload = {
+    name: &#39;John Rambo&#39;,
+    rank: &#39;Sergeant&#39;,
+    branch: &#39;Army&#39;
+  };
+
+  const encodeUnsignedJWT = require(&#39;../../utils/encode&#39;).encodeUnsignedJWT;
+  const encoded = encodeUnsignedJWT({
+    header,
+    payload
+  });
+
+  const decodeUnsignedJWT = require(&#39;../../utils/decode&#39;).decodeUnsignedJWT;
+  const actual = decodeUnsignedJWT(encoded);
+  const expected = {
+    header: &#39;{&amp;quot;alg&amp;quot;:&amp;quot;HS256&amp;quot;}&#39;,
+    payload: &#39;{&amp;quot;name&amp;quot;:&amp;quot;John Rambo&amp;quot;,&amp;quot;rank&amp;quot;:&amp;quot;Sergeant&amp;quot;,&amp;quot;branch&amp;quot;:&amp;quot;Army&amp;quot;}&#39;
+  };
+  assert.deepEqual(actual, expected, `should return ${expected}`);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;hard-to-misuse&#34;&gt;Hard to Misuse&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A well-designed API makes it easier to write correct code than incorrect code, and encourages good programming practices.
+It does not needlessly force the user to call methods in a strict order or to be aware of implicit side effects or semantic oddities.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Make an API hard to misuse by eliminating redundancy. For example, an addItem(Item) method that lets the user write.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const mySet = new Set();
+mySet.add(1);
+mySet.add(5);
+mySet.add(&#39;some text&#39;);
+mySet.keys() // SetIterator {1, 5, &amp;quot;some text&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Above is some new ES2015 syntax in JavaScript for creating Sets.
+The Set object lets you store unique values of any type, whether primitive values or object references.&lt;/p&gt;
+
+&lt;p&gt;As the paper states you want to design an api that is hard to use and in this case a set is good in order to have unique values and avoid duplicate values which can be problematic at times.&lt;/p&gt;
+
+&lt;h3 id=&#34;easy-to-extend&#34;&gt;Easy to extend&lt;/h3&gt;
+
+&lt;p&gt;APIs should be easy to extend as new classes/function get added over time. Parameters get added/removed from function signatures.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;use strict&#39;;
+
+const {join} = require(&#39;path&#39;);
+const {readFileSync} = require(&#39;fs&#39;);
+
+const winston = require(&#39;winston&#39;);
+const jwt = require(&#39;jsonwebtoken&#39;);
+
+const {responseCodes} = require(&#39;../constants&#39;);
+
+const PATH = &#39;/api/v1/&#39;;
+
+const createToken = (req, res, next) =&amp;gt; {
+    // sign with RSA SHA256
+  const cert = readFileSync(join(__dirname, &#39;../ca/ca.key&#39;));
+
+  const {name} = req.body;
+
+    // sign asynchronously
+  jwt.sign({ name }, cert, { algorithm: &#39;RS256&#39; }, (err, token) =&amp;gt; {
+    if (err) {
+      winston.log(&#39;error&#39;, &#39;Error Creating json web token&#39;, {err});
+      res.send(err);
+    }
+    res.send(responseCodes[&#39;created&#39;], {
+      adminToken: token
+    });
+    return next();
+  });
+};
+
+
+module.exports = (app) =&amp;gt; {
+  app.post(`${PATH}/createToken`, createToken);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here I have an endpoint to sign a jwt with an expiration date which returns the following payload.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;adminToken&amp;quot;: &amp;quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.
+                 eyJuYW1lIjoiYWRtaW5Ub2tlbiIsImlhdCI6MTQ4NjYwNDU3OX0.
+                 Pg7HOKIwn6HietMotYbwIvSGqvOcoUSNegQXW_BN-C5rQu9ZXyJnz6iK-L2JzLqlzAApuB1ria5TcN0HkrZQ3aBrIflvjv96W5M_51GEwXxpQ1wTSA-T6ZRBzanq7b_RRhB_TEsezf7hf87U-N6nWnV9EKo1LAf_fAo53-7mXTVAJyG39n2NxJfkJ9btvcq8BLZN68AF-WFpsPTtujQV2kA9sI9ApeTdh_7qgLTkm8Iup7rwDrtnA2TNidgqjnMSgKsHYdtvc1_guxp6LJ2lVeF0XgmMVqw6-EFfa4w15azEF-bJYHn23f_GobpRZsR7_YvWLN5dt1NU56JT2Nip3Q&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I can easily extend the api to do more things with jwt&amp;rsquo;s by just adding HTTP methods to module.exports&lt;/p&gt;
+
+&lt;h3 id=&#34;complete&#34;&gt;Complete&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ideally an api would be complete and your users can do everything that they want to do.&lt;/li&gt;
+&lt;li&gt;Realistically this does not always happen but if you can provide a way for your users to extend the api or customize it then it can help an API be complete.&lt;/li&gt;
+&lt;li&gt;API completeness is something that can occur incrementally over time through extension as mentioned above.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-design-process&#34;&gt;The Design Process&lt;/h2&gt;
+
+&lt;h3 id=&#34;know-the-requirements&#34;&gt;Know the requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Before setting out to design an API, you should have a clear understanding of the requirements.&lt;/li&gt;
+&lt;li&gt;Usually you will have to do some requirements analysis
+
+&lt;ol&gt;
+&lt;li&gt;Ask your collegues, users, your boss etc. in order to get a better picture&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;write-use-cases-before-you-write-any-other-code&#34;&gt;Write use cases before you write any other code&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Avoid diving into implementation from the very start of api design.
+
+&lt;ol&gt;
+&lt;li&gt;APIs designed in this way don&amp;rsquo;t take users of your API into account&lt;/li&gt;
+&lt;li&gt;The API Implementation should adapt to the users oof you API.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Write some code snippets based on your requirements analysis.&lt;/li&gt;
+&lt;li&gt;I would suggest writing some unit tests though the author doesn&amp;rsquo;t explicitly mention this.&lt;/li&gt;
+&lt;li&gt;Using the principles of TDD your API will take shape
+
+&lt;ol&gt;
+&lt;li&gt;Add a test&lt;/li&gt;
+&lt;li&gt;Run all tests and see if the new test fails&lt;/li&gt;
+&lt;li&gt;Write the code&lt;/li&gt;
+&lt;li&gt;Run tests&lt;/li&gt;
+&lt;li&gt;Refactor code&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;look-for-similar-apis-in-the-same-library&#34;&gt;Look for similar APIs in the same library&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Author argues that similar APIs have the added benefit that users familiar with one method/class can easily learn another method/class if they are similar.&lt;/li&gt;
+&lt;li&gt;Author adds the caveat that you shouldn&amp;rsquo;t blindly follow an already existing API but instead look for improvements and/or fix bad APIs and then mimic then elsewhere.&lt;/li&gt;
+&lt;li&gt;If you are writing a newer version of the API, then you should the API you are replacing very well, otherwise you run the risk of introducing new design flaws for old flaws&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;define-the-api-before-you-implement-it&#34;&gt;Define the API before you implement it&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For a library with thousands of users, it is much better if the implementation is tricky and the API is straightforward than the other way around.&lt;/li&gt;
+&lt;li&gt;APIs will typically outlast their implementations (e.g., UNIX/POSIX, OpenGL).&lt;/li&gt;
+&lt;li&gt;As you implement the API or write unit tests for your implementation, you will most probably find flaws or undefined corner cases in your original design.
+
+&lt;ol&gt;
+&lt;li&gt;I would argue here that if you are following Test-Driven Development that you can find corner cases possibly earlier and avoid abstractions from leaking out into your api.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;have-your-peers-review-your-api&#34;&gt;Have your peers review your API&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Look for feedback.&lt;/li&gt;
+&lt;li&gt;Ask for feedback.&lt;/li&gt;
+&lt;li&gt;Beg for feedback.&lt;/li&gt;
+&lt;li&gt;Show your APIs to your peers, and collect all the feedback you get.&lt;/li&gt;
+&lt;li&gt;Try to momentarily forget how much work it would be to implement the requested changes.&lt;/li&gt;
+&lt;li&gt;The more facts you possess, the better thechances that you will design a good API.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Some thoughts about this that I have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open a pull request in whatever version control system that you like (eg. Github, Gitlab, Bitbucket, etc)
+
+&lt;ol&gt;
+&lt;li&gt;Add reviewers if you can and ask for people&amp;rsquo;s thoughts on what you worked.&lt;/li&gt;
+&lt;li&gt;Depending on what you are working can really save you from costly design decisions in the future.&lt;/li&gt;
+&lt;li&gt;One thing I liked about how Jose Valim (Creator of Elixir) is how collaborative he has been with the Elixir Programming Language by seeking out advice from others.&lt;/li&gt;
+&lt;li&gt;I believe more feedback can help avoid mistakes in the future.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;write-several-examples-against-the-api&#34;&gt;Write several examples against the API&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;After you designed an API, you should write a few examples that use the API.&lt;/li&gt;
+&lt;li&gt;Often, you can obtain examples simply by fleshing out the use cases defined earlier
+
+&lt;ol&gt;
+&lt;li&gt;Once again I typically use the unit tests that I write for my classes/functions as later examples.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ask others to write unit tests of your examples and an added bonus is they can describe any roadblocks they ran into.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;prepare-for-extensions&#34;&gt;Prepare for extensions&lt;/h3&gt;
+
+&lt;p&gt;Expect your API to be extended in two ways:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;By the maintainers of the API, who will add to it (and occasionally deprecate parts of the API).&lt;/li&gt;
+&lt;li&gt;By users, who will write subclasses to customize the behavior of its components
+
+&lt;ol&gt;
+&lt;li&gt;In a language like you JavaScript you can somewhat achieve this by making &lt;code&gt;BaseClass.prototype&lt;/code&gt; is copied into &lt;code&gt;ChildClass.prototype&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Although Kyle Simpson has an interesting take on this for JavaScript coining the term Object linked with other Objects (OLOO).&lt;/li&gt;
+&lt;li&gt;Essentially you delegate methods back to the original objects&lt;/li&gt;
+&lt;li&gt;Example delegating a method in an array back to the &lt;code&gt;Array.prototype&lt;/code&gt;, it walks up the prototype chain to find the used method.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;don-t-publish-internal-apis-without-review&#34;&gt;Don&amp;rsquo;t publish internal APIs without review&lt;/h3&gt;
+
+&lt;p&gt;Author points out that you should carefully review internal APIs before releasing them out into the public
+because once your APIs are public it becomes more difficult to update bad method names once people are using them.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I would also add here that if you have a solid code review process you can get feedback like this early on,
+especially if you make any code changes via a pull request and add multiple reviewers.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;when-in-doubt-leave-it-out&#34;&gt;When in doubt, leave it out&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you are in doubt about adding any functionality in your API, then leave it out, mark it as internal and reconsider at a later time.&lt;/li&gt;
+&lt;li&gt;Wait for feedback from users.
+
+&lt;ol&gt;
+&lt;li&gt;Author makes good point that you can&amp;rsquo;t always add every feature that users want.&lt;/li&gt;
+&lt;li&gt;Author suggest a rule of thumb to wait for 3 independent request for the same feature before implementing it.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;design-guidelines&#34;&gt;Design Guidelines&lt;/h2&gt;
+
+&lt;p&gt;Author highlights the fact that in the end, you must think through API design and guidelines cannot substitute this.&lt;/p&gt;
+
+&lt;h3 id=&#34;choose-self-explanatory-names-and-signatures&#34;&gt;Choose self-explanatory names and signatures&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pick names that are self-explanatory and can read like English.&lt;/li&gt;
+&lt;li&gt;The arguments of a function/method should be evident at the call site.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function decodeUnsignedJWT(jwt) {
+  const [
+    headerB64,
+    payloadB64
+   ] = jwt.split(&#39;.&#39;);
+  const headerStr = new Buffer(headerB64, &#39;base64&#39;).toString();
+  const payloadStr = new Buffer(payloadB64, &#39;base64&#39;).toString();
+  return {
+    header: JSON.parse(headerStr),
+    payload: JSON.parse(payloadStr)
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The argument jwt indicates that this is a JSON Web Token (jwt).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Author argues that you should strive for consistency in naming and he also argues that consistency is important when fixing the order of parameters
+
+&lt;ol&gt;
+&lt;li&gt;If rectangles have the following signature &lt;code&gt;Rectangle(x, y, width, height)&lt;/code&gt; then changing the order can break your API.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I would argue here instead to use an object that way the order of the parameters isn&amp;rsquo;t affected and adding a parameter anywhere from a caller won&amp;rsquo;t affect the function.
+Here is an example function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Demeter(soldier) {
+  this.name = soldier.name || &#39;&#39;;
+  this.rank = soldier.rank || &#39;private&#39;;
+  this.specialty = soldier.specialty || [];
+  this.years = soldier.years || 0;
+  this.job = soldier.job || &#39;firefighter&#39;;
+  this.getInformation = function(newSoldier) {
+    return Object.assign(
+      {},
+      { name: this.name, rank: this.rank, specialty: this.specialty, years: this.years },
+      { exercise: newSoldier.exercise, branch: newSoldier.branch }
+    );
+  };
+  this.civilianPlan = {
+    printPlan: function() {
+      return `Civilian Job Plan: ${this.job}`;
+    }.bind(this)
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Demeter.prototype.soldierStats = function(newSoldier) {
+  return {
+    height: newSoldier.height,
+    weight: newSoldier.weight,
+    gender: newSoldier.gender,
+    age: newSoldier.age
+  };
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Good naming also require that you know the audience.
+
+&lt;ol&gt;
+&lt;li&gt;You will need to use names that are consistent with the industry:
+
+&lt;ol&gt;
+&lt;li&gt;For example for auto parts supply application using jargon names consistent with auto parts would be good.&lt;/li&gt;
+&lt;li&gt;When you do this you should have good documentation.&lt;/li&gt;
+&lt;li&gt;If it is a high-level API meaning users are not as familiar than jargon should be used sparingly.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Parameter names are important in an API as a lot of users will be looking for intellisense if they are using an IDE.
+
+&lt;ol&gt;
+&lt;li&gt;Avoid single-letter parameter names but there are always exceptions.
+
+&lt;ol&gt;
+&lt;li&gt;Namely if you are finding the slope of a line &lt;code&gt;y = mx + b&lt;/code&gt; then x, y, b, and m would be appropriate parameter names.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;choose-unambiguous-names-for-related-things&#34;&gt;Choose unambiguous names for related things&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If two or more concepts need to be clearly differentiated then choose names that map clearly to the concepts they denote.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Square() {}
+
+Square.prototype.setSide = function(side) {
+  this.side = side;
+};
+
+Square.prototype.area = function() {
+  return Math.pow(this.side, 2);
+};
+
+function Rectangle() {}
+
+Rectangle.prototype.setWidth = function(width) {
+  this.width = width;
+};
+
+Rectangle.prototype.setHeight = function(height) {
+  this.height = height;
+};
+
+Rectangle.prototype.area = function() {
+  return this.width * this.height;
+};
+
+function Circle() {}
+
+Circle.prototype.setPI = function(PI) {
+  this.PI = PI;
+};
+
+Circle.prototype.setRadius = function(radius) {
+  this.radius = radius;
+};
+
+Circle.prototype.area = function() {
+  return (this.PI * Math.pow(this.radius, 2)).toFixed(4);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;beware-of-false-consistency&#34;&gt;Beware of false consistency&lt;/h3&gt;
+
+&lt;p&gt;Similar concepts should be grouped together and be of similar form&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For example the in JavaScript the methods on &lt;code&gt;Array.prototype&lt;/code&gt; such as &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;forEach&lt;/code&gt; all have a similar form and typically compose well together&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Consequently if you have follow a convention of prefixing methods that set state such as &lt;code&gt;setSide&lt;/code&gt; then don&amp;rsquo;t suprise the users of your API by having it return a value instead of set a value.&lt;/p&gt;
+
+&lt;h3 id=&#34;avoid-abbreviations&#34;&gt;Avoid abbreviations&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;During API design if you use obscure abbreviations then your users must remember which words and the associated context&lt;/li&gt;
+&lt;li&gt;Avoid using abbreviations like &lt;code&gt;setRad&lt;/code&gt; and instead use &lt;code&gt;setRadius&lt;/code&gt; to clearly mark what you intend to do.&lt;/li&gt;
+&lt;li&gt;Acronyms are still okay you don&amp;rsquo;t have to spell out Hyper Text Markup Language as HTML is a commonly known term on the web.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;prefer-specific-names-to-general-names&#34;&gt;Prefer specific names to general names&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using specific names helps users relate better to what you are API is doing.&lt;/li&gt;
+&lt;li&gt;Once you pick a general name it is hard to go back and change it to be more specific&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const readSoldiers = () =&amp;gt; {
+  return new Promise((resolve, reject) =&amp;gt; {
+    fs.readFile(join(__dirname, &#39;../../../data/soldiers.csv&#39;), (err, data) =&amp;gt; {
+      if (err) {
+        reject(err);
+      }
+      const soldiers = data.toString().trim().split(&#39;\n&#39;);
+      resolve(soldiers);
+    });
+  });
+};
+
+const formatSoldiers = (soldiers) =&amp;gt; {
+  return soldiers.map(soldier =&amp;gt; soldier.split(&#39;,&#39;)).map((field) =&amp;gt; {
+    return {
+      name: field[0],
+      rank: field[1],
+      branch: field[2]
+    };
+  });
+};
+
+const writeSoldiers = (soldiers) =&amp;gt; {
+  return fs.writeFile(join(__dirname, &#39;soldiers.json&#39;), JSON.stringify(soldiers), (err) =&amp;gt; {
+    if (err) {
+      throw err;
+    }
+  });
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here I choose readSoldiers, formatSoldiers, and writeSoldiers to denote what I am doing though I could have done &lt;code&gt;readSoldiersCSV&lt;/code&gt; to be more specific.&lt;/p&gt;
+
+&lt;h3 id=&#34;don-t-be-a-slave-of-an-underlying-api-s-naming-practices&#34;&gt;Don&amp;rsquo;t be a slave of an underlying API&amp;rsquo;s naming practices&lt;/h3&gt;
+
+&lt;p&gt;Choose well intentioned names and don&amp;rsquo;t blindly follow naming conventions from other APIs if you can find a more suitable name.&lt;/p&gt;
+
+&lt;h2 id=&#34;semantics&#34;&gt;Semantics&lt;/h2&gt;
+
+&lt;h3 id=&#34;choose-good-defaults&#34;&gt;Choose good defaults&lt;/h3&gt;
+
+&lt;p&gt;Presumably if you can set defaults for an API instead of having users need to do so then you can avoid possible errors.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const files = {
+  stats: [1, 2, 3, 4, 5]
+};
+const items = {
+  supplies: [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]
+}
+function doTheThing({ files = files, items = items }) {
+  const defaults = Object.assign({}, files, items)
+  ....
+  ....
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using &lt;code&gt;Object.assign&lt;/code&gt; can be good to merge defaults in JavaScript. instead of requiring users of your API complicated setup.&lt;/p&gt;
+
+&lt;h3 id=&#34;avoid-making-your-apis-overly-clever&#34;&gt;Avoid making your apis overly clever&lt;/h3&gt;
+
+&lt;p&gt;Here an important concept is the Single Responsibility principle (SRP), your functions should only do one thing and not have crazy side effects.
+If your API methods are doing too many things and having lots of side effect then when users encounter bugs in your API it is hard for them to understand where things are breaking.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const decodeBase64EncodedString = (str) =&amp;gt; {
+  const usernameAndPassword = str.split(&#39; &#39;)[1];
+  const parseString = new Buffer(usernameAndPassword, &#39;base64&#39;).toString();
+  const [
+    username,
+    password
+  ] = parseString.split(&#39;:&#39;);
+  return {
+    username,
+    password
+  };
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const basicAuthExample = (req, res) =&amp;gt; {
+  const {
+    authorization
+  } = req.headers;
+  if (authorization) {
+    const decodeString = decodeBase64EncodedString(authorization);
+    res.send(responseCodes[&#39;ok&#39;], {
+      credentials: decodeString
+    });
+  } else {
+    res.setHeader(&#39;WWW-Authenticate&#39;, &#39;Basic realm=&amp;quot;need login credentials&amp;quot;&#39;);
+    res.send(responseCodes[&#39;unauthorized&#39;], {
+      errorMessage: &#39;Please provide base 64 encoded username and password&#39;
+    });
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here I have two separate functions one is decoding base 64 encoded string and the endpoint function is just handling what status code to return and what headers to set.&lt;/p&gt;
+
+&lt;h3 id=&#34;pay-attention-to-edge-cases&#34;&gt;Pay attention to edge cases&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Author argues that you should be alert to edge cases in your API because they can introduce subtle bugs that you didn&amp;rsquo;t anticipate&lt;/li&gt;
+&lt;li&gt;Although not explicitly mention I believe here that Test-Driven Development can help with this.&lt;/li&gt;
+&lt;li&gt;If you start with a failing test and incrementally design your API you can come up with good test cases for corner cases&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is an example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function parseHeader(header) {
+  let opts = {};
+  let parts = header.split(&#39; &#39;);
+  let params = parts.slice(1).join(&#39; &#39;);
+
+  // Split the parameters by comma.
+  let tokens = params.split(/,(?=(?:[^&amp;quot;]|&amp;quot;[^&amp;quot;]*&amp;quot;)*$)/);
+  if (parts[0].substr(0, 6) === &#39;Digest&#39;) {
+    // Parse parameters.
+    let i = 0;
+    let len = tokens.length;
+
+    while (++i &amp;lt; len) {
+      // Strip quotes and whitespace.
+      let param = /(\w+)=[&amp;quot;]?([^&amp;quot;]*)[&amp;quot;]?$/.exec(tokens[i]);
+      if (param) {
+        opts[param[1]] = param[2];
+      }
+    }
+  }
+  return opts;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test cases for Unit Tests to test this function
+1. Pass no arguments to parseHeader =&amp;gt; &lt;code&gt;parseHeader()&lt;/code&gt;
+2. Pass an object to parseHeader =&amp;gt; &lt;code&gt;parseHeader({ value: &#39;Digest username=&amp;quot;rambo&amp;quot;, realm=&amp;quot;https://localhost:3000/api/v1/digestScheme&amp;quot;&#39;})&lt;/code&gt;
+3. Pass an array to parseHeader =&amp;gt; &lt;code&gt;parseHeader([{ value: &#39;Digest username=&amp;quot;rambo&amp;quot;, realm=&amp;quot;https://localhost:3000/api/v1/digestScheme&amp;quot;, nonce=&amp;quot;Et2azM0urkTJmDb18rZnnwQb3&amp;quot;&#39;}])&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The point being that I can use unit test to test edge cases effectively.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;be-careful-when-defining-virtual-apis&#34;&gt;Be careful when defining virtual APIs&lt;/h3&gt;
+
+&lt;p&gt;Well in Dynamic Programming Languages you have more of an implicit contract and so virtual functions is not a direct mapping here,
+but one note I can say is that if you follow the SOLID principles
+1. Single Responsibility Principle
+2. Open/Closed Principle
+3. Liskov Substitution Principle
+4. Interface Segregation Principle
+5. Dependency Inversion Principle&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Using the Open/Closed Principle you can say that Objects should be open for extension but closed for modification&lt;/em&gt;
+*Meaning you shouldn&amp;rsquo;t change the base objects at all but instead extend through your callers.**&lt;/p&gt;
+
+&lt;h2 id=&#34;strive-for-property-based-apis&#34;&gt;Strive for property-based APIs&lt;/h2&gt;
+
+&lt;p&gt;The main point that the author makes here is that if you use properties such as setters instead of having many parameters to create an object you can have a more intuitive API.&lt;/p&gt;
+
+&lt;p&gt;An example here would be like computing the slope of a line &lt;code&gt;y = mx + b&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function Slope(x, y, m, b) {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This function requires 4 parameters and can be problematic if I forget a parameter and switch parameters around, I will get unexpected behavior.&lt;/p&gt;
+
+&lt;p&gt;If I instead set defaults and perhaps used setters like this then I am being more explicit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Slope.prototype.setX = function(x) {
+  this.x = x;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;Slope.prototype.getX = function() {
+  return this.x;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notes from the Author
+1. Users don’t need to remember in which order they need to supplythe attributes or options.
+2. User code is more readable and doesn’t require additional comments
+3. Since properties have default values, users only have to set those that they explicitly want to change
+4. Users can change the value of a property at any time, instead ofhaving to replace the object with a new one whenever they want to modify it.
+5. By calling getters, users can query back everything they set, which helps debugging and is useful in some applications
+6. The approach is compatible with graphical property editors, which let the user see the result of setting a property immediately&lt;/p&gt;
+
+&lt;p&gt;One thing to note is that doing this requires more work for the API designer as the author mentions.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-best-api-is-no-api&#34;&gt;The best API is no API&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The ideal features are those that require no(or very little) additional code from the application writer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Don&amp;rsquo;t ask the consumers of your API to do more work than necessary to work with your API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;bread-crumb-navigation&#34;&gt;Bread Crumb Navigation&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Previous&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Next&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;← &lt;a href=&#34;../README.md&#34;&gt;README&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;./database-metatheory.md&#34;&gt;Database Metatheory&lt;/a&gt; →&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.25.1" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://jbelmont.github.io/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://jbelmont.github.io/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://jbelmont.github.io/post/no_silver_bullet/">
+
+  
+
+  <title>A Review of No Silver Bullet paper | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">A Review of No Silver Bullet paper</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-04-10 12:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Mon, Apr 10, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/academic">academic</a
+    >, 
+    
+    <a href="/tags/hugo">hugo</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fjbelmont.github.io%2fpost%2fno_silver_bullet%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=A%20Review%20of%20No%20Silver%20Bullet%20paper&amp;url=https%3a%2f%2fjbelmont.github.io%2fpost%2fno_silver_bullet%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjbelmont.github.io%2fpost%2fno_silver_bullet%2f&amp;title=A%20Review%20of%20No%20Silver%20Bullet%20paper"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fjbelmont.github.io%2fpost%2fno_silver_bullet%2f&amp;title=A%20Review%20of%20No%20Silver%20Bullet%20paper"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=A%20Review%20of%20No%20Silver%20Bullet%20paper&amp;body=https%3a%2f%2fjbelmont.github.io%2fpost%2fno_silver_bullet%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="no-silver-bullet-essence-and-accident-in-software-engineering">No Silver Bullet Essence and Accident in Software Engineering</h1>
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#does-it-have-to-be-hard">Does It Have To Be Hard</a>
+
+<ol>
+<li><a href="#complexity">Complexity</a></li>
+<li><a href="#conformity">Conformity</a></li>
+<li><a href="#changeability">Changeability</a></li>
+<li><a href="#invisibility">Invisibility</a></li>
+</ol></li>
+<li><a href="#past-breakthroughs-solved-accidental-difficulties">Past Breakthroughs Solved Accidental Difficulties</a>
+
+<ol>
+<li><a href="#high-level-languages">High-level languages</a></li>
+<li><a href="#time-sharing">Time-sharing</a></li>
+<li><a href="#unified-programming-environments">Unified programming environments</a></li>
+</ol></li>
+<li><a href="#hopes-for-the-silver">Hopes for the Silver</a>
+
+<ol>
+<li><a href="#ada-and-other-high-level-language-advances">Ada and other high-level language advances</a></li>
+<li><a href="#object-oriented-programming">Object-oriented programming</a></li>
+<li><a href="#artificial-intelligence">Artificial intelligence</a></li>
+<li><a href="#expert-systems">Expert systems</a></li>
+<li><a href="#automatic-programming">Automatic programming</a></li>
+<li><a href="#graphical-programming">Graphical Programming</a></li>
+<li><a href="#program-verification">Program verification</a></li>
+<li><a href="#environments-and-tools">Environments and tools</a></li>
+<li><a href="#workstations">Workstations</a></li>
+</ol></li>
+<li><a href="#promising-attacks-on-the-conceptual-essence">Promising Attacks on the Conceptual Essence</a>
+
+<ol>
+<li><a href="#buy-versus-build">Buy versus build</a></li>
+<li><a href="#requirements-refinement-and-rapid-prototyping">Requirements refinement and rapid prototyping</a></li>
+<li><a href="#incremental-development-grow-not-build-software">Incremental development grow not build software</a></li>
+<li><a href="#great-designers">Great designers</a></li>
+</ol></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<blockquote>
+<p>There is no single development, in either technology or management technique, which by itself promises even one  order of magnitude improvement in productivity, in reliability, in simplicity.</p>
+</blockquote>
+
+<ul>
+<li>Innovations in the software can yield an &ldquo;order-of-magnitude&rdquo; improvement</li>
+<li>Example given in medicine where doctors where taught the benefits of cleanliness improving health of patients
+
+<ul>
+<li>In the same way improving processes in software can help improve software step by step</li>
+</ul></li>
+</ul>
+
+<h2 id="does-it-have-to-be-hard">Does It Have To Be Hard</h2>
+
+<ul>
+<li>Software can&rsquo;t hope to see the gains that hardware has seen with improved chip design every 2 years.</li>
+</ul>
+
+<ol>
+<li>Software construction really can&rsquo;t be compared with hardware constructions.
+
+<ol>
+<li>Hardware advances in the last 30 years cannot be compared to any other technology</li>
+</ol></li>
+
+<li><p>Difficulties in Software:
+&gt; I believe the hard part of building software to be the specification, design, and testing of this conceptual construct, not the labor of representing it and testing the fidelity of the representation.</p>
+
+<ol>
+<li>Syntax errors in software pale in comparison to conceptual errors in a system</li>
+<li>There is no silver bullet</li>
+</ol></li>
+</ol>
+
+<h4 id="complexity">Complexity</h4>
+
+<ul>
+<li>Computers themselves are among the most complicated things humans build</li>
+<li>Software Construction is more than merely putting parts together
+
+<ul>
+<li>Elements of a software system interact in nonlinear ways</li>
+</ul></li>
+<li>Example given in mathematics where advances in math came for 3 straight centuries because of simplified models</li>
+<li>Complexities in Software Construction create the following issues:
+
+<ul>
+<li>Communication among team members</li>
+<li>In turn produces product flaws, cost overruns, schedule delays</li>
+<li>Complexity in understanding all possible states of a system and enumerating the states of a system</li>
+<li>This drives unreliability</li>
+<li>Complexity thereby make programs hard to use</li>
+<li>Complexity makes programs harder to extend newer functionality and consequently introducing side effects</li>
+<li>Complexity also makes security of a software system more difficult to understand</li>
+<li>Complexity also makes management more difficult</li>
+</ul></li>
+</ul>
+
+<h4 id="conformity">Conformity</h4>
+
+<ul>
+<li>Software engineers face added complexity because they must conform to decisions made by others</li>
+<li>Conforming to other software components itself makes software systems more complex</li>
+</ul>
+
+<h4 id="changeability">Changeability</h4>
+
+<ul>
+<li>Since software is much more malleable and easier to change this by itself introduces more challenges</li>
+<li>Users of a software system find new uses for software and thereby introduce new complexities</li>
+<li>A combination of users of a software system, laws introduced, and new software machinery add difficulties as well</li>
+</ul>
+
+<h4 id="invisibility">Invisibility</h4>
+
+<ul>
+<li>Software is inherently invisible and hard to visualize if even possible</li>
+<li>Attempts to visualize a system become difficult because of all the working pieces</li>
+<li>Since software cannot be easily visualized this in turn adds more complexity to systems</li>
+</ul>
+
+<h2 id="past-breakthroughs-solved-accidental-difficulties">Past Breakthroughs Solved Accidental Difficulties</h2>
+
+<p>The 3 Steps in software that have helped accidental difficulties:</p>
+
+<ol>
+<li>High-level Languages</li>
+<li>Time-sharing</li>
+<li>Unified programming environments</li>
+</ol>
+
+<h4 id="high-level-languages">High-level languages</h4>
+
+<p>High-level languages helps in the following ways:</p>
+
+<ul>
+<li>Alleviates accidental complexity</li>
+<li>Diminish complexities that arose from programming in assembly language and understanding machine code</li>
+<li>Improve processes by the use of higher level concepts such as data structures and data types</li>
+</ul>
+
+<h4 id="time-sharing">Time-sharing</h4>
+
+<ul>
+<li>Reduced compilation and execution times of software systems help keep program logic in context
+
+<ul>
+<li>This is true because a shorter feedback loop helps engineers keep focused on the task at hand</li>
+</ul></li>
+</ul>
+
+<h4 id="unified-programming-environments">Unified programming environments</h4>
+
+<ul>
+<li>Development of Unix and Interlisp helped with using software programs together and improving productivity</li>
+<li>Unified file formats, and integrated libraries helped immeasurably as well</li>
+</ul>
+
+<h2 id="hopes-for-the-silver">Hopes for the Silver</h2>
+
+<p><strong>Looking at possible silve bullets</strong></p>
+
+<h4 id="ada-and-other-high-level-language-advances">Ada and other high-level language advances</h4>
+
+<ul>
+<li>Ada is touted as a very influential programming language</li>
+<li>Ada&rsquo;s philosophy more than its features as a language have been influential</li>
+<li>Fred Brooks makes a prediction that Ada will have an impact by training engineers with modern software practices</li>
+</ul>
+
+<h3 id="object-oriented-programming">Object-oriented programming</h3>
+
+<ul>
+<li>Argues that object-oriented programming (OOP) helps remove boilerplate of previous software constructs</li>
+<li>OOP helps with higher-order design of software systems</li>
+<li>Argues that OOP can only help if some of the troubles of <code>type specification</code> is reduced in systems</li>
+</ul>
+
+<h4 id="artificial-intelligence">Artificial intelligence</h4>
+
+<p>Brooks examines argument made by <code>Parnas</code> on AI</p>
+
+<ol>
+<li>The use of computers to solve problems that previously could only be solved by applying human intelligence.
+
+<ol>
+<li>Argument is made that what people consider is AI today can rapidly change, kind of like a floating goal.</li>
+</ol></li>
+<li>The use of a specific set of programming techniques knows as heuristic or rule-based programming.
+
+<ol>
+<li>Not detail expounded on rule based systems but I can surmise that there are unspoken challenges since this requires expert knowledge that must be gleaned from an actual expert</li>
+</ol></li>
+</ol>
+
+<h4 id="expert-systems">Expert systems</h4>
+
+<ul>
+<li>Inference engines offer advantages over deterministic logic through application independence and varied use</li>
+<li>Rule sets can encode universal ideas that can be applied to different applications thereby distributing complexity</li>
+<li>Argues that separation of application complexity from the software program itself is an important advance</li>
+</ul>
+
+<p>Applications for software tasks:</p>
+
+<ul>
+<li>Suggest interface rules</li>
+<li>Help with testing strategies</li>
+<li>Optimization strategies</li>
+<li>Argues that rule-based systems should become more hierarchically modularized in the same that a system does</li>
+<li>Argues that test case generation is work that has to be done anyways and rules can help maintenance of a system</li>
+</ul>
+
+<p>Difficulties in Expert Systems:</p>
+
+<ol>
+<li>Difficult going from program structure specification to the semi-automatic generation of diagnostic rules</li>
+<li>Knowledge Acquisation is difficult for several reasons:
+
+<ol>
+<li>Finding experts that are articulate enough and understand why they do things.</li>
+<li>Extracting information from experts in order to distill into the rule bases is another</li>
+<li>Experts are required</li>
+</ol></li>
+</ol>
+
+<ul>
+<li>Distilling knowledge to inexperienced programmers from the best programmers is also no simple task.</li>
+<li>A tool that disseminates this knowledge is extremely important</li>
+</ul>
+
+<h4 id="automatic-programming">Automatic programming</h4>
+
+<blockquote>
+<p>In short, automatic programming always has been a euphemism for programming with a higher-level language than was presently available to the programmer.</p>
+</blockquote>
+
+<p>Automatic Programming favorable qualities:</p>
+
+<ul>
+<li>The problems are readily characterized by relatively few parameters.</li>
+<li>There are many known methods of solution to provide a library of alternatives.</li>
+<li>Extensive analysis has led to explicit rules for selecting solution techniques, given problem parameters</li>
+</ul>
+
+<p><strong>Argues that such programming seems difficult to even achieve</strong></p>
+
+<h4 id="graphical-programming">Graphical Programming</h4>
+
+<ul>
+<li>Argues that uses of flow-chart is a poor abstraction of software construction</li>
+<li>Argues that it is a useless design tool used by programmers since it is used after writing programs not before</li>
+<li>Argues that desktop computer sophistication is a hindrance to software systems underlying complexity
+
+<ul>
+<li>As this was written in 1986 many advances have occurred with software so not sure about this point</li>
+</ul></li>
+<li>Argues that software is very difficult to visualize
+
+<ul>
+<li>The following graphical tools:</li>
+<li>Diagram control flow, varible scope nesting, variable cross-references, data flow, hierarchical data structures</li>
+<li>Even with these tools it is difficult to get a global overview of a software system.</li>
+</ul></li>
+<li>A software systems cannot be visualized in the same way that hardware systems can</li>
+</ul>
+
+<h4 id="program-verification">Program verification</h4>
+
+<ul>
+<li>Argues that Program verification is powerful but labor intensive and very few programs have been proven correct</li>
+<li>Argues that program verification can only assert that a program meets its specification</li>
+</ul>
+
+<blockquote>
+<p>The hardest part of the software task is arriving at a complete and consistent specification, and much of the essence of building a program is in fact the debugging of the specification.</p>
+</blockquote>
+
+<h4 id="environments-and-tools">Environments and tools</h4>
+
+<ul>
+<li>Smart Editors at most can help with syntactic errors and simple semantic errors</li>
+<li>&ldquo;Integrated Database Systems&rdquo; that keep track of details that programmer&rsquo;s must understand
+
+<ul>
+<li>I am assuming here that &ldquo;Object Relational Mappers&rdquo; could be considered nice tools to extract business logic</li>
+<li>Examples like linq instead of using Stored Procedures and Table Triggers</li>
+</ul></li>
+</ul>
+
+<h4 id="workstations">Workstations</h4>
+
+<ul>
+<li>The point is made that even with factor of 10 speed increases in developer workstations you still have think time
+
+<ul>
+<li>Think time being the time a developer uses modelling out business logic and program flow I assume</li>
+</ul></li>
+</ul>
+
+<h2 id="promising-attacks-on-the-conceptual-essence">Promising Attacks on the Conceptual Essence</h2>
+
+<p>Productivity Equation:</p>
+
+<p>$$ \sum(Frequency)_i x (Time)_i $$</p>
+
+<p>Focusing on the task at hand or the conceptual essence is not the silver bullet as well</p>
+
+<h4 id="buy-versus-build">Buy versus build</h4>
+
+<ul>
+<li>It is cheaper to buy production ready software than try to write homegrown software
+
+<ul>
+<li>Argues that a software system costing $100,000 could be roughly equivalent to a yearly salary of a developer</li>
+</ul></li>
+<li>Argument made that the ratio of hardware/software cost has changed dramatically
+
+<ul>
+<li>if you spent 2 million on a piece of hardware then spending another $250,000 on software is a drop in the bucket</li>
+</ul></li>
+<li>Development of spreadsheet and office technologies has enabled the mainline computer user to find new uses
+
+<ul>
+<li>Argues such office software has the possibility of being a force multiplier in advances through novel uses</li>
+</ul></li>
+</ul>
+
+<h4 id="requirements-refinement-and-rapid-prototyping">Requirements refinement and rapid prototyping</h4>
+
+<ul>
+<li>Clients find it hard to nail down the exact requirements that they want</li>
+<li>Will often take multiple versions of a prototype to nail down what the client wants</li>
+<li>Points out that rapid prototype tools can assist greatly in solving software problems</li>
+</ul>
+
+<blockquote>
+<p>The  purpose  of  the  prototype  is  to  make  real  the  conceptual  structure  specified,  so  that  the  client  can  test  it  for  consistency  and  usability</p>
+</blockquote>
+
+<p><strong>Iterative development and the use of prototypes is key to building satisfactory software system</strong></p>
+
+<h4 id="incremental-development-grow-not-build-software">Incremental development grow not build software</h4>
+
+<ul>
+<li>Calls for iterative development in software
+
+<ul>
+<li>Flesh out details bit by bit in a system</li>
+<li>I would argue that TDD can help with such things by facilitating with incremental design</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>That is, the system should first be made to run, even though it does nothing useful except call the proper set of dummy subprograms.  Then, bit-by-bit it is fleshed out, with the subprograms in turn being developed into actions or calls to empty stubs in the level below</p>
+</blockquote>
+
+<ul>
+<li>The main point is see in this section is that having a running system at all times keeps you focused and attentive</li>
+</ul>
+
+<h4 id="great-designers">Great designers</h4>
+
+<ul>
+<li>Good design can help drive quality of a system
+
+<ul>
+<li>Organizations like the Software Engineering Institute help promote good software systems</li>
+</ul></li>
+<li>Argues that great design minds (meaning individuals) can accomplish more than a committee of designers</li>
+<li>Find ways to nurture highly creative minds as they can pave the way to the future
+
+<ul>
+<li>Examples are given with Unix, SmallTalk, Fortran and others that were largely individual efforts</li>
+</ul></li>
+<li>Argues that organizations must cultivate great designers just like they would with management prospects</li>
+</ul>
+
+<p>Highlights the following ways to grow great designers:</p>
+
+<ul>
+<li>Systematically identify top designers as early as possible. The best are often not the most experienced</li>
+<li>Assign a career mentor to be responsible for the development of the prospect, and keep a careful career file</li>
+<li>Devise and maintain a career development plan for each prospect</li>
+<li>including carefully selected apprenticeships with top designers, episodes of advanced formal education</li>
+<li>short courses, all interspersed with solo design and technical leadership assignments</li>
+<li>Provide opportunities for growing designers to interact with and stimulate each other</li>
+</ul>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://jbelmont.github.io/post/api-design/"><span
+      aria-hidden="true">&larr;</span> A Review of Little Manual of API Design paper</a></li>
+    
+
+    
+    <li class="next"><a href="https://jbelmont.github.io/post/a-review-of-science-of-great-ui/">A Review of the Science Of Great UI <span
+      aria-hidden="true">&rarr;</span></a></li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

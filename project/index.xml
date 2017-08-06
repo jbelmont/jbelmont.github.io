@@ -12,20 +12,31 @@
     
     <item>
       <title>Learning New Programming Languages</title>
-      <link>https://jbelmont.github.io/project/learning-new-programming-languages/</link>
+      <link>https://jbelmont.github.io/project/learning_new_programming_languages/</link>
       <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/learning-new-programming-languages/</guid>
+      <guid>https://jbelmont.github.io/project/learning_new_programming_languages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Papers We Love</title>
-      <link>https://jbelmont.github.io/project/papers-we-love/</link>
+      <link>https://jbelmont.github.io/project/papers_we_love/</link>
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/papers-we-love/</guid>
-      <description></description>
+      <guid>https://jbelmont.github.io/project/papers_we_love/</guid>
+      <description>
+
+&lt;h2 id=&#34;about-papers-we-love&#34;&gt;About Papers We Love&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What was the last paper within the realm of computing you read and loved?&lt;/li&gt;
+&lt;li&gt;What did it inspire you to build or tinker with?&lt;/li&gt;
+&lt;li&gt;Come share the ideas in an awesome academic/research paper with fellow engineers, programmers, and paper-readers.&lt;/li&gt;
+&lt;li&gt;Lead a session and show off code that you wrote that implements these ideas or just gives other members a proper rundown about the paper.&lt;/li&gt;
+&lt;li&gt;Try to come to each session with an open mind, listen, discuss, and learn.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -34,7 +45,30 @@
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</guid>
-      <description></description>
+      <description>
+
+&lt;h2 id=&#34;code-craftsmanship-saturdays&#34;&gt;Code Craftsmanship Saturdays&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Code Craftsmanship Saturdays is a meetup group where people can learn and practice both new and old technologies in an informal environment.&lt;/li&gt;
+&lt;li&gt;People learn best when paired in groups where they can share different ideas, thoughts, and approaches to problems.&lt;/li&gt;
+&lt;li&gt;This group is heavily influenced from the Node School Organization, but is intended to be more generic in content.&lt;/li&gt;
+&lt;li&gt;This code retreat is about practice, not about delivering a product on a deadline.&lt;/li&gt;
+&lt;li&gt;We will follow the format of a code retreat but the meetups will only be 4 hours long.&lt;/li&gt;
+&lt;li&gt;Start now, try something new, get the fire back, the reason you started coding in the first place!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;workshops&#34;&gt;Workshops&lt;/h2&gt;
+
+&lt;h3 id=&#34;software-security&#34;&gt;Software Security&lt;/h3&gt;
+
+&lt;p&gt;A look at Software security and specifically the OWASP top 10&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jbelmont.github.io/software-security/&#34; target=&#34;_blank&#34;&gt;Software Security Gitbook&lt;/a&gt;
+&lt;a href=&#34;https://github.com/jbelmont/software-security&#34; target=&#34;_blank&#34;&gt;Software Security Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please look at more workshops in my github handle &lt;code&gt;jbelmont&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

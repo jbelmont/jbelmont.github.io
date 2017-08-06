@@ -16,7 +16,30 @@
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</guid>
-      <description></description>
+      <description>
+
+&lt;h2 id=&#34;code-craftsmanship-saturdays&#34;&gt;Code Craftsmanship Saturdays&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Code Craftsmanship Saturdays is a meetup group where people can learn and practice both new and old technologies in an informal environment.&lt;/li&gt;
+&lt;li&gt;People learn best when paired in groups where they can share different ideas, thoughts, and approaches to problems.&lt;/li&gt;
+&lt;li&gt;This group is heavily influenced from the Node School Organization, but is intended to be more generic in content.&lt;/li&gt;
+&lt;li&gt;This code retreat is about practice, not about delivering a product on a deadline.&lt;/li&gt;
+&lt;li&gt;We will follow the format of a code retreat but the meetups will only be 4 hours long.&lt;/li&gt;
+&lt;li&gt;Start now, try something new, get the fire back, the reason you started coding in the first place!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;workshops&#34;&gt;Workshops&lt;/h2&gt;
+
+&lt;h3 id=&#34;software-security&#34;&gt;Software Security&lt;/h3&gt;
+
+&lt;p&gt;A look at Software security and specifically the OWASP top 10&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jbelmont.github.io/software-security/&#34; target=&#34;_blank&#34;&gt;Software Security Gitbook&lt;/a&gt;
+&lt;a href=&#34;https://github.com/jbelmont/software-security&#34; target=&#34;_blank&#34;&gt;Software Security Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please look at more workshops in my github handle &lt;code&gt;jbelmont&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
