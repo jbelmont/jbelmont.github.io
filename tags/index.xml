@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Api</title>
+      <link>https://jbelmont.github.io/tags/api/</link>
+      <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Caching</title>
+      <link>https://jbelmont.github.io/tags/caching/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/caching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Code Craftsmanship Saturdays</title>
       <link>https://jbelmont.github.io/tags/code-craftsmanship-saturdays/</link>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
@@ -30,11 +48,20 @@
     </item>
     
     <item>
-      <title>Hugo</title>
-      <link>https://jbelmont.github.io/tags/hugo/</link>
-      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      <title>Course Review</title>
+      <link>https://jbelmont.github.io/tags/course-review/</link>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/hugo/</guid>
+      <guid>https://jbelmont.github.io/tags/course-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Design</title>
+      <link>https://jbelmont.github.io/tags/design/</link>
+      <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/design/</guid>
       <description></description>
     </item>
     
@@ -48,11 +75,47 @@
     </item>
     
     <item>
+      <title>Memoization</title>
+      <link>https://jbelmont.github.io/tags/memoization/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/memoization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>https://jbelmont.github.io/tags/paper/</link>
+      <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Papers We Love</title>
       <link>https://jbelmont.github.io/tags/papers-we-love/</link>
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://jbelmont.github.io/tags/papers-we-love/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://jbelmont.github.io/tags/redis/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ui</title>
+      <link>https://jbelmont.github.io/tags/ui/</link>
+      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/ui/</guid>
       <description></description>
     </item>
     
