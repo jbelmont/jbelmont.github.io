@@ -764,26 +764,6 @@ but one note I can say is that if you follow the SOLID principles
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;em&gt;Don&amp;rsquo;t ask the consumers of your API to do more work than necessary to work with your API.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;bread-crumb-navigation&#34;&gt;Bread Crumb Navigation&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Previous&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Next&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;← &lt;a href=&#34;../README.md&#34;&gt;README&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;./database-metatheory.md&#34;&gt;Database Metatheory&lt;/a&gt; →&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
 </description>
     </item>
     
