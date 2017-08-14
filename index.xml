@@ -11,6 +11,939 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Caching, Memoization, and Redis</title>
+      <link>https://jbelmont.github.io/post/caching-and-memoization/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/post/caching-and-memoization/</guid>
+      <description>
+
+&lt;h1 id=&#34;caching&#34;&gt;Caching&lt;/h1&gt;
+
+&lt;h2 id=&#34;what-is-caching&#34;&gt;What Is Caching?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Caching is the term for storing reusable responses in order to make subsequent requests faster.&lt;/li&gt;
+&lt;li&gt;There are different types of caching available.&lt;/li&gt;
+&lt;li&gt;Application caches and memory caches are both popular for their ability to speed up certain responses.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;types-of-cache&#34;&gt;Types of Cache&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Disk cache: The page cache in main memory is managed by the operating system kernel.&lt;/li&gt;
+&lt;li&gt;Web cache&lt;/li&gt;
+&lt;li&gt;Memoization
+
+&lt;ol&gt;
+&lt;li&gt;A cache can store data that is computed on demand rather than retrieved from a backing store.&lt;/li&gt;
+&lt;li&gt;Memoization is an optimization technique that stores the results of resource-consuming function calls within a lookup table, allowing subsequent calls to reuse the stored results and avoid repeated computation.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;web-caching&#34;&gt;Web Caching&lt;/h2&gt;
+
+&lt;p&gt;Web caching is a core design feature of the HTTP protocol
+    * It is meant to minimize network traffic while improving perceived responsiveness of the system as a whole.&lt;/p&gt;
+
+&lt;p&gt;Caches are found at every level of a content&amp;rsquo;s journey from the original server to the browser.&lt;/p&gt;
+
+&lt;p&gt;Web caching works by caching the HTTP responses for requests according to certain rules.&lt;/p&gt;
+
+&lt;p&gt;Subsequent requests for cached content can then be fulfilled from a cache closer to the user instead of sending the request all the way back to the web server.&lt;/p&gt;
+
+&lt;h2 id=&#34;benefits&#34;&gt;Benefits&lt;/h2&gt;
+
+&lt;p&gt;Effective caching aids both content consumers and content providers.&lt;/p&gt;
+
+&lt;p&gt;Some of the benefits that caching brings to content delivery are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Decreased network costs: Content can be cached at various points in the network path between the content consumer and content origin.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;When the content is cached closer to the consumer, requests will not add network latency&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Improved responsiveness: Caching enables content to be retrieved faster because an entire network round trip is not necessary.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Caches maintained close to the user, like the browser cache, can make this retrieval nearly instantaneous.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Increased performance on the same hardware&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For the server where the content originated, more performance can be squeezed from the same hardware by allowing aggressive caching.&lt;/li&gt;
+&lt;li&gt;The content owner can leverage the powerful servers along the delivery path to take the brunt of certain content loads.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Availability of content during network interruptions&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Certain caches can be used to serve content even when if unavailable for short periods of time from the origin&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;terminology&#34;&gt;Terminology&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Origin server: The origin server is the original location of the content.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you are acting as the web server administrator, this is the machine that you control.&lt;/li&gt;
+&lt;li&gt;It is responsible for serving any content that could not be retrieved from a cache along the request route&lt;/li&gt;
+&lt;li&gt;Setting the caching policy for all content.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cache hit ratio: A cache&amp;rsquo;s effectiveness is measured in terms of its cache hit ratio or hit rate.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is a ratio of the requests able to be retrieved from a cache to the total requests made.&lt;/li&gt;
+&lt;li&gt;A high cache hit ratio means that a high percentage of the content was able to be retrieved from the cache.  * This is usually the desired outcome for most administrators.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Freshness: Term used to describe whether an item in cache is considered a candidate to serve to a client.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Content in a cache will only be used to respond if it is within the freshness time frame specified by the caching policy.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Stale content: Items in the cache expire according to the cache freshness settings in the caching policy.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Expired content is &amp;ldquo;stale&amp;rdquo;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Expired content cannot be used to respond to client requests. The origin server must be re-contacted to retrieve the new content or at least verify that the cached content is still accurate.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Validation: Stale items in the cache can be validated in order to refresh their expiration time.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validation involves checking with the origin server to see if cached content is still up to date&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Invalidation: Invalidation is the process of removing content from the cache before its expiration date.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Triggered if the item is changed on the origin server and an outdated item in cache causes client issues&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cacheable-content&#34;&gt;Cacheable Content&lt;/h2&gt;
+
+&lt;p&gt;Items that don&amp;rsquo;t tend to change frequently are good candidates for caching.&lt;/p&gt;
+
+&lt;p&gt;Cache Friendly Content:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Logos and brand images&lt;/li&gt;
+&lt;li&gt;Nav Icons&lt;/li&gt;
+&lt;li&gt;Style sheets&lt;/li&gt;
+&lt;li&gt;Javascript files&lt;/li&gt;
+&lt;li&gt;Downloadable Content&lt;/li&gt;
+&lt;li&gt;Media Files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More volatile items to cache:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTML pages&lt;/li&gt;
+&lt;li&gt;Rotating images&lt;/li&gt;
+&lt;li&gt;Heavily modified JavaScript and CSS files&lt;/li&gt;
+&lt;li&gt;Content tied to auth (Cookies, Tokens, etc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some items that should almost never be cached are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sensitive Dat (banking info, social security numbers, credit card numbers)&lt;/li&gt;
+&lt;li&gt;user specific information that can change&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Web Content Cache Locations:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Browser cache: Web browsers themselves maintain a small cache.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Browsers sets a policy that dictates the most important items to cache.&lt;/li&gt;
+&lt;li&gt;This may be user-specific content or content deemed expensive to download and likely to be requested again.&lt;/li&gt;
+&lt;li&gt;We will explore IndexDb and Local Storage&lt;/li&gt;
+&lt;li&gt;In memory caching as well&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Intermediary caching proxies: Any server in between the client and infrastructure can cache certain content.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;These caches may be maintained by ISPs or other independent parties.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Reverse Cache: Your server infrastructure can implement its own cache for backend services.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Content can be served from the point of contact instead of hitting backend servers on each request.
+
+&lt;ul&gt;
+&lt;li&gt;For example hitting a database for each route that has cacheable content&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;caching-http-headers&#34;&gt;Caching HTTP Headers&lt;/h2&gt;
+
+&lt;p&gt;Caching policy is dependent upon two different factors:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The caching entity itself gets to decide whether or not to cache acceptable content.&lt;/li&gt;
+&lt;li&gt;It can decide to cache less than it is allowed to cache, but never more.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;The majority of caching behavior is determined by the caching policy, which is set by the content owner.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;These policies are mainly exercises through the use of specific HTTP headers.&lt;/p&gt;
+
+&lt;p&gt;Cache-focused HTTP Headers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Expires: The Expires header is very straight-forward, although fairly limited in scope.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set a time in the future when the content will expire.&lt;/li&gt;
+&lt;li&gt;At this point, any requests for the same content will have to go back to the origin server.&lt;/li&gt;
+&lt;li&gt;This header is probably best used only as a fall back.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cache-Control: This is the more modern replacement for the Expires header.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is well supported and implements a much more flexible design.&lt;/li&gt;
+&lt;li&gt;In almost all cases, this is preferable to Expires, but it may not hurt to set both values.&lt;/li&gt;
+&lt;li&gt;We will discuss the specifics of the options you can set with Cache-Control a bit later.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Etag: The Etag header is used with cache validation.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The origin can provide a unique Etag for an item when it initially serves the content.&lt;/li&gt;
+&lt;li&gt;When a cache needs to validate the content it has on-hand upon expiration, it can send back the Etag it has for the content.&lt;/li&gt;
+&lt;li&gt;The origin will either tell the cache that the content is the same, or send the updated content and new Etag&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Last-Modified: Specifies the last time that the item was modified.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This may be used as part of the validation strategy to ensure fresh content.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Content-Length: This header is important to set when defining caching policies.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Certain software will refuse to cache content if it does not know in advanced the size of the content&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Vary: A cache will use the requested host and the path to the resource as the key to store the cache item.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Vary header can be used to tell caches to pay attention to an additional header when deciding whether a request is for the same item.&lt;/li&gt;
+&lt;li&gt;Tells caches to key by the Accept-Encoding header as well, so that the cache will know to differentiate between compressed and uncompressed content.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cache-control-flags&#34;&gt;Cache-Control Flags&lt;/h2&gt;
+
+&lt;p&gt;Cache-Control options:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;no-cache: Specifies that any cached content must be re-validated on each request before being served to client.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contents is marked as stale immediately, but uses revalidation techniques to avoid re-downloading again&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;no-store: This instruction indicates that the content cannot be cached in any way.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is appropriate to set if the response represents sensitive data.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;public: This marks the content as public, meaning it can be cached by the browser and any intermediate caches.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For requests that HTTP authentication, responses are marked private by default.&lt;/li&gt;
+&lt;li&gt;This header overrides that setting.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More options can be found at &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control&#34; target=&#34;_blank&#34;&gt;Cache Control&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Options can be used in different ways to achieve various caching behavior.&lt;/p&gt;
+
+&lt;h2 id=&#34;developing-a-caching-strategy&#34;&gt;Developing a Caching Strategy&lt;/h2&gt;
+
+&lt;p&gt;Ideally everything would be cached and your servers would only be contacted to validate content occasionally.&lt;/p&gt;
+
+&lt;p&gt;This doesn&amp;rsquo;t often happen in practice though, so you should try to set some sane caching policies that aim to balance between implementing long-term caching and responding to the demands of a changing site.&lt;/p&gt;
+
+&lt;h2 id=&#34;common-issues-with-caching&#34;&gt;Common Issues with Caching&lt;/h2&gt;
+
+&lt;p&gt;There are many situations where caching cannot or should not be implemented due to how the content is produced&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Dynamic content generated by users&lt;/li&gt;
+&lt;li&gt;Sensitive information such as banking information, etc.&lt;/li&gt;
+&lt;li&gt;Older versions of your content are already out even though new versions have been published.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;general-recommendations&#34;&gt;General Recommendations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Specific directories for images, css, and shared content&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Placing content into dedicated directories will allow you to easily refer to them from any page on your site.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use the same URL to refer to the same items&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Caches key off of both the host and the path to the content requested&lt;/li&gt;
+&lt;li&gt;Ensure that you refer to your content in the same way on all of your pages.&lt;/li&gt;
+&lt;li&gt;The previous recommendation makes this significantly easier.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use CSS image sprites where possible&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sprites for items like icons and navigation decrease the number of round trips needed to render your site&lt;/li&gt;
+&lt;li&gt;Allowing your site to cache that single sprite for a long time.&lt;/li&gt;
+&lt;li&gt;Use Single SVG file instead of multiple svg as well&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Host scripts and external resources locally where possible&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you utilize javascript scripts and other external resources, consider hosting those resources on your own dedicated servers if the correct headers are not being provided upstream.&lt;/li&gt;
+&lt;li&gt;Keep up to date with downstream changes however so you can update your local copy&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Fingerprint cache items&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For static content like CSS and Javascript files, it may be appropriate to fingerprint each item.&lt;/li&gt;
+&lt;li&gt;This means adding a unique identifier to the filename (often a hash of the file) so that if the resource is modified, the new resource name can be requested, causing the requests to correctly bypass the cache.&lt;/li&gt;
+&lt;li&gt;There are a variety of tools that can assist in creating fingerprints and modifying the references to them within HTML documents.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allow all caches to store generic assets&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Static content and content that is not user-specific should be cached at all points in the delivery chain.&lt;/li&gt;
+&lt;li&gt;This will allow intermediary caches to respond with the content for multiple users.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allow browsers to cache user-specific assets&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For per-user content, it is often acceptable and useful to allow caching within the user&amp;rsquo;s browser.&lt;/li&gt;
+&lt;li&gt;Caching in the browser will allow for instant retrieval for users during subsequent visits.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make exceptions for essential time-sensitive content&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sites that have a shopping cart should reflect the items in the cart immediately.
+
+&lt;ul&gt;
+&lt;li&gt;The no-cache or no-store options can be set in the Cache-Control header to achieve this.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Always provide validators&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validators allow stale content to be refreshed without having to download the entire resource again.&lt;/li&gt;
+&lt;li&gt;Setting the Etag and the Last-Modified headers allow caches to validate their content and re-serve it if it has not been modified at the origin, further reducing load.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set long freshness times for supporting content&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Items like images and css that don&amp;rsquo;t change often&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set short freshness times for parent content&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The HTML itself will be downloaded frequently, allowing it to respond to changes rapidly.&lt;/li&gt;
+&lt;li&gt;The supporting content can then be cached aggressively.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The key is to strike a balance that favors aggressive caching where possible while leaving opportunities to invalidate entries in the future when changes are made.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Each Site will likely have the following items:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Aggressively cached items&lt;/li&gt;
+&lt;li&gt;Cached items with a short freshness time and the ability to re-validate&lt;/li&gt;
+&lt;li&gt;Items that should not be cached at all&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;The goal is to move content into the first and second category when possible while maintaining an acceptable level of accuracy.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;memoization&#34;&gt;Memoization&lt;/h2&gt;
+
+&lt;p&gt;Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Memoization&#34; target=&#34;_blank&#34;&gt;Memoization&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The term &amp;ldquo;memoization&amp;rdquo; was coined by Donald Michie in 1968[5] and is derived from the Latin word &amp;ldquo;memorandum&amp;rdquo; (&amp;ldquo;to be remembered&amp;rdquo;), usually truncated as &amp;ldquo;memo&amp;rdquo; in the English language, and thus carries the meaning of &amp;ldquo;turning [the results of] a function into something to be remembered.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A memoized function &amp;ldquo;remembers&amp;rdquo; the results corresponding to some set of specific inputs.&lt;/p&gt;
+
+&lt;p&gt;Subsequent Function calls with remembered inputs return the remembered result rather than recalculating the result
+Thus eliminating the primary cost of a call with given parameters from all but the first call made to the function.&lt;/p&gt;
+
+&lt;p&gt;A function can only be memoized if it is referentially transparent
+if calling the function has exactly the same effect as replacing that function call with its return value.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Memoization is a run-time rather than compile-time optimization.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Memoization is heavily used in compilers for functional programming languages, which often use call by name evaluation strategy.&lt;/p&gt;
+
+&lt;p&gt;Memoization incurs a higher memory overhead since we must store our cached results so that we can later recall them
+Therefore memoization only makes sense for functions that are computationally expensive.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jsfiddle.net/jbelmont/ane0p1ra/10/&#34; target=&#34;_blank&#34;&gt;jsFiddle Memoization Example&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://es6console.com/j2npui2h/&#34; target=&#34;_blank&#34;&gt;ES6 Console Example&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;web-sql&#34;&gt;Web SQL&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.w3.org/TR/webdatabase/&#34; target=&#34;_blank&#34;&gt;Web SQL&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;methods&#34;&gt;Methods&lt;/h2&gt;
+
+&lt;p&gt;There are following three core methods defined in the spec that I.m going to cover in this tutorial −
+* openDatabase − This method creates the database object either using existing database or creating new one.
+* transaction − This method give us the ability to control a transaction and performing either commit or roll-back based on the situation.
+* executeSql − This method is used to execute actual SQL query.&lt;/p&gt;
+
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function prepareDatabase(ready, error) {
+  return openDatabase(&#39;documents&#39;, &#39;1.0&#39;, &#39;Offline document storage&#39;, 5*1024*1024, function (db) {
+    db.changeVersion(&#39;&#39;, &#39;1.0&#39;, function (t) {
+      t.executeSql(&#39;CREATE TABLE docids (id, name)&#39;);
+    }, error);
+  });
+}
+
+function showDocCount(db, span) {
+  db.readTransaction(function (t) {
+    t.executeSql(&#39;SELECT COUNT(*) AS c FROM docids&#39;, [], function (t, r) {
+      span.textContent = r.rows[0].c;
+    }, function (t, e) {
+      // couldn&#39;t read database
+      span.textContent = &#39;(unknown: &#39; + e.message + &#39;)&#39;;
+    });
+  });
+}
+
+prepareDatabase(function(db) {
+  // got database
+  var span = document.getElementById(&#39;doc-count&#39;);
+  showDocCount(db, span);
+}, function (e) {
+  // error getting database
+  alert(e.message);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;plunker-playground&#34;&gt;Plunker Playground&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://plnkr.co/edit/znJwyXsqVvHVegqS7Vrd?p=preview&#34; target=&#34;_blank&#34;&gt;https://plnkr.co/edit/znJwyXsqVvHVegqS7Vrd?p=preview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;indexdb&#34;&gt;IndexDB&lt;/h2&gt;
+
+&lt;h2 id=&#34;higher-level-overview-of-indexdb&#34;&gt;Higher Level Overview of IndexDB&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This API uses indexes to enable high-performance searches of this data.&lt;/li&gt;
+&lt;li&gt;Web Storage is useful for storing smaller amounts of data, but less useful for storing larger amounts of structured data.
+
+&lt;ul&gt;
+&lt;li&gt;IndexedDB provides a solution for this&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;accessing-indexdb&#34;&gt;Accessing IndexDB&lt;/h2&gt;
+
+&lt;p&gt;In Chrome you can inspect &lt;code&gt;IndexDb&lt;/code&gt; in the Application Tab in the Developer Tools&lt;/p&gt;
+
+&lt;p&gt;We will look at indexdb in the running UI application&lt;/p&gt;
+
+&lt;h2 id=&#34;running-the-application&#34;&gt;Running the application&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Visit &lt;a href=&#34;https://github.com/jbelmont/caching-and-memoization/blob/master/docs/indexdb.md&#34; target=&#34;_blank&#34;&gt;Caching and Memoization Repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run dev&lt;/code&gt; in order to start the application&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;local-storage&#34;&gt;Local Storage&lt;/h2&gt;
+
+&lt;h3 id=&#34;local-storage-api&#34;&gt;Local Storage API&lt;/h3&gt;
+
+&lt;p&gt;Methods:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;getItem&lt;/li&gt;
+&lt;li&gt;setItem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage&#34; target=&#34;_blank&#34;&gt;Local Storage&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;jsfiddle-example&#34;&gt;JSFiddle Example&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jsfiddle.net/jbelmont/ow6zLsdk/59/&#34; target=&#34;_blank&#34;&gt;Local Storage&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;redis&#34;&gt;Redis&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/download&#34; target=&#34;_blank&#34;&gt;Redis Download&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://try.redis.io/&#34; target=&#34;_blank&#34;&gt;Redis REPL&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jbelmont/caching-and-memoization&#34; target=&#34;_blank&#34;&gt;Caching and Memoization Repo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Redis is not a plain key-value store, it is actually a data structures server, supporting different kinds of values.&lt;/p&gt;
+
+&lt;p&gt;Redis Data Structures:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Binary-safe strings.&lt;/li&gt;
+&lt;li&gt;Lists: collections of string elements sorted according to the order of insertion. They are basically linked lists.&lt;/li&gt;
+&lt;li&gt;Sets: collections of unique, unsorted string elements.&lt;/li&gt;
+&lt;li&gt;Sorted sets, similar to Sets but where every string element is associated to a floating number value, called score.&lt;/li&gt;
+&lt;li&gt;Hashes, which are maps composed of fields associated with values. Both the field and the value are strings.&lt;/li&gt;
+&lt;li&gt;Bit arrays (or simply bitmaps): it is possible, using special commands, to handle String values like an array of bits&lt;/li&gt;
+&lt;li&gt;HyperLogLogs: this is a probabilistic data structure which is used in order to estimate the cardinality of a set.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis-database&#34;&gt;Redis Database&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Redis, databases are simply identified by a number with the default database being number 0.&lt;/li&gt;
+&lt;li&gt;If you want to change to a different database you can do so via the select command.&lt;/li&gt;
+&lt;li&gt;In the command line interface, type select 1.&lt;/li&gt;
+&lt;li&gt;Redis should reply with an OK message and your prompt should change to something like &lt;code&gt;redis 127.0.0.1:6379[1]&amp;gt;.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If you want to switch back to the default database, just enter select 0 in the command line interface&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;redis-commands&#34;&gt;Redis Commands&lt;/h2&gt;
+
+&lt;p&gt;Redis commands are grouped by functionality&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sets
+
+&lt;ul&gt;
+&lt;li&gt;Unique Elements.&lt;/li&gt;
+&lt;li&gt;Available commands: sadd, scard, sismember&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Lists:
+
+&lt;ul&gt;
+&lt;li&gt;collections of string elements&lt;/li&gt;
+&lt;li&gt;Available commands: llen, lpush&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Keys&lt;/li&gt;
+&lt;li&gt;Hashes
+
+&lt;ul&gt;
+&lt;li&gt;consist of key and value pairs&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find all the available Redis Commands here &lt;a href=&#34;https://redis.io/commands&#34; target=&#34;_blank&#34;&gt;Redis Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You can filter by functionality because the default is to show all the Redis Commands&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;redis-clients&#34;&gt;Redis Clients&lt;/h2&gt;
+
+&lt;p&gt;You can find all the available Redis Client Libraries here &lt;a href=&#34;https://redis.io/clients&#34; target=&#34;_blank&#34;&gt;Redis Clients&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The particular client we will be using for the workshop is &lt;a href=&#34;https://github.com/NodeRedis/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Redis breaks out uses for data structures according to how they should be used albeit lists, hashes, scalars, and sets&lt;/p&gt;
+
+&lt;p&gt;This means that if you have JSON object in Redis you can&amp;rsquo;t just store like an json object
+Also nested json objects should either be stringified with &lt;code&gt;JSON.stringify(obj)&lt;/code&gt; or used with a hash data structure&lt;/p&gt;
+
+&lt;h2 id=&#34;querying-redis&#34;&gt;Querying Redis&lt;/h2&gt;
+
+&lt;p&gt;Redis stores everything as a key so you can&amp;rsquo;t use it like you would think as a normal query language&lt;/p&gt;
+
+&lt;p&gt;For example&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;SELECT * from Books where Books.id = 1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A type of query such as this wouldn&amp;rsquo;t work in Redis&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use lots of key-value pairs in Redis.&lt;/li&gt;
+&lt;li&gt;So feel free to store each row of the table in a different row.&lt;/li&gt;
+&lt;li&gt;Use Redis&amp;rsquo; hash map data type&lt;/li&gt;
+&lt;li&gt;Form key name from primary key values of the table by a separator (such as &amp;ldquo;:&amp;ldquo;)&lt;/li&gt;
+&lt;li&gt;Store the remaining fields as a hash&lt;/li&gt;
+&lt;li&gt;When you want to query a single row, directly form the key and retrieve its results&lt;/li&gt;
+&lt;li&gt;When you want to query a range, use wild char &amp;ldquo;*&amp;rdquo; towards your key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;memory-and-persistence-in-redis&#34;&gt;Memory and Persistence in Redis&lt;/h2&gt;
+
+&lt;p&gt;Redis is an in-memory persistent store&lt;/p&gt;
+
+&lt;p&gt;Redis keeps all your data in memory so there is an associated cost for this in terms of Server RAM&lt;/p&gt;
+
+&lt;h2 id=&#34;redis-data-structures&#34;&gt;Redis Data Structures&lt;/h2&gt;
+
+&lt;h4 id=&#34;strings&#34;&gt;Strings&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/topics/data-types#strings&#34; target=&#34;_blank&#34;&gt;String Data Type&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/commands#string&#34; target=&#34;_blank&#34;&gt;String Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; set movies:rocky &#39;{ &amp;quot;name&amp;quot;: rocky, &amp;quot;characters&amp;quot;: [&amp;quot;Rocky Balboa&amp;quot;, &amp;quot;Paulie&amp;quot;, &amp;quot;Adrien&amp;quot;] }&#39;
+OK
+
+&amp;gt; get movies:rocky
+&amp;quot;{ \&amp;quot;name\&amp;quot;: rocky, \&amp;quot;characters\&amp;quot;: [\&amp;quot;Rocky Balboa\&amp;quot;, \&amp;quot;Paulie\&amp;quot;, \&amp;quot;Adrien\&amp;quot;] }&amp;quot;
+
+&amp;gt; strlen movies:rocky
+(integer) 69
+
+&amp;gt; append movies:rocky &amp;quot;Yo Adrian&amp;quot;
+(integer) 78
+
+&amp;gt; get movies:rocky
+&amp;quot;{ \&amp;quot;name\&amp;quot;: rocky, \&amp;quot;characters\&amp;quot;: [\&amp;quot;Rocky Balboa\&amp;quot;, \&amp;quot;Paulie\&amp;quot;, \&amp;quot;Adrien\&amp;quot;] }Yo Adrian&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice above here that the string Yo Adrian was appended to the JSON object which doesn&amp;rsquo;t really make sense
+A JSON object can&amp;rsquo;t really be represented as a string&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;127.0.0.1:6379[1]&amp;gt; help incr
+INCR key
+summary: Increment the integer value of a key by one
+since: 1.0.0
+group: string
+
+127.0.0.1:6379[1]&amp;gt; incr random:num
+(integer) 1
+
+127.0.0.1:6379[1]&amp;gt; incr random:num
+(integer) 2
+
+127.0.0.1:6379[1]&amp;gt; help incrby
+INCRBY key increment
+summary: Increment the integer value of a key by the given amount
+since: 1.0.0
+group: string
+
+127.0.0.1:6379[1]&amp;gt; incrby num:incr 10
+(integer) 10
+
+127.0.0.1:6379[1]&amp;gt; incrby num2:incr 25
+(integer) 25
+
+127.0.0.1:6379[1]&amp;gt; incr movies:rocky
+(error) ERR value is not an integer or out of range
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Notice here that trying to increment movies:rocky created a Redis error which makes sense movies:rocky is a string&lt;/em&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;exercise&#34;&gt;Exercise&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Implement redis command &lt;code&gt;incr&lt;/code&gt; using node_redis client library &lt;a href=&#34;https://github.com/jbelmont/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;playground/strings.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;open test/unit/strings.test.js&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write a test with your new function&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;hashes&#34;&gt;Hashes&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/topics/data-types#hashes&#34; target=&#34;_blank&#34;&gt;Hash Data Type&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/commands#hash&#34; target=&#34;_blank&#34;&gt;Hash Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hashes are like strings except you have a field value&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;127.0.0.1:6379[1]&amp;gt; hset users:user name bob
+(integer) 1
+
+127.0.0.1:6379[1]&amp;gt; hget users:user name
+&amp;quot;bob&amp;quot;
+
+127.0.0.1:6379[1]&amp;gt; hmset movie:fields name &amp;quot;Rocky&amp;quot; rating 5 year 1976
+OK
+
+127.0.0.1:6379[1]&amp;gt; HGETALL movie:fields
+1) &amp;quot;name&amp;quot;
+2) &amp;quot;Rocky&amp;quot;
+3) &amp;quot;rating&amp;quot;
+4) &amp;quot;5&amp;quot;
+5) &amp;quot;year&amp;quot;
+6) &amp;quot;1976&amp;quot;
+
+127.0.0.1:6379[1]&amp;gt; hkeys movie:fields
+1) &amp;quot;name&amp;quot;
+2) &amp;quot;rating&amp;quot;
+3) &amp;quot;year&amp;quot;
+
+127.0.0.1:6379[1]&amp;gt; hkeys movie:fields
+1) &amp;quot;name&amp;quot;
+2) &amp;quot;rating&amp;quot;
+3) &amp;quot;year&amp;quot;
+
+127.0.0.1:6379[1]&amp;gt; hdel movie:fields rating
+(integer) 1
+
+127.0.0.1:6379[1]&amp;gt; hkeys movie:fields
+1) &amp;quot;name&amp;quot;
+2) &amp;quot;year&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that we were able to set multiple fields with the Redis command &lt;code&gt;hmset&lt;/code&gt; and get all the values with &lt;code&gt;hgetall&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Hashes give you more control than regular strings because you can map values instead of one scalar value&lt;/em&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;exercise-1&#34;&gt;Exercise&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Implement redis command &lt;code&gt;hdel&lt;/code&gt; using node_redis client library &lt;a href=&#34;https://github.com/jbelmont/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;playground/hashes.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;open test/unit/hashes.test.js&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write a test with your new function&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;lists&#34;&gt;Lists&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/topics/data-types#lists&#34; target=&#34;_blank&#34;&gt;List Data Type&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/commands#list&#34; target=&#34;_blank&#34;&gt;List Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;127.0.0.1:6379&amp;gt; lpush users &amp;quot;soldier&amp;quot; &amp;quot;John Rambo&amp;quot; &amp;quot;123-45-5678&amp;quot; &amp;quot;Sergeant First Class&amp;quot;
+(integer) 4
+
+127.0.0.1:6379&amp;gt; lindex users 0
+&amp;quot;Sergeant First Class&amp;quot;
+
+127.0.0.1:6379&amp;gt; lindex users 1
+&amp;quot;123-45-5678&amp;quot;
+
+127.0.0.1:6379&amp;gt; lindex users 2
+&amp;quot;John Rambo&amp;quot;
+
+127.0.0.1:6379&amp;gt; lindex users 3
+&amp;quot;soldier&amp;quot;
+
+127.0.0.1:6379[1]&amp;gt; lpop users
+&amp;quot;Sergeant First Class&amp;quot;
+
+127.0.0.1:6379&amp;gt; llen users
+(integer) 3
+
+127.0.0.1:6379[1]&amp;gt; rpop users
+&amp;quot;soldier&amp;quot;
+
+127.0.0.1:6379&amp;gt; rpop users
+&amp;quot;soldier&amp;quot;
+127.0.0.1:6379&amp;gt; llen users
+(integer) 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice here that we pushed 4 strings onto the list &lt;code&gt;users&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;lindex&lt;/code&gt; takes a key and a index and returns the value if found else it returns &lt;code&gt;nil&lt;/code&gt; so the lookup:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;lindex users 2&lt;/code&gt; return &amp;ldquo;John Rambo&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Notice that &lt;code&gt;rpop&lt;/code&gt; removes and returns the last element of the list stored at &lt;code&gt;key&lt;/code&gt; so when we run &lt;code&gt;llen&lt;/code&gt; the list has been reduced by 1.&lt;/p&gt;
+
+&lt;p&gt;Conversely &lt;code&gt;lpop&lt;/code&gt; removes and returns the first element of the list stored at &lt;code&gt;key&lt;/code&gt; so when we run &lt;code&gt;llen&lt;/code&gt; again the list is now length of 2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Implement redis command &lt;code&gt;llen&lt;/code&gt; or &lt;code&gt;rpop&lt;/code&gt; using node_redis client library &lt;a href=&#34;https://github.com/jbelmont/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;playground/list.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;open test/unit/list.test.js&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write a test with your new function&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;sets&#34;&gt;Sets&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/topics/data-types#sets&#34; target=&#34;_blank&#34;&gt;Set Data Type&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/commands#set&#34; target=&#34;_blank&#34;&gt;Set Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sets are great for tagging or tracking any other properties of a value for which duplicates don’t make any sense&lt;/li&gt;
+&lt;li&gt;Sets are also greate when you want to apply set operations such as intersections and unions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;127.0.0.1:6379&amp;gt; sadd movies &amp;quot;Rocky&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; sadd movies &amp;quot;The Matrix&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; sadd movies &amp;quot;Chinese Connection&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; scard movies
+(integer) 3
+
+127.0.0.1:6379&amp;gt; sadd movies2 &amp;quot;Rocky&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; sadd movies2 &amp;quot;Rambo&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; sadd movies2 &amp;quot;Chinese Connection&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; sdiff movies movies2
+1) &amp;quot;The Matrix&amp;quot;
+
+127.0.0.1:6379&amp;gt; sinter movies movies2
+1) &amp;quot;Rocky&amp;quot;
+2) &amp;quot;Chinese Connection&amp;quot;
+
+127.0.0.1:6379&amp;gt; sunion movies movies2
+1) &amp;quot;The Matrix&amp;quot;
+2) &amp;quot;Chinese Connection&amp;quot;
+3) &amp;quot;Rocky&amp;quot;
+4) &amp;quot;Rambo&amp;quot;
+
+127.0.0.1:6379&amp;gt; sismember movies &amp;quot;Rocky&amp;quot;
+(integer) 1
+
+127.0.0.1:6379&amp;gt; smembers movies2
+1) &amp;quot;Rambo&amp;quot;
+2) &amp;quot;Rocky&amp;quot;
+3) &amp;quot;Chinese Connection&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice here that created 2 different sets &lt;code&gt;movies&lt;/code&gt; and &lt;code&gt;movies2&lt;/code&gt; and we were able to do set operations on them.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sinter&lt;/code&gt; returns the intersection between 2 or more sets&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sdiff&lt;/code&gt; returns the set difference between 2 or more sets&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sunion&lt;/code&gt; returns the all the movies that exist in the specified sets or more plainly the union between the sets&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scard&lt;/code&gt; returns the total number of elements or &lt;code&gt;cardinality&lt;/code&gt; of the set&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sismember&lt;/code&gt; returns 1 (i.e. true) if a value exists in the set&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;smembers&lt;/code&gt; returns all the values in the set&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sadd&lt;/code&gt; adds one or more members to a set&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Read more commands at &lt;a href=&#34;https://redis.io/commands#set&#34; target=&#34;_blank&#34;&gt;Redis Set Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Implement redis command &lt;code&gt;sismember&lt;/code&gt; or &lt;code&gt;sunion&lt;/code&gt; using node_redis client library &lt;a href=&#34;https://github.com/jbelmont/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;playground/set.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;open test/unit/set.test.js&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write a test with your new function&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;sorted-sets&#34;&gt;Sorted Sets&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/topics/data-types#sorted-sets&#34; target=&#34;_blank&#34;&gt;Sorted Set Data Type&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://redis.io/commands#sorted_set&#34; target=&#34;_blank&#34;&gt;Sorted Set Commands&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redis Sorted Sets are, similarly to Redis Sets, non repeating collections of Strings&lt;/li&gt;
+&lt;li&gt;The difference is that every member of a Sorted Set is associated with score
+
+&lt;ul&gt;
+&lt;li&gt;The score helps order the set,&lt;/li&gt;
+&lt;li&gt;From the smallest to the greatest score&lt;/li&gt;
+&lt;li&gt;While members are unique, scores may be repeated.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;127.0.0.1:6379&amp;gt; zadd grades 95 britney 85 dave 93 ashley 100 zhou
+(integer) 4
+
+127.0.0.1:6379&amp;gt; zcard grades
+(integer) 4
+
+127.0.0.1:6379&amp;gt; zrange grades 0 -1
+1) &amp;quot;dave&amp;quot;
+2) &amp;quot;ashley&amp;quot;
+3) &amp;quot;britney&amp;quot;
+4) &amp;quot;zhou&amp;quot;
+
+127.0.0.1:6379&amp;gt; zrevrank grades dave
+(integer) 3
+
+127.0.0.1:6379&amp;gt; zrevrank grades zhou
+(integer) 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zadd&lt;/code&gt; added 4 members to the grades sorted set&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zcard&lt;/code&gt; returned the cardinality value of 4&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zrange&lt;/code&gt; returned the lowest to highest members in the sorted set&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;zrevrank&lt;/code&gt; returned the index of a member in a sorted set, with scores ordered from high to low&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Implement redis command &lt;code&gt;zcard&lt;/code&gt; using node_redis client library &lt;a href=&#34;https://github.com/jbelmont/node_redis&#34; target=&#34;_blank&#34;&gt;Node Redis&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;playground/sortedSet.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;open test/unit/sortedSet.test.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write a test with your new function&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Review of the Science Of Great UI</title>
       <link>https://jbelmont.github.io/post/a-review-of-science-of-great-ui/</link>
       <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
