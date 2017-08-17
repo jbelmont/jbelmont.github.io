@@ -11,6 +11,236 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>A Review of Design Like a Pro</title>
+      <link>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</link>
+      <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</guid>
+      <description>
+
+&lt;h1 id=&#34;design-like-a-pro-review&#34;&gt;Design Like a Pro Review&lt;/h1&gt;
+
+&lt;p&gt;This is a review of Mark Miller&amp;rsquo;s Course (Design Like a Pro)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#interesting-points-of-the-course&#34;&gt;Interesting Points of the Course&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-was-surprising&#34;&gt;What was surprising&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-mark-miller-did-well&#34;&gt;What Mark Miller did well&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-could-have-been-done-better&#34;&gt;What could have been done better&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#purchase-the-course&#34;&gt;Purchase the Course&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;interesting-points-of-the-course&#34;&gt;Interesting Points of the Course&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;An interesting fact of the course is how much proximity plays a role with UI.&lt;/li&gt;
+&lt;li&gt;If elements of a UI are placed in close proximity, users typically assume they are related&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;So if you should group related items in a UI in close proximity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;contrast&#34;&gt;Contrast&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contrast is also important in UI
+
+&lt;ul&gt;
+&lt;li&gt;For example if you hover a button the contrast should be small not large&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;proximity&#34;&gt;Proximity&lt;/h3&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://jbelmont.github.io/media/gas-station-buttons.jpeg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;In this picture notice that the label of the Gas Type is inside the button&lt;/li&gt;
+&lt;li&gt;Mark Miller explains that having the element in close proximity to the action is key&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://jbelmont.github.io/media/elevator-buttons.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Notice that in this picture the proximity and the layout of the buttons in the elevator are confusing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;borders&#34;&gt;Borders&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Another interesting point made is about Borders
+
+&lt;ul&gt;
+&lt;li&gt;Borders Contrast should be low and should be thin&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://jbelmont.github.io/media/bad-html-table.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Notice that in this table borders are rubbing up next to each other&lt;/li&gt;
+&lt;li&gt;The lines are more prominent and the actual data is hard to extract&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://jbelmont.github.io/media/nicer-html-table.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;In this table the borders are thin and the table is much easier to read&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;controls&#34;&gt;Controls&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Another point of the course talks about controls&lt;/li&gt;
+&lt;li&gt;Users don&amp;rsquo;t read tons of text if you have to present information then consider a tooltip&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;text&#34;&gt;Text&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There was a section detailing how text can confuse dyslexic readers&lt;/li&gt;
+&lt;li&gt;This really goes hand and hand with modern web accesibility design&lt;/li&gt;
+&lt;li&gt;If you design UIs with users that may have disabilities in mind then general readers benefit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My key takeaways for text:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Don&amp;rsquo;t use black and white instead use gray and off-white&lt;/li&gt;
+&lt;li&gt;Use concise sentences instead of long paragraphs.&lt;/li&gt;
+&lt;li&gt;Increase Padding in between paragraphs.&lt;/li&gt;
+&lt;li&gt;Left-justify text&lt;/li&gt;
+&lt;li&gt;Use single spaces after sentences and never double space&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;information-dimension&#34;&gt;Information Dimension&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Serial (through time)&lt;/th&gt;
+&lt;th&gt;Parallel (in space)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Takes longer to consume&lt;/td&gt;
+&lt;td&gt;Evaluated instantly&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Comparisons are hard&lt;/td&gt;
+&lt;td&gt;Comparisons are easy&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Burden on recall&lt;/td&gt;
+&lt;td&gt;No burden on recall&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Pacing Issues&lt;/td&gt;
+&lt;td&gt;Viewer controls Pace&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Harder to Understand&lt;/td&gt;
+&lt;td&gt;Easier to Understand&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As you can see from the table above it is easier to present information in parallel over serial to users&lt;/p&gt;
+
+&lt;h3 id=&#34;graphic-language&#34;&gt;Graphic Language&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Match known physical items to make symbols easier to read&lt;/li&gt;
+&lt;li&gt;Graphic Language should be independent of color&lt;/li&gt;
+&lt;li&gt;There should be consistency of colors&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://jbelmont.github.io/media/olympic-graphics.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Notice here in both the simplicity of the icons but the clarity in their message&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can clearly tell each sport in each graphic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-was-surprising&#34;&gt;What was surprising&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I was surprised to learn that simplicity of design seems to be the hardest thing to get right&lt;/li&gt;
+&lt;li&gt;Fancy effects don&amp;rsquo;t provide as much value as clarity of intent&lt;/li&gt;
+&lt;li&gt;Accomodating to users with disabilities improves overall design&lt;/li&gt;
+&lt;li&gt;Proximity of elements natural groups elements so you have to get the right proximity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-mark-miller-did-well&#34;&gt;What Mark Miller did well&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mark Miller know how to clearly explain key design principles that help you build great UIs&lt;/li&gt;
+&lt;li&gt;The course is rich with imagery and clear examples on what constitutes good UIs&lt;/li&gt;
+&lt;li&gt;There is also a great transition from the Science of Great UI course
+
+&lt;ul&gt;
+&lt;li&gt;Incremental steps on each course help facilitate key design points&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-could-have-been-done-better&#34;&gt;What could have been done better&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There wasn&amp;rsquo;t any mention of using Sketch app and instead Adobe Creative Cloud was heavily used&lt;/li&gt;
+&lt;li&gt;It would be great to mention tools like Sketch and Omnigraffle&lt;/li&gt;
+&lt;li&gt;More opinions on using design tools would be nice although it might detract from the course intent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Overall this course is wonderfully crafted, job well done&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;purchase-the-course&#34;&gt;Purchase the Course&lt;/h2&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;http://app.deviq.com/courses/design-like-a-pro&#34; target=&#34;_blank&#34;&gt;Design Like a Pro&lt;/a&gt; to purchase and watch this great course.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Caching, Memoization, and Redis</title>
       <link>https://jbelmont.github.io/post/caching-and-memoization/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
