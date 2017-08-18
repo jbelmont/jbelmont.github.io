@@ -84,6 +84,15 @@
     </item>
     
     <item>
+      <title>Owasp</title>
+      <link>https://jbelmont.github.io/tags/owasp/</link>
+      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/owasp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Paper</title>
       <link>https://jbelmont.github.io/tags/paper/</link>
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
@@ -107,6 +116,15 @@
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://jbelmont.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://jbelmont.github.io/tags/security/</link>
+      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://jbelmont.github.io/tags/security/</guid>
       <description></description>
     </item>
     

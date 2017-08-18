@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://jbelmont.github.io/post/software-security/</loc>
+      <lastmod>2017-08-18T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</loc>
       <lastmod>2017-08-16T12:00:00+00:00</lastmod>
     </url>
@@ -219,6 +228,16 @@
     
     <url>
     
+      <loc>https://jbelmont.github.io/tags/owasp/</loc>
+      <lastmod>2017-08-18T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://jbelmont.github.io/tags/paper/</loc>
       <lastmod>2017-04-10T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -260,6 +279,16 @@
     
       <loc>https://jbelmont.github.io/tags/redis/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://jbelmont.github.io/tags/security/</loc>
+      <lastmod>2017-08-18T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
