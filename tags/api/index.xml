@@ -73,6 +73,7 @@
 &lt;li&gt;&lt;a href=&#34;#the-best-api-is-no-api&#34;&gt;The best API is no API&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#bread-crumb-navigation&#34;&gt;Bread Crumb Navigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-repository&#34;&gt;Github Repository&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -764,6 +765,10 @@ but one note I can say is that if you follow the SOLID principles
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;em&gt;Don&amp;rsquo;t ask the consumers of your API to do more work than necessary to work with your API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
+
+&lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/papers-we-love-notes/blob/master/docs/api-design-notes.md&#34; target=&#34;_blank&#34;&gt;API Design&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

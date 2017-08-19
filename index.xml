@@ -52,6 +52,7 @@
 &lt;li&gt;&lt;a href=&#34;#owasp-top-10&#34;&gt;OWASP Top 10&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#owasp-top-10-comparison-table-for-2013-vs-2017&#34;&gt;OWASP Top 10 comparsion table for 2013 vs 2017&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-repository&#34;&gt;Github Repository&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;software-security&#34;&gt;Software Security&lt;/h2&gt;
@@ -132,7 +133,7 @@
 &lt;p&gt;Objective of Language-based security:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Preven common programming errors such as allowing buffer overflows and illegal information flows to occur&lt;/li&gt;
+&lt;li&gt;Prevent common programming errors such as allowing buffer overflows and illegal information flows to occur&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Provide some proof to the consumer about the security properties of the software&lt;/p&gt;
 
@@ -470,6 +471,10 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
+
+&lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/software-security&#34; target=&#34;_blank&#34;&gt;Software Security&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1633,6 +1638,10 @@ OK
 
 &lt;li&gt;&lt;p&gt;Run your test with command &lt;code&gt;npm test&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
+
+&lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/caching-and-memoization&#34; target=&#34;_blank&#34;&gt;Caching and Memoization&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -2422,6 +2431,7 @@ OK
 &lt;li&gt;&lt;a href=&#34;#the-best-api-is-no-api&#34;&gt;The best API is no API&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#bread-crumb-navigation&#34;&gt;Bread Crumb Navigation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-repository&#34;&gt;Github Repository&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -3113,6 +3123,10 @@ but one note I can say is that if you follow the SOLID principles
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;em&gt;Don&amp;rsquo;t ask the consumers of your API to do more work than necessary to work with your API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
+
+&lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/papers-we-love-notes/blob/master/docs/api-design-notes.md&#34; target=&#34;_blank&#34;&gt;API Design&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
