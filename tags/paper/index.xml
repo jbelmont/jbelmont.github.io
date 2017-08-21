@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Paper on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/paper/</link>
+    <link>https://www.marcelbelmont.com/tags/paper/</link>
     <description>Recent content in Paper on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>A Review of No Silver Bullet paper</title>
-      <link>https://jbelmont.github.io/post/no_silver_bullet/</link>
+      <link>https://www.marcelbelmont.com/post/no_silver_bullet/</link>
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/no_silver_bullet/</guid>
+      <guid>https://www.marcelbelmont.com/post/no_silver_bullet/</guid>
       <description>
 
 &lt;h1 id=&#34;no-silver-bullet-essence-and-accident-in-software-engineering&#34;&gt;No Silver Bullet Essence and Accident in Software Engineering&lt;/h1&gt;

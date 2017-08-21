@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software Musings on Software Musings</title>
-    <link>https://jbelmont.github.io/</link>
+    <link>https://www.marcelbelmont.com/</link>
     <description>Recent content in Software Musings on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>OWASP and Software Security</title>
-      <link>https://jbelmont.github.io/post/software-security/</link>
+      <link>https://www.marcelbelmont.com/post/software-security/</link>
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/software-security/</guid>
+      <guid>https://www.marcelbelmont.com/post/software-security/</guid>
       <description>
 
 &lt;ul&gt;
@@ -480,10 +480,10 @@
     
     <item>
       <title>A Review of Design Like a Pro</title>
-      <link>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</link>
+      <link>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</link>
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</guid>
+      <guid>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</guid>
       <description>
 
 &lt;h1 id=&#34;design-like-a-pro-review&#34;&gt;Design Like a Pro Review&lt;/h1&gt;
@@ -522,7 +522,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/gas-station-buttons.jpeg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/gas-station-buttons.jpeg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -536,7 +536,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/elevator-buttons.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/elevator-buttons.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -559,7 +559,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/bad-html-table.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/bad-html-table.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -573,7 +573,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/nicer-html-table.png&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/nicer-html-table.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -659,7 +659,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/olympic-graphics.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/olympic-graphics.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -710,10 +710,10 @@
     
     <item>
       <title>Caching, Memoization, and Redis</title>
-      <link>https://jbelmont.github.io/post/caching-and-memoization/</link>
+      <link>https://www.marcelbelmont.com/post/caching-and-memoization/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/caching-and-memoization/</guid>
+      <guid>https://www.marcelbelmont.com/post/caching-and-memoization/</guid>
       <description>
 
 &lt;h1 id=&#34;caching&#34;&gt;Caching&lt;/h1&gt;
@@ -1647,10 +1647,10 @@ OK
     
     <item>
       <title>A Review of the Science Of Great UI</title>
-      <link>https://jbelmont.github.io/post/a-review-of-science-of-great-ui/</link>
+      <link>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</link>
       <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/a-review-of-science-of-great-ui/</guid>
+      <guid>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</guid>
       <description>
 
 &lt;h1 id=&#34;the-science-of-great-ui-review&#34;&gt;The Science of Great UI Review&lt;/h1&gt;
@@ -1936,10 +1936,10 @@ OK
     
     <item>
       <title>Containerized Golang Applications (with Vue.js) </title>
-      <link>https://jbelmont.github.io/talk/modern-web-golang-docker/</link>
+      <link>https://www.marcelbelmont.com/talk/modern-web-golang-docker/</link>
       <pubDate>Tue, 25 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/talk/modern-web-golang-docker/</guid>
+      <guid>https://www.marcelbelmont.com/talk/modern-web-golang-docker/</guid>
       <description>&lt;p&gt;A Modern Web Demonstration using Golang, Docker, and Vue.js&lt;/p&gt;
 
 &lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Learning about how to build containerized &lt;a href=&#34;https://twitter.com/golang&#34;&gt;@golang&lt;/a&gt; applications with &lt;a href=&#34;https://twitter.com/Docker&#34;&gt;@docker&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/vuejs&#34;&gt;@vuejs&lt;/a&gt; at our event tonight in the Triangle w &lt;a href=&#34;https://twitter.com/jbelmont80&#34;&gt;@jbelmont80&lt;/a&gt; &lt;a href=&#34;https://t.co/XtE4r1rv0a&#34;&gt;pic.twitter.com/XtE4r1rv0a&lt;/a&gt;&lt;/p&gt;&amp;mdash; Modern Web (@moderndotweb) &lt;a href=&#34;https://twitter.com/moderndotweb/status/889986506466750464&#34;&gt;July 25, 2017&lt;/a&gt;&lt;/blockquote&gt;
@@ -1955,10 +1955,10 @@ OK
     
     <item>
       <title>A Review of No Silver Bullet paper</title>
-      <link>https://jbelmont.github.io/post/no_silver_bullet/</link>
+      <link>https://www.marcelbelmont.com/post/no_silver_bullet/</link>
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/no_silver_bullet/</guid>
+      <guid>https://www.marcelbelmont.com/post/no_silver_bullet/</guid>
       <description>
 
 &lt;h1 id=&#34;no-silver-bullet-essence-and-accident-in-software-engineering&#34;&gt;No Silver Bullet Essence and Accident in Software Engineering&lt;/h1&gt;
@@ -2361,28 +2361,28 @@ OK
     
     <item>
       <title>Learning New Programming Languages</title>
-      <link>https://jbelmont.github.io/project/learning_new_programming_languages/</link>
+      <link>https://www.marcelbelmont.com/project/learning_new_programming_languages/</link>
       <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/learning_new_programming_languages/</guid>
+      <guid>https://www.marcelbelmont.com/project/learning_new_programming_languages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Building and Testing ReactJS apps</title>
-      <link>https://jbelmont.github.io/talk/building-and-testing-reactjs-apps/</link>
+      <link>https://www.marcelbelmont.com/talk/building-and-testing-reactjs-apps/</link>
       <pubDate>Thu, 16 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/talk/building-and-testing-reactjs-apps/</guid>
+      <guid>https://www.marcelbelmont.com/talk/building-and-testing-reactjs-apps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A Review of Little Manual of API Design paper</title>
-      <link>https://jbelmont.github.io/post/api-design/</link>
+      <link>https://www.marcelbelmont.com/post/api-design/</link>
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/api-design/</guid>
+      <guid>https://www.marcelbelmont.com/post/api-design/</guid>
       <description>
 
 &lt;h1 id=&#34;the-little-manual-of-api-design&#34;&gt;The Little Manual of API Design&lt;/h1&gt;
@@ -3141,10 +3141,10 @@ but one note I can say is that if you follow the SOLID principles
     
     <item>
       <title>Papers We Love</title>
-      <link>https://jbelmont.github.io/project/papers_we_love/</link>
+      <link>https://www.marcelbelmont.com/project/papers_we_love/</link>
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/papers_we_love/</guid>
+      <guid>https://www.marcelbelmont.com/project/papers_we_love/</guid>
       <description>
 
 &lt;h2 id=&#34;about-papers-we-love&#34;&gt;About Papers We Love&lt;/h2&gt;
@@ -3161,19 +3161,19 @@ but one note I can say is that if you follow the SOLID principles
     
     <item>
       <title>Building a European Bakery Web Application with React.js and Node.js</title>
-      <link>https://jbelmont.github.io/talk/raleigh-code-camp/</link>
+      <link>https://www.marcelbelmont.com/talk/raleigh-code-camp/</link>
       <pubDate>Sat, 29 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/talk/raleigh-code-camp/</guid>
+      <guid>https://www.marcelbelmont.com/talk/raleigh-code-camp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Building a Web Application with React.JS and Node.JS</title>
-      <link>https://jbelmont.github.io/talk/modern-web-node-react/</link>
+      <link>https://www.marcelbelmont.com/talk/modern-web-node-react/</link>
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/talk/modern-web-node-react/</guid>
+      <guid>https://www.marcelbelmont.com/talk/modern-web-node-react/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/5aOh4qCnqJc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
@@ -3197,10 +3197,10 @@ but one note I can say is that if you follow the SOLID principles
     
     <item>
       <title>Code Craftsmanship Saturdays</title>
-      <link>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</link>
+      <link>https://www.marcelbelmont.com/project/code_craftsmanship_saturdays/</link>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/code_craftsmanship_saturdays/</guid>
+      <guid>https://www.marcelbelmont.com/project/code_craftsmanship_saturdays/</guid>
       <description>
 
 &lt;h2 id=&#34;code-craftsmanship-saturdays&#34;&gt;Code Craftsmanship Saturdays&lt;/h2&gt;

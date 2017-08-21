@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Owasp on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/owasp/</link>
+    <link>https://www.marcelbelmont.com/tags/owasp/</link>
     <description>Recent content in Owasp on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>OWASP and Software Security</title>
-      <link>https://jbelmont.github.io/post/software-security/</link>
+      <link>https://www.marcelbelmont.com/post/software-security/</link>
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/software-security/</guid>
+      <guid>https://www.marcelbelmont.com/post/software-security/</guid>
       <description>
 
 &lt;ul&gt;

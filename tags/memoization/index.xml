@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Memoization on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/memoization/</link>
+    <link>https://www.marcelbelmont.com/tags/memoization/</link>
     <description>Recent content in Memoization on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Caching, Memoization, and Redis</title>
-      <link>https://jbelmont.github.io/post/caching-and-memoization/</link>
+      <link>https://www.marcelbelmont.com/post/caching-and-memoization/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/caching-and-memoization/</guid>
+      <guid>https://www.marcelbelmont.com/post/caching-and-memoization/</guid>
       <description>
 
 &lt;h1 id=&#34;caching&#34;&gt;Caching&lt;/h1&gt;

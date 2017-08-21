@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/</link>
+    <link>https://www.marcelbelmont.com/tags/</link>
     <description>Recent content in Tags on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,128 +12,128 @@
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
-      <link>https://jbelmont.github.io/tags/academic/</link>
+      <link>https://www.marcelbelmont.com/tags/academic/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/academic/</guid>
+      <guid>https://www.marcelbelmont.com/tags/academic/</guid>
       <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Api</title>
-      <link>https://jbelmont.github.io/tags/api/</link>
+      <link>https://www.marcelbelmont.com/tags/api/</link>
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/api/</guid>
+      <guid>https://www.marcelbelmont.com/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Caching</title>
-      <link>https://jbelmont.github.io/tags/caching/</link>
+      <link>https://www.marcelbelmont.com/tags/caching/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/caching/</guid>
+      <guid>https://www.marcelbelmont.com/tags/caching/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code Craftsmanship Saturdays</title>
-      <link>https://jbelmont.github.io/tags/code-craftsmanship-saturdays/</link>
+      <link>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</link>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/code-craftsmanship-saturdays/</guid>
+      <guid>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Course Review</title>
-      <link>https://jbelmont.github.io/tags/course-review/</link>
+      <link>https://www.marcelbelmont.com/tags/course-review/</link>
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/course-review/</guid>
+      <guid>https://www.marcelbelmont.com/tags/course-review/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design</title>
-      <link>https://jbelmont.github.io/tags/design/</link>
+      <link>https://www.marcelbelmont.com/tags/design/</link>
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/design/</guid>
+      <guid>https://www.marcelbelmont.com/tags/design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learning New Programming Languages</title>
-      <link>https://jbelmont.github.io/tags/learning-new-programming-languages/</link>
+      <link>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</link>
       <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/learning-new-programming-languages/</guid>
+      <guid>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Memoization</title>
-      <link>https://jbelmont.github.io/tags/memoization/</link>
+      <link>https://www.marcelbelmont.com/tags/memoization/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/memoization/</guid>
+      <guid>https://www.marcelbelmont.com/tags/memoization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Owasp</title>
-      <link>https://jbelmont.github.io/tags/owasp/</link>
+      <link>https://www.marcelbelmont.com/tags/owasp/</link>
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/owasp/</guid>
+      <guid>https://www.marcelbelmont.com/tags/owasp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Paper</title>
-      <link>https://jbelmont.github.io/tags/paper/</link>
+      <link>https://www.marcelbelmont.com/tags/paper/</link>
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/paper/</guid>
+      <guid>https://www.marcelbelmont.com/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Papers We Love</title>
-      <link>https://jbelmont.github.io/tags/papers-we-love/</link>
+      <link>https://www.marcelbelmont.com/tags/papers-we-love/</link>
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/papers-we-love/</guid>
+      <guid>https://www.marcelbelmont.com/tags/papers-we-love/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>https://jbelmont.github.io/tags/redis/</link>
+      <link>https://www.marcelbelmont.com/tags/redis/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/redis/</guid>
+      <guid>https://www.marcelbelmont.com/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>https://jbelmont.github.io/tags/security/</link>
+      <link>https://www.marcelbelmont.com/tags/security/</link>
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/security/</guid>
+      <guid>https://www.marcelbelmont.com/tags/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ui</title>
-      <link>https://jbelmont.github.io/tags/ui/</link>
+      <link>https://www.marcelbelmont.com/tags/ui/</link>
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/tags/ui/</guid>
+      <guid>https://www.marcelbelmont.com/tags/ui/</guid>
       <description></description>
     </item>
     

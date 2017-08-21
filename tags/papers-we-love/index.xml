@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Papers We Love on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/papers-we-love/</link>
+    <link>https://www.marcelbelmont.com/tags/papers-we-love/</link>
     <description>Recent content in Papers We Love on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Papers We Love</title>
-      <link>https://jbelmont.github.io/project/papers_we_love/</link>
+      <link>https://www.marcelbelmont.com/project/papers_we_love/</link>
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/papers_we_love/</guid>
+      <guid>https://www.marcelbelmont.com/project/papers_we_love/</guid>
       <description>
 
 &lt;h2 id=&#34;about-papers-we-love&#34;&gt;About Papers We Love&lt;/h2&gt;

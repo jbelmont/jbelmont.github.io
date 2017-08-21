@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Software Musings</title>
-    <link>https://jbelmont.github.io/post/</link>
+    <link>https://www.marcelbelmont.com/post/</link>
     <description>Recent content in Posts on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>OWASP and Software Security</title>
-      <link>https://jbelmont.github.io/post/software-security/</link>
+      <link>https://www.marcelbelmont.com/post/software-security/</link>
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/software-security/</guid>
+      <guid>https://www.marcelbelmont.com/post/software-security/</guid>
       <description>
 
 &lt;ul&gt;
@@ -480,10 +480,10 @@
     
     <item>
       <title>A Review of Design Like a Pro</title>
-      <link>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</link>
+      <link>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</link>
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/a-review-of-design-like-a-pro/</guid>
+      <guid>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</guid>
       <description>
 
 &lt;h1 id=&#34;design-like-a-pro-review&#34;&gt;Design Like a Pro Review&lt;/h1&gt;
@@ -522,7 +522,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/gas-station-buttons.jpeg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/gas-station-buttons.jpeg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -536,7 +536,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/elevator-buttons.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/elevator-buttons.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -559,7 +559,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/bad-html-table.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/bad-html-table.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -573,7 +573,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/nicer-html-table.png&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/nicer-html-table.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -659,7 +659,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://jbelmont.github.io/media/olympic-graphics.jpg&#34; /&gt;
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/olympic-graphics.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -710,10 +710,10 @@
     
     <item>
       <title>Caching, Memoization, and Redis</title>
-      <link>https://jbelmont.github.io/post/caching-and-memoization/</link>
+      <link>https://www.marcelbelmont.com/post/caching-and-memoization/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/caching-and-memoization/</guid>
+      <guid>https://www.marcelbelmont.com/post/caching-and-memoization/</guid>
       <description>
 
 &lt;h1 id=&#34;caching&#34;&gt;Caching&lt;/h1&gt;
@@ -1647,10 +1647,10 @@ OK
     
     <item>
       <title>A Review of the Science Of Great UI</title>
-      <link>https://jbelmont.github.io/post/a-review-of-science-of-great-ui/</link>
+      <link>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</link>
       <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/a-review-of-science-of-great-ui/</guid>
+      <guid>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</guid>
       <description>
 
 &lt;h1 id=&#34;the-science-of-great-ui-review&#34;&gt;The Science of Great UI Review&lt;/h1&gt;
@@ -1936,10 +1936,10 @@ OK
     
     <item>
       <title>A Review of No Silver Bullet paper</title>
-      <link>https://jbelmont.github.io/post/no_silver_bullet/</link>
+      <link>https://www.marcelbelmont.com/post/no_silver_bullet/</link>
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/no_silver_bullet/</guid>
+      <guid>https://www.marcelbelmont.com/post/no_silver_bullet/</guid>
       <description>
 
 &lt;h1 id=&#34;no-silver-bullet-essence-and-accident-in-software-engineering&#34;&gt;No Silver Bullet Essence and Accident in Software Engineering&lt;/h1&gt;
@@ -2342,10 +2342,10 @@ OK
     
     <item>
       <title>A Review of Little Manual of API Design paper</title>
-      <link>https://jbelmont.github.io/post/api-design/</link>
+      <link>https://www.marcelbelmont.com/post/api-design/</link>
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/api-design/</guid>
+      <guid>https://www.marcelbelmont.com/post/api-design/</guid>
       <description>
 
 &lt;h1 id=&#34;the-little-manual-of-api-design&#34;&gt;The Little Manual of API Design&lt;/h1&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learning New Programming Languages on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/learning-new-programming-languages/</link>
+    <link>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</link>
     <description>Recent content in Learning New Programming Languages on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Learning New Programming Languages</title>
-      <link>https://jbelmont.github.io/project/learning_new_programming_languages/</link>
+      <link>https://www.marcelbelmont.com/project/learning_new_programming_languages/</link>
       <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/project/learning_new_programming_languages/</guid>
+      <guid>https://www.marcelbelmont.com/project/learning_new_programming_languages/</guid>
       <description></description>
     </item>
     

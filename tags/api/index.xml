@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on Software Musings</title>
-    <link>https://jbelmont.github.io/tags/api/</link>
+    <link>https://www.marcelbelmont.com/tags/api/</link>
     <description>Recent content in Api on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>A Review of Little Manual of API Design paper</title>
-      <link>https://jbelmont.github.io/post/api-design/</link>
+      <link>https://www.marcelbelmont.com/post/api-design/</link>
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
-      <guid>https://jbelmont.github.io/post/api-design/</guid>
+      <guid>https://www.marcelbelmont.com/post/api-design/</guid>
       <description>
 
 &lt;h1 id=&#34;the-little-manual-of-api-design&#34;&gt;The Little Manual of API Design&lt;/h1&gt;
