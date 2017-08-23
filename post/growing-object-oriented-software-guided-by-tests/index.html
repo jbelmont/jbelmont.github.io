@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/">
+
+  
+
+  <title>Growing Object-Oriented Software, Guided by Tests | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Growing Object-Oriented Software, Guided by Tests</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-08-22 12:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Tue, Aug 22, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/tdd">TDD</a
+    >, 
+    
+    <a href="/tags/object-oriented-design">Object Oriented Design</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgrowing-object-oriented-software-guided-by-tests%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Growing%20Object-Oriented%20Software%2c%20Guided%20by%20Tests&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgrowing-object-oriented-software-guided-by-tests%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgrowing-object-oriented-software-guided-by-tests%2f&amp;title=Growing%20Object-Oriented%20Software%2c%20Guided%20by%20Tests"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgrowing-object-oriented-software-guided-by-tests%2f&amp;title=Growing%20Object-Oriented%20Software%2c%20Guided%20by%20Tests"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Growing%20Object-Oriented%20Software%2c%20Guided%20by%20Tests&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgrowing-object-oriented-software-guided-by-tests%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="growing-object-oriented-software-guided-by-tests">Growing Object Oriented Software Guided By Tests</h1>
+
+<ul>
+<li><a href="#what-is-the-point-of-test-driven-development">What is the Point of Test-Driven Development</a></li>
+<li><a href="#test-driven-development-with-objects">Test-Driven Development with Objects</a></li>
+<li><a href="#an-introduction-to-the-tools">An Introduction to the Tools</a></li>
+<li><a href="#kick-starting-the-test-driven-cycle">Kick-Starting the Test-Driven Cycle</a></li>
+<li><a href="#maintaining-the-test-driven-cycle">Maintaining The Test-Driven Cycle</a></li>
+<li><a href="#object-oriented-style">Object-Oriented Style</a></li>
+<li><a href="achieving-object-oriented-design" target="_blank">Achieving Object-Oriented Design</a></li>
+<li><a href="#building-on-third-party-code">Building on Third-Party Code</a></li>
+<li><a href="#commissioning-on-auction-sniper">Commissioning on Auction Sniper</a></li>
+<li><a href="#the-walking-skeleton">The Walking Skeleton</a></li>
+<li><a href="#passing-the-first-test">Passing the First Test</a></li>
+<li><a href="#chapters-12-to-18">Chapters 12 to 18</a></li>
+<li><a href="#sniping-for-multiple-items">Sniping for Multiple Items</a></li>
+<li><a href="#teasing-apart-main">Teasing apart Main</a></li>
+<li><a href="#filling-in-the-details">Filling in the Details</a></li>
+<li><a href="#listening-to-the-tests">Listening to the Tests</a></li>
+<li><a href="#test-readability">Test Readability</a></li>
+<li><a href="#constructing-complex-test-data">Constructing Complex Test Data</a></li>
+<li><a href="#test-diagnostics">Test Diagnostics</a></li>
+<li><a href="#test-flexibility">Test Flexibility</a></li>
+<li><a href="#chapters-25-to-27">Chapters 25 to 27</a></li>
+</ul>
+
+<h2 id="what-is-the-point-of-test-driven-development">What is the Point of Test-Driven Development</h2>
+
+<ul>
+<li>Feedback is the most fundamental tool at our disposal</li>
+<li>Practices that support change</li>
+<li>Never write new functionality without a failing test.</li>
+<li>This first chapter basically explains the benefits of TDD</li>
+</ul>
+
+<h2 id="test-driven-development-with-objects">Test-Driven Development with Objects</h2>
+
+<ul>
+<li>Objects should communicate their intent to other objects
+
+<ul>
+<li>Tell Don&rsquo;t Ask principle</li>
+</ul></li>
+<li>Mock Objects when you use &ldquo;Tell Don&rsquo;t Ask&rdquo; principle</li>
+</ul>
+
+<h2 id="an-introduction-to-the-tools">An Introduction to the Tools</h2>
+
+<ul>
+<li>Testing Tools are introduced in the chapter
+
+<ul>
+<li>JUnit and JMock are mentioned</li>
+</ul></li>
+<li>JavaScript Test Runners like <code>ava.js</code>, <code>mocha.js</code>, and <code>jest</code></li>
+<li><code>sinon.js</code>, and `<code>testdouble.js</code> serve as mocking libraries</li>
+<li>Test Fixtures are mentioned in this chapter as well</li>
+</ul>
+
+<h2 id="kick-starting-the-test-driven-cycle">Kick-Starting the Test-Driven Cycle</h2>
+
+<ul>
+<li>Using Test Fixtures and Mock Objects is mentioned</li>
+<li>Examples are using JUnit and JMock</li>
+<li>A test fixture is the fixed state that exists at the start of a test.</li>
+<li>A test fixture ensures that a test is repeatable
+
+<ul>
+<li>Every time a test is run it starts in the same state so it should produce the same results.</li>
+</ul></li>
+<li>A fixture may be set up before the test runs and torn down after it has finished</li>
+<li>Assertion Libraries are talked about but mainly how to write tests using assertions</li>
+</ul>
+
+<h2 id="maintaining-the-test-driven-cycle">Maintaining The Test-Driven Cycle</h2>
+
+<ul>
+<li>Start each feature with an acceptance test</li>
+<li>An acceptance test basically is how you test a feature in a UI</li>
+<li>An acceptance test should fail unti the feature is implemented</li>
+<li>Find the simplest success case</li>
+<li>User Acceptance Tests (UATs) should be easy to read</li>
+<li>You should be unit testing behavior and not methods</li>
+<li>Pay attention to trouble areas that are hard to test
+
+<ul>
+<li>This indicates a possible area for refactoring</li>
+</ul></li>
+</ul>
+
+<h2 id="object-oriented-style">Object-Oriented Style</h2>
+
+<p>Object Oriented Design:</p>
+
+<ul>
+<li>Have clear <code>separation of concerns</code>
+
+<ul>
+<li>Behavior should be grouped in logical places</li>
+<li>This helps isolate changes to <code>areas of concern</code></li>
+</ul></li>
+<li>Group components into <code>Higher Levels of Abstraction</code>
+
+<ul>
+<li>Don&rsquo;t program with variables and control flow in mind but instead with larger abstractions</li>
+</ul></li>
+<li>Encapsulation is a concept where behavior of an object is only affected through its API</li>
+<li>Information Hiding deals with the fact that Objects should hide lower level work in its API from public use</li>
+<li>Every object should have only have responsibility aka <code>Single Responsibility Principle</code></li>
+<li>The Composition of several objects should be simpler than the sum of all the objects</li>
+<li>Objects should have enough <code>context</code> of their environment</li>
+<li>Whatever information you need should be passed in or to put it another way you can use <code>dependency injection</code><br /></li>
+</ul>
+
+<h2 id="achieving-object-oriented-design">Achieving Object-Oriented Design</h2>
+
+<ul>
+<li>Writing test first influence the design of a system</li>
+<li>TDD with mock objects expresses intent that you should mock an object&rsquo;s peer dependencies but not the internals of an object</li>
+<li>Value types is mentioned with explicit caveat that they are immmutable while Objects are stateful</li>
+<li>An object should be broken apart if it becomes difficult to test</li>
+<li>Interfaces should be not be fat and with that being said you will need more interfaces</li>
+<li>You will need more interfaces to to keep them <code>lean</code>
+
+<ul>
+<li>This means you should refactor interfaces as well</li>
+</ul></li>
+<li>System Behavior should rely on composition and not inheritance</li>
+</ul>
+
+<h2 id="building-on-third-party-code">Building on Third-Party Code</h2>
+
+<ul>
+<li>You should only mock object that you own</li>
+<li>Don&rsquo;t mock third party code</li>
+<li>Instead write an Adapter Layer</li>
+<li>For example write a Database Adapter Layer so that if you change databases you can easily swap them out</li>
+</ul>
+
+<h2 id="commissioning-on-auction-sniper">Commissioning on Auction Sniper</h2>
+
+<ul>
+<li>A user scenario is described in this chapter detailing the auction process</li>
+</ul>
+
+<h2 id="the-walking-skeleton">The Walking Skeleton</h2>
+
+<ul>
+<li>In this chapter the first test is described which is an end to end test</li>
+<li>One example library that comes to mind is <code>Nightwatch.js</code> and <code>Cypress.io</code></li>
+<li>These libraries help you write end to end tests in modern web UIs</li>
+</ul>
+
+<h2 id="passing-the-first-test">Passing the First Test</h2>
+
+<ul>
+<li>A TODOLIST is used in this chapter and the first item is crossed out</li>
+<li>An important concept that I derive is that User Workflows help influence the design and indicate important UI elements</li>
+</ul>
+
+<h2 id="chapters-12-to-18">Chapters 12 to 18</h2>
+
+<ul>
+<li>These chapters essential detail iterating through software design</li>
+<li>Small slices of behavior should be tested and implemented iteratively</li>
+<li>Don&rsquo;t be afraid of changing design of the system while iterating through a User Workflow</li>
+<li>Architecture should be developed incrementally</li>
+<li>Types in a system should be defined with <code>Domain Types</code></li>
+<li>Modelling systems with <code>Domain Types</code> helps better describe a software system</li>
+<li>Avoid using Magic Numbers or Strings</li>
+</ul>
+
+<h2 id="handling-failure">Handling Failure</h2>
+
+<ul>
+<li>Use smaller methods or utility methods that act as helpers for objects</li>
+<li>Logging should be designed as a feature
+
+<ul>
+<li>Avoid scattering logging statements all throughout a system</li>
+</ul></li>
+</ul>
+
+<h2 id="listening-to-the-tests">Listening to the Tests</h2>
+
+<ul>
+<li>An interesting point is made that implicit dependencies are still dependencies</li>
+<li>A good corollary to this can be made with npm dependencies</li>
+<li>Typically npm dependencies have dependencies of their own and if not isolated they carry an implicit dependency of their own</li>
+<li>Don&rsquo;t mock values or immutable values since you can just create instances but instead mock stateful objects</li>
+<li>Bloated <code>constructors</code> ones that take many parameters should signal a refactor possibly add a service or a message broker</li>
+<li>Bloated <code>constructors</code> can also signal that an object has too many responsilities</li>
+<li>You shouldn&rsquo;t have too many test assertions in any given test this probably signals that you should broke apart a test</li>
+<li>A test should have few assertions/expectations</li>
+<li>Knowledge of an object should be as close to the origin
+
+<ul>
+<li>Keeping knowledge close helps make pluggable components</li>
+</ul></li>
+<li>We should explicitly name a behavior to help control the behavior</li>
+<li>Try to add more names in order to extract more domain information</li>
+<li>Pass behavior rather than data</li>
+</ul>
+
+<h2 id="test-readability">Test Readability</h2>
+
+<ul>
+<li>Test Names should describe Features of a system</li>
+<li>Tests should follow a structure</li>
+<li>An example being the following:
+
+<ul>
+<li>Setup</li>
+<li>Execut Actions</li>
+<li>Teardown</li>
+</ul></li>
+<li>Test structure should help explain behavior</li>
+<li>Test structure should help share</li>
+<li>Delegate to subordinate objects</li>
+<li>Assertions/Expectations should communicate the exact behavior of a system</li>
+<li>Avoid magic variables and instead use constants that explicitly show intent</li>
+</ul>
+
+<h2 id="constructing-complex-test-data">Constructing Complex Test Data</h2>
+
+<ul>
+<li>A builder pattern helps in constructing complex test data</li>
+<li>Builder pattern helps break apart complex test data into some chainable methods</li>
+</ul>
+
+<h2 id="test-diagnostics">Test Diagnostics</h2>
+
+<ul>
+<li>Tests are made to fail</li>
+<li>We want tests to fail or report failures when they occur</li>
+<li>Write small and focused tests that are well named</li>
+<li>Add explanatory statements in test assertion/expections to help find error in a stack trace</li>
+<li>Use test matchers for detailing methods</li>
+<li>Tests should be self describing</li>
+<li>Tracer objects help map where failures occur</li>
+<li>Write a Failing Test ==&gt; Make Diagnostics Clear ==&gt; Make Tests Pass ==&gt; Refactor</li>
+</ul>
+
+<h2 id="test-flexibility">Test Flexibility</h2>
+
+<ul>
+<li>Write precise assertions/expectations or just test the relevant parts of a method</li>
+</ul>
+
+<h2 id="chapters-25-to-27">Chapters 25 to 27</h2>
+
+<ul>
+<li>Persistence or CRUD actions can be tested with fine-grained integration tests</li>
+<li>Unit testing concurrent code can be difficult and it is easy to receive false positives</li>
+<li>Test Asychronous code by testing incremental changes in the UI</li>
+<li>Using timers can deliver false positives on UI changes</li>
+<li>Take snapshots of the UI throughout the lifecycle of the User Workflow</li>
+</ul>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/software-security/"><span
+      aria-hidden="true">&larr;</span> OWASP and Software Security</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
