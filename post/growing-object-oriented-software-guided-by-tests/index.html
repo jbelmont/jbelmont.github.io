@@ -252,8 +252,8 @@
 
 <ul>
 <li>Feedback is the most fundamental tool at our disposal</li>
-<li>Practices that support change</li>
-<li>Never write new functionality without a failing test.</li>
+<li>TDD is a practice that supports change</li>
+<li>You should never write new functionality without a failing test.</li>
 <li>This first chapter basically explains the benefits of TDD</li>
 </ul>
 
@@ -344,7 +344,7 @@
 <li>Value types is mentioned with explicit caveat that they are immmutable while Objects are stateful</li>
 <li>An object should be broken apart if it becomes difficult to test</li>
 <li>Interfaces should be not be fat and with that being said you will need more interfaces</li>
-<li>You will need more interfaces to to keep them <code>lean</code>
+<li>You will need more interfaces in order to keep your interfaces <code>lean</code>
 
 <ul>
 <li>This means you should refactor interfaces as well</li>
@@ -358,7 +358,7 @@
 <li>You should only mock object that you own</li>
 <li>Don&rsquo;t mock third party code</li>
 <li>Instead write an Adapter Layer</li>
-<li>For example write a Database Adapter Layer so that if you change databases you can easily swap them out</li>
+<li>Write a Database Adapter Layer so that if you change databases you can easily swap them out</li>
 </ul>
 
 <h2 id="commissioning-on-auction-sniper">Commissioning on Auction Sniper</h2>
@@ -378,7 +378,7 @@
 <h2 id="passing-the-first-test">Passing the First Test</h2>
 
 <ul>
-<li>A TODOLIST is used in this chapter and the first item is crossed out</li>
+<li>A <em>TODOLIST</em> is used in this chapter and the first item is crossed out</li>
 <li>An important concept that I derive is that User Workflows help influence the design and indicate important UI elements</li>
 </ul>
 
@@ -430,16 +430,14 @@
 
 <ul>
 <li>Test Names should describe Features of a system</li>
-<li>Tests should follow a structure</li>
-<li>An example being the following:
+<li>Tests should follow a structure like this:
 
 <ul>
 <li>Setup</li>
-<li>Execut Actions</li>
+<li>Execute Actions</li>
 <li>Teardown</li>
 </ul></li>
-<li>Test structure should help explain behavior</li>
-<li>Test structure should help share</li>
+<li>Test structure should help explain behavior and should help share valuable information</li>
 <li>Delegate to subordinate objects</li>
 <li>Assertions/Expectations should communicate the exact behavior of a system</li>
 <li>Avoid magic variables and instead use constants that explicitly show intent</li>

@@ -48,8 +48,8 @@
 
 &lt;ul&gt;
 &lt;li&gt;Feedback is the most fundamental tool at our disposal&lt;/li&gt;
-&lt;li&gt;Practices that support change&lt;/li&gt;
-&lt;li&gt;Never write new functionality without a failing test.&lt;/li&gt;
+&lt;li&gt;TDD is a practice that supports change&lt;/li&gt;
+&lt;li&gt;You should never write new functionality without a failing test.&lt;/li&gt;
 &lt;li&gt;This first chapter basically explains the benefits of TDD&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -140,7 +140,7 @@
 &lt;li&gt;Value types is mentioned with explicit caveat that they are immmutable while Objects are stateful&lt;/li&gt;
 &lt;li&gt;An object should be broken apart if it becomes difficult to test&lt;/li&gt;
 &lt;li&gt;Interfaces should be not be fat and with that being said you will need more interfaces&lt;/li&gt;
-&lt;li&gt;You will need more interfaces to to keep them &lt;code&gt;lean&lt;/code&gt;
+&lt;li&gt;You will need more interfaces in order to keep your interfaces &lt;code&gt;lean&lt;/code&gt;
 
 &lt;ul&gt;
 &lt;li&gt;This means you should refactor interfaces as well&lt;/li&gt;
@@ -154,7 +154,7 @@
 &lt;li&gt;You should only mock object that you own&lt;/li&gt;
 &lt;li&gt;Don&amp;rsquo;t mock third party code&lt;/li&gt;
 &lt;li&gt;Instead write an Adapter Layer&lt;/li&gt;
-&lt;li&gt;For example write a Database Adapter Layer so that if you change databases you can easily swap them out&lt;/li&gt;
+&lt;li&gt;Write a Database Adapter Layer so that if you change databases you can easily swap them out&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;commissioning-on-auction-sniper&#34;&gt;Commissioning on Auction Sniper&lt;/h2&gt;
@@ -174,7 +174,7 @@
 &lt;h2 id=&#34;passing-the-first-test&#34;&gt;Passing the First Test&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;A TODOLIST is used in this chapter and the first item is crossed out&lt;/li&gt;
+&lt;li&gt;A &lt;em&gt;TODOLIST&lt;/em&gt; is used in this chapter and the first item is crossed out&lt;/li&gt;
 &lt;li&gt;An important concept that I derive is that User Workflows help influence the design and indicate important UI elements&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -226,16 +226,14 @@
 
 &lt;ul&gt;
 &lt;li&gt;Test Names should describe Features of a system&lt;/li&gt;
-&lt;li&gt;Tests should follow a structure&lt;/li&gt;
-&lt;li&gt;An example being the following:
+&lt;li&gt;Tests should follow a structure like this:
 
 &lt;ul&gt;
 &lt;li&gt;Setup&lt;/li&gt;
-&lt;li&gt;Execut Actions&lt;/li&gt;
+&lt;li&gt;Execute Actions&lt;/li&gt;
 &lt;li&gt;Teardown&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Test structure should help explain behavior&lt;/li&gt;
-&lt;li&gt;Test structure should help share&lt;/li&gt;
+&lt;li&gt;Test structure should help explain behavior and should help share valuable information&lt;/li&gt;
 &lt;li&gt;Delegate to subordinate objects&lt;/li&gt;
 &lt;li&gt;Assertions/Expectations should communicate the exact behavior of a system&lt;/li&gt;
 &lt;li&gt;Avoid magic variables and instead use constants that explicitly show intent&lt;/li&gt;
