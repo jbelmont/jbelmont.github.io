@@ -73,7 +73,7 @@
 &lt;li&gt;JUnit and JMock are mentioned&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;JavaScript Test Runners like &lt;code&gt;ava.js&lt;/code&gt;, &lt;code&gt;mocha.js&lt;/code&gt;, and &lt;code&gt;jest&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sinon.js&lt;/code&gt;, and `&lt;code&gt;testdouble.js&lt;/code&gt; serve as mocking libraries&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sinon.js&lt;/code&gt;, and &lt;code&gt;testdouble.js&lt;/code&gt; serve as mocking libraries&lt;/li&gt;
 &lt;li&gt;Test Fixtures are mentioned in this chapter as well&lt;/li&gt;
 &lt;/ul&gt;
 
