@@ -39,6 +39,10 @@
 
 &lt;h2 id=&#34;continuous-integration-core-concepts&#34;&gt;Continuous Integration Core Concepts&lt;/h2&gt;
 
+&lt;p&gt;Most of the notes in this section were gleaned from the &lt;a href=&#34;https://goo.gl/PRcGny&#34; target=&#34;_blank&#34;&gt;Continuous Integration Book&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a fantastic resource and full of insightful wisdom from &lt;code&gt;Steve Matyas&lt;/code&gt; and &lt;code&gt;Paul M. Duvall&lt;/code&gt;&lt;/p&gt;
+
 &lt;h4 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h4&gt;
 
 &lt;p&gt;Build Software at every change&lt;/p&gt;
