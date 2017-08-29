@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/continuous-integration-with-jenkins-travis-and-circleci/</loc>
+      <lastmod>2017-08-28T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</loc>
       <lastmod>2017-08-22T12:00:00+00:00</lastmod>
     </url>
@@ -187,8 +196,28 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/circle-ci/</loc>
+      <lastmod>2017-08-28T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</loc>
       <lastmod>2016-06-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/continuous-integration/</loc>
+      <lastmod>2017-08-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -209,6 +238,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/design/</loc>
       <lastmod>2017-02-10T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/jenkins/</loc>
+      <lastmod>2017-08-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -338,6 +377,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/tdd/</loc>
       <lastmod>2017-08-22T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/travis-ci/</loc>
+      <lastmod>2017-08-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

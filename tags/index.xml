@@ -39,11 +39,29 @@
     </item>
     
     <item>
+      <title>Circle Ci</title>
+      <link>https://www.marcelbelmont.com/tags/circle-ci/</link>
+      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/circle-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Code Craftsmanship Saturdays</title>
       <link>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</link>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://www.marcelbelmont.com/tags/continuous-integration/</link>
+      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/continuous-integration/</guid>
       <description></description>
     </item>
     
@@ -62,6 +80,15 @@
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://www.marcelbelmont.com/tags/jenkins/</link>
+      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/jenkins/</guid>
       <description></description>
     </item>
     
@@ -116,33 +143,6 @@
       <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/papers-we-love/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Redis</title>
-      <link>https://www.marcelbelmont.com/tags/redis/</link>
-      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/redis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Security</title>
-      <link>https://www.marcelbelmont.com/tags/security/</link>
-      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tdd</title>
-      <link>https://www.marcelbelmont.com/tags/tdd/</link>
-      <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/tdd/</guid>
       <description></description>
     </item>
     

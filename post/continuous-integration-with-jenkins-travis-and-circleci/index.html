@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/continuous-integration-with-jenkins-travis-and-circleci/">
+
+  
+
+  <title>Continuous Integration Concepts using Travis CI, Circle CI, and Jenkins | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Continuous Integration Concepts using Travis CI, Circle CI, and Jenkins</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-08-28 12:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Mon, Aug 28, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/continuous-integration">Continuous Integration</a
+    >, 
+    
+    <a href="/tags/jenkins">Jenkins</a
+    >, 
+    
+    <a href="/tags/circle-ci">Circle CI</a
+    >, 
+    
+    <a href="/tags/travis-ci">Travis CI</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcontinuous-integration-with-jenkins-travis-and-circleci%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Continuous%20Integration%20Concepts%20using%20Travis%20CI%2c%20Circle%20CI%2c%20and%20Jenkins&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcontinuous-integration-with-jenkins-travis-and-circleci%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcontinuous-integration-with-jenkins-travis-and-circleci%2f&amp;title=Continuous%20Integration%20Concepts%20using%20Travis%20CI%2c%20Circle%20CI%2c%20and%20Jenkins"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcontinuous-integration-with-jenkins-travis-and-circleci%2f&amp;title=Continuous%20Integration%20Concepts%20using%20Travis%20CI%2c%20Circle%20CI%2c%20and%20Jenkins"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Continuous%20Integration%20Concepts%20using%20Travis%20CI%2c%20Circle%20CI%2c%20and%20Jenkins&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcontinuous-integration-with-jenkins-travis-and-circleci%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<ul>
+<li><a href="#continuous-integration">Continuous Integration Core Concepts</a>
+
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#introduction-to-continuous-integration">Introduction to Continuous Integration</a></li>
+<li><a href="#reducing-risks">Reducing Risks</a></li>
+<li><a href="#building-software-with-code-changes">Building Software with Code Changes</a></li>
+<li><a href="#ci-for-database-integration">CI for Database Integration</a></li>
+<li><a href="#continuous-testing">Continuous Testing</a></li>
+<li><a href="#continuous-inspection">Continuous Inspection</a></li>
+<li><a href="#continuous-deployment">Continuous Deployment</a></li>
+<li><a href="#continuous-feedback">Continuous Feedback</a></li>
+</ul></li>
+<li><a href="#jenkins">Jenkins</a></li>
+<li><a href="#travis-ci">Travis CI</a></li>
+<li><a href="#circle-ci">Circle CI</a></li>
+</ul>
+
+<h2 id="continuous-integration-core-concepts">Continuous Integration Core Concepts</h2>
+
+<h4 id="getting-started">Getting Started</h4>
+
+<p>Build Software at every change</p>
+
+<h6 id="what-is-a-build-anyway">What is a build anyway?</h6>
+
+<ul>
+<li>A build is more than a compilation step.
+
+<ul>
+<li>A build can consist of a compilation step, testing, code inspection and deployment.</li>
+<li>A build acts as a kind of verification step that checks that your software works as a cohesive unit.</li>
+</ul></li>
+</ul>
+
+<h6 id="ci-process-steps-in-a-nutshell">CI Process Steps in a nutshell</h6>
+
+<ol>
+<li>Developer commits code to a version control repository like Github.
+
+<ol>
+<li>The CI server is either polling the repository for changes or has a webhook on the version control system</li>
+</ol></li>
+<li>Once the CI server has detected changes have occurred in the VCP (Version Control Repository)
+
+<ol>
+<li>The CI server will grab the latest code from the VCP and execute some kind of build script to integrate the software.</li>
+</ol></li>
+<li>The CI server will generate feedback by emailing build results to specified project members</li>
+<li>The CI server will either continue polling for changes in the VCP initiate action from a push notification sent from the VCP that has a configured webhook.</li>
+</ol>
+
+<h4 id="introduction-to-continuous-integration">Introduction to Continuous Integration</h4>
+
+<ol>
+<li>Commit Code Frequently</li>
+<li>Don&rsquo;t Commit Broken Code</li>
+<li>Fix Broken Builds Immediately</li>
+<li>Write automated developer tests</li>
+<li>All Tests and inspections must pass the build.</li>
+<li>Developers run private builds on their machines.</li>
+<li>Avoid if possible getting broken code.</li>
+</ol>
+
+<h6 id="the-value-of-ci">The value of CI</h6>
+
+<ul>
+<li>Reduce Risks
+
+<ul>
+<li>The health of your software becomes measurable</li>
+<li>Reduce developer assumptions
+
+<ol>
+<li>Don&rsquo;t Rely on Environment variables.</li>
+<li>Don&rsquo;t rely on certain configuration files set on your machine.</li>
+<li>The build is built cleanly and independently from each developer&rsquo;s machine.</li>
+<li>It avoid the classic phrase but it works on my machine.</li>
+</ol></li>
+</ul></li>
+<li>Reduce repetitive manual processes
+
+<ol>
+<li>The process runs the same way every time</li>
+<li>An ordered process is followed.
+
+<ol>
+<li>Compile Step</li>
+<li>Testing</li>
+<li>Reports Generated</li>
+</ol></li>
+<li>The process runs every time a commit is pushed to the version control system.
+<strong>Frees developers to work on higher value work and reduces possible mistakes</strong></li>
+</ol></li>
+<li>Generate deployable software anytime and anywhere</li>
+<li>Enable better project visibility</li>
+<li>Establish confidence in your software with the development team</li>
+</ul>
+
+<h6 id="what-prevents-teams-from-using-ci">What prevents teams from using CI?</h6>
+
+<ul>
+<li>Misguided belief that there is too much overheard to setting a CI process
+
+<ul>
+<li>Either your manual processses will control you or you can manage your CI process</li>
+<li>Either way you going to have to do these things anyways</li>
+</ul></li>
+</ul>
+
+<h6 id="how-to-get-something-into-ci">How to get something into CI.</h6>
+
+<ul>
+<li>Identify a particular process that can benefit from automation.</li>
+<li>Write a build script that makes the process both repeatable and consistent</li>
+<li>Share you process by committing it into your version control system</li>
+<li>Make it continuous by adding it to the CI server</li>
+</ul>
+
+<h6 id="ci-complements-other-development-practices">CI complements other development practices</h6>
+
+<ul>
+<li>Developer Testing
+
+<ul>
+<li>Testing framework or libraries can be added to the CI server</li>
+<li>Enforcing coding standards
+
+<ul>
+<li>The CI server can be configured to enforce coding standards</li>
+</ul></li>
+<li>Refactoring can be less problematic since the CI server can report issues once code is committed.</li>
+<li>Increase Software Ownership since developers can see if coding standards are being followed by generated reports from the build.</li>
+</ul></li>
+</ul>
+
+<h6 id="commit-code-frequently">Commit Code Frequently</h6>
+
+<ul>
+<li>Make small changes
+
+<ul>
+<li>Don&rsquo;t try to introduce tons of changes all at once
+
+<ul>
+<li>When making pull request keep them small and focused</li>
+</ul></li>
+<li>Commit after each task
+
+<ul>
+<li>Don&rsquo;t have huge branches but instead focused feature branches that are not long lived</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h6 id="don-t-commit-broken-code">Don&rsquo;t Commit Broken Code</h6>
+
+<ul>
+<li>Encourage developers to run a private build before committing any code to the repository
+
+<ul>
+<li>The build script should run all the tests and make sure nothing is broken before code is pushed.</li>
+<li>The private build should mirror if possible what exists in the integration build to ensure nothing broken gets introduced to CI server.</li>
+</ul></li>
+</ul>
+
+<h6 id="fix-broken-builds-immediately">Fix Broken Builds Immediately</h6>
+
+<ul>
+<li>Don&rsquo;t leave the CI server broken as this can hinder other developers from working.</li>
+<li>Builds must be fixed as soon as possible.</li>
+</ul>
+
+<h6 id="write-automated-developer-tests">Write Automated Developer Tests</h6>
+
+<ul>
+<li>Builds should be fully automated</li>
+<li>Choose testing frameworks or libraries that provide capability of running tests in an automated fashion</li>
+<li>We will show this in action with jenkins and travis ci.</li>
+</ul>
+
+<h6 id="all-tests-and-inspections-must-pass">All Tests and Inspections must pass</h6>
+
+<ul>
+<li>In a CI environment all the tests must pass</li>
+<li>All the inspections must pass as well
+
+<ul>
+<li>Linting</li>
+<li>Static Analysis</li>
+<li>Code Coverage Metrics
+
+<ul>
+<li>75% Branching</li>
+<li>70% Function Coverage</li>
+<li>70% Line Coverage</li>
+<li>70% Condition Coverage</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h6 id="run-private-builds">Run Private Builds</h6>
+
+<ul>
+<li>Developers need to emulate integration builds on their development environments</li>
+<li>Grab the latest code from version control</li>
+<li>Run all the tests and inspections on their machines</li>
+<li>Everything should pass before pushing commits to version control</li>
+</ul>
+
+<h6 id="avoid-getting-broken-code">Avoid Getting Broken Code</h6>
+
+<ul>
+<li>Developers should monitor the version control system and avoid if possible pulling down any broken code.</li>
+<li>Meanwhile whoever introduced the build failures should be alerted as soon as possible about the breaking changes and be working on fixing the build issues.</li>
+</ul>
+
+<h4 id="reducing-risks">Reducing Risks</h4>
+
+<h6 id="scenarios-to-combat">Scenarios to Combat</h6>
+
+<h6 id="but-it-works-on-my-machine">But it works on my machine</h6>
+
+<ul>
+<li>Each developer machine should mirror as closely as possible the integration as possible</li>
+<li>Everything needed to build software needs to be committed to version control.</li>
+<li>Developers should not have build scripts that only exist on their machines</li>
+</ul>
+
+<h6 id="syncing-with-the-database">Syncing with the database</h6>
+
+<ul>
+<li>Database artifacts should be in version control</li>
+<li>Database creation scripts, data manipulation scripts, stored procedures, database triggers etc.
+
+<ul>
+<li>Of course this is if you have a relational database</li>
+<li>But if you have a NoSql database and a Restful API design then make sure to document endpoints</li>
+</ul></li>
+<li>Developers might need database specific code
+
+<ul>
+<li>We will visit such tests when we got to the hands on portion of the workshop</li>
+</ul></li>
+</ul>
+
+<h6 id="missing-deployment-automation">Missing Deployment Automation</h6>
+
+<ul>
+<li>Deployments should be automated by using a deployment tool.</li>
+<li>Depending on your software architectures the deployment tools used can vary.
+
+<ul>
+<li>Octopus Deploy</li>
+<li>AWS Elastic Beanstalk</li>
+<li>Heroku</li>
+<li>Google App Engine</li>
+<li>Dokku</li>
+</ul></li>
+<li>Deployment tools is deserving of another workshop alone</li>
+</ul>
+
+<h6 id="late-discovery-of-defects">Late Discovery of Defects</h6>
+
+<ul>
+<li>Test code should be written for all of your source code</li>
+<li>Tests should be run on your build script</li>
+<li>Tests should be continuously run on your CI system</li>
+</ul>
+
+<h6 id="test-coverage-not-known">Test Coverage not known</h6>
+
+<ul>
+<li>Use a code coverage tool to see how much your tests are actually covering your source code.</li>
+<li>We will look at this in more detail on the hands on portion of the workshop.</li>
+</ul>
+
+<h6 id="lack-of-project-visibility">Lack of Project Visibility</h6>
+
+<ul>
+<li>CI system should be configured to send alerts in multipe ways</li>
+</ul>
+
+<h4 id="building-software-with-code-changes">Building Software With Code Changes</h4>
+
+<ul>
+<li>Automate Builds</li>
+<li>Perform Single Command Builds</li>
+<li>Separate Builds scripts from your IDE</li>
+<li>Centralize Software Assets</li>
+<li>Create a consistent directory structure</li>
+<li>Builds fail fast</li>
+<li>Build for any environment</li>
+<li>Use a dedicated integration build machine</li>
+<li>Use a CI server</li>
+<li>Run Fast Builds</li>
+<li>Stage Builds</li>
+</ul>
+
+<h6 id="automate-builds">Automate Builds</h6>
+
+<p>What is a Software Build?</p>
+
+<p>A build can consist of just compiling software components.
+A build can consist of compiling and running automated tests.
+The more processes you add to the build the slower the feedback loop</p>
+
+<h6 id="scripting-tool">Scripting Tool</h6>
+
+<ul>
+<li>Use a scripting tool designed specifically for building software,
+
+<ul>
+<li>Instead of a custom set of shell scripts or batch scripts</li>
+<li>A scripting tool is the most effective maner for developing a consistent, repeatable build solution</li>
+</ul></li>
+</ul>
+
+<h6 id="perform-single-command-builds">Perform Single Command Builds</h6>
+
+<p>Quote by Martin Fowler
+&gt; Get everything you need into source control and get it so that you can build the whole system with a single command.</p>
+
+<p><a href="https://martinfowler.com/articles/continuousIntegration.html" target="_blank">Continuous Integration</a></p>
+
+<h6 id="steps-for-building-your-software-in-a-nutshell">Steps for building your software in a nutshell</h6>
+
+<ol>
+<li>Create your build using a scripting tool NAnt, Rake, Maven, Gulp.js
+
+<ol>
+<li>Start with a simple process.</li>
+</ol></li>
+<li>Add each process to integrate your software within the build script.</li>
+<li>Run your script from the command line or an IDE.</li>
+</ol>
+
+<p><strong>An example using Gulp.js of a build task with the build sass task</strong></p>
+
+<pre><code class="language-javascript">gulp.task('build:sass', () =&gt; gulp.src(sassPaths[0])
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: ['node_modules']
+    }))
+    .pipe(autoprefixer({ cascade: false }))
+    .pipe(concat('advanced-tech.css'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./static/build'))
+    .pipe(livereload()));
+
+gulp.task('build', (cb) =&gt; {
+  runSequence('copy:react:files', 'uglify:js', 'build:js', 'build:sass', 'build:vendor:sass', cb);
+});
+</code></pre>
+
+<h6 id="separate-build-scripts-from-your-ide">Separate Build Scripts from Your IDE</h6>
+
+<p>Avoid coupling your build scripts with an IDE. A build script shouldn&rsquo;t be dependent on your IDE</p>
+
+<p>This is important for 2 reasons:</p>
+
+<ol>
+<li>Each developer may be using a different IDE/Editor and may have different configurations.</li>
+<li>A CI server must execute an automated build without human intervention.</li>
+</ol>
+
+<h6 id="centralize-software-assets">Centralize Software Assets</h6>
+
+<ul>
+<li>Components such as source files or library files</li>
+<li>Third part components, dlls, jar files, etc</li>
+<li>Configuration files</li>
+<li>Data files to initialize the application</li>
+<li>Build Scripts and build environment settings</li>
+<li>Installation scripts for some components</li>
+</ul>
+
+<p><strong>You must decide what all should go into version control</strong></p>
+
+<h6 id="create-a-consistent-directory-structure">Create a Consistent Directory Structure</h6>
+
+<p>You must choose a consistent directory structure for your software assets.
+It helps perform scripted retrievals from a CI server.</p>
+
+<p>Here is a sample folder structure that I typically do for my React/Redux Application.</p>
+
+<ul>
+<li>ca (Certificate Authority)</li>
+<li>config (configuration files)</li>
+<li>db (database related stuff)</li>
+<li>docs (documentation)</li>
+<li>images</li>
+<li>models (data files)</li>
+<li>test (All my test files)
+
+<ul>
+<li>unit</li>
+<li>integration</li>
+<li>e2e</li>
+<li>helpers</li>
+</ul></li>
+<li>static
+
+<ul>
+<li>build</li>
+<li>js
+
+<ul>
+<li>actions</li>
+<li>components</li>
+<li>constants</li>
+<li>data</li>
+<li>reducers</li>
+<li>store</li>
+<li>utils</li>
+</ul></li>
+<li>scss</li>
+</ul></li>
+<li>utils (utility files)</li>
+</ul>
+
+<h6 id="fail-builds-fast">Fail Builds Fast</h6>
+
+<ol>
+<li>Integrate Components</li>
+<li>Run true unit tests
+
+<ol>
+<li>Quick unit tests don&rsquo;t rely on a database or any other dependency they test in isolation</li>
+</ol></li>
+<li>Run other automated processes (rebuild database, inspect, and deploy)</li>
+</ol>
+
+<p><strong>It is up to you for any other steps</strong></p>
+
+<h6 id="build-for-any-environment">Build for any Environment</h6>
+
+<p>You can use configuration files and environment variables to build for any environment dev/prod/test</p>
+
+<ul>
+<li>Logging verbosity</li>
+<li>Application server configuration</li>
+<li>Database connection information</li>
+<li>Framework configuration</li>
+</ul>
+
+<pre><code class="language-sh">DATABASE_NAME=advancedtech
+TABLE_NAME=users
+DB_PORT=28015
+DB_HOST=localhost
+NODE_ENV=development
+</code></pre>
+
+<pre><code class="language-javascript">// Load Environment variables
+require('dotenv').config();
+const webpackConfig = process.env.NODE_ENV === 'development'
+</code></pre>
+
+<h6 id="build-types-and-mechanisms">Build Types and Mechanisms</h6>
+
+<h6 id="build-types">Build Types</h6>
+
+<ol>
+<li>The Individual</li>
+<li>The Team</li>
+<li>Users</li>
+</ol>
+
+<h6 id="private-build">Private Build</h6>
+
+<p><strong>Developers run private build prior to committing code to the repository.</strong></p>
+
+<ol>
+<li>Check out the code you will alter from the repository
+
+<ol>
+<li>Go into the version controlled folder or <code>git clone somerepo</code> in this step.</li>
+</ol></li>
+<li>Make changes to the code.
+
+<ol>
+<li>Edit myFile.js</li>
+</ol></li>
+<li>Get the latest system changes from the repository.
+
+<ol>
+<li><code>git pull</code></li>
+</ol></li>
+<li>Run a build that includes execution of all your unit tests.</li>
+<li>Commit your code changes to the repository.</li>
+</ol>
+
+<h6 id="use-a-dedicated-integration-build-machine">Use a dedicated Integration Build Machine</h6>
+
+<p>Having a dedicated machine for integration build will help reduce assumptions about environment and config.
+Prevents the proverbial &ldquo;but it works on my machine&rdquo; problem</p>
+
+<h6 id="use-a-ci-server">Use a CI server</h6>
+
+<ul>
+<li>Poll for changes in version control on a specified time interval
+
+<ul>
+<li>Github also has web hooks that you can set for Jenkins and Travis CI which will discuss in a bit</li>
+</ul></li>
+<li>Perform certain actions on a scheduled bases, hourly or daily</li>
+<li>Identify a &ldquo;quiet period&rdquo; during which no integration build are performed for the project</li>
+<li>Support for different build scripting tools such as Rake, Make, NPM, Ant, etc</li>
+<li>Send Emails to the concerned parties</li>
+<li>Display a history of previous builds</li>
+<li>Display a dashboard that is web accessible so that everyone can review integration build information
+
+<ul>
+<li>Jenkins has a dashboard as well as Travis CI</li>
+</ul></li>
+<li>Support multiple version control systems for your different projects
+
+<ul>
+<li>svn</li>
+<li>git</li>
+<li>mercurial</li>
+</ul></li>
+</ul>
+
+<h6 id="manual-integration-builds">Manual Integration Builds</h6>
+
+<ul>
+<li>Run a integration build manually using an automated build as an approach to reduce integration build errors</li>
+</ul>
+
+<h6 id="run-fast-builds">Run Fast Builds</h6>
+
+<ul>
+<li>Get builds down to 10 minutes or so by increasing computing resources</li>
+<li>offload slower tests</li>
+<li>offload inspections
+
+<ul>
+<li>code coverage</li>
+<li>static analysis</li>
+</ul></li>
+<li>Run staged builds
+
+<ul>
+<li>Run First Build that compiles and runs unit tests</li>
+<li>Secondary Build runs integration and end to end tests</li>
+<li>Performance builds shouldn&rsquo;t be run on the first build</li>
+</ul></li>
+</ul>
+
+<h4 id="ci-for-database-integration">CI for Database Integration</h4>
+
+<ul>
+<li>Automate Database Integration</li>
+<li>Use a Local Database Sandbox</li>
+<li>Use a version control repository to share database assets</li>
+<li>Give Developers capability to modify the database</li>
+<li>Make DBA part of the development team</li>
+</ul>
+
+<h6 id="automate-database-integration">Automate Database Integration</h6>
+
+<p>Repeatable Database Integration Activities:</p>
+
+<ul>
+<li>Drop Database</li>
+<li>Create Database</li>
+<li>Insert System Data</li>
+<li>Insert Test Data</li>
+<li>Migrate Database and data</li>
+<li>Setup database instances in multiple environments</li>
+<li>Modify column attributes
+
+<ul>
+<li>this would be done for a relational database</li>
+</ul></li>
+<li>Modify test data</li>
+<li>Modify stored procedures and triggers and functions
+
+<ul>
+<li>this is done for relational databases like SQL Server, Oracle, MySQL, PostgresSQL, etc</li>
+</ul></li>
+<li>Obtain access to different environments</li>
+<li>Backup restore large data sets</li>
+</ul>
+
+<h6 id="creating-your-database">Creating your database</h6>
+
+<p>An example of set of functions that connect to RethinkDB insert test data if necessary and retrieve data</p>
+
+<pre><code class="language-javascript">function dbActions() {
+  return connectToRethinkDBServer()
+    .then((connection) =&gt; {
+      DB.connection = connection;
+      return doesRethinkTableExist()
+        .then(exists =&gt; exists);
+    })
+    .then((databaseExists) =&gt; {
+      if (!databaseExists) {
+        return createUsers(databaseExists)
+          .then(() =&gt; createTable())
+          .then(() =&gt; insertData());
+      }
+    })
+    .then(() =&gt; checkIfTableExists()
+        .then((value) =&gt; {
+          if (value &gt; 0) {
+            return getUsers()
+              .then(values =&gt; values);
+          }
+          insertData()
+              .then(() =&gt; getUsers()
+                  .then(values =&gt; values));
+        }));
+}
+</code></pre>
+
+<h6 id="manipulating-your-database">Manipulating your database</h6>
+
+<p>You can use tools/scripts to seed data into your database and to delete the database</p>
+
+<h6 id="use-a-local-database-sandbox">Use a Local Database Sandbox</h6>
+
+<ul>
+<li>Developers can then create a database &ldquo;sandbox&rdquo; to make and test database changes without affection others</li>
+<li>With this step it is easier for developers to recreate a database and run tests on their machines</li>
+</ul>
+
+<h6 id="use-a-version-control-repository-to-share-database-assets">Use a version control repository to share database assets</h6>
+
+<p>Database Assets:</p>
+
+<ul>
+<li>DDL (Data Definition Language) to drop and create tables and view including constraints and triggers</li>
+<li>Stored Procedures and Functions
+
+<ul>
+<li>Provided this is a relational database</li>
+<li>Otherwise a set of functions or API endpoints that can manipulate data
+
+<ul>
+<li><code>POST /api/v1/insertData</code> is an example endpoint to insert data</li>
+</ul></li>
+</ul></li>
+<li>Entity relationship diagrams</li>
+<li>Test data for different environments</li>
+<li>Specific database configurations</li>
+</ul>
+
+<h6 id="continuous-database-integration">Continuous Database Integration</h6>
+
+<p><strong>Automating your database integration and incorporating into build scripts helps keep other developers in sync</strong></p>
+
+<h6 id="give-developers-the-capability-to-modify-the-database">Give Developers the capability to modify the database</h6>
+
+<p>This empowers developers provided they have the expertise to do so to avoid the DBA being the bottleneck
+<strong>Word of caution with this added power comes responsibility as well on the developers side</strong></p>
+
+<h6 id="make-the-dba-a-part-of-the-development-team">Make the DBA a part of the development team</h6>
+
+<ul>
+<li>The DBA should be able to run the same automated build including a database rebuild that developer can do</li>
+<li>Make the DBA a part of the team
+
+<ul>
+<li>This can help integrate teams instead of create silos</li>
+<li>Code goes over the wire so the speak</li>
+</ul></li>
+</ul>
+
+<h6 id="database-integration-and-integration">Database integration and integration</h6>
+
+<ul>
+<li>Test your database
+
+<ul>
+<li>Relational Databases can be tested (PL/SQL, SQLUNIT) etc</li>
+</ul></li>
+<li>Inspect your database</li>
+</ul>
+
+<h6 id="deployment">Deployment</h6>
+
+<p>The goal of Continuous Database Integration is to treat your database source code and other source code the same.
+Deployment processes will deploy your database to your development and test database instances.</p>
+
+<h6 id="feedback-and-documentation">Feedback and Documentation</h6>
+
+<ul>
+<li>Your CI server should be communicating build status like build failure and emailing the necessary individuals.</li>
+<li>Documentation is important and can be part of the build status</li>
+</ul>
+
+<h4 id="continuous-testing">Continuous Testing</h4>
+
+<h6 id="automate-unit-tests">Automate Unit Tests</h6>
+
+<ul>
+<li>Unit tests verify the behavior of small elements in a software system which can be a single class/function</li>
+<li>Some unit tests will employ mocks, which are simple objects that substitute more complicated functions/classes</li>
+<li>Key aspect for unit tests is to have no relianze on outside dependencies like databases
+
+<ul>
+<li>This both increase the time to setup and run unit tests and make your code too coupled</li>
+</ul></li>
+<li>Unit tests can be written early in the development cycle</li>
+<li>Unit tests are alse an efficient way to debug while coding</li>
+</ul>
+
+<p>Example Unit Test using Ava.js</p>
+
+<pre><code class="language-javascript">test('check error object from errorHandler with proper arguments', t =&gt; {
+  t.plan(1);
+  const foo = require('../helpers').foo();
+  const actual = errorHandler.generateError({
+    err: foo,
+    moduleName: 'foo',
+    statusCode: 'foo error'
+  });
+  const expected = {
+    statusCode: 'foo error',
+    message: 'Foo Error: Foo',
+    errorLineAndColumn: 'foo:4:10)'
+  };
+  t.deepEqual(actual, expected, `should return ${expected}`);
+});
+</code></pre>
+
+<h6 id="automate-component-tests">Automate Component Tests</h6>
+
+<ul>
+<li>Component/Integration/Subsystem tests verify portions of a system
+
+<ul>
+<li>May require fully installed system or external dependencies
+
+<ul>
+<li>Databases</li>
+<li>file systems</li>
+<li>network endpoints</li>
+</ul></li>
+</ul></li>
+<li>Integration tests are usually longer running tests than Unit Tests</li>
+</ul>
+
+<p>Example Integration Test using Ava.js, Supertest and Nock</p>
+
+<pre><code class="language-javascript">let postScope, payload, deleteScope;
+test.before(() =&gt; {
+  const requestGetHeaders = {
+    reqheaders: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
+  payload = {
+    'user': {
+      'email': 'bigkahuna@surfsup.com',
+      'first_name': 'Big',
+      'gender': 'Male',
+      'id': 57,
+      'last_name': 'Kahuna'
+    }
+  };
+
+  postScope = nock(requestURL, requestGetHeaders)
+              .get(addUserUrl)
+              .reply(201, payload);
+
+  deleteScope = nock(requestURL)
+                .delete(removeUserUrl)
+                .reply(204);
+});
+
+test.after('cleanup', () =&gt; {
+  nock.cleanAll();
+});
+
+test.cb('add user url should return 201 response and the newly added user', t =&gt; {
+  t.plan(3);
+  const created = responseCodes['created'];
+  const req = request.agent(requestURL);
+  req
+    .get(addUserUrl)
+      .set({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      })
+      .expect(res =&gt; {
+        t.is(res.status, created, '201 Status Code should be returned');
+        t.deepEqual(res.body, payload);
+      })
+      .end(() =&gt; {
+        t.is(postScope.isDone(), true, `POST ${addUserUrl} Nock Spy called`);
+        t.end();
+      });
+});
+</code></pre>
+
+<ul>
+<li>Integration level tests typically use more dependencies than unit tests
+
+<ul>
+<li>Integration tests don&rsquo;t use as many dependencies as a System Test though</li>
+</ul></li>
+</ul>
+
+<h6 id="automate-functional-tests">Automate functional tests</h6>
+
+<ul>
+<li>Functional tests can be automated using tools like Selenium and nightwatchjs</li>
+<li>Functional tests operate froma user&rsquo;s perspective and are typically the longest running tests in your test suite</li>
+</ul>
+
+<h6 id="automate-system-tests">Automate System Tests</h6>
+
+<ul>
+<li>System tests are longer to run than integration/component tests and usually involve multiple components</li>
+</ul>
+
+<h6 id="categorize-developer-tests">Categorize Developer Tests</h6>
+
+<ul>
+<li>By categorizing your tests into distinct &ldquo;buckets&rdquo; you can run slower running tests
+
+<ul>
+<li>at different intervals in your automated test suite</li>
+</ul></li>
+</ul>
+
+<h6 id="run-faster-tests-first">Run faster tests first</h6>
+
+<ul>
+<li>Run your unit tests prior to running component, system, and functional tests.</li>
+<li>Make sure to categorize your tests</li>
+</ul>
+
+<h6 id="write-tests-for-defects">Write Tests for Defects</h6>
+
+<ul>
+<li>Increase your code coverage by writing tests based on new defects
+
+<ul>
+<li>Ensure that the defect does not surface again.</li>
+<li>This is also known as a regression test case</li>
+</ul></li>
+</ul>
+
+<h6 id="make-component-tests-repeatable">Make Component Tests Repeatable</h6>
+
+<ul>
+<li>Use database testing frameworks to make certain that the data is at a &ldquo;known&rdquo; state
+
+<ul>
+<li>This helps make Integration Tests repeatable</li>
+</ul></li>
+</ul>
+
+<h6 id="limit-test-case-assertions-if-possible">Limit Test Case assertions if possible</h6>
+
+<ul>
+<li>Spend less time tracking down the cause of a test failure by limiting your automated tests to 1 to 3 assertions</li>
+</ul>
+
+<h4 id="continuous-inspection">Continuous Inspection</h4>
+
+<ul>
+<li><a href="#definition-of-cyclomatic-complexity">Definition of Cyclomatic Complexity</a></li>
+<li><a href="#reduce-code-complexity">Reduce Code Complexity</a></li>
+<li><a href="#dynamic-link-libraries-and-shared-libraries">Dynamic Link Libraries and Shared Libraries</a></li>
+<li><a href="#perform-design-reviews-continuously">Perform Design Reviews Continuously</a></li>
+<li><a href="#maintain-organizational-standards-with-code-audits">Maintain Organizational Standards with Code Audits</a></li>
+<li><a href="#reduce-duplicate-code">Reduce Duplicate Code</a></li>
+<li><a href="#assess-code-coverage">Assess Code Coverage</a></li>
+</ul>
+
+<h6 id="definition-of-cyclomatic-complexity">Definition of Cyclomatic Complexity</h6>
+
+<p><a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank">Cyclomatic Complexity</a>
+* Cyclomatic complexity is a software metric (measurement), used to indicate the complexity of a program.
+* It is a quantitative measure of the number of linearly independent paths through a program&rsquo;s source code.</p>
+
+<h6 id="reduce-code-complexity">Reduce Code Complexity</h6>
+
+<ul>
+<li>Reduce cyclomatic complexity in your code base by leveraging automated inspectors
+
+<ul>
+<li>JavaScript
+
+<ul>
+<li>Eslint is a Linter but can do cyclomatic analysis to a degree</li>
+<li>Google Closure Compiler</li>
+</ul></li>
+<li>Java
+
+<ul>
+<li>CheckStyle</li>
+<li>PMD</li>
+</ul></li>
+<li>.NET
+
+<ul>
+<li>FxCop</li>
+<li>NDepend</li>
+</ul></li>
+</ul></li>
+<li>Static Analyzers can identify areas of your code with higher complexity.</li>
+<li>Run these inspectors from your automated build.</li>
+</ul>
+
+<h6 id="dynamic-link-libraries-and-shared-libraries">Dynamic Link Libraries and Shared Libraries</h6>
+
+<ul>
+<li>During a compilation process several types of assemblies can be produced
+
+<ul>
+<li>An executable file (*.exe, a binary file)</li>
+<li>A dynamic link library file (*.dll)
+
+<ul>
+<li>Basic a Shared Library</li>
+</ul></li>
+<li>A lib is a unit of code that is bundled within your application executable.</li>
+</ul></li>
+</ul>
+
+<h6 id="perform-design-reviews-continuously">Perform Design Reviews Continuously</h6>
+
+<ul>
+<li>Use tools that can help find assemblies that are highly dependent on other packages and lead to brittle architecture</li>
+</ul>
+
+<h6 id="maintain-organizational-standards-with-code-audits">Maintain Organizational Standards with Code Audits</h6>
+
+<ul>
+<li>Reduce the amount of duplicate code in a code base through special tools</li>
+<li>Tools can pinpoint areas of higher code duplication based on custom thresholds</li>
+<li>Use tools like this for targeted refactorings</li>
+</ul>
+
+<h6 id="assess-code-coverage">Assess Code Coverage</h6>
+
+<p>Typical Metrics by Code Coverage Tools like Istanbul</p>
+
+<ul>
+<li>Statements: How many of the statements in you code are executed.</li>
+<li>Branches: Conditional statements create branches of code which may not be executed (e.g. if/else).
+
+<ul>
+<li>This metric tells you how many of your branches have been executed.</li>
+</ul></li>
+<li>Functions: The proportion of the functions you have defined which have been called.</li>
+<li>Lines: The proportion of lines of code which have been executed.</li>
+</ul>
+
+<p>These metrics can help identify areas of your code base that need more tests.</p>
+
+<h4 id="continuous-deployment">Continuous Deployment</h4>
+
+<ul>
+<li><a href="#release-working-software-at-anytime">Release Working Software at Anytime</a></li>
+<li><a href="#run-all-tests">Run all tests</a></li>
+<li><a href="#label-a-repository's-assets">Label a Repository&rsquo;s Assets</a></li>
+<li><a href="#create-build-feedback-reports">Create Build Feedback Reports</a></li>
+<li><a href="#produce-a-clean-environment">Produce a clean environment</a></li>
+<li><a href="#possess-capability-to-roll-back-release">Possess Capability to Roll Back Release</a></li>
+<li><a href="#label-each-build">Label Each Build</a></li>
+</ul>
+
+<h6 id="release-working-software-at-anytime">Release Working Software at Anytime</h6>
+
+<ul>
+<li>Run a fully automated build including compilation, all tests, inspections, packaging and deployment
+
+<ul>
+<li>This gives you the capability to release working software at any time and in a know n environment</li>
+</ul></li>
+</ul>
+
+<h6 id="run-all-tests">Run all tests</h6>
+
+<ul>
+<li>Run all tests for your software</li>
+<li>Includes Unit, Integration, System, Functional, Performance, Load, Smoke and any others</li>
+<li>Running all the tests ensure your software is ready to be delivered</li>
+</ul>
+
+<h6 id="label-a-repository-s-assets">Label a Repository&rsquo;s Assets</h6>
+
+<ul>
+<li>Label the files for your project in version control</li>
+<li>This can be performed after a project mileston
+
+<ul>
+<li>For example in Git you can tag every release</li>
+</ul></li>
+</ul>
+
+<h6 id="create-build-feedback-reports">Create Build Feedback Reports</h6>
+
+<ul>
+<li>List the changes that were made in recent builds.</li>
+<li>This can be useful for other teams in the delivery process, such as QA.</li>
+</ul>
+
+<h6 id="produce-a-clean-environment">Produce a clean environment</h6>
+
+<ul>
+<li>Remove all files, configuration changes, servers from your integration build machine
+
+<ul>
+<li>This ensures you can rebuild back to a state where your integration build is successful</li>
+</ul></li>
+<li>The more scripted your build process is the better overall</li>
+</ul>
+
+<h6 id="possess-capability-to-roll-back-release">Possess capability to roll back release</h6>
+
+<ul>
+<li>Things go wrong during software development</li>
+<li>Use build labels to roll back any changes to get your software back to working state</li>
+</ul>
+
+<h6 id="label-each-build">Label Each Build</h6>
+
+<ul>
+<li>Label the binary artifacts of a build distribution in version control</li>
+</ul>
+
+<h4 id="continuous-feedback">Continuous Feedback</h4>
+
+<h6 id="the-right-information">The Right Information</h6>
+
+<ul>
+<li>With automated build process you can determine the right information to be given to the right people</li>
+<li>Build status information like you can add to github/bitbucket are good build indicators</li>
+</ul>
+
+<h6 id="the-right-people">The Right People</h6>
+
+<ul>
+<li>Make sure that the right information goes to the right people</li>
+<li>Different people require different information</li>
+<li>Don&rsquo;t flood people with irrelevant information they will soon ignore them</li>
+<li>CI helps get the right information to the right people</li>
+</ul>
+
+<h6 id="the-right-time">The Right Time</h6>
+
+<ul>
+<li>Information that is old is not useful, if the build is broken you need to get notified immediately</li>
+<li>More time between defects will further gap that developers have for each particular software componet
+
+<ul>
+<li>Do you really remember what you did 2 months ago, 2 weeks ago?</li>
+</ul></li>
+</ul>
+
+<h6 id="the-right-way">The Right Way</h6>
+
+<ul>
+<li>The right way is choosing the most appropriate communication mechanism</li>
+<li>How to present said information and to whom</li>
+</ul>
+
+<h6 id="use-continuous-feedback-mechanisms">Use Continuous Feedback Mechanisms</h6>
+
+<ul>
+<li>Email</li>
+<li>SMS (Text messages)</li>
+<li>Ambient Org, Lights</li>
+<li>Wide Screen Monitors</li>
+</ul>
+
+<h2 id="jenkins">Jenkins</h2>
+
+<ul>
+<li>Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks
+
+<ul>
+<li>Building, testing, and deploying software.</li>
+</ul></li>
+<li>Jenkins can be installed through native system packages, Docker,</li>
+<li>Jenkins can be run standalone by any machine with the Java Runtime Environment installed.</li>
+</ul>
+
+<h4 id="getting-started-1">Getting Started</h4>
+
+<ol>
+<li><a href="https://jenkins.io/doc/" target="_blank">Jenkins Download</a>
+
+<ol>
+<li>Install with <code>homebrew</code> with the command <code>brew install jenkins</code></li>
+<li>Run <code>jenkins</code> in the terminal</li>
+<li>Run <code>brew services start jenkins</code> in order to have Jenkins run on login</li>
+</ol></li>
+<li>Open up a browser at <a href="http://localhost:8080" target="_blank">Localhost</a>
+
+<ol>
+<li>
+<figure >
+    
+        <img src="/media/unlock-jenkins.png" />
+    
+    
+</figure>
+</li>
+<li>Enter Password from the command <code>cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword</code> and copy the password</li>
+<li>Click Continue</li>
+<li>
+<figure >
+    
+        <img src="/media/install-plugins.png" />
+    
+    
+</figure>
+</li>
+<li>Click <code>Select Plugins to Install</code></li>
+<li>Search for node.js in list of plugins and click the checkbox</li>
+<li>
+<figure >
+    
+        <img src="/media/add-plugins.png" />
+    
+    
+</figure>
+</li>
+<li>Click Install</li>
+<li>Wait for the installation to complete</li>
+<li>
+<figure >
+    
+        <img src="/media/create-user.png" />
+    
+    
+</figure>
+</li>
+<li>Click <code>Save and Finish</code></li>
+<li>
+<figure >
+    
+        <img src="/media/jenkins-is-ready.png" />
+    
+    
+</figure>
+</li>
+<li>Click <code>Start using Jenkins</code></li>
+<li>
+<figure >
+    
+        <img src="/media/initial-screen.png" />
+    
+    
+</figure>
+</li>
+<li>Click <code>New Item</code></li>
+<li>
+<figure >
+    
+        <img src="/media/add-new-item.png" />
+    
+    
+</figure>
+</li>
+<li>Enter a name for your first build</li>
+<li>Click <code>Freestyle project</code></li>
+<li>
+<figure >
+    
+        <img src="/media/configure-build.png" />
+    
+    
+</figure>
+</li>
+<li>Fill out sections where appropriate.</li>
+<li>Enter a <code>Repository URL</code></li>
+<li>Specify whether you want to poll or if you would like to use web hook.
+
+<ol>
+<li>If you specify polling you need to use crontab syntax <code>H */5 * * *</code> which runs every 5 hours</li>
+<li>
+<figure >
+    
+        <img src="/media/github-webhook.png" />
+    
+    
+</figure>
+</li>
+<li>Click Add Service and type in <code>Jenkins</code> in the input box</li>
+</ol></li>
+<li>Click Execute Shell
+
+<ol>
+<li>Enter script that you would like to run</li>
+<li>In my case the following:</li>
+<li><code>npm install &amp;&amp; npm test</code></li>
+<li>Keep in mind your script can be whatever you need it to be</li>
+<li>It is running a bash environment</li>
+</ol></li>
+<li>Click <code>Build Now</code> to have your first build run</li>
+<li>
+<figure >
+    
+        <img src="/media/first-build.png" />
+    
+    
+</figure>
+</li>
+<li>Click on the Build Number</li>
+<li>
+<figure >
+    
+        <img src="/media/build-screen.png" />
+    
+    
+</figure>
+</li>
+<li>Click on <code>Console Output</code> in order to get details of the script</li>
+<li>In case a build fails there is where you want to go to.</li>
+<li>You can add Post Build Sections</li>
+<li>
+<figure >
+    
+        <img src="/media/manage-jenkins.png" />
+    
+    
+</figure>
+</li>
+<li>Click <code>Manage Jenkins</code> and then Click <code>Manage Plugins</code></li>
+<li>Enter the <code>Cobertura</code> Plugin from the <code>available</code> tab</li>
+<li>Make sure to check Restart so that the plugin is available</li>
+<li>Click <code>Configure</code> and click on <code>Post-build Actions</code></li>
+<li>
+<figure >
+    
+        <img src="/media/add-post-build-section.png" />
+    
+    
+</figure>
+</li>
+<li>Click on <code>Publish Cobertura Coverage Report</code></li>
+<li>Add path to the report which in my case is <code>coverage/cobertura-coverage.xml</code></li>
+<li>Click <code>Build Now</code></li>
+<li>Once build finished you should see a new section for code coverage</li>
+<li>
+<figure >
+    
+        <img src="/media/code-coverage.png" />
+    
+    
+</figure>
+</li>
+</ol></li>
+</ol>
+
+<p>Go to the Continuous Integration Repo to setup your own private build <a href="https://github.com/jbelmont/continuous-integration-with-jenkins-travis-and-circleci" target="_blank">Here</a></p>
+
+<h2 id="travis-ci">Travis CI</h2>
+
+<ul>
+<li>Run the command <code>touch .travis.yml</code> in the terminal</li>
+</ul>
+
+<h4 id="sample-travis-yml-script">Sample Travis yml script</h4>
+
+<pre><code class="language-yml">dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - 6
+env:
+  - NODE_ENV=test
+addons:
+  rethinkdb: '2.3.5'
+  sources:
+    - google-chrome
+  apt:
+    packages:
+      - oracle-java8-installer
+      - oracle-java8-set-default
+      - google-chrome-stable
+before_script:
+  - export CHROME_BIN=chromium-browser
+  - &quot;export DISPLAY=:99.0&quot;
+  - &quot;sh -e /etc/init.d/xvfb start&quot;
+  - sleep 3
+after_success:
+  - npm run coveralls
+  - npm run build &amp;&amp; npm run e2e
+</code></pre>
+
+<h4 id="integrate-travis-ci-with-github">Integrate Travis CI with Github</h4>
+
+<ul>
+<li>Click settings on your repo</li>
+<li>Click Integrations &amp; Services</li>
+<li>Add a Service</li>
+<li>Type in Travis</li>
+<li>Click Add Service</li>
+<li>Now Travis CI is configured as webhook when you push onto master</li>
+</ul>
+
+<h4 id="visit-travis-ci">Visit Travis CI</h4>
+
+<ul>
+<li>Enable your Public Github Repos
+
+<ul>
+<li>Authorize Github Access for Travis CI</li>
+<li>Toggle each repo that you want to have Travis CI enabled</li>
+</ul></li>
+</ul>
+
+<ol>
+<li>Create a Github Account <a href="https://github.com/" target="_blank">HERE</a></li>
+<li>
+<figure >
+    
+        <img src="/media/github.png" />
+    
+    
+</figure>
+</li>
+<li>Sign Up for Travis CI <a href="https://travis-ci.org/" target="_blank">HERE</a></li>
+<li>
+<figure >
+    
+        <img src="/media/travis-ci-signup.png" />
+    
+    
+</figure>
+</li>
+<li>Then Click <code>Sign in With Github</code> button</li>
+<li>
+<figure >
+    
+        <img src="/media/toggle-repo.png" />
+    
+    
+</figure>
+</li>
+<li>Authorize Github Access for Travis CI</li>
+<li>Click on your profile on the top right of page</li>
+<li>Search for your repo and toggle the check mark to turn on travis ci</li>
+<li>Travel to Travis CI Builds <a href="https://travis-ci.org/jbelmont/" target="_blank">Here</a>
+
+<ol>
+<li>This goes to my travis ci builds</li>
+<li>Click on the build you want for example I clicked on the following build</li>
+<li>
+<figure >
+    
+        <img src="/media/travis-ci-build.png" />
+    
+    
+</figure>
+</li>
+<li>Notice that the log has several stages:</li>
+<li>Worker Information</li>
+<li>Build system information</li>
+<li>and more</li>
+<li>Everything is designated by the <code>.travis.yml</code> file</li>
+<li>Notice the code coverage run in the build</li>
+<li>
+<figure >
+    
+        <img src="/media/coverage.png" />
+    
+    
+</figure>
+</li>
+<li>This output can be seen in the <code>Travis Logs</code></li>
+</ol></li>
+</ol>
+
+<h4 id="read-documentation">Read Documentation</h4>
+
+<p><a href="https://docs.travis-ci.com/" target="_blank">Travis CI Documentation</a></p>
+
+<ul>
+<li>Read <a href="https://docs.travis-ci.com/user/getting-started/" target="_blank">Getting Started</a> for your given programming language</li>
+<li>Read <a href="https://docs.travis-ci.com/user/customizing-the-build/" target="_blank">Customizing the Build</a> to setup lifecycle hooks like code coverage and more</li>
+</ul>
+
+<h4 id="yml-configuration">YML configuration</h4>
+
+<h6 id="yml-tutorial">YML Tutorial</h6>
+
+<pre><code class="language-yml">The `docker-compose.yml` file is a [YAML](http://yaml.org/) file defining [services](https://docs.docker.com/compose/compose-file/#service-configuration-reference), [networks](https://docs.docker.com/compose/compose-file/#network-configuration-reference) and [volumes](https://docs.docker.com/compose/compose-file/#volume-configuration-reference). The default path for a Compose file is `./docker-compose.yml`.
+
+
+## Key-value pairs (Scalars)
+
+* YAML keeps data stored as a map containing keys and values associated to those keys.
+* This map is in no particular order, so you can reorder it at will. Each pair is in the format KEY: VALUE. 
+
+ For example:
+
+```json
+name: 'John J'
+age: 32
+</code></pre>
+
+<ul>
+<li>Note the &lsquo;quotes&rsquo; around the value. When the value is a text string</li>
+<li>The quotes are used to make sure any special characters are not given special meaning</li>
+<li>Instead all the values in quote are the value.</li>
+<li>So even though they are optional, using them is highly recommended.</li>
+</ul>
+
+<p>YAML will consider that lines prefixed with more spaces than the parent key are contained inside it;
+Moreover, all lines must be prefixed with the same amount of spaces to belong to the same map. So this works:</p>
+
+<pre><code class="language-yml">prop:
+    subprop:
+        value: '(%person%) %name%'
+        value2: '* %fruit% %rank%'
+</code></pre>
+
+<p>Alternative:</p>
+
+<pre><code class="language-yml">prop:
+        subprop:
+                    value: '(%person%) %name%'
+                    value2: '* %fruit% %rank%'
+</code></pre>
+
+<p>This example won&rsquo;t work:</p>
+
+<pre><code class="language-yml">formatting:
+from-game:
+chat: '(%sender%) %message%'
+action: '* %sender% %message%'
+</code></pre>
+
+<h4 id="alternative-yaml-format">Alternative YAML format</h4>
+
+<p>YAML supports an alternative syntax to store key-value maps, useful for compressing small maps into a single line.</p>
+
+<p>The syntax is: {KEY: VALUE, KEY: VALUE, &hellip;}. The above example would become:</p>
+
+<pre><code class="language-yml">formatting: {from-game: {chat: '(%sender%) %message%', action: '* %sender% %message%'}}
+</code></pre>
+
+<h4 id="lists">Lists</h4>
+
+<ul>
+<li>Lists are used to store a collection of ordered values.</li>
+<li>The values are not associated with a key</li>
+<li>only with a positional index obtained from the order in which they are specified (item 1, item 2, etc.)</li>
+</ul>
+
+<h4 id="block-sequences">Block Sequences</h4>
+
+<pre><code class="language-yml">- 'item 1'
+- 'item 2'
+</code></pre>
+
+<h4 id="inline-sequences">Inline Sequences</h4>
+
+<pre><code class="language-yml">items: ['item 1', 'item 2']
+</code></pre>
+
+<p>You can have:
+* Maps inside maps
+* Lists inside maps
+* Maps inside lists</p>
+
+<h4 id="anchors">Anchors</h4>
+
+<pre><code class="language-yml">item:
+  - method: UPDATE
+    where: &amp;FREE_ITEMS
+      - Some Coat
+      - Dress Shoes
+    SellPrice: 1.5
+    BuyPrice: 2.5
+
+stuff:
+  - method: MERGE
+    item-merge: {name: Some Value Here}
+    items: *FREE_ITEMS
+</code></pre>
+
+<ul>
+<li>Any YAML node can be anchored and referenced elsewhere as an alias node.</li>
+<li>To anchor a particular value or set of values, use <code>&amp;name of anchor</code>.</li>
+<li>To reference an anchor, use <code>*name of anchor</code>.</li>
+</ul>
+
+<h2 id="circle-ci">Circle CI</h2>
+
+<p><a href="https://circleci.com/" target="_blank">Circle CI</a></p>
+
+<ul>
+<li>Click Sign Up For Free</li>
+<li>
+<figure >
+    
+        <img src="/media/circle-ci-signup.png" />
+    
+    
+</figure>
+</li>
+<li>Authorize Github access for Circle CI</li>
+<li>
+<figure >
+    
+        <img src="/media/switch-org.png" />
+    
+    
+</figure>
+</li>
+<li>Here I click on my personal github username <code>jbelmont</code></li>
+<li>Toggle each repo that you want Circle CI to have access to</li>
+</ul>
+
+<h4 id="setup-circle-ci-yml-for-version-2">Setup Circle CI yml for version 2</h4>
+
+<ul>
+<li>Run <code>mkdir .circleci</code> at the root of your repository</li>
+<li>Run <code>touch .circleci/config.yml</code> at the root of your repository</li>
+
+<li><p>These instructions are to setup circle ci version 2</p></li>
+
+<li><p>Run <code>touch circle.yml</code> for version 1</p></li>
+</ul>
+
+<h2 id="sample-config-yml">Sample config.yml</h2>
+
+<pre><code class="language-yml">version: 2
+jobs:
+  build:
+    docker:
+      - image: node:7.6.0
+      - image: openjdk:8
+    working_directory: ~/code-craftsmanship-organization/continuous-integration-with-jenkins-travis-and-circleci
+    steps:
+      - checkout
+      - run:
+          name: Pre-Dependencies
+          command: mkdir -p ~/code-craftsmanship-organization/continuous-integration-with-jenkins-travis-and-circleci/artifacts
+      - run:
+          name: Install RethinkDB
+          command: |
+            apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 68576280 86E50310
+            echo &quot;deb http://download.rethinkdb.com/apt jessie main&quot; | tee /etc/apt/sources.list.d/rethinkdb.list
+            wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | apt-key add -
+            apt-get -y update -qq
+            apt-get -y install rethinkdb
+      - run:
+          name: Install Latest Chrome
+          command: bash scripts/get-latest-chrome.sh
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: NPM Test
+          command: npm test
+      - run:
+          name: Build Directory
+          command: npm run build
+      - run:
+          name: Start RethinkDB
+          command: rethinkdb --bind all --http-port 9090
+          background: true
+      - run:
+          name: Run End To End Tests
+          command: npm run e2e
+      - store_artifacts:
+          path: ~/code-craftsmanship-organization/continuous-integration-with-jenkins-travis-and-circleci/artifacts
+      - add_ssh_keys
+</code></pre>
+
+<h4 id="integrate-circle-ci-with-github">Integrate Circle CI with Github</h4>
+
+<ul>
+<li>Click settings on your repo</li>
+<li>Click Integrations &amp; Services</li>
+<li>Add a Service</li>
+<li>Type in Circle</li>
+<li>Click Add Service</li>
+<li>Now Circle CI is configured as webhook when you push onto master</li>
+<li>
+<figure >
+    
+        <img src="/media/circle-ci-webhook.png" />
+    
+    
+</figure>
+</li>
+</ul>
+
+<h4 id="check-status-of-your-build">Check status of your build</h4>
+
+<ul>
+<li>
+<figure >
+    
+        <img src="/media/list-of-builds.png" />
+    
+    
+</figure>
+</li>
+<li>Click into a specific build</li>
+<li>
+<figure >
+    
+        <img src="/media/specific-build.png" />
+    
+    
+</figure>
+</li>
+<li>Notice here that the build lists each step and they all come from the steps you list in <code>config.yml</code></li>
+</ul>
+
+<h4 id="read-docs-for-circle-ci">Read Docs for Circle CI</h4>
+
+<ul>
+<li>Read <a href="https://circleci.com/docs/2.0/" target="_blank">Circle CI Documentation v2</a></li>
+<li>Read <a href="https://circleci.com/docs/1.0/" target="_blank">Circle CI Documentation v1</a></li>
+</ul>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/"><span
+      aria-hidden="true">&larr;</span> Growing Object-Oriented Software, Guided by Tests</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
