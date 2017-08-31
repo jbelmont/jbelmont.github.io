@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.26" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/software-testing/">
+
+  
+
+  <title>Software Testing Foundations | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Software Testing Foundations</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-08-31 12:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Thu, Aug 31, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/tdd">TDD</a
+    >, 
+    
+    <a href="/tags/testing">Testing</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fsoftware-testing%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Software%20Testing%20Foundations&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fsoftware-testing%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fsoftware-testing%2f&amp;title=Software%20Testing%20Foundations"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fsoftware-testing%2f&amp;title=Software%20Testing%20Foundations"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Software%20Testing%20Foundations&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fsoftware-testing%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<ul>
+<li><a href="#unit-testing">Unit Testing</a></li>
+<li><a href="#integration-testing">Integration Testing</a></li>
+<li><a href="#test-driven-development">Test-Driven Development</a></li>
+<li><a href="#behavior-driven-development">Behavior-Driven Development</a></li>
+<li><a href="#end-to-end-testing">End-to-End Testing</a></li>
+<li><a href="#mocking">Mocking</a></li>
+<li><a href="#test-fixtures">Test Fixtures</a></li>
+<li><a href="#property-based-testing">Property Based Testing</a></li>
+</ul>
+
+<h2 id="unit-testing">Unit Testing</h2>
+
+<p>To view lecture notes for this course, please consult the
+<a href="https://marcelbelmont.com/software-testing" target="_blank">github-pages</a>.</p>
+
+<p><a href="https://www.quora.com/Why-does-Kent-Beck-refer-to-the-rediscovery-of-test-driven-development" target="_blank">Rediscovery of TDD</a></p>
+
+<p>Instructions for Unit Exercises:
+1. Go to unit folder <code>cd unit</code>
+2. Open program.test.js and go to each TODO block.
+3. Complete each todo block by adding unit tests.
+4. Please run the following script to <code>npm run unit:test</code> in order to do the unit test exercises</p>
+
+<h3 id="1-unit-test-the-map-function">1. Unit Test the Map Function:</h3>
+
+<pre><code class="language-js">nest.test('Unit test the map function', assert =&gt; {
+    assert.equal(actual, expected,
+        `should render default message`);
+    assert.end();
+});
+</code></pre>
+
+<p>####For a typical unit test I usually create 2 variables one named actual and another named expect
+<em>For <code>assert.equal(actual, expected, 'My message here')</code> if actual and expected are equal then the unit test will pass.</em></p>
+
+<p>The map function behaves in the following manner</p>
+
+<pre><code class="language-js">[1,2,3,4,5].map(function(number) {
+    return {
+        value: number
+    };
+});
+</code></pre>
+
+<p>This will return the following structure</p>
+
+<pre><code class="language-json">[
+    { value: 1 },
+    { value: 2 },
+    ...
+]
+</code></pre>
+
+<p>Add variables actual and expected to this first unit test.
+The equal method expects to get single property/value in order to pass 1 === 1 or &ldquo;Mike&rdquo; === &ldquo;Mike&rdquo;
+The deepEqual method does a deep property check like this [1,2,3] === [1,2,3]</p>
+
+<h3 id="2-unit-test-the-filter-function">2. Unit Test the Filter Function.</h3>
+
+<p>The filter function behaves in the following manner</p>
+
+<pre><code class="language-js">[1,2,3,4,5].filter(function(number) {
+    return number &gt; 3;
+});
+</code></pre>
+
+<p>This will return the following structure
+<code>[4, 5]</code></p>
+
+<p><em>Either choose <code>assert.equal</code> or <code>assert.deepEqual</code> but remember deepEqual does a deep check with arrays but equal checks properties.</em></p>
+
+<h3 id="3-unit-test-the-concatall-function">3. Unit Test the concatAll Function.</h3>
+
+<p>The concatAll function behaves in the following manner</p>
+
+<pre><code class="language-js">[
+    [1,2,3,4,5],
+    [6,7,8,9,10]
+].concatAll();
+</code></pre>
+
+<p>This will return the following structure
+<code>[1,2,3,4,5,6,7,8,9,10]</code></p>
+
+<h5 id="write-a-unit-test-using-the-same-format-as-previous-2-exercises">Write a Unit Test using the same format as previous 2 exercises.</h5>
+
+<pre><code class="language-js">nest.test('I am some text', assert =&gt; {
+    const actual = ...;
+    const expected = ...;
+    assert.equal(
+        actual,
+        expected,
+        'I should another text'
+    );
+    assert.end();
+});
+</code></pre>
+
+<h3 id="4-unit-test-the-concatmap-function">4. Unit Test the concatMap Function.</h3>
+
+<p>The concatMap function behaves in the following manner</p>
+
+<pre><code class="language-js">const numStrings = [ [&quot;One&quot;, &quot;Two&quot;, &quot;Three&quot;], [&quot;Four&quot;, &quot;Five&quot;, &quot;Six&quot;] ];
+[1, 2, 3, 4, 5].concatMap(function(num) {
+    return numStrings[num];
+});
+</code></pre>
+
+<p>This will return the following structure
+<code>[&quot;One&quot;, &quot;Two&quot;, &quot;Three&quot;, &quot;Four&quot;, &quot;Five&quot;, &quot;Six&quot;]</code></p>
+
+<h2 id="integration-testing">Integration Testing</h2>
+
+<p>To view lecture notes for this course, please consult the <a href="https://marcelbelmont.com/software-testing" target="_blank">github-pages</a>.</p>
+
+<h2 id="distinction-between-unit-tests">Distinction between Unit Tests</h2>
+
+<p><em>Introducing dependencies on external modules or data also turns unit tests into integration tests.</em></p>
+
+<p><em>If one module misbehaves in a chain of interrelated modules, it is not so immediately clear where to look for the cause of the failure.</em>
+<em>When code under development relies on a database, a web service, or any other external process or service,</em>
+<em>enforcing a unit-testable separation is also an opportunity and a driving force to design more modular, more testable and more reusable code.</em></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Distinction between Unit Tests</a></p>
+
+<h2 id="starting-instructions">Starting instructions</h2>
+
+<ul>
+<li>Open 2 terminal prompts</li>
+<li>run the command <code>couchdb</code></li>
+
+<li><p><code>cd integration-tests</code></p>
+
+<h3 id="ii-using-text-editor-of-your-choice-open-program-test-js-and-complete-each-todo-block">II. Using text editor of your choice open program.test.js and complete each TODO block.</h3></li>
+</ul>
+
+<h3 id="1-finish-integration-test-for-the-api-v1-users-badmofos-endpoint">1. Finish Integration test for the /api/v1/users/badMofos endpoint:</h3>
+
+<h4 id="inspect-the-payload-with-the-following-curl-command">Inspect the payload with the following curl command</h4>
+
+<pre><code class="language-sh">curl -X GET -H &quot;Accept: application/json&quot; -H &quot;Cache-Control: no-cache&quot; &quot;http://localhost:3000/api/v1/users/badMofos&quot;
+</code></pre>
+
+<h4 id="use-the-telnet-command-and-paste-in-the-following-commands-to-your-terminal-and-hit-enter">Use the telnet command and paste in the following commands to your terminal and hit enter.</h4>
+
+<pre><code class="language-sh">telnet localhost 3000
+</code></pre>
+
+<p>Paste this GET request into terminal that is expecting request and line feed and hit enter twice</p>
+
+<pre><code class="language-sh">GET /api/v1/users/badMofos HTTP/1.1
+Host: localhost:3000
+Accept: application/json
+Cache-Control: no-cache
+Postman-Token: f3413251-c0de-69ac-99dd-992bcaaca3bd
+</code></pre>
+
+<h4 id="use-a-rest-client-such-as-postman-chrome-app-or-anything-else">Use a REST client such as Postman Chrome App or anything else.</h4>
+
+<h5 id="whichever-way-you-use-choose-you-get-the-following-json-payload">Whichever way you use choose you get the following JSON payload</h5>
+
+<pre><code class="language-json">{
+  &quot;_id&quot;: &quot;users&quot;,
+  &quot;_rev&quot;: &quot;1-c9d988323eed080b054d6eb467abe4f9&quot;,
+  &quot;names&quot;: [
+    &quot;John J Rambo&quot;,
+    &quot;Conan The Barbarian&quot;,
+    &quot;Billy Jack&quot;
+  ],
+  &quot;ranks&quot;: [
+    &quot;One Bad Mofo&quot;,
+    &quot;Too Big of a dude&quot;,
+    &quot;Kicks too high for my taste&quot;
+  ]
+}
+</code></pre>
+
+<ul>
+<li>Add assertion to expect function call in line 16 using the payload information.</li>
+</ul>
+
+<h3 id="2-finish-integration-test-for-api-v1-couch-insertdocument-endpoint">2. Finish Integration Test for /api/v1/couch/insertDocument endpoint</h3>
+
+<p><em>The Super Test library api docs can be found here <a href="https://visionmedia.github.io/superagent" target="_blank">SuperTest</a></em></p>
+
+<p>####Hints to complete the exercise:
+<em>1. Use post method in supertest</em>
+<em>2. Use set method in supertest and pass in object with Accept and Content-Type headers.</em>
+<em>3. Use send method in supertest and pass in object with a name and document property.</em>
+<em>4. Make sure to call expect in supertest to do assertion and use previous get request as example.</em>
+<em>5. Make sure to end supertest call with end function call or the integration test won&rsquo;t finish.</em>
+<em>6. Check statuscode with SuperTest property <a href="https://visionmedia.github.io/superagent/#response-status" target="_blank">Status</a></em>
+<em>7. Use assertion methods from Tape <a href="http://www.node-tap.org/asserts" target="_blank">Asserts</a></em>
+<em>8. CouchDB api documentation <a href="https://wiki.apache.org/couchdb/HTTP_Document_API" target="_blank">Docs</a></em>
+<em>9. CouchDB driver for node.js (nano) that I am using <a href="https://github.com/dscape/nano" target="_blank">Docs</a></em></p>
+
+<h4 id="making-rest-call-with-curl-for-post-request">Making Rest Call with Curl for Post Request</h4>
+
+<pre><code class="language-sh">curl -X POST -H &quot;Accept: application/json&quot; -H &quot;Content-Type: application/json&quot; -H &quot;Cache-Control: no-cache&quot; -d '{
+	&quot;name&quot;: &quot;some-document&quot;,
+	&quot;document&quot;: {
+		&quot;values&quot;: {
+			&quot;one&quot;: 1
+		}
+	}
+}' &quot;http://localhost:3000/api/v1/couch/insertDocument&quot;
+</code></pre>
+
+<h3 id="3-write-an-integration-test-removing-the-newly-created-document-to-api-v1-couch-deletedocument-name">3. Write an integration test removing the newly created document to /api/v1/couch/deleteDocument/:name</h3>
+
+<p><em>The Super Test library api docs and rest methods can be found here <a href="https://visionmedia.github.io/superagent/#request-basics" target="_blank">SuperTest</a></em></p>
+
+<p>####Hints to complete the exercise:
+<em>1. Use appropriate supertest method to remove document.</em>
+<em>2. Make assertion with the returned status code (204) is usual status for DELETE request.</em></p>
+
+<h4 id="making-rest-call-with-curl-for-delete-request">Making Rest Call with Curl for Delete Request</h4>
+
+<pre><code class="language-sh">curl -X DELETE -H &quot;Content-Type: application/json&quot; -d '{
+	&quot;name&quot;: &quot;spicegirls&quot;
+}' &quot;http://localhost:3000/api/v1/couch/deleteDocument&quot;
+</code></pre>
+
+<h2 id="test-driven-development">Test-Driven Development</h2>
+
+<p>To view lecture notes for this course, please consult the <a href="https://marcelbelmont.com/software-testing" target="_blank">github-pages</a>.</p>
+
+<h4 id="definition-of-tdd-via-wikipedia-test-driven-development-https-en-wikipedia-org-wiki-test-driven-development">Definition of TDD via Wikipedia <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test-Driven Development</a></h4>
+
+<p>Each test case fails initially: This ensures that the test really works and can catch an error. Once this is shown, the underlying functionality can be implemented. This has led to the &ldquo;test-driven development mantra&rdquo;, which is &ldquo;red/green/refactor&rdquo;, where red means fail and green means pass. Test-driven development constantly repeats the steps of adding test cases that fail, passing them, and refactoring. Receiving the expected test results at each stage reinforces the developer&rsquo;s mental model of the code, boosts confidence and increases productivity.</p>
+
+<h4 id="test-driven-development-cycle">Test-Driven Development Cycle</h4>
+
+<p><strong><em>1. Add a test</em></strong>
+<strong><em>2. Run all tests and see if the new test fails</em></strong>
+<strong><em>3. Write the code</em></strong>
+<strong><em>4. Run tests</em></strong>
+<strong><em>5. Refactor code.</em></strong>
+<strong><em>Repeat</em></strong></p>
+
+<h4 id="exercise-instructions">Exercise Instructions</h4>
+
+<p>Requirements for First TDD Cycle
+Create a function that computes the average of a range of numbers.</p>
+
+<p>Complete exercises in <a href="https://marcelbelmont.com/software-testing/tree/master/tdd" target="_blank">TDD Folder of Repo</a></p>
+
+<h5 id="test-driven-development-cycle-1-add-a-test-run-tests">Test-Driven Development Cycle 1 (Add a Test / Run Tests)</h5>
+
+<ol>
+<li>Go to file path <code>tdd/tdd-cycle/cycle1/program.test.js</code> and add a failing test by calling a function that doesn&rsquo;t exist in program.js</li>
+<li>Add a failing test in program.test.js using either Mocha with Chai or with Tape from our previous exercies.</li>
+<li>Run the failing test <code>npm run tdd:cycle1</code></li>
+</ol>
+
+<h5 id="test-driven-development-cycle-2-write-the-code-run-tests">Test-Driven Development Cycle 2 (Write the Code / Run Tests)</h5>
+
+<ol>
+<li>Go to file path <code>tdd/tdd-cycle/cycle2</code>.</li>
+<li>Add the minimal requirement to make the test pass again.</li>
+<li>(Hint) Add an empty function in <code>program.js</code> and then call it with the appropriate assertion.</li>
+<li>Run the test with <code>npm run tdd:cycle2</code></li>
+</ol>
+
+<h5 id="test-driven-development-cycle-3-refactor-by-adding-implementation-add-a-test-run-all-tests-again">Test-Driven Development Cycle 3 (Refactor by adding implementation / Add a test / Run all Tests again)</h5>
+
+<ol>
+<li>Go to file path <code>tdd/tdd-cycle/cycle3</code>.</li>
+<li>Implement the average function in program.js.</li>
+<li>Add a unit test for the average function with an array of numbers.</li>
+<li>Use appropriate assertion to unit test the function.</li>
+<li>Run the test with <code>npm run tdd:cycle3</code></li>
+</ol>
+
+<h5 id="test-driven-development-cycle-final-refactor-code-add-a-test-run-all-tests-again">Test-Driven Development Cycle Final / (Refactor code / Add a test / Run all tests again)</h5>
+
+<ol>
+<li>Go to the file path <code>tdd/tdd-cycle/cyclefinal</code>.</li>
+<li>Refactor the code again with possible different implementation or quit.</li>
+<li>If refactored with newer function than add new test else add run the same test for original implementation</li>
+<li>Run the test with <code>npm run tdd:cycle:final</code></li>
+</ol>
+
+<h2 id="behavior-driven-development">Behavior-Driven Development</h2>
+
+<p>To view lecture notes for this course, please consult the <a href="https://marcelbelmont.com/software-testing" target="_blank">github-pages</a>.</p>
+
+<h2 id="definition-of-bdd-via-wikipedia">Definition of BDD via Wikipedia</h2>
+
+<p>BDD (behavior-driven development) combines practices from TDD and from ATDD.[27] It includes the practice of writing tests first, but focuses on tests which describe behavior, rather than tests which test a unit of implementation. Tools such as Mspec and Specflow provide a syntax which allow non-programmers to define the behaviors which developers can then translate into automated tests. Behavior-driven development combines the general techniques and principles of TDD with ideas from domain-driven design and object-oriented analysis and design to provide software development and management teams with shared tools and a shared process to collaborate on software development.</p>
+
+<h2 id="another-look-at-what-bdd-is-via-josh-davis-blog-http-joshldavis-com-2013-05-27-difference-between-tdd-and-bdd">Another Look at what BDD is via Josh Davis <a href="http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/" target="_blank">Blog</a></h2>
+
+<p>The main difference is just the wording. BDD uses a more verbose style so that it can be read almost like a sentence.</p>
+
+<p>In contrast to TDD, BDD is when we write behavior &amp; specification that then drives our software development.
+The ability to read your tests like a sentence is a cognitive shift in how you will think about your tests. The argument is that if you can read your tests fluidly, you will naturally write better and more comprehensive tests.</p>
+
+<p>Instructions for BDD Exercises:
+1. Go to bdd folder <code>cd bdd</code>
+2. Open program.test.js and go to each TODO block.
+3. Complete each todo block by adding bdd style unit test.
+4. In order to complete the exercises run the script <code>npm run bdd:test</code></p>
+
+<h3 id="1-unit-test-the-findidx-function">1. Unit Test the findIdx Function:</h3>
+
+<pre><code class="language-javascript">it('Unit test the Array.prototype.findIdx function', done =&gt; {
+        const numbers = [1,2,3,4,5];
+        const expected = 2;
+        expect(numbers.findIdx(val =&gt; val === 3)).to.eql(expected);
+
+        const names = [
+            {
+                name: 'Marcel'
+            },
+            {
+                name: 'Leo'
+            },
+            {
+                name: 'Dave'
+            }
+        ];
+        const IDX = 1;
+        // TODO add assertions here:
+        done();
+    });
+</code></pre>
+
+<h5 id="read-the-chai-assertion-assertions-http-chaijs-com-api-assert">Read the chai assertion <a href="http://chaijs.com/api/assert" target="_blank">Assertions</a></h5>
+
+<h5 id="read-the-bdd-styles-for-expect-and-should-styles-http-chaijs-com-guide-styles">Read the BDD Styles for Expect and Should <a href="http://chaijs.com/guide/styles" target="_blank">Styles</a></h5>
+
+<p><em>For Unit tests I usually create 2 variables one named actual and another named expect but this is strictly up to you.</em></p>
+
+<p><em>Expect example</em></p>
+
+<pre><code class="language-javascript">expect(someTest).to.eql(ThisAssertion);
+</code></pre>
+
+<p><em>Should example</em></p>
+
+<pre><code class="language-javascript">foo.should.equal('bar');
+</code></pre>
+
+<p>The <code>Array.prototype.findIdx</code> function behaves in the following manner</p>
+
+<pre><code class="language-javascript">[{ name: 'Marcel' },{ name: 'Leo' },{ name: 'Dave' }].findIdx(function(value) {
+    return value[&quot;name&quot;] === &quot;Leo&quot;;
+});
+
+// outputs =&gt; 1
+</code></pre>
+
+<h3 id="2-unit-test-the-array-prototype-findinput-function">2. Unit test the Array.prototype.findInput Function</h3>
+
+<p>Write a BDD Style test using the following structure in program.test.js</p>
+
+<pre><code class="language-javascript">it('Unit test the Array.prototype.findInput function', function(done) {
+    // TODO: Finish the test here.
+    done();
+});
+</code></pre>
+
+<p>The <code>Array.prototype.findInput</code> function behaves in the following manner</p>
+
+<pre><code class="language-javascript">[{ name: 'Marcel' },{ name: 'Leo' },{ name: 'Dave' }].findInput(function(value) {
+    return value[&quot;name&quot;] === &quot;Leo&quot;;
+});
+
+// outputs =&gt; { name: 'Leo' }
+</code></pre>
+
+<h3 id="3-unit-test-the-array-prototype-zip-function">3. Unit test the Array.prototype.zip Function</h3>
+
+<p>Write a BDD Style Test in the TODO block in program.test.js</p>
+
+<p>The <code>Array.prototype.zip</code> function behaves in the following manner</p>
+
+<pre><code class="language-javascript">[
+    [1, 2, 3],
+    [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;],
+    [true, false, true]
+].zip();
+
+// outputs =&gt;
+[
+    [1, &quot;one&quot;, true],
+    [2, &quot;two&quot;, false],
+    [3, &quot;three&quot;, true]
+]
+</code></pre>
+
+<h2 id="end-to-end-testing">End-to-End Testing</h2>
+
+<p>To view lecture notes for this course, please consult the <a href="https://jbelmont.github.io/software-testing" target="_blank">github-pages</a>.</p>
+
+<h4 id="definition-of-end-to-end-tests-via-infoq-end-to-end-testing-https-www-infoq-com-articles-balancing-unit-and-end-to-end-tests">Definition of End-to-End Tests via InfoQ <a href="https://www.infoq.com/articles/balancing-unit-and-end-to-end-tests" target="_blank">End-To-End-Testing</a></h4>
+
+<p>End-to-End Tests simulate user behavior. In a web application, they will start the server, fire up a browser, click around, and assert that certain things happening in the browser give us confidence our feature is working. These tests give great confidence, but they are slow, brittle, and tightly coupled to the user interface.</p>
+
+<h4 id="nightwatchjs-end-to-end-testing-library">Nightwatchjs End to End Testing Library</h4>
+
+<ul>
+<li>Nightwatch.js is a Node.js based End-to-End (E2E) testing solution for browser based apps and websites.</li>
+<li>It uses the powerful W3C WebDriver API to perform commands and assertions on DOM elements.</li>
+<li>Write End-to-End tests in Node.js quickly and effortlessly that run against a Selenium/WebDriver server.</li>
+</ul>
+
+<h4 id="webdriver">WebDriver</h4>
+
+<ul>
+<li>WebDriver is a general purpose library for automating web browsers.</li>
+
+<li><p>It was started as part of the Selenium project, which is a very popular and comprehensive set of tools for browser automation, initially written for Java but now with support for most programming languages.</p></li>
+
+<li><p>Nightwatch uses the WebDriver API to perform the browser automation related tasks</p>
+
+<ul>
+<li>I.E. opening windows and clicking links for instance.</li>
+</ul></li>
+
+<li><p>WebDriver is now a W3C specification, which aims to standardize browser automation.</p></li>
+
+<li><p>WebDriver is a remote control interface that enables introspection and control of user agents.</p></li>
+
+<li><p>It provides a platform and a restful HTTP api as a way for web browsers to be remotely controlled.</p></li>
+</ul>
+
+<p><a href="https://www.w3.org/TR/webdriver/" target="_blank">WebDriver Spec</a></p>
+
+<ul>
+<li>Nightwatch works by communicating over a restful HTTP api with a WebDriver server (Selenium server).</li>
+<li>The restful API protocol is defined by the W3C WebDriver API.</li>
+</ul>
+
+<h4 id="nightwatch-operations">Nightwatch Operations</h4>
+
+<ul>
+<li>Nightwatch needs to send at least 2 requests to the WebDriver server in order to perform a command or assertion
+
+<ul>
+<li>The first request to locate an element given a CSS selector (or Xpath expression)</li>
+<li>The second request to perform the actual command/assertion on the given element.</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-javascript">module.exports = {
+  'Code Craftsmanship Saturdays': browser =&gt; {
+    browser
+      .url('http://localhost:3000')
+        .waitForElementVisible('.code-craftsmanship-container-label', 1000)
+        .assert.containsText('.code-craftsmanship-container-label &gt; strong', 'Code Craftsmanship Saturdays')
+
+    browser
+      .click('.users-container .users-container-trash-bin')
+      .assert.elementNotPresent('[data-email=&quot;tcox0@dion.ne.jp&quot;]')
+
+    browser
+      .click('#addSomeUserBtn')
+
+    setInput('#emailInput', 'chuck@badass.net')
+    setInput('#firstNameInput', 'Chuck')
+    setInput('#lastNameInput', 'Norris')
+
+    browser
+      .click('#addUserSubmit')
+      .waitForElementVisible('[data-email=&quot;chuck@badass.net&quot;]', 1000)
+      .end();
+
+    function setInput(input, value) {
+      browser.setValue(input, value);
+    }
+  }
+};
+</code></pre>
+
+<p>Above is a sample End To End Test for Nightwatch.js</p>
+
+<p>The string <code>Code Craftsmanship Saturdays</code> will be what this particular test suite will be called.</p>
+
+<p>Notice that it lives in an <code>module.exports</code> object</p>
+
+<p>The <code>browser</code> object has the main elements you will need for your test namely <code>click</code>,  <code>url</code>, and <code>assertions</code></p>
+
+<p>Since I only put one key there is one step to this test, I could however split this test into two parts like so</p>
+
+<pre><code class="language-javascript">module.exports = {
+  'Load Default Screen and click trash can': browser =&gt; {
+    browser
+      .url('http://localhost:3000')
+        .waitForElementVisible('.code-craftsmanship-container-label', 1000)
+        .assert.containsText('.code-craftsmanship-container-label &gt; strong', 'Code Craftsmanship Saturdays')
+
+    browser
+      .click('.users-container .users-container-trash-bin')
+      .assert.elementNotPresent('[data-email=&quot;tcox0@dion.ne.jp&quot;]')
+  },
+
+  'Add a User': browser =&gt; {
+      browser
+        .click('#addSomeUserBtn')
+
+        setInput('#emailInput', 'chuck@badass.net')
+        setInput('#firstNameInput', 'Chuck')
+        setInput('#lastNameInput', 'Norris')
+
+        browser
+        .click('#addUserSubmit')
+        .waitForElementVisible('[data-email=&quot;chuck@badass.net&quot;]', 1000)
+        .end();
+
+        function setInput(input, value) {
+            browser.setValue(input, value);
+        }
+  }
+};
+</code></pre>
+
+<p>Here the End to End test has been broken into 2 steps, I could break it up further if I wanted.</p>
+
+<p><code>Nightwatch.js</code> also has lifecycle methods that you can use</p>
+
+<pre><code class="language-javascript">module.exports = {
+  before : function(browser) {
+    console.log('Setting up...');
+  },
+
+  after : function(browser) {
+    console.log('Closing down...');
+  },
+
+  beforeEach : function(browser) {
+
+  },
+
+  afterEach : function() {
+
+  },
+
+  'step one' : function (browser) {
+    browser
+     // ...
+  },
+
+  'step two' : function (browser) {
+    browser
+    // ...
+      .end();
+  }
+};
+</code></pre>
+
+<p>The goal of End to End tests are to test the behavior of your application</p>
+
+<p>One thing to keep in mind is that you should not be testing edge cases with your end to end tests.</p>
+
+<p>Some metrics to think about:</p>
+
+<ol>
+<li>You should have many unit tests that test all the possible edge cases for each function/class.</li>
+<li>Your integration tests will consequently test multiple units of work and you should have a good number of them.</li>
+<li>End to End tests should really follow the happy path of a user workflow.
+
+<ol>
+<li>These types of tests are more resource intensive and you should think about separating end to end tests to an additional build.</li>
+<li>Keep your first build fast by only incorporating Unit Tests</li>
+<li>Perhaps include a secondary build where you run integration tests and end to end tests.</li>
+</ol></li>
+</ol>
+
+<p>Instructions for End To End Exercises:
+1. Go to end to end tests folder <code>cd end-to-end-tests/nightwatch</code>
+2. Open codeCraftsmanshipSaturdays.js.
+3. Complete each todo block by adding the last part of the end to end test.
+4. Run the script <code>npm run end:to🔚test</code></p>
+
+<p><a href="http://nightwatchjs.org/api" target="_blank">NightWatch Docs</a></p>
+
+<h2 id="mocking">Mocking</h2>
+
+<p>To view lecture notes for this course, please consult the <a href="https://jbelmont.github.io/software-testing" target="_blank">github-pages</a>.</p>
+
+<h4 id="definition-of-mocks-via-wikipedia-mocks-https-en-wikipedia-org-wiki-mock-object">Definition of Mocks via Wikipedia <a href="https://en.wikipedia.org/wiki/Mock_object" target="_blank">Mocks</a></h4>
+
+<p>In object-oriented programming, mock objects (also can be a unit of work) are simulated objects that mimic the behavior of real objects in controlled ways. A programmer typically creates a mock object to test the behavior of some other object, in much the same way that a car designer uses a crash test dummy to simulate the dynamic behavior of a human in vehicle impacts.</p>
+
+<h4 id="reasons-to-use-mock-objects">Reasons to use Mock Objects</h4>
+
+<p>In a unit test, mock objects can simulate the behavior of complex, real objects and are therefore useful when a real object is impractical or impossible to incorporate into a unit test. If an actual object has any of the following characteristics, it may be useful to use a mock object in its place:
+the object supplies non-deterministic results (e.g. the current time or the current temperature);</p>
+
+<p><strong>The Object has states that are difficult to create or reproduce (e.g. a network error);</strong>
+<strong>The Object is slow (e.g. a complete database, which would have to be initialized before the test);</strong>
+<strong>The Object does not yet exist or may change behavior;</strong>
+<strong>The Object would have to include information and methods exclusively for testing purposes (and not for its actual task).</strong></p>
+
+<h4 id="sinon-js-mock-via-explanation-sinon-mocks-http-sinonjs-org-docs-mocks">Sinon.js Mock via explanation <a href="http://sinonjs.org/docs/#mocks" target="_blank">Sinon Mocks</a></h4>
+
+<p>Mocks (and mock expectations) are fake methods (like spies) with pre-programmed behavior (like stubs) as well as pre-programmed expectations.
+A mock will fail your test if it is not used as expected.</p>
+
+<p>Sinon Documentation discusses when not to use Mocks.
+Mocks come with built-in expectations that may fail your test. Thus, they enforce implementation details.
+<strong>The rule of thumb is: if you wouldn’t add an assertion for some specific call, don’t mock it. Use a stub instead.</strong>
+<strong>In general you should never have more than one mock (possibly with several expectations) in a single test.</strong></p>
+
+<h4 id="sinon-js-stubs-via-explanation-sinon-stubs-http-sinonjs-org-docs-stubs">Sinon.js Stubs via explanation <a href="http://sinonjs.org/docs/#stubs" target="_blank">Sinon Stubs</a></h4>
+
+<p>Test stubs are functions (spies) with pre-programmed behavior. They support the full test spy API in addition to methods which can be used to alter the stub’s behavior.
+This is a key point here as well with stubs you get the full spy api but with Mocks you don&rsquo;t.</p>
+
+<h4 id="sinon-js-spies-via-explanation-sinon-spies-http-sinonjs-org-docs-spies">Sinon.js Spies via explanation <a href="http://sinonjs.org/docs/#spies" target="_blank">Sinon Spies</a></h4>
+
+<p>A test spy is a function that records arguments, return value, the value of this and exception thrown (if any) for all its calls.
+Test spies are useful to test both callbacks and how certain functions/methods are used throughout the system under test.</p>
+
+<p><em>Sinon has an assertion api that you can reference here <a href="http://sinonjs.org/docs/#assertions" target="_blank">Sinon Assertions</a></em>
+<em>You can use either Mocha or Tape.js here it is your choice which one you feel most comfortable with.</em></p>
+
+<h4 id="sinon-has-an-assertion-library-that-you-can-use-but-i-would-recommend-using-either-chai-js-assertion-library-or-should-js">Sinon has an assertion library that you can use but I would recommend using either chai.js assertion library or should.js</h4>
+
+<ul>
+<li>Chai.js documentation can be found here <a href="http://chaijs.com/api/assert/" target="_blank">Chai.js Assert</a> // <a href="http://chaijs.com/api/bdd/" target="_blank">Chai.js BDD</a></li>
+<li>Should.js Assertion library can be found here <a href="http://shouldjs.github.io/" target="_blank">Should.js</a></li>
+</ul>
+
+<p><strong>Open program.test.js in <code>mocks-stubs-spies</code> folder</strong></p>
+
+<p>####1. Stub the <code>retrieveDocument</code> function</p>
+
+<pre><code class="language-javascript">function retrieveDocument({dbName, name}) {
+    const couchDBName = nano.use(dbName);
+    return new Promise((resolve, reject) =&gt; {
+        couchDBName.get(name, (err, body) =&gt; {
+            if (!err) {
+                resolve(body);
+            }
+            reject(err);
+        });
+    });
+}
+</code></pre>
+
+<p>You don&rsquo;t need the implementation here but I included it here for your reference.
+Using Sinon check that the retrieveDocument stub is called once.
+Make an assertion that the payload and the expected response match.</p>
+
+<p>####2. Stub the <code>insertDocument</code> function.</p>
+
+<pre><code class="language-javascript">function insertDocument({ dbName = 'softwaretesting', name = 'users', body } = {}) {
+    return new Promise((resolve, reject) =&gt; {
+        const couchDBName = nano.use(dbName);
+        return insertDoc({ dbName: couchDBName, name, body })
+            .then(() =&gt; {
+                resolve(retrieveDoc({ dbName: couchDBName , name }));
+            })
+            .catch(err =&gt; {
+                reject(err);
+            });
+    });
+}
+
+function insertDoc({dbName, name, body}) {
+    return new Promise((resolve, reject) =&gt; {
+        dbName.insert(body, name, (err, body, header) =&gt; {
+            if (!err) {
+                resolve(body);
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
+</code></pre>
+
+<p><em>Again you don&rsquo;t need the implementation here because you are stubbing it out but I added it in case you are curious.</em></p>
+
+<ul>
+<li>Use sinon to make some assertions about the stubbed out function</li>
+<li>Remember to use the setup function in tape or the before block in mocha to initialize the stub.</li>
+</ul>
+
+<p>####3. Stub out the <code>deleteDocument</code> function</p>
+
+<p>######Implementation Details</p>
+
+<pre><code class="language-javascript">function retrieveDoc({dbName, name}) {
+    return new Promise((resolve, reject) =&gt; {
+        dbName.get(name, (err, body) =&gt; {
+            if (!err) {
+                resolve(body);
+            }
+            reject(err);
+        });
+    });
+}
+
+function deleteDocument({dbName, name}) {
+    const couchDBName = nano.use(dbName);
+    return retrieveDoc({dbName: couchDBName, name})
+        .then(body =&gt; {
+            if (body) {
+                const {
+                    _rev
+                } = body;
+                couchDBName.destroy(name, _rev, (err, body) =&gt; {
+                    if (!err) {
+                        return body;
+                    }
+                    throw err;
+                });
+            }
+        });
+}
+</code></pre>
+
+<ul>
+<li>Stub out the deleteDocument function by using sinon.</li>
+<li>Use chai assertions or use the should.js assertion library</li>
+</ul>
+
+<h2 id="test-fixtures">Test Fixtures</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Test_fixture" target="_blank">Test Fixtures</a></p>
+
+<ul>
+<li>* A test fixture is a fixed state of a set of objects used as a baseline for running tests.</li>
+<li>A test fixture is something used to consistently test some item, device, or piece of software.</li>
+<li>Test fixtures can be found when testing electronics, software and physical devices.</li>
+<li>A software test fixture sets up the system for the testing process by providing the initialization code.
+
+<ul>
+<li>In turn satisfying whatever preconditions there may be.
+An example could be loading up a database with known parameters from a customer site before running your test.</li>
+</ul></li>
+<li>Ruby on Rails web framework uses YAML to initialize a database before running a test.
+
+<ul>
+<li>This allows for tests to be repeatable, which is one of the key features of an effective test framework</li>
+</ul></li>
+</ul>
+
+<p>Advantages of Test Fixtures:</p>
+
+<ul>
+<li>Test Fixtures allow for tests to be repeatable since you start with the same setup every time.</li>
+<li>Test Fixtures eases test code design by allowing the developer to separate methods into different functions and reuse each function for other tests.</li>
+
+<li><p>Preconfigures tests into a known state at start instead of working from a previous test run.</p></li>
+
+<li><p>The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable.</p></li>
+</ul>
+
+<p>Examples of Test Fixtures:</p>
+
+<ol>
+<li>Preparation of input data and setup/creation of fake or mock objects</li>
+<li>Loading a database with a specific, known set of data</li>
+<li>Copying a specific known set of files creating a test fixture will create a set of objects initialized to certain states.</li>
+</ol>
+
+<p>Open up <code>test-fixtures</code> directory and add an integration using supertest to retrieve the seeded document</p>
+
+<h2 id="property-based-testing">Property Based Testing</h2>
+
+<p><code>Dijkstra's</code>
+&gt; Program testing can at best show the presence of errors, but never their absence</p>
+
+<p>Author states that
+&gt; Thus we can expect testing to be the main form of program verification fora long time to come—it is the only practical technique in most cases</p>
+
+<p>The point is made that with a CI process in place you can automate testing in your code base but there is still a dilemma on how many test cases to write.</p>
+
+<p>Do you write one test case or many test cases?</p>
+
+<blockquote>
+<p>In practice, much time is devoted either to simplifying a failing case by hand, or to debugging and tracing a complex case to understand why it fails. Shrinking failing cases automates the first stage of diagnosis, and makes the step from automated testing to locating a fault very short indeed</p>
+</blockquote>
+
+<h4 id="test-case-wisdom">Test Case Wisdom</h4>
+
+<ul>
+<li>During regular test case scenarios in unit-testing your follow the happy path or normal path
+
+<ul>
+<li>This in turn forms basis for future test cases</li>
+</ul></li>
+
+<li><p>By generating test cases you can find bugs faster and more accuracy is what I am gleaning from the paper</p></li>
+
+<li><p>It is better to run smaller tests than large tests.</p></li>
+
+<li><p>Most errors can be found by a smaller test case.</p></li>
+
+<li><p>Developer will jump onto the first failing case</p></li>
+
+<li><p>Rerun the test case and start debugging the issue</p></li>
+
+<li><p>Test cases generated by hand are time consuming as well</p></li>
+
+<li><p>When new test cases can be generated by hand in seconds it helps reduce developer time on trivial edge cases.</p></li>
+</ul>
+
+<h3 id="testcheck-js">TestCheck.js</h3>
+
+<p>Generative property testing for JavaScript.</p>
+
+<p>TestCheck.js is a library for generative testing of program properties, ala QuickCheck.</p>
+
+<ul>
+<li>By providing a specification of the JavaScript program in the form of properties</li>
+<li>Properties can be tested to remain true for a large number of randomly generated cases.</li>
+<li>In the case of a test failure, the smallest possible failing test case is found.</li>
+</ul>
+
+<pre><code class="language-javascript">const { check, gen, property } = require('testcheck');
+const test = require('tape');
+
+test('addition is commutative', check(gen.int, gen.int, (t, numA, numB) =&gt; {
+  t.plan(1);
+  t.equal(numA + numB, numB + numA)
+}));
+</code></pre>
+
+<ul>
+<li>Read the <a href="https://www.marcelbelmont.com/software-testing/" target="_blank">Software Testing Gitbook</a></li>
+<li>You will be able to copy and paste examples using the Gitbook</li>
+</ul>
+
+<p><strong>If you like this post please star <a href="https://github.com/jbelmont/software-testing" target="_blank">Software Testing on Gitub</a></strong></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/continuous-integration-with-jenkins-travis-and-circleci/"><span
+      aria-hidden="true">&larr;</span> Continuous Integration Concepts using Travis CI, Circle CI, and Jenkins</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
