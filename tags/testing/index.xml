@@ -51,8 +51,9 @@
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;####For a typical unit test I usually create 2 variables one named actual and another named expect
-&lt;em&gt;For &lt;code&gt;assert.equal(actual, expected, &#39;My message here&#39;)&lt;/code&gt; if actual and expected are equal then the unit test will pass.&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;for-a-typical-unit-test-i-usually-create-2-variables-one-named-actual-and-another-named-expect&#34;&gt;For a typical unit test I usually create 2 variables one named actual and another named expect&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;For &lt;code&gt;assert.equal(actual, expected, &#39;My message here&#39;)&lt;/code&gt; if actual and expected are equal then the unit test will pass.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The map function behaves in the following manner&lt;/p&gt;
 
@@ -204,8 +205,9 @@ Postman-Token: f3413251-c0de-69ac-99dd-992bcaaca3bd
 
 &lt;p&gt;&lt;em&gt;The Super Test library api docs can be found here &lt;a href=&#34;https://visionmedia.github.io/superagent&#34; target=&#34;_blank&#34;&gt;SuperTest&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;####Hints to complete the exercise:
-&lt;em&gt;1. Use post method in supertest&lt;/em&gt;
+&lt;h4 id=&#34;hints-to-complete-the-exercise&#34;&gt;Hints to complete the exercise:&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;1. Use post method in supertest&lt;/em&gt;
 &lt;em&gt;2. Use set method in supertest and pass in object with Accept and Content-Type headers.&lt;/em&gt;
 &lt;em&gt;3. Use send method in supertest and pass in object with a name and document property.&lt;/em&gt;
 &lt;em&gt;4. Make sure to call expect in supertest to do assertion and use previous get request as example.&lt;/em&gt;
@@ -231,8 +233,9 @@ Postman-Token: f3413251-c0de-69ac-99dd-992bcaaca3bd
 
 &lt;p&gt;&lt;em&gt;The Super Test library api docs and rest methods can be found here &lt;a href=&#34;https://visionmedia.github.io/superagent/#request-basics&#34; target=&#34;_blank&#34;&gt;SuperTest&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;####Hints to complete the exercise:
-&lt;em&gt;1. Use appropriate supertest method to remove document.&lt;/em&gt;
+&lt;h4 id=&#34;hints-to-complete-the-exercise-1&#34;&gt;Hints to complete the exercise:&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;1. Use appropriate supertest method to remove document.&lt;/em&gt;
 &lt;em&gt;2. Make assertion with the returned status code (204) is usual status for DELETE request.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;making-rest-call-with-curl-for-delete-request&#34;&gt;Making Rest Call with Curl for Delete Request&lt;/h4&gt;
@@ -647,7 +650,7 @@ Test spies are useful to test both callbacks and how certain functions/methods a
 
 &lt;p&gt;&lt;strong&gt;Open program.test.js in &lt;code&gt;mocks-stubs-spies&lt;/code&gt; folder&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;####1. Stub the &lt;code&gt;retrieveDocument&lt;/code&gt; function&lt;/p&gt;
+&lt;h4 id=&#34;1-stub-the-retrievedocument-function&#34;&gt;1. Stub the &lt;code&gt;retrieveDocument&lt;/code&gt; function&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function retrieveDocument({dbName, name}) {
     const couchDBName = nano.use(dbName);
@@ -666,7 +669,7 @@ Test spies are useful to test both callbacks and how certain functions/methods a
 Using Sinon check that the retrieveDocument stub is called once.
 Make an assertion that the payload and the expected response match.&lt;/p&gt;
 
-&lt;p&gt;####2. Stub the &lt;code&gt;insertDocument&lt;/code&gt; function.&lt;/p&gt;
+&lt;h4 id=&#34;2-stub-the-insertdocument-function&#34;&gt;2. Stub the &lt;code&gt;insertDocument&lt;/code&gt; function.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function insertDocument({ dbName = &#39;softwaretesting&#39;, name = &#39;users&#39;, body } = {}) {
     return new Promise((resolve, reject) =&amp;gt; {
@@ -701,9 +704,9 @@ function insertDoc({dbName, name, body}) {
 &lt;li&gt;Remember to use the setup function in tape or the before block in mocha to initialize the stub.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;####3. Stub out the &lt;code&gt;deleteDocument&lt;/code&gt; function&lt;/p&gt;
+&lt;h4 id=&#34;3-stub-out-the-deletedocument-function&#34;&gt;3. Stub out the &lt;code&gt;deleteDocument&lt;/code&gt; function&lt;/h4&gt;
 
-&lt;p&gt;######Implementation Details&lt;/p&gt;
+&lt;h6 id=&#34;implementation-details&#34;&gt;Implementation Details&lt;/h6&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function retrieveDoc({dbName, name}) {
     return new Promise((resolve, reject) =&amp;gt; {

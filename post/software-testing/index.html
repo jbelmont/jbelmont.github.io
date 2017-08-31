@@ -255,8 +255,9 @@
 });
 </code></pre>
 
-<p>####For a typical unit test I usually create 2 variables one named actual and another named expect
-<em>For <code>assert.equal(actual, expected, 'My message here')</code> if actual and expected are equal then the unit test will pass.</em></p>
+<h4 id="for-a-typical-unit-test-i-usually-create-2-variables-one-named-actual-and-another-named-expect">For a typical unit test I usually create 2 variables one named actual and another named expect</h4>
+
+<p><em>For <code>assert.equal(actual, expected, 'My message here')</code> if actual and expected are equal then the unit test will pass.</em></p>
 
 <p>The map function behaves in the following manner</p>
 
@@ -408,8 +409,9 @@ Postman-Token: f3413251-c0de-69ac-99dd-992bcaaca3bd
 
 <p><em>The Super Test library api docs can be found here <a href="https://visionmedia.github.io/superagent" target="_blank">SuperTest</a></em></p>
 
-<p>####Hints to complete the exercise:
-<em>1. Use post method in supertest</em>
+<h4 id="hints-to-complete-the-exercise">Hints to complete the exercise:</h4>
+
+<p><em>1. Use post method in supertest</em>
 <em>2. Use set method in supertest and pass in object with Accept and Content-Type headers.</em>
 <em>3. Use send method in supertest and pass in object with a name and document property.</em>
 <em>4. Make sure to call expect in supertest to do assertion and use previous get request as example.</em>
@@ -435,8 +437,9 @@ Postman-Token: f3413251-c0de-69ac-99dd-992bcaaca3bd
 
 <p><em>The Super Test library api docs and rest methods can be found here <a href="https://visionmedia.github.io/superagent/#request-basics" target="_blank">SuperTest</a></em></p>
 
-<p>####Hints to complete the exercise:
-<em>1. Use appropriate supertest method to remove document.</em>
+<h4 id="hints-to-complete-the-exercise-1">Hints to complete the exercise:</h4>
+
+<p><em>1. Use appropriate supertest method to remove document.</em>
 <em>2. Make assertion with the returned status code (204) is usual status for DELETE request.</em></p>
 
 <h4 id="making-rest-call-with-curl-for-delete-request">Making Rest Call with Curl for Delete Request</h4>
@@ -851,7 +854,7 @@ Test spies are useful to test both callbacks and how certain functions/methods a
 
 <p><strong>Open program.test.js in <code>mocks-stubs-spies</code> folder</strong></p>
 
-<p>####1. Stub the <code>retrieveDocument</code> function</p>
+<h4 id="1-stub-the-retrievedocument-function">1. Stub the <code>retrieveDocument</code> function</h4>
 
 <pre><code class="language-javascript">function retrieveDocument({dbName, name}) {
     const couchDBName = nano.use(dbName);
@@ -870,7 +873,7 @@ Test spies are useful to test both callbacks and how certain functions/methods a
 Using Sinon check that the retrieveDocument stub is called once.
 Make an assertion that the payload and the expected response match.</p>
 
-<p>####2. Stub the <code>insertDocument</code> function.</p>
+<h4 id="2-stub-the-insertdocument-function">2. Stub the <code>insertDocument</code> function.</h4>
 
 <pre><code class="language-javascript">function insertDocument({ dbName = 'softwaretesting', name = 'users', body } = {}) {
     return new Promise((resolve, reject) =&gt; {
@@ -905,9 +908,9 @@ function insertDoc({dbName, name, body}) {
 <li>Remember to use the setup function in tape or the before block in mocha to initialize the stub.</li>
 </ul>
 
-<p>####3. Stub out the <code>deleteDocument</code> function</p>
+<h4 id="3-stub-out-the-deletedocument-function">3. Stub out the <code>deleteDocument</code> function</h4>
 
-<p>######Implementation Details</p>
+<h6 id="implementation-details">Implementation Details</h6>
 
 <pre><code class="language-javascript">function retrieveDoc({dbName, name}) {
     return new Promise((resolve, reject) =&gt; {
