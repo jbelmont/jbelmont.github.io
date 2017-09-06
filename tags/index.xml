@@ -93,6 +93,15 @@
     </item>
     
     <item>
+      <title>Jwt</title>
+      <link>https://www.marcelbelmont.com/tags/jwt/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Learning New Programming Languages</title>
       <link>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</link>
       <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
@@ -111,6 +120,15 @@
     </item>
     
     <item>
+      <title>Oauth</title>
+      <link>https://www.marcelbelmont.com/tags/oauth/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/oauth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Object Oriented Design</title>
       <link>https://www.marcelbelmont.com/tags/object-oriented-design/</link>
       <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
@@ -125,24 +143,6 @@
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/owasp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Paper</title>
-      <link>https://www.marcelbelmont.com/tags/paper/</link>
-      <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Papers We Love</title>
-      <link>https://www.marcelbelmont.com/tags/papers-we-love/</link>
-      <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/papers-we-love/</guid>
       <description></description>
     </item>
     

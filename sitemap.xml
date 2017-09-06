@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/concepts-in-single-sign-on-using-jwt-and-saml/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/software-testing/</loc>
       <lastmod>2017-08-31T12:00:00+00:00</lastmod>
     </url>
@@ -265,6 +274,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/jwt/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</loc>
       <lastmod>2017-04-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -277,6 +296,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/memoization/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/oauth/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -354,6 +383,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/saml/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/security/</loc>
       <lastmod>2017-08-18T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -366,6 +405,16 @@
     
       <loc>https://www.marcelbelmont.com/</loc>
       <lastmod>2016-04-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/sso/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
       <priority>0</priority>
     </url>
     
