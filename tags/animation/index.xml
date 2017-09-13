@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Animation on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/animation/</link>
+    <description>Recent content in Animation on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Wed, 13 Sep 2017 12:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/animation/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Book Review of Designing Interface Animation</title>
+      <link>https://www.marcelbelmont.com/post/a-book-review-of-designing-interface-animation/</link>
+      <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/a-book-review-of-designing-interface-animation/</guid>
+      <description>
+
+&lt;h1 id=&#34;a-book-review-of-designing-interface-animation&#34;&gt;A Book Review of Designing Interface Animation&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#the-case-for-animation&#34;&gt;The Case for animation&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#why-you-cannot-ignore-animation&#34;&gt;Why you can&amp;rsquo;t ignore animation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#you-already-know-more-about-animation-than-you-think&#34;&gt;You Already know more about animation than you think&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#modern-principles-of-interactive-animation&#34;&gt;Modern Principles of Interactive Animation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-solve-design-problems&#34;&gt;Using Animation to Solve Design Problems&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-orient-and-give-context&#34;&gt;Using Animation to Orient and Give Context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-direct-focus-and-attention&#34;&gt;Using Animation to Direct Focus and Attention&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-show-cause-and-effect&#34;&gt;Using Animation to Show Cause and Effect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-for-feedback&#34;&gt;Using Animation for Feedback&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-demonstrate&#34;&gt;Using Animation to Demonstrate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-animation-to-express-your-brand&#34;&gt;Using Animation to Express Your Brand&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#animation-in-your-work-and-process&#34;&gt;Animation in Your Work and Process&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#where-animation-fits-in-your-design-process&#34;&gt;Where Animation Fits in your Design Process&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prototyping-your-animation-ideas&#34;&gt;Prototyping Your Animation Ideas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#animating-responsibly&#34;&gt;Animating Responsibly&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#purchase-designing-interface-animation&#34;&gt;Purchase Designing Interface Animation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-case-for-animation&#34;&gt;The Case for animation&lt;/h2&gt;
+
+&lt;p&gt;PART I&lt;/p&gt;
+
+&lt;h4 id=&#34;why-you-cannot-ignore-animation&#34;&gt;Why you cannot ignore animation&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animation has some positive effects on the brain such as reducing cognitive load when done right&lt;/li&gt;
+&lt;li&gt;Animation helps to communicate on a different level than things like type and color&lt;/li&gt;
+&lt;li&gt;Animation can be a design constant in user experiences that span across devices, screen sizes, and platforms&lt;/li&gt;
+&lt;li&gt;Animation can be used to focus user attention and help reinforce &lt;code&gt;content hierarchy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Animation can reinforce a personal/company brand personality and values&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;you-already-know-more-about-animation-than-you-think&#34;&gt;You Already know more about animation than you think&lt;/h4&gt;
+
+&lt;p&gt;Val Head goes over the 12 classic principles of animation and which ones pertain to animation&lt;/p&gt;
+
+&lt;h6 id=&#34;12-classic-principles-of-animation&#34;&gt;12 Classic Principles of animation:&lt;/h6&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Timing&lt;/li&gt;
+&lt;li&gt;Follow-through and overlapping action&lt;/li&gt;
+&lt;li&gt;Anticipation&lt;/li&gt;
+&lt;li&gt;Secondary action&lt;/li&gt;
+&lt;li&gt;Arcs&lt;/li&gt;
+&lt;li&gt;Squash and stretch&lt;/li&gt;
+&lt;li&gt;Slow In and Slow Out&lt;/li&gt;
+&lt;li&gt;Exaggeration&lt;/li&gt;
+&lt;li&gt;Straight Ahead and Pose to Pose&lt;/li&gt;
+&lt;li&gt;Solid Drawing&lt;/li&gt;
+&lt;li&gt;Appeal&lt;/li&gt;
+&lt;li&gt;Staging&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Out of the 12 classic principles though there are 5 that are most important for animation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Timing and spacing&lt;/li&gt;
+&lt;li&gt;Follow-through and overlapping action&lt;/li&gt;
+&lt;li&gt;Anticipation&lt;/li&gt;
+&lt;li&gt;Secondary action&lt;/li&gt;
+&lt;li&gt;Arcs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;modern-principles-of-interactive-animation&#34;&gt;Modern Principles of Interactive Animation&lt;/h4&gt;
+
+&lt;p&gt;Tricks to design animations that are useful:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Have a known purpose for every animation in your user interface&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t create obstacles with animation
+
+&lt;ul&gt;
+&lt;li&gt;Meaning don&amp;rsquo;t block users from your using the UI because of your animation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make sure to keep animations flexible and nonblocking&lt;/li&gt;
+&lt;li&gt;Make sure to focus on readability above duration
+
+&lt;ul&gt;
+&lt;li&gt;Give easing enough time for users to understand what is happening during the animation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make sure to animate the most performant CSS properties so that you have good performance from the start
+
+&lt;ul&gt;
+&lt;li&gt;If you animate non performant CSS, you can decrease UI performance&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;using-animation-to-solve-design-problems&#34;&gt;Using Animation to Solve Design Problems&lt;/h2&gt;
+
+&lt;p&gt;PART II&lt;/p&gt;
+
+&lt;h4 id=&#34;using-animation-to-orient-and-give-context&#34;&gt;Using Animation to Orient and Give Context&lt;/h4&gt;
+
+&lt;p&gt;Animation can help orient your users to the spatial relationships in your UI:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animation helps users create a mental model of the interface and even parts of the UI that aren&amp;rsquo;t visible&lt;/li&gt;
+&lt;li&gt;Animation helps move between layers in a layered interface&lt;/li&gt;
+&lt;li&gt;Animation helps guide users through steps to complete a task in a UI
+
+&lt;ul&gt;
+&lt;li&gt;For example to help onboard new users to your site by animating different features&lt;/li&gt;
+&lt;li&gt;This can help users from future issues by better understanding your product features&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Animation helps connect application content with context changes in the UI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;using-animation-to-direct-focus-and-attention&#34;&gt;Using Animation to Direct Focus and Attention&lt;/h4&gt;
+
+&lt;p&gt;Utilize Animation&amp;rsquo;s ability to grab attention by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animating the most important content for your users&lt;/li&gt;
+&lt;li&gt;Use animation to direct eye flow and guide users gaze through the content hierachy with motion&lt;/li&gt;
+&lt;li&gt;Use animation to help visual continuity to help show when an object has not changed&lt;/li&gt;
+&lt;li&gt;Use a defined easing palette and create contrast of motion or easing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;using-animation-to-show-cause-and-effect&#34;&gt;Using Animation to Show Cause and Effect&lt;/h4&gt;
+
+&lt;p&gt;Use animation to show users what effect their actions have triggered in the UI while they complete a task:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure to hint at affordances with animation
+
+&lt;ul&gt;
+&lt;li&gt;Affordance being the concept of using an object&amp;rsquo;s characteristics to inform you how to use it&lt;/li&gt;
+&lt;li&gt;For instance in iPhone the swipe gesture is when you tap in the lower right and and it gives cue to swipe up&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make sure to cue the next step in a series of tasks with animation&lt;/li&gt;
+&lt;li&gt;Animation can also help preview the effect of a task before it is done&lt;/li&gt;
+&lt;li&gt;Animation can confirm an action&amp;rsquo;s effect once it is done&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;using-animation-for-feedback&#34;&gt;Using Animation for Feedback&lt;/h4&gt;
+
+&lt;p&gt;Animation can help make feedback better by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animating more effectively any attention-grabbing error messages&lt;/li&gt;
+&lt;li&gt;Animation can visually confirm behind-the-scenes-task when in context&lt;/li&gt;
+&lt;li&gt;Animation can also provide meaningful loading indicators
+
+&lt;ul&gt;
+&lt;li&gt;When used appropriately loading indicators can help users understand that something is occurring in the background&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Animation such as a skeleton background can give visual cues to users and help make perceived wait times in a UI to feel shorter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;using-animation-to-demonstrate&#34;&gt;Using Animation to Demonstrate&lt;/h4&gt;
+
+&lt;p&gt;Animation Focus:&lt;/p&gt;
+
+&lt;p&gt;An animation should have a clear focus of either a single feature or a single aspect of a story to tell&lt;/p&gt;
+
+&lt;p&gt;Animation Length:&lt;/p&gt;
+
+&lt;p&gt;Make sure to keep animation succint and show a single taks or action at a time&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Don&amp;rsquo;t block access to user content or navigation when using an animation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;using-animation-to-express-your-brand&#34;&gt;Using Animation to Express Your Brand&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animation design guidelines or values can help keep your personal/company brand efforts consistent and cohesive
+
+&lt;ul&gt;
+&lt;li&gt;The big takeaway is that teams need to communicate how animations work throughout the UI to avoid confusing users with different types of animations where there should be consistency&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make sure to collect and evaluate existing animation as a group with a motion audi
+
+&lt;ul&gt;
+&lt;li&gt;This can give you valuable insight into how your company is using animation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Animation can also be used to describe your brand much like Words are used&lt;/li&gt;
+&lt;li&gt;Make sure to look for real-world objects or even animals to emulate to define what your brand looks like in motion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;animation-in-your-work-and-process&#34;&gt;Animation in Your Work and Process&lt;/h2&gt;
+
+&lt;p&gt;Part III&lt;/p&gt;
+
+&lt;h4 id=&#34;where-animation-fits-in-your-design-process&#34;&gt;Where Animation Fits in your Design Process&lt;/h4&gt;
+
+&lt;p&gt;Tips to make sure animation is part of your design process:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start animation discussions early&lt;/li&gt;
+&lt;li&gt;Use storyboards to brainstorm animation ideas quickly early on&lt;/li&gt;
+&lt;li&gt;Make sure to use prototypes and motion mock-ups to test how your animation ideas hold up with user interaction
+
+&lt;ul&gt;
+&lt;li&gt;Also prototypes help discuss ideas with fellow team members&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Document animation design decisions in your animation style guide&lt;/li&gt;
+&lt;li&gt;Try to keep communication open and try to discuss animation ideas and opportunities through a project life-cycle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;prototyping-your-animation-ideas&#34;&gt;Prototyping Your Animation Ideas&lt;/h4&gt;
+
+&lt;p&gt;4 Points are made to keep prototyping focused:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quick sketches help build great low-fidelity prototypes to help shape direction that animation should take
+
+&lt;ul&gt;
+&lt;li&gt;Low-fidelity prototypes being a quick sketch on paper or on a whiteboard&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Motion comps can be helpful in evaluating the behavior of an animation; like how an animation responds to input and whether an animation gives timely feedback to users&lt;/li&gt;
+&lt;li&gt;Interactive prototypes can be quick and simple to make and they don&amp;rsquo;t have to have production quality code&lt;/li&gt;
+&lt;li&gt;Some specific tools are mentioned like Framer.js or making HTML, CSS prototypes in code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;animating-responsibly&#34;&gt;Animating Responsibly&lt;/h4&gt;
+
+&lt;p&gt;Points to keep in mind to animate responsibly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Animations can be both beneficial and harmful for accessibility.
+
+&lt;ul&gt;
+&lt;li&gt;Always aim to minimize harmful animation effects and maximimize potential benefits&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Design animations with users with vestibular disorders (disorders related to balance and dizziness) in mind.
+
+&lt;ul&gt;
+&lt;li&gt;Make your animations purposeful and give accurate context cues and provide a means to reduce an animation motion&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Make sure to treat animations as a layer of enhancement to make your work more universal and less fragile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;purchase-designing-interface-animation&#34;&gt;Purchase Designing Interface Animation&lt;/h2&gt;
+
+&lt;p&gt;You can purchase interface animation at &lt;a href=&#34;Purchase Designing Interface Animation&#34; target=&#34;_blank&#34;&gt;Designing Interface Animation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Great job Val Head&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
