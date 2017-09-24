@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/data-visualization-and-d3/</loc>
+      <lastmod>2017-09-24T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/a-book-review-of-designing-interface-animation/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
     </url>
@@ -265,6 +274,26 @@
     
       <loc>https://www.marcelbelmont.com/tags/course-review/</loc>
       <lastmod>2017-08-16T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/d3/</loc>
+      <lastmod>2017-09-24T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/data-visualization/</loc>
+      <lastmod>2017-09-24T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
