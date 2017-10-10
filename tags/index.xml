@@ -66,6 +66,15 @@
     </item>
     
     <item>
+      <title>Command Line Apps</title>
+      <link>https://www.marcelbelmont.com/tags/command-line-apps/</link>
+      <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/command-line-apps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Continuous Integration</title>
       <link>https://www.marcelbelmont.com/tags/continuous-integration/</link>
       <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
@@ -111,6 +120,15 @@
     </item>
     
     <item>
+      <title>Golang</title>
+      <link>https://www.marcelbelmont.com/tags/golang/</link>
+      <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Interface</title>
       <link>https://www.marcelbelmont.com/tags/interface/</link>
       <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
@@ -125,24 +143,6 @@
       <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/jenkins/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jwt</title>
-      <link>https://www.marcelbelmont.com/tags/jwt/</link>
-      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/jwt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Learning New Programming Languages</title>
-      <link>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</link>
-      <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/learning-new-programming-languages/</guid>
       <description></description>
     </item>
     

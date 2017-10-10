@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</loc>
+      <lastmod>2017-10-10T18:49:29-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/data-visualization-and-d3/</loc>
       <lastmod>2017-09-24T12:00:00+00:00</lastmod>
     </url>
@@ -262,6 +271,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/command-line-apps/</loc>
+      <lastmod>2017-10-10T18:49:29-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/continuous-integration/</loc>
       <lastmod>2017-08-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -312,6 +331,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/golang/</loc>
+      <lastmod>2017-10-10T18:49:29-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/interface/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -354,6 +383,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/memoization/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/node.js/</loc>
+      <lastmod>2017-10-10T18:49:29-04:00</lastmod>
       <priority>0</priority>
     </url>
     
