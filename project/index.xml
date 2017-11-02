@@ -7,26 +7,8 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sat, 08 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Dec 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="/project/" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Learning New Programming Languages</title>
-      <link>https://www.marcelbelmont.com/project/learning_new_programming_languages/</link>
-      <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/project/learning_new_programming_languages/</guid>
-      <description>
-
-&lt;h2 id=&#34;meetup-details&#34;&gt;Meetup Details&lt;/h2&gt;
-
-&lt;p&gt;A Meetup based on Learning New Programming Languages.&lt;/p&gt;
-
-&lt;h2 id=&#34;meetup-events&#34;&gt;Meetup Events&lt;/h2&gt;
-
-&lt;p&gt;The very first meetup event can be found at &lt;a href=&#34;https://www.meetup.com/Learning-New-Programming-Languages/events/237929908/&#34; target=&#34;_blank&#34;&gt;Basics of Programming in Go and Testing in Go&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Papers We Love</title>
