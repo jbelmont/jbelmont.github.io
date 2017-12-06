@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/page-object-pattern/</loc>
+      <lastmod>2017-12-06T10:09:18-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</loc>
       <lastmod>2017-10-10T18:49:29-04:00</lastmod>
     </url>
@@ -322,6 +331,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/e2e/</loc>
+      <lastmod>2017-12-06T10:09:18-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/golang/</loc>
       <lastmod>2017-10-10T18:49:29-04:00</lastmod>
       <priority>0</priority>
@@ -404,6 +423,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/owasp/</loc>
       <lastmod>2017-08-18T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/page-objects/</loc>
+      <lastmod>2017-12-06T10:09:18-05:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -522,7 +551,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/testing/</loc>
-      <lastmod>2017-08-31T12:00:00+00:00</lastmod>
+      <lastmod>2017-12-06T10:09:18-05:00</lastmod>
       <priority>0</priority>
     </url>
     

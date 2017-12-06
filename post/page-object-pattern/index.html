@@ -39,11 +39,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/">
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/page-object-pattern/">
 
   
 
-  <title>Compare and Contrast Golang and Nodejs for Commandline Apps | Software Musings</title>
+  <title>Page Object Pattern | Software Musings</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -144,14 +144,14 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name">Compare and Contrast Golang and Nodejs for Commandline Apps</h1>
+    <h1 itemprop="name">Page Object Pattern</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-10-10 18:49:29 -0400 EDT" itemprop="datePublished">
-      Tue, Oct 10, 2017
+    <time datetime="2017-12-06 10:09:18 -0500 EST" itemprop="datePublished">
+      Wed, Dec 6, 2017
     </time>
   </span>
 
@@ -163,13 +163,13 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/command-line-apps">Command Line Apps</a
+    <a href="/tags/e2e">e2e</a
     >, 
     
-    <a href="/tags/golang">Golang</a
+    <a href="/tags/testing">testing</a
     >, 
     
-    <a href="/tags/node.js">Node.js</a
+    <a href="/tags/page-objects">page objects</a
     >
     
   </span>
@@ -182,35 +182,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcompare-and-contrast-golang-and-nodejs-for-commandline-apps%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fpage-object-pattern%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Compare%20and%20Contrast%20Golang%20and%20Nodejs%20for%20Commandline%20Apps&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcompare-and-contrast-golang-and-nodejs-for-commandline-apps%2f"
+         href="https://twitter.com/intent/tweet?text=Page%20Object%20Pattern&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fpage-object-pattern%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcompare-and-contrast-golang-and-nodejs-for-commandline-apps%2f&amp;title=Compare%20and%20Contrast%20Golang%20and%20Nodejs%20for%20Commandline%20Apps"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fpage-object-pattern%2f&amp;title=Page%20Object%20Pattern"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcompare-and-contrast-golang-and-nodejs-for-commandline-apps%2f&amp;title=Compare%20and%20Contrast%20Golang%20and%20Nodejs%20for%20Commandline%20Apps"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fpage-object-pattern%2f&amp;title=Page%20Object%20Pattern"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Compare%20and%20Contrast%20Golang%20and%20Nodejs%20for%20Commandline%20Apps&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcompare-and-contrast-golang-and-nodejs-for-commandline-apps%2f">
+         href="mailto:?subject=Page%20Object%20Pattern&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fpage-object-pattern%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -225,164 +225,149 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<h1 id="command-line-applications">Command Line Applications</h1>
+<h1 id="page-objects">Page Objects</h1>
 
-<p>Building command line applications is a refreshing change to building UIs.
-In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang</p>
+<h2 id="what-are-page-objects">What are Page Objects?</h2>
 
-<h2 id="node-js-commandline">Node.js CommandLine</h2>
+<p><a href="https://martinfowler.com/bliki/PageObject.html" target="_blank">Page Object Blog Post by Martin Fowler</a></p>
 
-<p>First off I did not use a <code>commander.js</code> or any third party libraries to make my contrived application. I used vanilla node.js</p>
+<blockquote>
+<p>A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML.</p>
+</blockquote>
 
-<pre><code class="language-javascript">'use strict';
+<p>Page objects are a way to describe UI interactions in your page with application specific terminology instead of HTML specific language.</p>
 
-const process = require('process');
-const fs = require('fs');
+<p>This in turn helps you write tests that are more clear and also helps you be more dry (Don&rsquo;t Repeat yourself) because you can reuse your page objects in other acceptance/end-to-end tests</p>
 
-const lib = require('../lib');
-const utf8 = require('../constants').utf8;
+<h2 id="normal-html-page-structure">Normal HTML Page Structure</h2>
 
-const args = process.argv.slice(2);
+<pre><code class="language-html">&lt;div class=&quot;page__container&quot;&gt;
+    &lt;ul class=&quot;page_container-list&quot;&gt;
+        &lt;li&gt;John Rambo&lt;/li&gt;
+        &lt;li&gt;Chuck Norris&lt;/li&gt;
+        &lt;li&gt;John Shaft&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
 
-const tsvOrCsv = args.some(arg =&gt; {
-  return arg === '--tsv-file' || arg === '--csv-file';
-});
+<p>Here using ember acceptance testing syntax we can grab the list of names: <code>find('.page_container-list')</code></p>
 
-if (!tsvOrCsv) {
-  lib.UsageMessage();
-  process.exit(1);
-}
+<p>The problem with this is that it is not as descriptive as it could be</p>
 
-const csvIndex = args.findIndex(arg =&gt; arg === '--csv-file');
-let csv, tsv;
-if (csvIndex &gt; -1) {
-  csv  = args.slice(csvIndex);
-}
+<h2 id="page-object-pattern">Page Object Pattern</h2>
 
-const tsvIndex = args.findIndex(arg =&gt; arg === '--tsv-file');
-if (tsvIndex &gt; -1) {
-  tsv = args.slice(tsvIndex);
-}
-if (csv) {
-  const csvPath = csv[1];
-  const fileContents = [];
-  fileReader(csvPath, function(err, data) {
-    if (err) throw err;
-    const [
-      language,
-      frequency
-    ] = data.split(',');
-    console.log(language);
-    console.log(frequency);
-  });
-} else if (tsv) {
-  const tsvPath = tsv[1];
-  console.log(tsvPath);
-} else {
-  lib.UsageMessage();
-  process.exit(1);
-}
+<p>Here is a sample Page Object:</p>
 
-function fileReader(filePath, cb) {
-  fs.readFile(`${__dirname}/../${filePath}`, utf8, function(err, data) {
-    if (err) return cb(err);
-    cb(null, data);
-  });
+<pre><code class="language-js">const usersList = {
+    actionHeroes() {
+        return find('.page_container-list');
+    }
+};
+</code></pre>
+
+<p>Now we can grab the list of action heroes like this: <code>usersList.actionHeroes()</code></p>
+
+<p>Suppose we wanted to get the total count of action heroes, we could use the ember acceptance testing syntax as follows:</p>
+
+<pre><code class="language-js">find('.page_container-list').length
+</code></pre>
+
+<p>but instead we can create a function that returns the total count of superheroes using Page Object Design Pattern like this:</p>
+
+<pre><code class="language-js">const usersList = {
+    actionHeroes() {
+        return find('.page_container-list');
+    },
+    totalNumberOfActionHeroes() {
+        return find('.page_container-list').length;
+    }
+};
+</code></pre>
+
+<p>so now using our Page Object pattern we can grab the list of superheroes as follows: <code>usersList.totalNumberOfActionHeroes();</code> which is more descriptive.</p>
+
+<p><strong>Additionally this helps make our acceptance tests more reusable</strong></p>
+
+<h2 id="page-object-methods">Page Object Methods</h2>
+
+<p>Page Objects can also contain UI interaction flows.</p>
+
+<p>For example:</p>
+
+<p>Say User A logs into your app and then wants to go to his settings page to update his login information.</p>
+
+<p>Using the Page Object Pattern we can construct the following Page Object:</p>
+
+<pre><code class="language-js">const UserLogin = {
+    login({
+        username,
+        password
+    }) {
+        return authenticateToSystem(username, password);
+    },
+    visitSettings() {
+        return visit('/settings');
+    }
 }
 </code></pre>
 
-<p>Here is a snippet of code I used for node.js on one hand you can parse flags relatively easy but there is niceties missing.</p>
+<p>Now we can just do <code>UserLogin.login('jbelmont', 'somepassword').visitSettings();</code> and both login and go to the User Settings Page.</p>
 
-<p>In node.js you can just use <code>process.argv</code> and parse out the flags that were passed in via the commmandline</p>
+<h4 id="page-object-method-scenario">Page Object Method Scenario</h4>
 
-<h2 id="golang-commandline-application">Golang CommandLine application</h2>
+<p>Say that we want to update the username of a specific user in a possible admin list</p>
 
-<p>Golang has many things baked into their standard library that make building command line applications very easy.</p>
+<p>Using Page Object pattern we could do the following:</p>
 
-<pre><code>package main
-
-import (
-	&quot;bufio&quot;
-	&quot;encoding/csv&quot;
-	&quot;encoding/json&quot;
-	&quot;flag&quot;
-	&quot;fmt&quot;
-	&quot;io&quot;
-	&quot;os&quot;
-)
-
-func convertToJSON(f *os.File, isTSVFile bool) {
-	rows := make([]map[string]string, 0)
-	var columns = []string{&quot;language&quot;, &quot;frequency&quot;}
-	// Create a new reader.
-	csvReader := csv.NewReader(bufio.NewReader(f))
-	csvReader.TrimLeadingSpace = true
-	if isTSVFile {
-		csvReader.Comma = '\t' // Use tab-delimited instead of comma
-	}
-	for {
-		record, err := csvReader.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			fmt.Println(err)
-		}
-		row := make(map[string]string)
-		for i, n := range columns {
-			row[n] = record[i]
-		}
-		rows = append(rows, row)
-	}
-	data, err := json.MarshalIndent(&amp;rows, &quot;&quot;, &quot;  &quot;)
-	if err != nil {
-		fmt.Println(err)
-	}
-	// print the reformatted struct as JSON
-	fmt.Printf(&quot;%s\n&quot;, data)
-}
-
-func main() {
-	csvPtr := flag.String(&quot;csv-file&quot;, &quot;&quot;, &quot;CSV File to parse. (Required)&quot;)
-	tsvPtr := flag.String(&quot;tsv-file&quot;, &quot;&quot;, &quot;TSV File to parse. (Required)&quot;)
-	flag.Parse()
-
-	if *csvPtr == &quot;&quot; &amp;&amp; *tsvPtr == &quot;&quot; {
-		flag.PrintDefaults()
-		os.Exit(1)
-	} else if *csvPtr != &quot;&quot; {
-		f, err := os.Open(*csvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, false)
-	} else {
-		f, err := os.Open(*tsvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, true)
-	}
+<pre><code class="language-js">const AdminPage = {
+    login({
+        username,
+        password
+    }) {
+        return authenticateToSystem(username, password);
+    },
+    visitAdmin(adminToken) {
+        return visit(adminToken, '/admin');
+    },
+    updateAdminUsername(username) {
+        this._setInput(username);
+        this._saveUsername(adminToken, username);
+    },
+    _setInput(newUserName) {
+        document.querySelector('.admin__input').value = newUserName;
+    },
+    _saveUsername(adminToken, username) {
+        db.saveNewUsername(adminToken, username);
+    }
 }
 </code></pre>
 
-<p>Notice here that I just used the <code>flag</code> builtin library and it does the job of parsing command line flags.</p>
+<p>Now with this possible Page Object we could do the following:</p>
 
-<p>Also dealing with asychronous code in <code>Golang</code> is much easier in my opinion.</p>
+<pre><code class="language-js">AdminPage
+    .login({
+        username: 'cnorris',
+        password: 'highkicker'
+    })
+    visitAdmin('someAdminToken1234')
+    .updateAdminUsername('jrambo', 'someAdminToken1234');
+</code></pre>
 
-<p>There are many design patterns baked into Golang that make writing commandline applications a joy to work with.</p>
+<p>Although this a contrived example and not necessarily a secure way to update a username, it does illustrate the power of Page Objects!</p>
 
-<h2 id="quick-summary">Quick summary</h2>
+<h2 id="page-object-libraries">Page Object Libraries</h2>
 
-<p>You can easily use either node.js or <code>Golang</code> but consider writing a command line application in Go.</p>
+<p>End to end testing libraries tend to have a page object pattern that is baked into them.</p>
 
-<h2 id="link-to-golang-workshop">Link to Golang Workshop</h2>
+<p>Here is a list of End to End Testing libraries that have them:</p>
 
-<p>I wrote a <a href="https://github.com/jbelmont/golang-workshop" target="_blank">Golang workshop</a> which you can check out if you aren&rsquo;t familiar with Go.</p>
+<ul>
+<li><a href="https://github.com/nightwatchjs/nightwatch/wiki/Page-Object-API" target="_blank">Nightwatchjs Page Object API</a></li>
+<li><a href="http://webdriver.io/guide/testrunner/pageobjects.html" target="_blank">Webdriverio Page Object</a></li>
+<li><a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects" target="_blank">Selenium Page Objects</a></li>
+</ul>
 
-<p>Follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont</a> if you like this.</p>
+<p>If you like this post then follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont at github</a></p>
 
     </div>
   </div>
@@ -393,13 +378,10 @@ func main() {
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://www.marcelbelmont.com/post/data-visualization-and-d3/"><span
-      aria-hidden="true">&larr;</span> A deep dive into Data Visualization, D3.js and SVG</a></li>
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/"><span
+      aria-hidden="true">&larr;</span> Compare and Contrast Golang and Nodejs for Commandline Apps</a></li>
     
 
-    
-    <li class="next"><a href="https://www.marcelbelmont.com/post/page-object-pattern/">Page Object Pattern <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>

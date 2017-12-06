@@ -11,6 +11,160 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Page Object Pattern</title>
+      <link>https://www.marcelbelmont.com/post/page-object-pattern/</link>
+      <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/page-object-pattern/</guid>
+      <description>
+
+&lt;h1 id=&#34;page-objects&#34;&gt;Page Objects&lt;/h1&gt;
+
+&lt;h2 id=&#34;what-are-page-objects&#34;&gt;What are Page Objects?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://martinfowler.com/bliki/PageObject.html&#34; target=&#34;_blank&#34;&gt;Page Object Blog Post by Martin Fowler&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Page objects are a way to describe UI interactions in your page with application specific terminology instead of HTML specific language.&lt;/p&gt;
+
+&lt;p&gt;This in turn helps you write tests that are more clear and also helps you be more dry (Don&amp;rsquo;t Repeat yourself) because you can reuse your page objects in other acceptance/end-to-end tests&lt;/p&gt;
+
+&lt;h2 id=&#34;normal-html-page-structure&#34;&gt;Normal HTML Page Structure&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;page__container&amp;quot;&amp;gt;
+    &amp;lt;ul class=&amp;quot;page_container-list&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;John Rambo&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;Chuck Norris&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;John Shaft&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here using ember acceptance testing syntax we can grab the list of names: &lt;code&gt;find(&#39;.page_container-list&#39;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The problem with this is that it is not as descriptive as it could be&lt;/p&gt;
+
+&lt;h2 id=&#34;page-object-pattern&#34;&gt;Page Object Pattern&lt;/h2&gt;
+
+&lt;p&gt;Here is a sample Page Object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const usersList = {
+    actionHeroes() {
+        return find(&#39;.page_container-list&#39;);
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can grab the list of action heroes like this: &lt;code&gt;usersList.actionHeroes()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Suppose we wanted to get the total count of action heroes, we could use the ember acceptance testing syntax as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;find(&#39;.page_container-list&#39;).length
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;but instead we can create a function that returns the total count of superheroes using Page Object Design Pattern like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const usersList = {
+    actionHeroes() {
+        return find(&#39;.page_container-list&#39;);
+    },
+    totalNumberOfActionHeroes() {
+        return find(&#39;.page_container-list&#39;).length;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;so now using our Page Object pattern we can grab the list of superheroes as follows: &lt;code&gt;usersList.totalNumberOfActionHeroes();&lt;/code&gt; which is more descriptive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Additionally this helps make our acceptance tests more reusable&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;page-object-methods&#34;&gt;Page Object Methods&lt;/h2&gt;
+
+&lt;p&gt;Page Objects can also contain UI interaction flows.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;Say User A logs into your app and then wants to go to his settings page to update his login information.&lt;/p&gt;
+
+&lt;p&gt;Using the Page Object Pattern we can construct the following Page Object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const UserLogin = {
+    login({
+        username,
+        password
+    }) {
+        return authenticateToSystem(username, password);
+    },
+    visitSettings() {
+        return visit(&#39;/settings&#39;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can just do &lt;code&gt;UserLogin.login(&#39;jbelmont&#39;, &#39;somepassword&#39;).visitSettings();&lt;/code&gt; and both login and go to the User Settings Page.&lt;/p&gt;
+
+&lt;h4 id=&#34;page-object-method-scenario&#34;&gt;Page Object Method Scenario&lt;/h4&gt;
+
+&lt;p&gt;Say that we want to update the username of a specific user in a possible admin list&lt;/p&gt;
+
+&lt;p&gt;Using Page Object pattern we could do the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const AdminPage = {
+    login({
+        username,
+        password
+    }) {
+        return authenticateToSystem(username, password);
+    },
+    visitAdmin(adminToken) {
+        return visit(adminToken, &#39;/admin&#39;);
+    },
+    updateAdminUsername(username) {
+        this._setInput(username);
+        this._saveUsername(adminToken, username);
+    },
+    _setInput(newUserName) {
+        document.querySelector(&#39;.admin__input&#39;).value = newUserName;
+    },
+    _saveUsername(adminToken, username) {
+        db.saveNewUsername(adminToken, username);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now with this possible Page Object we could do the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;AdminPage
+    .login({
+        username: &#39;cnorris&#39;,
+        password: &#39;highkicker&#39;
+    })
+    visitAdmin(&#39;someAdminToken1234&#39;)
+    .updateAdminUsername(&#39;jrambo&#39;, &#39;someAdminToken1234&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Although this a contrived example and not necessarily a secure way to update a username, it does illustrate the power of Page Objects!&lt;/p&gt;
+
+&lt;h2 id=&#34;page-object-libraries&#34;&gt;Page Object Libraries&lt;/h2&gt;
+
+&lt;p&gt;End to end testing libraries tend to have a page object pattern that is baked into them.&lt;/p&gt;
+
+&lt;p&gt;Here is a list of End to End Testing libraries that have them:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nightwatchjs/nightwatch/wiki/Page-Object-API&#34; target=&#34;_blank&#34;&gt;Nightwatchjs Page Object API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://webdriver.io/guide/testrunner/pageobjects.html&#34; target=&#34;_blank&#34;&gt;Webdriverio Page Object&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/SeleniumHQ/selenium/wiki/PageObjects&#34; target=&#34;_blank&#34;&gt;Selenium Page Objects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you like this post then follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Compare and Contrast Golang and Nodejs for Commandline Apps</title>
       <link>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</link>
       <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
