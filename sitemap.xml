@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/api-testing/</loc>
+      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/page-object-pattern/</loc>
       <lastmod>2017-12-06T10:09:18-05:00</lastmod>
     </url>
@@ -223,7 +232,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/api/</loc>
-      <lastmod>2017-02-10T12:00:00+00:00</lastmod>
+      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -323,6 +332,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/design/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/development/</loc>
+      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
       <priority>0</priority>
     </url>
     

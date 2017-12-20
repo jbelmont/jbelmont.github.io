@@ -11,6 +11,733 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Api Testing</title>
+      <link>https://www.marcelbelmont.com/post/api-testing/</link>
+      <pubDate>Wed, 20 Dec 2017 14:47:18 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
+      <description>
+
+&lt;h2 id=&#34;api-description&#34;&gt;API Description&lt;/h2&gt;
+
+&lt;p&gt;According to wikipedia an API is:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;An application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software. In general terms, it is a set of clearly defined methods of communication between various software components.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Modern Web APIs are &lt;a href=&#34;https://en.wikipedia.org/wiki/Representational_state_transfer&#34; target=&#34;_blank&#34;&gt;Restful&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There are 6 constraints for an API to be &lt;strong&gt;Restful&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Client-server architecture&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Statelessness&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cacheability&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Layered system&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Code on demand (optional)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Uniform interface&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Notice that &lt;em&gt;Code on demand&lt;/em&gt; is an optional constraint so APIs that don&amp;rsquo;t have this constraint can still be restful&lt;/p&gt;
+
+&lt;h2 id=&#34;restful-data-formats&#34;&gt;Restful data formats&lt;/h2&gt;
+
+&lt;p&gt;Most modern Web APIs use JavaScript Object Notation (JSON) instead of &lt;a href=&#34;https://en.wikipedia.org/wiki/XML&#34; target=&#34;_blank&#34;&gt;XML&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Although it is not required that you use &lt;a href=&#34;https://en.wikipedia.org/wiki/JSON&#34; target=&#34;_blank&#34;&gt;JSON&lt;/a&gt; for a restful API most modern Web APIs do use JSON&lt;/p&gt;
+
+&lt;h4 id=&#34;json-format&#34;&gt;JSON Format&lt;/h4&gt;
+
+&lt;p&gt;JSON is an open-standard file format that uses human-readable text to transmit data objects consisting of attribute–value pairs and array data types.&lt;/p&gt;
+
+&lt;p&gt;JSON&amp;rsquo;s basic data types are:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Number&lt;/code&gt; a signed decimal number that may contain a fractional part and may use exponential E notation, but cannot include non-numbers such as NaN.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The format makes no distinction between integer and floating-point.&lt;/li&gt;
+&lt;li&gt;JavaScript uses a double-precision floating-point format for all its numeric values, but other languages implementing JSON may encode numbers differently.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;String&lt;/code&gt;: a sequence of zero or more Unicode characters. Strings are delimited with double-quotation marks and support a backslash escaping syntax.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Boolean&lt;/code&gt;: either of the values true or false&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Array&lt;/code&gt;: an ordered list of zero or more values, each of which may be of any type.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Arrays use square bracket notation and elements are comma-separated.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Object: an unordered collection of name–value pairs where the names (also called keys) are strings. Since objects are intended to represent associative arrays, it is recommended, though not required, that each key is unique within an object.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Objects are delimited with curly brackets and use commas to separate each pair, while within each pair the colon &amp;lsquo;:&amp;rsquo; character separates the key or name from its value.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;null&lt;/code&gt;: An empty value, using the word null&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here is a sample JSON payload from the paypal API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+    &amp;quot;id&amp;quot;: &amp;quot;PAY-23S34684677003128LI5LXMQ&amp;quot;,
+    &amp;quot;intent&amp;quot;: &amp;quot;sale&amp;quot;,
+    &amp;quot;state&amp;quot;: &amp;quot;created&amp;quot;,
+    &amp;quot;payer&amp;quot;: {
+        &amp;quot;payment_method&amp;quot;: &amp;quot;paypal&amp;quot;
+    },
+    &amp;quot;transactions&amp;quot;: [
+        {
+            &amp;quot;amount&amp;quot;: {
+                &amp;quot;total&amp;quot;: &amp;quot;30.11&amp;quot;,
+                &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;,
+                &amp;quot;details&amp;quot;: {
+                    &amp;quot;subtotal&amp;quot;: &amp;quot;30.00&amp;quot;,
+                    &amp;quot;tax&amp;quot;: &amp;quot;0.07&amp;quot;,
+                    &amp;quot;shipping&amp;quot;: &amp;quot;0.03&amp;quot;,
+                    &amp;quot;insurance&amp;quot;: &amp;quot;0.01&amp;quot;,
+                    &amp;quot;handling_fee&amp;quot;: &amp;quot;1.00&amp;quot;,
+                    &amp;quot;shipping_discount&amp;quot;: &amp;quot;-1.00&amp;quot;
+                }
+            },
+            &amp;quot;description&amp;quot;: &amp;quot;The payment transaction description.&amp;quot;,
+            &amp;quot;custom&amp;quot;: &amp;quot;EBAY_EMS_90048630024435&amp;quot;,
+            &amp;quot;invoice_number&amp;quot;: &amp;quot;48787589673&amp;quot;,
+            &amp;quot;soft_descriptor&amp;quot;: &amp;quot;ECHI5786786&amp;quot;,
+            &amp;quot;payment_options&amp;quot;: {
+                &amp;quot;allowed_payment_method&amp;quot;: &amp;quot;INSTANT_FUNDING_SOURCE&amp;quot;,
+                &amp;quot;recurring_flag&amp;quot;: false,
+                &amp;quot;skip_fmf&amp;quot;: false
+            },
+            &amp;quot;item_list&amp;quot;: {
+                &amp;quot;items&amp;quot;: [
+                    {
+                        &amp;quot;name&amp;quot;: &amp;quot;hat&amp;quot;,
+                        &amp;quot;sku&amp;quot;: &amp;quot;1&amp;quot;,
+                        &amp;quot;description&amp;quot;: &amp;quot;Brown hat.&amp;quot;,
+                        &amp;quot;price&amp;quot;: &amp;quot;3.00&amp;quot;,
+                        &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;,
+                        &amp;quot;tax&amp;quot;: &amp;quot;0.01&amp;quot;,
+                        &amp;quot;quantity&amp;quot;: 5
+                    },
+                    {
+                        &amp;quot;name&amp;quot;: &amp;quot;handbag&amp;quot;,
+                        &amp;quot;sku&amp;quot;: &amp;quot;product34&amp;quot;,
+                        &amp;quot;description&amp;quot;: &amp;quot;Black handbag.&amp;quot;,
+                        &amp;quot;price&amp;quot;: &amp;quot;15.00&amp;quot;,
+                        &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;,
+                        &amp;quot;tax&amp;quot;: &amp;quot;0.02&amp;quot;,
+                        &amp;quot;quantity&amp;quot;: 1
+                    }
+                ],
+                &amp;quot;shipping_address&amp;quot;: {
+                    &amp;quot;recipient_name&amp;quot;: &amp;quot;Brian Robinson&amp;quot;,
+                    &amp;quot;line1&amp;quot;: &amp;quot;4th Floor&amp;quot;,
+                    &amp;quot;line2&amp;quot;: &amp;quot;Unit #34&amp;quot;,
+                    &amp;quot;city&amp;quot;: &amp;quot;San Jose&amp;quot;,
+                    &amp;quot;state&amp;quot;: &amp;quot;CA&amp;quot;,
+                    &amp;quot;postal_code&amp;quot;: &amp;quot;95131&amp;quot;,
+                    &amp;quot;country_code&amp;quot;: &amp;quot;US&amp;quot;,
+                    &amp;quot;phone&amp;quot;: &amp;quot;011862212345678&amp;quot;
+                }
+            },
+            &amp;quot;related_resources&amp;quot;: []
+        }
+    ],
+    &amp;quot;note_to_payer&amp;quot;: &amp;quot;Contact us for any questions on your order.&amp;quot;,
+    &amp;quot;create_time&amp;quot;: &amp;quot;2017-12-20T19:36:18Z&amp;quot;,
+    &amp;quot;links&amp;quot;: [
+        {
+            &amp;quot;href&amp;quot;: &amp;quot;https://api.sandbox.paypal.com/v1/payments/payment/PAY-23S34684677003128LI5LXMQ&amp;quot;,
+            &amp;quot;rel&amp;quot;: &amp;quot;self&amp;quot;,
+            &amp;quot;method&amp;quot;: &amp;quot;GET&amp;quot;
+        },
+        {
+            &amp;quot;href&amp;quot;: &amp;quot;https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;amp;token=EC-08C03207VR002793P&amp;quot;,
+            &amp;quot;rel&amp;quot;: &amp;quot;approval_url&amp;quot;,
+            &amp;quot;method&amp;quot;: &amp;quot;REDIRECT&amp;quot;
+        },
+        {
+            &amp;quot;href&amp;quot;: &amp;quot;https://api.sandbox.paypal.com/v1/payments/payment/PAY-23S34684677003128LI5LXMQ/execute&amp;quot;,
+            &amp;quot;rel&amp;quot;: &amp;quot;execute&amp;quot;,
+            &amp;quot;method&amp;quot;: &amp;quot;POST&amp;quot;
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;xml-format&#34;&gt;XML Format&lt;/h4&gt;
+
+&lt;p&gt;Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.&lt;/p&gt;
+
+&lt;p&gt;XML Terminology:&lt;/p&gt;
+
+&lt;h6 id=&#34;character&#34;&gt;Character&lt;/h6&gt;
+
+&lt;p&gt;An XML document is a string of characters.
+Almost every legal Unicode character may appear in an XML document.&lt;/p&gt;
+
+&lt;h6 id=&#34;processor-and-application&#34;&gt;Processor and application&lt;/h6&gt;
+
+&lt;p&gt;The processor analyzes the markup and passes structured information to an application.&lt;/p&gt;
+
+&lt;p&gt;The specification places requirements on what an XML processor must do and not do, but the application is outside its scope.&lt;/p&gt;
+
+&lt;h6 id=&#34;markup-and-content&#34;&gt;Markup and content&lt;/h6&gt;
+
+&lt;p&gt;The characters making up an XML document are divided into markup and content, which may be distinguished by the application of simple syntactic rules.&lt;/p&gt;
+
+&lt;p&gt;Generally, strings that constitute markup either begin with the character &lt;code&gt;&amp;lt;&lt;/code&gt; and end with a &lt;code&gt;&amp;gt;&lt;/code&gt;, or they begin with the character &lt;code&gt;&amp;amp;&lt;/code&gt; and end with a &lt;code&gt;;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Strings of characters that are not markup are content.&lt;/p&gt;
+
+&lt;h6 id=&#34;tag&#34;&gt;Tag&lt;/h6&gt;
+
+&lt;p&gt;A tag is a markup construct that begins with &lt;code&gt;&amp;lt;&lt;/code&gt; and ends with &lt;code&gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tags come in three forms in xml:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;start-tag&lt;/code&gt;: such as &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;end-tag&lt;/code&gt;: such as &lt;code&gt;&amp;lt;/section&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;empty-element&lt;/code&gt; tag: such as &lt;code&gt;&amp;lt;line-break /&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h6 id=&#34;element&#34;&gt;Element&lt;/h6&gt;
+
+&lt;p&gt;An element is a logical document component that either begins with a start-tag and ends with a matching end-tag or consists only of an empty-element tag.&lt;/p&gt;
+
+&lt;p&gt;The characters between the start-tag and end-tag, if any, are the element&amp;rsquo;s content, and may contain markup, including other elements, which are called child elements.&lt;/p&gt;
+
+&lt;p&gt;An example is &lt;code&gt;&amp;lt;message&amp;gt;Hello, world!&amp;lt;/message&amp;gt;&lt;/code&gt;. Another is &lt;code&gt;&amp;lt;line-break /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;attribute&#34;&gt;Attribute&lt;/h6&gt;
+
+&lt;p&gt;An attribute is a markup construct consisting of a name–value pair that exists within a start-tag or empty-element tag.&lt;/p&gt;
+
+&lt;p&gt;An example is &lt;code&gt;&amp;lt;img src=&amp;quot;picture.jpg&amp;quot; alt=&amp;quot;Mona Lisa&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The names of the attributes are &amp;ldquo;src&amp;rdquo; and &amp;ldquo;alt&amp;rdquo;, and their values are &amp;ldquo;picture.jpg&amp;rdquo; and &amp;ldquo;Mona Lisa&amp;rdquo; respectively.&lt;/p&gt;
+
+&lt;h6 id=&#34;xml-declaration&#34;&gt;XML declaration&lt;/h6&gt;
+
+&lt;p&gt;XML documents may begin with an XML declaration that describes some information about themselves.&lt;/p&gt;
+
+&lt;p&gt;An example is &lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;####### Comments in XML&lt;/p&gt;
+
+&lt;p&gt;One distinct difference between xml and json is that xml can have comments&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;I removed comments from JSON because I saw people were using them to hold parsing directives, a practice which would have destroyed interoperability. I know that the lack of comments makes some people sad, but it shouldn&#39;t.&#34; target=&#34;_blank&#34;&gt;Douglas Crockford Statement on why comments don&amp;rsquo;t exist in JSON&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Comments may appear anywhere in a document outside other markup.&lt;/p&gt;
+
+&lt;p&gt;Comments cannot appear before the XML declaration.&lt;/p&gt;
+
+&lt;p&gt;Comments begin with &lt;code&gt;&amp;lt;!-- and end with --&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is a sample XML Payload from the Walmart Labs Search API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;searchresponse&amp;gt;
+    &amp;lt;query&amp;gt;chromebook&amp;lt;/query&amp;gt;
+    &amp;lt;sort&amp;gt;relevance&amp;lt;/sort&amp;gt;
+    &amp;lt;responseGroup&amp;gt;base&amp;lt;/responseGroup&amp;gt;
+    &amp;lt;totalResults&amp;gt;303&amp;lt;/totalResults&amp;gt;
+    &amp;lt;start&amp;gt;1&amp;lt;/start&amp;gt;
+    &amp;lt;numItems&amp;gt;10&amp;lt;/numItems&amp;gt;
+    &amp;lt;facets/&amp;gt;
+    &amp;lt;items&amp;gt;
+        &amp;lt;item&amp;gt;
+            &amp;lt;itemId&amp;gt;48172060&amp;lt;/itemId&amp;gt;
+            &amp;lt;parentItemId&amp;gt;48172060&amp;lt;/parentItemId&amp;gt;
+            &amp;lt;name&amp;gt;HP Chromebook 14 G4 - 14&amp;quot; - Celeron N2840 - 4 GB RAM - 16 GB SSD&amp;lt;/name&amp;gt;
+            &amp;lt;msrp&amp;gt;234.0&amp;lt;/msrp&amp;gt;
+            &amp;lt;salePrice&amp;gt;242.88&amp;lt;/salePrice&amp;gt;
+            &amp;lt;upc&amp;gt;889894582294&amp;lt;/upc&amp;gt;
+            &amp;lt;categoryPath&amp;gt;Electronics/Computers/Laptops/Shop Laptops by Type/Google Chromebook&amp;lt;/categoryPath&amp;gt;
+            &amp;lt;shortDescription&amp;gt;Make the move to a cloud-based infrastructure with the HP Chromebook 14. Get down to business with Intel Celeron processors Citrix-certified VDI compatibility and access to Google Apps for Work.&amp;lt;/shortDescription&amp;gt;
+            &amp;lt;longDescription&amp;gt;HP Chromebook 14 G4 - 14&amp;amp;amp;quot; - Celeron N2840 - 4 GB RAM - 16 GB SSD&amp;lt;/longDescription&amp;gt;
+            &amp;lt;thumbnailImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=100&amp;amp;amp;odnWidth=100&amp;amp;amp;odnBg=FFFFFF&amp;lt;/thumbnailImage&amp;gt;
+            &amp;lt;mediumImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=180&amp;amp;amp;odnWidth=180&amp;amp;amp;odnBg=FFFFFF&amp;lt;/mediumImage&amp;gt;
+            &amp;lt;largeImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=450&amp;amp;amp;odnWidth=450&amp;amp;amp;odnBg=FFFFFF&amp;lt;/largeImage&amp;gt;
+            &amp;lt;productTrackingUrl&amp;gt;http://linksynergy.walmart.com/fs-bin/click?id=|LSNID|&amp;amp;amp;offerid=223073.7200&amp;amp;amp;type=14&amp;amp;amp;catid=8&amp;amp;amp;subid=0&amp;amp;amp;hid=7200&amp;amp;amp;tmpid=1082&amp;amp;amp;RD_PARM1=https%253A%252F%252Fwww.walmart.com%252Fip%252FHP-Chromebook-14-G4-14-Celeron-N2840-4-GB-RAM-16-GB-SSD%252F48172060%253Faffp1%253DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%2526affilsrc%253Dapi&amp;lt;/productTrackingUrl&amp;gt;
+            &amp;lt;standardShipRate&amp;gt;0.0&amp;lt;/standardShipRate&amp;gt;
+            &amp;lt;marketplace&amp;gt;false&amp;lt;/marketplace&amp;gt;
+            &amp;lt;modelNumber&amp;gt;T4M32UT#ABA&amp;lt;/modelNumber&amp;gt;
+            &amp;lt;productUrl&amp;gt;http://c.affil.walmart.com/t/api02?l=https%3A%2F%2Fwww.walmart.com%2Fip%2FHP-Chromebook-14-G4-14-Celeron-N2840-4-GB-RAM-16-GB-SSD%2F48172060%3Faffp1%3DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi&amp;lt;/productUrl&amp;gt;
+            &amp;lt;customerRating&amp;gt;4.444&amp;lt;/customerRating&amp;gt;
+            &amp;lt;numReviews&amp;gt;9&amp;lt;/numReviews&amp;gt;
+            &amp;lt;customerRatingImage&amp;gt;http://i2.walmartimages.com/i/CustRating/4_4.gif&amp;lt;/customerRatingImage&amp;gt;
+            &amp;lt;categoryNode&amp;gt;3944_3951_1089430&amp;lt;/categoryNode&amp;gt;
+            &amp;lt;bundle&amp;gt;false&amp;lt;/bundle&amp;gt;
+            &amp;lt;stock&amp;gt;Available&amp;lt;/stock&amp;gt;
+            &amp;lt;addToCartUrl&amp;gt;http://c.affil.walmart.com/t/api02?l=http%3A%2F%2Faffil.walmart.com%2Fcart%2FaddToCart%3Fitems%3D48172060%7C1%26affp1%3DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi&amp;lt;/addToCartUrl&amp;gt;
+            &amp;lt;affiliateAddToCartUrl&amp;gt;http://linksynergy.walmart.com/fs-bin/click?id=|LSNID|&amp;amp;amp;offerid=223073.7200&amp;amp;amp;type=14&amp;amp;amp;catid=8&amp;amp;amp;subid=0&amp;amp;amp;hid=7200&amp;amp;amp;tmpid=1082&amp;amp;amp;RD_PARM1=http%253A%252F%252Faffil.walmart.com%252Fcart%252FaddToCart%253Fitems%253D48172060%257C1%2526affp1%253DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%2526affilsrc%253Dapi&amp;lt;/affiliateAddToCartUrl&amp;gt;
+            &amp;lt;giftOptions&amp;gt;
+                &amp;lt;allowGiftWrap&amp;gt;false&amp;lt;/allowGiftWrap&amp;gt;
+                &amp;lt;allowGiftMessage&amp;gt;false&amp;lt;/allowGiftMessage&amp;gt;
+                &amp;lt;allowGiftReceipt&amp;gt;false&amp;lt;/allowGiftReceipt&amp;gt;
+            &amp;lt;/giftOptions&amp;gt;
+            &amp;lt;imageEntities&amp;gt;
+                &amp;lt;imageEntities&amp;gt;
+                    &amp;lt;thumbnailImage&amp;gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=100&amp;amp;amp;odnWidth=100&amp;amp;amp;odnBg=FFFFFF&amp;lt;/thumbnailImage&amp;gt;
+                    &amp;lt;mediumImage&amp;gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=180&amp;amp;amp;odnWidth=180&amp;amp;amp;odnBg=FFFFFF&amp;lt;/mediumImage&amp;gt;
+                    &amp;lt;largeImage&amp;gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=450&amp;amp;amp;odnWidth=450&amp;amp;amp;odnBg=FFFFFF&amp;lt;/largeImage&amp;gt;
+                    &amp;lt;entityType&amp;gt;SECONDARY&amp;lt;/entityType&amp;gt;
+                &amp;lt;/imageEntities&amp;gt;
+                &amp;lt;imageEntities&amp;gt;
+                    &amp;lt;thumbnailImage&amp;gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=100&amp;amp;amp;odnWidth=100&amp;amp;amp;odnBg=FFFFFF&amp;lt;/thumbnailImage&amp;gt;
+                    &amp;lt;mediumImage&amp;gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=180&amp;amp;amp;odnWidth=180&amp;amp;amp;odnBg=FFFFFF&amp;lt;/mediumImage&amp;gt;
+                    &amp;lt;largeImage&amp;gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=450&amp;amp;amp;odnWidth=450&amp;amp;amp;odnBg=FFFFFF&amp;lt;/largeImage&amp;gt;
+                    &amp;lt;entityType&amp;gt;SECONDARY&amp;lt;/entityType&amp;gt;
+                &amp;lt;/imageEntities&amp;gt;
+                &amp;lt;imageEntities&amp;gt;
+                    &amp;lt;thumbnailImage&amp;gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=100&amp;amp;amp;odnWidth=100&amp;amp;amp;odnBg=FFFFFF&amp;lt;/thumbnailImage&amp;gt;
+                    &amp;lt;mediumImage&amp;gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=180&amp;amp;amp;odnWidth=180&amp;amp;amp;odnBg=FFFFFF&amp;lt;/mediumImage&amp;gt;
+                    &amp;lt;largeImage&amp;gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=450&amp;amp;amp;odnWidth=450&amp;amp;amp;odnBg=FFFFFF&amp;lt;/largeImage&amp;gt;
+                    &amp;lt;entityType&amp;gt;SECONDARY&amp;lt;/entityType&amp;gt;
+                &amp;lt;/imageEntities&amp;gt;
+                &amp;lt;imageEntities&amp;gt;
+                    &amp;lt;thumbnailImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=100&amp;amp;amp;odnWidth=100&amp;amp;amp;odnBg=FFFFFF&amp;lt;/thumbnailImage&amp;gt;
+                    &amp;lt;mediumImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=180&amp;amp;amp;odnWidth=180&amp;amp;amp;odnBg=FFFFFF&amp;lt;/mediumImage&amp;gt;
+                    &amp;lt;largeImage&amp;gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=450&amp;amp;amp;odnWidth=450&amp;amp;amp;odnBg=FFFFFF&amp;lt;/largeImage&amp;gt;
+                    &amp;lt;entityType&amp;gt;PRIMARY&amp;lt;/entityType&amp;gt;
+                &amp;lt;/imageEntities&amp;gt;
+            &amp;lt;/imageEntities&amp;gt;
+            &amp;lt;offerType&amp;gt;ONLINE_ONLY&amp;lt;/offerType&amp;gt;
+            &amp;lt;isTwoDayShippingEligible&amp;gt;true&amp;lt;/isTwoDayShippingEligible&amp;gt;
+            &amp;lt;availableOnline&amp;gt;true&amp;lt;/availableOnline&amp;gt;
+        &amp;lt;/item&amp;gt;
+        ...
+    &amp;lt;/items&amp;gt;
+&amp;lt;/searchresponse&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;http-verbs&#34;&gt;HTTP Verbs&lt;/h4&gt;
+
+&lt;p&gt;The HTTP 1.1 Specification has 9 Request Methods:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The GET method requests a representation of the specified resource.&lt;/li&gt;
+&lt;li&gt;Requests using GET should only retrieve data and should have no other effect.&lt;/li&gt;
+&lt;li&gt;The W3C has published guidance principles on this distinction, saying, &amp;ldquo;Web application design should be informed by the above principles, but also by the relevant limitations.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;HEAD&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The HEAD method asks for a response identical to that of a GET request, but without the response body. This is useful for retrieving meta-information written in response headers, without having to transport the entire content.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The POST method requests that the server accept the entity enclosed in the request as a new subordinate of the web resource identified by the URI.&lt;/li&gt;
+&lt;li&gt;The data &lt;code&gt;POSTed&lt;/code&gt; might be, for example, an annotation for existing resources; a message for a bulletin board, newsgroup, mailing list, or comment thread; a block of data that is the result of submitting a web form to a data-handling process; or an item to add to a database.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;PUT&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The PUT method requests that the enclosed entity be stored under the supplied URI. If the URI refers to an already existing resource, it is modified; if the URI does not point to an existing resource, then the server can create the resource with that URI.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;DELETE&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The DELETE method deletes the specified resource.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;TRACE&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The TRACE method echoes the received request so that a client can see what (if any) changes or additions have been made by intermediate servers.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;OPTIONS&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The OPTIONS method returns the HTTP methods that the server supports for the specified URL. This can be used to check the functionality of a web server by requesting &amp;lsquo;*&amp;rsquo; instead of a specific resource.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;CONNECT&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The CONNECT method converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;PATCH&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The PATCH method applies partial modifications to a resource.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Most modern Web APIs only use 4 out the 9 HTTP verbs when implementing Restful APIs&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PUT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DELETE&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;url-design&#34;&gt;URL Design&lt;/h4&gt;
+
+&lt;p&gt;Keep your base URL simple and intuitive&lt;/p&gt;
+
+&lt;p&gt;Nouns are good; verbs are bad&lt;/p&gt;
+
+&lt;p&gt;The base URL is the most important design affordance of your API.&lt;/p&gt;
+
+&lt;p&gt;A simple and intuitive base URL design makes using your API easy.&lt;/p&gt;
+
+&lt;p&gt;A URL identifies a resource.&lt;/p&gt;
+
+&lt;p&gt;For consistency, only use plural nouns (e.g. &amp;ldquo;books&amp;rdquo; instead of &amp;ldquo;book&amp;rdquo;).&lt;/p&gt;
+
+&lt;h6 id=&#34;restful-urls&#34;&gt;Restful URLs&lt;/h6&gt;
+
+&lt;p&gt;Here is a list of Good Urls for a restful API:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;List of Books:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;GET https://api.sample.com/v1/books&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;List of Books using query:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;GET https://api.sample.com/v1/books?name=Batman&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create an access token&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;POST https://api.sandbox.paypal.com/v1/oauth2/token&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Notice that in all of these apis there is a major version number depicted by &lt;code&gt;v1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Also notice that nouns are used instead of verbs.&lt;/p&gt;
+
+&lt;h4 id=&#34;testing-an-api&#34;&gt;Testing an API&lt;/h4&gt;
+
+&lt;p&gt;For the purposes of this blog post we will use &lt;a href=&#34;https://curl.haxx.se/docs/&#34; target=&#34;_blank&#34;&gt;curl&lt;/a&gt; and &lt;a href=&#34;https://www.getpostman.com/docs/&#34; target=&#34;_blank&#34;&gt;Postman&lt;/a&gt; to make Rest calls&lt;/p&gt;
+
+&lt;p&gt;Let use use the Walmart Search API:&lt;/p&gt;
+
+&lt;h6 id=&#34;curl-usage&#34;&gt;Curl Usage&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X GET \
+  &#39;http://api.walmartlabs.com/v1/search?query=chromebook&amp;amp;format=xml&amp;amp;apiKey=someApiKey1234av&#39; \
+  -H &#39;Content-Type: application/xml&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First create an account with &lt;a href=&#34;https://developer.walmartlabs.com/&#34; target=&#34;_blank&#34;&gt;Walmart Labs Open API&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can go to &lt;a href=&#34;https://developer.walmartlabs.com/apps/mykeys&#34; target=&#34;_blank&#34;&gt;Mykeys at Walmart Labs Developer Portal&lt;/a&gt; to get your api key from the developer portal&lt;/p&gt;
+
+&lt;p&gt;The above curl &lt;code&gt;GET&lt;/code&gt; request returns an xml response payload as we saw above&lt;/p&gt;
+
+&lt;p&gt;With curl you specify the HTTP verb by using the option &lt;code&gt;-X&lt;/code&gt;, &lt;code&gt;--request&lt;/code&gt;, &lt;code&gt;{GET,PUT,POST,DELETE&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To pass headers into a curl command you pass in the &lt;code&gt;-H&lt;/code&gt;, &lt;code&gt;--header&lt;/code&gt;, &lt;code&gt;{Content-Type: application/xml, etc.}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to post data with curl you use the &lt;code&gt;-d&lt;/code&gt;, &lt;code&gt;--data&lt;/code&gt; options&lt;/p&gt;
+
+&lt;p&gt;Here is a sample POST request with curl&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X POST \
+  https://localhost:3000/api/v1/users \
+  -H &#39;Accept: application/json&#39; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{
+  &amp;quot;user&amp;quot;: {
+    &amp;quot;email&amp;quot;: &amp;quot;bigkahuna@surfsup.com&amp;quot;,
+    &amp;quot;first_name&amp;quot;: &amp;quot;Big&amp;quot;,
+    &amp;quot;gender&amp;quot;: &amp;quot;Male&amp;quot;,
+    &amp;quot;id&amp;quot;: 57,
+    &amp;quot;last_name&amp;quot;: &amp;quot;Kahuna&amp;quot;  
+  }
+}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;postman-usage&#34;&gt;Postman Usage&lt;/h4&gt;
+
+&lt;p&gt;Here is a screenshot of the same rest call using Postman&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/postmanSearchQuery.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that in the screenshot both URL and API_key are wrapped in &lt;code&gt;{{}}&lt;/code&gt; double curly braces&lt;/p&gt;
+
+&lt;p&gt;In Postman there are several different scopes for variables:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.getpostman.com/docs/postman/environments_and_globals/variables&#34; target=&#34;_blank&#34;&gt;Variables in Postman&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The following scopes are available to you:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Global&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Collection&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Environment&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Local&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Data&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Some advantages of using Postman over curl is that you can use Pre request scripts and post request scripts to automate API development testing and for scripting&lt;/p&gt;
+
+&lt;p&gt;If we wanted to make a payment to the paypal API we first need to get an access token from the &lt;code&gt;POST /v1/oauth2/token&lt;/code&gt; endpoint&lt;/p&gt;
+
+&lt;p&gt;after that we can make the rest call to the &lt;code&gt;POST /v1/payments/payment&lt;/code&gt; endpoint.&lt;/p&gt;
+
+&lt;p&gt;Here we need to make 2 calls in order to copy first the access token from the token endpoint and use that as our bearer token for the payment endpoint.&lt;/p&gt;
+
+&lt;p&gt;I will show a series of snapshots where I utilize Postman&amp;rsquo;s Pre request script and Tests section to automate this flow.&lt;/p&gt;
+
+&lt;p&gt;In order to make the rest call for &lt;code&gt;POST /v1/oauth2/token endpoint&lt;/code&gt; you need your client id and secret from the paypal developer portal which you can find by going &lt;a href=&#34;https://developer.paypal.com/&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt; and clicking the &lt;em&gt;Log into Dashboard&lt;/em&gt; button&lt;/p&gt;
+
+&lt;p&gt;If you were to make this call with curl you would have to Base 64 Encode your clientId and secret.&lt;/p&gt;
+
+&lt;p&gt;With JavaScript &lt;code&gt;btoa&lt;/code&gt; method you can do this  like this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;btoa(&amp;quot;clientId1234&amp;quot; + &amp;quot;:&amp;quot; + &amp;quot;asecret8888&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also use Node.js to base 64 encode a string like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const encodedVal = new Buffer(&amp;quot;clientId1234&amp;quot; + &amp;quot;:&amp;quot; + &amp;quot;asecret8888&amp;quot;).toString(&amp;quot;base64&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Both of these methods return the following base 64 encoded client id and secret: &lt;code&gt;Y2xpZW50SWQxMjM0OmFzZWNyZXQ4ODg4&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now using curl we can make the following POST request&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X POST \
+  https://api.sandbox.paypal.com/v1/oauth2/token \
+  -H &#39;Authorization: Basic Y2xpZW50SWQxMjM0OmFzZWNyZXQ4ODg4&#39; \
+  -H &#39;Content-Type: application/x-www-form-urlencoded&#39;
+  -d grant_type=client_credentials
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then using the access token we get from the JSON payload from the above call:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;
+{
+    &amp;quot;scope&amp;quot;: &amp;quot;https://uri.paypal.com/services/subscriptions https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://uri.paypal.com/services/applications/webhooks openid https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.*&amp;quot;,
+    &amp;quot;nonce&amp;quot;: &amp;quot;2017-12-20T19:26:8888onelongguid&amp;quot;,
+    &amp;quot;access_token&amp;quot;: &amp;quot;zdd12344alongGuid&amp;quot;,
+    &amp;quot;token_type&amp;quot;: &amp;quot;Bearer&amp;quot;,
+    &amp;quot;app_id&amp;quot;: &amp;quot;APP-553322344T&amp;quot;,
+    &amp;quot;expires_in&amp;quot;: 31275
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we need to copy the access_token and we can make the following rest call&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X POST \
+  https://api.sandbox.paypal.com/v1/payments/payment \
+  -H &#39;Authorization: Bearer zdd12344alongGuid&#39; \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{
+  &amp;quot;intent&amp;quot;: &amp;quot;sale&amp;quot;,
+  &amp;quot;payer&amp;quot;: {
+  &amp;quot;payment_method&amp;quot;: &amp;quot;paypal&amp;quot;
+  },
+  &amp;quot;transactions&amp;quot;: [
+  {
+    &amp;quot;amount&amp;quot;: {
+    &amp;quot;total&amp;quot;: &amp;quot;30.11&amp;quot;,
+    &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;,
+    &amp;quot;details&amp;quot;: {
+      &amp;quot;subtotal&amp;quot;: &amp;quot;30.00&amp;quot;,
+      &amp;quot;tax&amp;quot;: &amp;quot;0.07&amp;quot;,
+      &amp;quot;shipping&amp;quot;: &amp;quot;0.03&amp;quot;,
+      &amp;quot;handling_fee&amp;quot;: &amp;quot;1.00&amp;quot;,
+      &amp;quot;shipping_discount&amp;quot;: &amp;quot;-1.00&amp;quot;,
+      &amp;quot;insurance&amp;quot;: &amp;quot;0.01&amp;quot;
+    }
+    },
+    &amp;quot;description&amp;quot;: &amp;quot;The payment transaction description.&amp;quot;,
+    &amp;quot;custom&amp;quot;: &amp;quot;EBAY_EMS_90048630024435&amp;quot;,
+    &amp;quot;invoice_number&amp;quot;: &amp;quot;48787589673&amp;quot;,
+    &amp;quot;payment_options&amp;quot;: {
+    &amp;quot;allowed_payment_method&amp;quot;: &amp;quot;INSTANT_FUNDING_SOURCE&amp;quot;
+    },
+    &amp;quot;soft_descriptor&amp;quot;: &amp;quot;ECHI5786786&amp;quot;,
+    &amp;quot;item_list&amp;quot;: {
+    &amp;quot;items&amp;quot;: [
+      {
+      &amp;quot;name&amp;quot;: &amp;quot;hat&amp;quot;,
+      &amp;quot;description&amp;quot;: &amp;quot;Brown hat.&amp;quot;,
+      &amp;quot;quantity&amp;quot;: &amp;quot;5&amp;quot;,
+      &amp;quot;price&amp;quot;: &amp;quot;3&amp;quot;,
+      &amp;quot;tax&amp;quot;: &amp;quot;0.01&amp;quot;,
+      &amp;quot;sku&amp;quot;: &amp;quot;1&amp;quot;,
+      &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;
+      },
+      {
+      &amp;quot;name&amp;quot;: &amp;quot;handbag&amp;quot;,
+      &amp;quot;description&amp;quot;: &amp;quot;Black handbag.&amp;quot;,
+      &amp;quot;quantity&amp;quot;: &amp;quot;1&amp;quot;,
+      &amp;quot;price&amp;quot;: &amp;quot;15&amp;quot;,
+      &amp;quot;tax&amp;quot;: &amp;quot;0.02&amp;quot;,
+      &amp;quot;sku&amp;quot;: &amp;quot;product34&amp;quot;,
+      &amp;quot;currency&amp;quot;: &amp;quot;USD&amp;quot;
+      }
+    ],
+    &amp;quot;shipping_address&amp;quot;: {
+      &amp;quot;recipient_name&amp;quot;: &amp;quot;Brian Robinson&amp;quot;,
+      &amp;quot;line1&amp;quot;: &amp;quot;4th Floor&amp;quot;,
+      &amp;quot;line2&amp;quot;: &amp;quot;Unit #34&amp;quot;,
+      &amp;quot;city&amp;quot;: &amp;quot;San Jose&amp;quot;,
+      &amp;quot;country_code&amp;quot;: &amp;quot;US&amp;quot;,
+      &amp;quot;postal_code&amp;quot;: &amp;quot;95131&amp;quot;,
+      &amp;quot;phone&amp;quot;: &amp;quot;011862212345678&amp;quot;,
+      &amp;quot;state&amp;quot;: &amp;quot;CA&amp;quot;
+    }
+    }
+  }
+  ],
+  &amp;quot;note_to_payer&amp;quot;: &amp;quot;Contact us for any questions on your order.&amp;quot;,
+  &amp;quot;redirect_urls&amp;quot;: {
+  &amp;quot;return_url&amp;quot;: &amp;quot;https://www.example.com/return&amp;quot;,
+  &amp;quot;cancel_url&amp;quot;: &amp;quot;https://www.example.com/cancel&amp;quot;
+  }
+}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to post a payment to paypal.&lt;/p&gt;
+
+&lt;h4 id=&#34;automation-with-postman&#34;&gt;Automation with Postman&lt;/h4&gt;
+
+&lt;p&gt;Using Postman we can automate the copy and pasting of the Basic Auth using Pre-request script part&lt;/p&gt;
+
+&lt;p&gt;Here is the Pre-request script block:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;require(&#39;btoa&#39;);
+
+var client_id = postman.getEnvironmentVariable(&amp;quot;client_id&amp;quot;);
+var client_secret = postman.getEnvironmentVariable(&amp;quot;client_secret&amp;quot;);
+
+// Base 64 Encode client id and secret
+var encodeCredentials = btoa(client_id + &amp;quot;:&amp;quot; + client_secret);
+
+postman.setEnvironmentVariable(&amp;quot;encodeCredentials&amp;quot;, encodeCredentials);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is a screenshot of the script:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/preRequestScript.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we saved client_id and client_secret into environment variables and  &lt;code&gt;require(&#39;btoa&#39;)&lt;/code&gt; into the script&lt;/p&gt;
+
+&lt;p&gt;You can read more about the &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/pre_request_scripts&#34; target=&#34;_blank&#34;&gt;Pre-request script in Postman&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To get a full listing of the Postman Sandbox API look &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox_api_reference&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One thing to note is that to get the response payload we must use the Test section in Postman, the Pre-request script will not have access to the response body&lt;/p&gt;
+
+&lt;p&gt;Here is the Test script to set access_token:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Parse JSON response
+var responseBody = JSON.parse(responseBody);
+
+var access_token = responseBody.access_token;
+var token_type = responseBody.token_type;
+
+postman.setEnvironmentVariable(&amp;quot;access_token&amp;quot;, token_type + &amp;quot; &amp;quot; + access_token);
+
+pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.token_type).to.eql(&amp;quot;Bearer&amp;quot;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is a screenshot of the Test script section:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/testScript.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;You can read more about the &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/test_scripts&#34; target=&#34;_blank&#34;&gt;Test Script Section in Postman&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We can completely automate the &lt;code&gt;POST https://api.sandbox.paypal.com/v1/payments/payment&lt;/code&gt; endpoint with environment variables set in test script&lt;/p&gt;
+
+&lt;p&gt;Now the environment variable &lt;code&gt;access_token&lt;/code&gt; has been set in Postman&lt;/p&gt;
+
+&lt;p&gt;We can write the following Test Script now:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;var responseBody = JSON.parse(responseBody);
+
+pm.test(&amp;quot;Status code is 201&amp;quot;, function () {
+    pm.response.to.have.status(201);
+});
+
+pm.test(&amp;quot;State is created&amp;quot;, function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.state).to.eql(&amp;quot;created&amp;quot;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that Postman has its own flavor of testing using &lt;code&gt;pm.test&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;When you click the &lt;em&gt;Send&lt;/em&gt; button you will see the following in Test results:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/testResults.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;If you like this Blog post please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Page Object Pattern</title>
       <link>https://www.marcelbelmont.com/post/page-object-pattern/</link>
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>

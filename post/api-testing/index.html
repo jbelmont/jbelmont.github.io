@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.31.1" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/api-testing/">
+
+  
+
+  <title>Api Testing | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Api Testing</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-12-20 14:47:18 -0500 EST" itemprop="datePublished">
+      Wed, Dec 20, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/api">API</a
+    >, 
+    
+    <a href="/tags/development">Development</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fapi-testing%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Api%20Testing&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fapi-testing%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fapi-testing%2f&amp;title=Api%20Testing"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fapi-testing%2f&amp;title=Api%20Testing"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Api%20Testing&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fapi-testing%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h2 id="api-description">API Description</h2>
+
+<p>According to wikipedia an API is:</p>
+
+<blockquote>
+<p>An application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software. In general terms, it is a set of clearly defined methods of communication between various software components.</p>
+</blockquote>
+
+<p>Modern Web APIs are <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">Restful</a></p>
+
+<p>There are 6 constraints for an API to be <strong>Restful</strong> :</p>
+
+<ol>
+<li><p>Client-server architecture</p></li>
+
+<li><p>Statelessness</p></li>
+
+<li><p>Cacheability</p></li>
+
+<li><p>Layered system</p></li>
+
+<li><p>Code on demand (optional)</p></li>
+
+<li><p>Uniform interface</p></li>
+</ol>
+
+<p>Notice that <em>Code on demand</em> is an optional constraint so APIs that don&rsquo;t have this constraint can still be restful</p>
+
+<h2 id="restful-data-formats">Restful data formats</h2>
+
+<p>Most modern Web APIs use JavaScript Object Notation (JSON) instead of <a href="https://en.wikipedia.org/wiki/XML" target="_blank">XML</a></p>
+
+<p>Although it is not required that you use <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a> for a restful API most modern Web APIs do use JSON</p>
+
+<h4 id="json-format">JSON Format</h4>
+
+<p>JSON is an open-standard file format that uses human-readable text to transmit data objects consisting of attribute–value pairs and array data types.</p>
+
+<p>JSON&rsquo;s basic data types are:</p>
+
+<ol>
+<li><p><code>Number</code> a signed decimal number that may contain a fractional part and may use exponential E notation, but cannot include non-numbers such as NaN.</p>
+
+<ol>
+<li>The format makes no distinction between integer and floating-point.</li>
+<li>JavaScript uses a double-precision floating-point format for all its numeric values, but other languages implementing JSON may encode numbers differently.</li>
+</ol></li>
+
+<li><p><code>String</code>: a sequence of zero or more Unicode characters. Strings are delimited with double-quotation marks and support a backslash escaping syntax.</p></li>
+
+<li><p><code>Boolean</code>: either of the values true or false</p></li>
+
+<li><p><code>Array</code>: an ordered list of zero or more values, each of which may be of any type.</p>
+
+<ol>
+<li>Arrays use square bracket notation and elements are comma-separated.</li>
+</ol></li>
+
+<li><p>Object: an unordered collection of name–value pairs where the names (also called keys) are strings. Since objects are intended to represent associative arrays, it is recommended, though not required, that each key is unique within an object.</p>
+
+<ol>
+<li>Objects are delimited with curly brackets and use commas to separate each pair, while within each pair the colon &lsquo;:&rsquo; character separates the key or name from its value.</li>
+</ol></li>
+
+<li><p><code>null</code>: An empty value, using the word null</p></li>
+</ol>
+
+<p>Here is a sample JSON payload from the paypal API:</p>
+
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;PAY-23S34684677003128LI5LXMQ&quot;,
+    &quot;intent&quot;: &quot;sale&quot;,
+    &quot;state&quot;: &quot;created&quot;,
+    &quot;payer&quot;: {
+        &quot;payment_method&quot;: &quot;paypal&quot;
+    },
+    &quot;transactions&quot;: [
+        {
+            &quot;amount&quot;: {
+                &quot;total&quot;: &quot;30.11&quot;,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;details&quot;: {
+                    &quot;subtotal&quot;: &quot;30.00&quot;,
+                    &quot;tax&quot;: &quot;0.07&quot;,
+                    &quot;shipping&quot;: &quot;0.03&quot;,
+                    &quot;insurance&quot;: &quot;0.01&quot;,
+                    &quot;handling_fee&quot;: &quot;1.00&quot;,
+                    &quot;shipping_discount&quot;: &quot;-1.00&quot;
+                }
+            },
+            &quot;description&quot;: &quot;The payment transaction description.&quot;,
+            &quot;custom&quot;: &quot;EBAY_EMS_90048630024435&quot;,
+            &quot;invoice_number&quot;: &quot;48787589673&quot;,
+            &quot;soft_descriptor&quot;: &quot;ECHI5786786&quot;,
+            &quot;payment_options&quot;: {
+                &quot;allowed_payment_method&quot;: &quot;INSTANT_FUNDING_SOURCE&quot;,
+                &quot;recurring_flag&quot;: false,
+                &quot;skip_fmf&quot;: false
+            },
+            &quot;item_list&quot;: {
+                &quot;items&quot;: [
+                    {
+                        &quot;name&quot;: &quot;hat&quot;,
+                        &quot;sku&quot;: &quot;1&quot;,
+                        &quot;description&quot;: &quot;Brown hat.&quot;,
+                        &quot;price&quot;: &quot;3.00&quot;,
+                        &quot;currency&quot;: &quot;USD&quot;,
+                        &quot;tax&quot;: &quot;0.01&quot;,
+                        &quot;quantity&quot;: 5
+                    },
+                    {
+                        &quot;name&quot;: &quot;handbag&quot;,
+                        &quot;sku&quot;: &quot;product34&quot;,
+                        &quot;description&quot;: &quot;Black handbag.&quot;,
+                        &quot;price&quot;: &quot;15.00&quot;,
+                        &quot;currency&quot;: &quot;USD&quot;,
+                        &quot;tax&quot;: &quot;0.02&quot;,
+                        &quot;quantity&quot;: 1
+                    }
+                ],
+                &quot;shipping_address&quot;: {
+                    &quot;recipient_name&quot;: &quot;Brian Robinson&quot;,
+                    &quot;line1&quot;: &quot;4th Floor&quot;,
+                    &quot;line2&quot;: &quot;Unit #34&quot;,
+                    &quot;city&quot;: &quot;San Jose&quot;,
+                    &quot;state&quot;: &quot;CA&quot;,
+                    &quot;postal_code&quot;: &quot;95131&quot;,
+                    &quot;country_code&quot;: &quot;US&quot;,
+                    &quot;phone&quot;: &quot;011862212345678&quot;
+                }
+            },
+            &quot;related_resources&quot;: []
+        }
+    ],
+    &quot;note_to_payer&quot;: &quot;Contact us for any questions on your order.&quot;,
+    &quot;create_time&quot;: &quot;2017-12-20T19:36:18Z&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;href&quot;: &quot;https://api.sandbox.paypal.com/v1/payments/payment/PAY-23S34684677003128LI5LXMQ&quot;,
+            &quot;rel&quot;: &quot;self&quot;,
+            &quot;method&quot;: &quot;GET&quot;
+        },
+        {
+            &quot;href&quot;: &quot;https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;token=EC-08C03207VR002793P&quot;,
+            &quot;rel&quot;: &quot;approval_url&quot;,
+            &quot;method&quot;: &quot;REDIRECT&quot;
+        },
+        {
+            &quot;href&quot;: &quot;https://api.sandbox.paypal.com/v1/payments/payment/PAY-23S34684677003128LI5LXMQ/execute&quot;,
+            &quot;rel&quot;: &quot;execute&quot;,
+            &quot;method&quot;: &quot;POST&quot;
+        }
+    ]
+}
+</code></pre>
+
+<h4 id="xml-format">XML Format</h4>
+
+<p>Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.</p>
+
+<p>XML Terminology:</p>
+
+<h6 id="character">Character</h6>
+
+<p>An XML document is a string of characters.
+Almost every legal Unicode character may appear in an XML document.</p>
+
+<h6 id="processor-and-application">Processor and application</h6>
+
+<p>The processor analyzes the markup and passes structured information to an application.</p>
+
+<p>The specification places requirements on what an XML processor must do and not do, but the application is outside its scope.</p>
+
+<h6 id="markup-and-content">Markup and content</h6>
+
+<p>The characters making up an XML document are divided into markup and content, which may be distinguished by the application of simple syntactic rules.</p>
+
+<p>Generally, strings that constitute markup either begin with the character <code>&lt;</code> and end with a <code>&gt;</code>, or they begin with the character <code>&amp;</code> and end with a <code>;</code>.</p>
+
+<p>Strings of characters that are not markup are content.</p>
+
+<h6 id="tag">Tag</h6>
+
+<p>A tag is a markup construct that begins with <code>&lt;</code> and ends with <code>&gt;</code>.</p>
+
+<p>Tags come in three forms in xml:</p>
+
+<ol>
+<li><p><code>start-tag</code>: such as <code>&lt;section&gt;</code></p></li>
+
+<li><p><code>end-tag</code>: such as <code>&lt;/section&gt;</code></p></li>
+
+<li><p><code>empty-element</code> tag: such as <code>&lt;line-break /&gt;</code></p></li>
+</ol>
+
+<h6 id="element">Element</h6>
+
+<p>An element is a logical document component that either begins with a start-tag and ends with a matching end-tag or consists only of an empty-element tag.</p>
+
+<p>The characters between the start-tag and end-tag, if any, are the element&rsquo;s content, and may contain markup, including other elements, which are called child elements.</p>
+
+<p>An example is <code>&lt;message&gt;Hello, world!&lt;/message&gt;</code>. Another is <code>&lt;line-break /&gt;</code></p>
+
+<h6 id="attribute">Attribute</h6>
+
+<p>An attribute is a markup construct consisting of a name–value pair that exists within a start-tag or empty-element tag.</p>
+
+<p>An example is <code>&lt;img src=&quot;picture.jpg&quot; alt=&quot;Mona Lisa&quot; /&gt;</code></p>
+
+<p>The names of the attributes are &ldquo;src&rdquo; and &ldquo;alt&rdquo;, and their values are &ldquo;picture.jpg&rdquo; and &ldquo;Mona Lisa&rdquo; respectively.</p>
+
+<h6 id="xml-declaration">XML declaration</h6>
+
+<p>XML documents may begin with an XML declaration that describes some information about themselves.</p>
+
+<p>An example is <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></p>
+
+<p>####### Comments in XML</p>
+
+<p>One distinct difference between xml and json is that xml can have comments</p>
+
+<p><a href="I removed comments from JSON because I saw people were using them to hold parsing directives, a practice which would have destroyed interoperability. I know that the lack of comments makes some people sad, but it shouldn't." target="_blank">Douglas Crockford Statement on why comments don&rsquo;t exist in JSON</a></p>
+
+<p>Comments may appear anywhere in a document outside other markup.</p>
+
+<p>Comments cannot appear before the XML declaration.</p>
+
+<p>Comments begin with <code>&lt;!-- and end with --&gt;</code>.</p>
+
+<p>Here is a sample XML Payload from the Walmart Labs Search API:</p>
+
+<pre><code class="language-xml">&lt;searchresponse&gt;
+    &lt;query&gt;chromebook&lt;/query&gt;
+    &lt;sort&gt;relevance&lt;/sort&gt;
+    &lt;responseGroup&gt;base&lt;/responseGroup&gt;
+    &lt;totalResults&gt;303&lt;/totalResults&gt;
+    &lt;start&gt;1&lt;/start&gt;
+    &lt;numItems&gt;10&lt;/numItems&gt;
+    &lt;facets/&gt;
+    &lt;items&gt;
+        &lt;item&gt;
+            &lt;itemId&gt;48172060&lt;/itemId&gt;
+            &lt;parentItemId&gt;48172060&lt;/parentItemId&gt;
+            &lt;name&gt;HP Chromebook 14 G4 - 14&quot; - Celeron N2840 - 4 GB RAM - 16 GB SSD&lt;/name&gt;
+            &lt;msrp&gt;234.0&lt;/msrp&gt;
+            &lt;salePrice&gt;242.88&lt;/salePrice&gt;
+            &lt;upc&gt;889894582294&lt;/upc&gt;
+            &lt;categoryPath&gt;Electronics/Computers/Laptops/Shop Laptops by Type/Google Chromebook&lt;/categoryPath&gt;
+            &lt;shortDescription&gt;Make the move to a cloud-based infrastructure with the HP Chromebook 14. Get down to business with Intel Celeron processors Citrix-certified VDI compatibility and access to Google Apps for Work.&lt;/shortDescription&gt;
+            &lt;longDescription&gt;HP Chromebook 14 G4 - 14&amp;amp;quot; - Celeron N2840 - 4 GB RAM - 16 GB SSD&lt;/longDescription&gt;
+            &lt;thumbnailImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=100&amp;amp;odnWidth=100&amp;amp;odnBg=FFFFFF&lt;/thumbnailImage&gt;
+            &lt;mediumImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=180&amp;amp;odnWidth=180&amp;amp;odnBg=FFFFFF&lt;/mediumImage&gt;
+            &lt;largeImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=450&amp;amp;odnWidth=450&amp;amp;odnBg=FFFFFF&lt;/largeImage&gt;
+            &lt;productTrackingUrl&gt;http://linksynergy.walmart.com/fs-bin/click?id=|LSNID|&amp;amp;offerid=223073.7200&amp;amp;type=14&amp;amp;catid=8&amp;amp;subid=0&amp;amp;hid=7200&amp;amp;tmpid=1082&amp;amp;RD_PARM1=https%253A%252F%252Fwww.walmart.com%252Fip%252FHP-Chromebook-14-G4-14-Celeron-N2840-4-GB-RAM-16-GB-SSD%252F48172060%253Faffp1%253DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%2526affilsrc%253Dapi&lt;/productTrackingUrl&gt;
+            &lt;standardShipRate&gt;0.0&lt;/standardShipRate&gt;
+            &lt;marketplace&gt;false&lt;/marketplace&gt;
+            &lt;modelNumber&gt;T4M32UT#ABA&lt;/modelNumber&gt;
+            &lt;productUrl&gt;http://c.affil.walmart.com/t/api02?l=https%3A%2F%2Fwww.walmart.com%2Fip%2FHP-Chromebook-14-G4-14-Celeron-N2840-4-GB-RAM-16-GB-SSD%2F48172060%3Faffp1%3DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi&lt;/productUrl&gt;
+            &lt;customerRating&gt;4.444&lt;/customerRating&gt;
+            &lt;numReviews&gt;9&lt;/numReviews&gt;
+            &lt;customerRatingImage&gt;http://i2.walmartimages.com/i/CustRating/4_4.gif&lt;/customerRatingImage&gt;
+            &lt;categoryNode&gt;3944_3951_1089430&lt;/categoryNode&gt;
+            &lt;bundle&gt;false&lt;/bundle&gt;
+            &lt;stock&gt;Available&lt;/stock&gt;
+            &lt;addToCartUrl&gt;http://c.affil.walmart.com/t/api02?l=http%3A%2F%2Faffil.walmart.com%2Fcart%2FaddToCart%3Fitems%3D48172060%7C1%26affp1%3DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi&lt;/addToCartUrl&gt;
+            &lt;affiliateAddToCartUrl&gt;http://linksynergy.walmart.com/fs-bin/click?id=|LSNID|&amp;amp;offerid=223073.7200&amp;amp;type=14&amp;amp;catid=8&amp;amp;subid=0&amp;amp;hid=7200&amp;amp;tmpid=1082&amp;amp;RD_PARM1=http%253A%252F%252Faffil.walmart.com%252Fcart%252FaddToCart%253Fitems%253D48172060%257C1%2526affp1%253DjNVX3nQxlVchQvsmT4mYZBb50I_klgLjVTSUfdTaI18%2526affilsrc%253Dapi&lt;/affiliateAddToCartUrl&gt;
+            &lt;giftOptions&gt;
+                &lt;allowGiftWrap&gt;false&lt;/allowGiftWrap&gt;
+                &lt;allowGiftMessage&gt;false&lt;/allowGiftMessage&gt;
+                &lt;allowGiftReceipt&gt;false&lt;/allowGiftReceipt&gt;
+            &lt;/giftOptions&gt;
+            &lt;imageEntities&gt;
+                &lt;imageEntities&gt;
+                    &lt;thumbnailImage&gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=100&amp;amp;odnWidth=100&amp;amp;odnBg=FFFFFF&lt;/thumbnailImage&gt;
+                    &lt;mediumImage&gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=180&amp;amp;odnWidth=180&amp;amp;odnBg=FFFFFF&lt;/mediumImage&gt;
+                    &lt;largeImage&gt;https://i5.walmartimages.com/asr/5a378a80-82e1-4f06-9e71-6219e03ef568_1.be37a5f6ee49fc2777a13ef41214151c.jpeg?odnHeight=450&amp;amp;odnWidth=450&amp;amp;odnBg=FFFFFF&lt;/largeImage&gt;
+                    &lt;entityType&gt;SECONDARY&lt;/entityType&gt;
+                &lt;/imageEntities&gt;
+                &lt;imageEntities&gt;
+                    &lt;thumbnailImage&gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=100&amp;amp;odnWidth=100&amp;amp;odnBg=FFFFFF&lt;/thumbnailImage&gt;
+                    &lt;mediumImage&gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=180&amp;amp;odnWidth=180&amp;amp;odnBg=FFFFFF&lt;/mediumImage&gt;
+                    &lt;largeImage&gt;https://i5.walmartimages.com/asr/cf9351fd-5857-4f58-86ca-77b4c644798e_1.d56cc64ab726ad0f9d16e96237d0fbf8.jpeg?odnHeight=450&amp;amp;odnWidth=450&amp;amp;odnBg=FFFFFF&lt;/largeImage&gt;
+                    &lt;entityType&gt;SECONDARY&lt;/entityType&gt;
+                &lt;/imageEntities&gt;
+                &lt;imageEntities&gt;
+                    &lt;thumbnailImage&gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=100&amp;amp;odnWidth=100&amp;amp;odnBg=FFFFFF&lt;/thumbnailImage&gt;
+                    &lt;mediumImage&gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=180&amp;amp;odnWidth=180&amp;amp;odnBg=FFFFFF&lt;/mediumImage&gt;
+                    &lt;largeImage&gt;https://i5.walmartimages.com/asr/d923862d-49c9-4ec1-b55d-863ec74a82e7_1.a8bed47384d4f9a5d5cd30a731fdea95.jpeg?odnHeight=450&amp;amp;odnWidth=450&amp;amp;odnBg=FFFFFF&lt;/largeImage&gt;
+                    &lt;entityType&gt;SECONDARY&lt;/entityType&gt;
+                &lt;/imageEntities&gt;
+                &lt;imageEntities&gt;
+                    &lt;thumbnailImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=100&amp;amp;odnWidth=100&amp;amp;odnBg=FFFFFF&lt;/thumbnailImage&gt;
+                    &lt;mediumImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=180&amp;amp;odnWidth=180&amp;amp;odnBg=FFFFFF&lt;/mediumImage&gt;
+                    &lt;largeImage&gt;https://i5.walmartimages.com/asr/448176d1-516c-4362-a215-71cba7a07d44_1.a01c748d62cbd8fa07148eea7063ae7d.jpeg?odnHeight=450&amp;amp;odnWidth=450&amp;amp;odnBg=FFFFFF&lt;/largeImage&gt;
+                    &lt;entityType&gt;PRIMARY&lt;/entityType&gt;
+                &lt;/imageEntities&gt;
+            &lt;/imageEntities&gt;
+            &lt;offerType&gt;ONLINE_ONLY&lt;/offerType&gt;
+            &lt;isTwoDayShippingEligible&gt;true&lt;/isTwoDayShippingEligible&gt;
+            &lt;availableOnline&gt;true&lt;/availableOnline&gt;
+        &lt;/item&gt;
+        ...
+    &lt;/items&gt;
+&lt;/searchresponse&gt;
+</code></pre>
+
+<h4 id="http-verbs">HTTP Verbs</h4>
+
+<p>The HTTP 1.1 Specification has 9 Request Methods:</p>
+
+<ol>
+<li><p><code>GET</code></p>
+
+<ol>
+<li>The GET method requests a representation of the specified resource.</li>
+<li>Requests using GET should only retrieve data and should have no other effect.</li>
+<li>The W3C has published guidance principles on this distinction, saying, &ldquo;Web application design should be informed by the above principles, but also by the relevant limitations.</li>
+</ol></li>
+
+<li><p><code>HEAD</code></p>
+
+<ol>
+<li>The HEAD method asks for a response identical to that of a GET request, but without the response body. This is useful for retrieving meta-information written in response headers, without having to transport the entire content.</li>
+</ol></li>
+
+<li><p><code>POST</code></p>
+
+<ol>
+<li>The POST method requests that the server accept the entity enclosed in the request as a new subordinate of the web resource identified by the URI.</li>
+<li>The data <code>POSTed</code> might be, for example, an annotation for existing resources; a message for a bulletin board, newsgroup, mailing list, or comment thread; a block of data that is the result of submitting a web form to a data-handling process; or an item to add to a database.</li>
+</ol></li>
+
+<li><p><code>PUT</code></p>
+
+<ol>
+<li>The PUT method requests that the enclosed entity be stored under the supplied URI. If the URI refers to an already existing resource, it is modified; if the URI does not point to an existing resource, then the server can create the resource with that URI.</li>
+</ol></li>
+
+<li><p><code>DELETE</code></p>
+
+<ol>
+<li>The DELETE method deletes the specified resource.</li>
+</ol></li>
+
+<li><p><code>TRACE</code></p>
+
+<ol>
+<li>The TRACE method echoes the received request so that a client can see what (if any) changes or additions have been made by intermediate servers.</li>
+</ol></li>
+
+<li><p><code>OPTIONS</code></p>
+
+<ol>
+<li>The OPTIONS method returns the HTTP methods that the server supports for the specified URL. This can be used to check the functionality of a web server by requesting &lsquo;*&rsquo; instead of a specific resource.</li>
+</ol></li>
+
+<li><p><code>CONNECT</code></p>
+
+<ol>
+<li>The CONNECT method converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy.</li>
+</ol></li>
+
+<li><p><code>PATCH</code></p>
+
+<ol>
+<li>The PATCH method applies partial modifications to a resource.</li>
+</ol></li>
+</ol>
+
+<p>Most modern Web APIs only use 4 out the 9 HTTP verbs when implementing Restful APIs</p>
+
+<ol>
+<li><code>GET</code></li>
+<li><code>POST</code></li>
+<li><code>PUT</code></li>
+<li><code>DELETE</code></li>
+</ol>
+
+<h4 id="url-design">URL Design</h4>
+
+<p>Keep your base URL simple and intuitive</p>
+
+<p>Nouns are good; verbs are bad</p>
+
+<p>The base URL is the most important design affordance of your API.</p>
+
+<p>A simple and intuitive base URL design makes using your API easy.</p>
+
+<p>A URL identifies a resource.</p>
+
+<p>For consistency, only use plural nouns (e.g. &ldquo;books&rdquo; instead of &ldquo;book&rdquo;).</p>
+
+<h6 id="restful-urls">Restful URLs</h6>
+
+<p>Here is a list of Good Urls for a restful API:</p>
+
+<ol>
+<li><p>List of Books:</p>
+
+<ol>
+<li><code>GET https://api.sample.com/v1/books</code></li>
+</ol></li>
+
+<li><p>List of Books using query:</p>
+
+<ol>
+<li><code>GET https://api.sample.com/v1/books?name=Batman</code></li>
+</ol></li>
+
+<li><p>Create an access token</p>
+
+<ol>
+<li><code>POST https://api.sandbox.paypal.com/v1/oauth2/token</code></li>
+</ol></li>
+</ol>
+
+<p>Notice that in all of these apis there is a major version number depicted by <code>v1</code>.</p>
+
+<p>Also notice that nouns are used instead of verbs.</p>
+
+<h4 id="testing-an-api">Testing an API</h4>
+
+<p>For the purposes of this blog post we will use <a href="https://curl.haxx.se/docs/" target="_blank">curl</a> and <a href="https://www.getpostman.com/docs/" target="_blank">Postman</a> to make Rest calls</p>
+
+<p>Let use use the Walmart Search API:</p>
+
+<h6 id="curl-usage">Curl Usage</h6>
+
+<pre><code class="language-bash">curl -X GET \
+  'http://api.walmartlabs.com/v1/search?query=chromebook&amp;format=xml&amp;apiKey=someApiKey1234av' \
+  -H 'Content-Type: application/xml'
+</code></pre>
+
+<p>First create an account with <a href="https://developer.walmartlabs.com/" target="_blank">Walmart Labs Open API</a></p>
+
+<p>You can go to <a href="https://developer.walmartlabs.com/apps/mykeys" target="_blank">Mykeys at Walmart Labs Developer Portal</a> to get your api key from the developer portal</p>
+
+<p>The above curl <code>GET</code> request returns an xml response payload as we saw above</p>
+
+<p>With curl you specify the HTTP verb by using the option <code>-X</code>, <code>--request</code>, <code>{GET,PUT,POST,DELETE</code></p>
+
+<p>To pass headers into a curl command you pass in the <code>-H</code>, <code>--header</code>, <code>{Content-Type: application/xml, etc.}</code></p>
+
+<p>In order to post data with curl you use the <code>-d</code>, <code>--data</code> options</p>
+
+<p>Here is a sample POST request with curl</p>
+
+<pre><code class="language-bash">curl -X POST \
+  https://localhost:3000/api/v1/users \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  &quot;user&quot;: {
+    &quot;email&quot;: &quot;bigkahuna@surfsup.com&quot;,
+    &quot;first_name&quot;: &quot;Big&quot;,
+    &quot;gender&quot;: &quot;Male&quot;,
+    &quot;id&quot;: 57,
+    &quot;last_name&quot;: &quot;Kahuna&quot;  
+  }
+}'
+</code></pre>
+
+<h4 id="postman-usage">Postman Usage</h4>
+
+<p>Here is a screenshot of the same rest call using Postman</p>
+
+
+<figure >
+    
+        <img src="/media/postmanSearchQuery.png" />
+    
+    
+</figure>
+
+
+<p>Notice that in the screenshot both URL and API_key are wrapped in <code>{{}}</code> double curly braces</p>
+
+<p>In Postman there are several different scopes for variables:</p>
+
+<p><a href="https://www.getpostman.com/docs/postman/environments_and_globals/variables" target="_blank">Variables in Postman</a></p>
+
+<p>The following scopes are available to you:</p>
+
+<ol>
+<li><p>Global</p></li>
+
+<li><p>Collection</p></li>
+
+<li><p>Environment</p></li>
+
+<li><p>Local</p></li>
+
+<li><p>Data</p></li>
+</ol>
+
+<p>Some advantages of using Postman over curl is that you can use Pre request scripts and post request scripts to automate API development testing and for scripting</p>
+
+<p>If we wanted to make a payment to the paypal API we first need to get an access token from the <code>POST /v1/oauth2/token</code> endpoint</p>
+
+<p>after that we can make the rest call to the <code>POST /v1/payments/payment</code> endpoint.</p>
+
+<p>Here we need to make 2 calls in order to copy first the access token from the token endpoint and use that as our bearer token for the payment endpoint.</p>
+
+<p>I will show a series of snapshots where I utilize Postman&rsquo;s Pre request script and Tests section to automate this flow.</p>
+
+<p>In order to make the rest call for <code>POST /v1/oauth2/token endpoint</code> you need your client id and secret from the paypal developer portal which you can find by going <a href="https://developer.paypal.com/" target="_blank">Here</a> and clicking the <em>Log into Dashboard</em> button</p>
+
+<p>If you were to make this call with curl you would have to Base 64 Encode your clientId and secret.</p>
+
+<p>With JavaScript <code>btoa</code> method you can do this  like this</p>
+
+<pre><code class="language-js">btoa(&quot;clientId1234&quot; + &quot;:&quot; + &quot;asecret8888&quot;)
+</code></pre>
+
+<p>You can also use Node.js to base 64 encode a string like this:</p>
+
+<pre><code class="language-js">const encodedVal = new Buffer(&quot;clientId1234&quot; + &quot;:&quot; + &quot;asecret8888&quot;).toString(&quot;base64&quot;);
+</code></pre>
+
+<p>Both of these methods return the following base 64 encoded client id and secret: <code>Y2xpZW50SWQxMjM0OmFzZWNyZXQ4ODg4</code></p>
+
+<p>Now using curl we can make the following POST request</p>
+
+<pre><code class="language-bash">curl -X POST \
+  https://api.sandbox.paypal.com/v1/oauth2/token \
+  -H 'Authorization: Basic Y2xpZW50SWQxMjM0OmFzZWNyZXQ4ODg4' \
+  -H 'Content-Type: application/x-www-form-urlencoded'
+  -d grant_type=client_credentials
+</code></pre>
+
+<p>and then using the access token we get from the JSON payload from the above call:</p>
+
+<pre><code class="language-json">
+{
+    &quot;scope&quot;: &quot;https://uri.paypal.com/services/subscriptions https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card https://uri.paypal.com/services/applications/webhooks openid https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.*&quot;,
+    &quot;nonce&quot;: &quot;2017-12-20T19:26:8888onelongguid&quot;,
+    &quot;access_token&quot;: &quot;zdd12344alongGuid&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;app_id&quot;: &quot;APP-553322344T&quot;,
+    &quot;expires_in&quot;: 31275
+}
+</code></pre>
+
+<p>Now we need to copy the access_token and we can make the following rest call</p>
+
+<pre><code class="language-bash">curl -X POST \
+  https://api.sandbox.paypal.com/v1/payments/payment \
+  -H 'Authorization: Bearer zdd12344alongGuid' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  &quot;intent&quot;: &quot;sale&quot;,
+  &quot;payer&quot;: {
+  &quot;payment_method&quot;: &quot;paypal&quot;
+  },
+  &quot;transactions&quot;: [
+  {
+    &quot;amount&quot;: {
+    &quot;total&quot;: &quot;30.11&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;details&quot;: {
+      &quot;subtotal&quot;: &quot;30.00&quot;,
+      &quot;tax&quot;: &quot;0.07&quot;,
+      &quot;shipping&quot;: &quot;0.03&quot;,
+      &quot;handling_fee&quot;: &quot;1.00&quot;,
+      &quot;shipping_discount&quot;: &quot;-1.00&quot;,
+      &quot;insurance&quot;: &quot;0.01&quot;
+    }
+    },
+    &quot;description&quot;: &quot;The payment transaction description.&quot;,
+    &quot;custom&quot;: &quot;EBAY_EMS_90048630024435&quot;,
+    &quot;invoice_number&quot;: &quot;48787589673&quot;,
+    &quot;payment_options&quot;: {
+    &quot;allowed_payment_method&quot;: &quot;INSTANT_FUNDING_SOURCE&quot;
+    },
+    &quot;soft_descriptor&quot;: &quot;ECHI5786786&quot;,
+    &quot;item_list&quot;: {
+    &quot;items&quot;: [
+      {
+      &quot;name&quot;: &quot;hat&quot;,
+      &quot;description&quot;: &quot;Brown hat.&quot;,
+      &quot;quantity&quot;: &quot;5&quot;,
+      &quot;price&quot;: &quot;3&quot;,
+      &quot;tax&quot;: &quot;0.01&quot;,
+      &quot;sku&quot;: &quot;1&quot;,
+      &quot;currency&quot;: &quot;USD&quot;
+      },
+      {
+      &quot;name&quot;: &quot;handbag&quot;,
+      &quot;description&quot;: &quot;Black handbag.&quot;,
+      &quot;quantity&quot;: &quot;1&quot;,
+      &quot;price&quot;: &quot;15&quot;,
+      &quot;tax&quot;: &quot;0.02&quot;,
+      &quot;sku&quot;: &quot;product34&quot;,
+      &quot;currency&quot;: &quot;USD&quot;
+      }
+    ],
+    &quot;shipping_address&quot;: {
+      &quot;recipient_name&quot;: &quot;Brian Robinson&quot;,
+      &quot;line1&quot;: &quot;4th Floor&quot;,
+      &quot;line2&quot;: &quot;Unit #34&quot;,
+      &quot;city&quot;: &quot;San Jose&quot;,
+      &quot;country_code&quot;: &quot;US&quot;,
+      &quot;postal_code&quot;: &quot;95131&quot;,
+      &quot;phone&quot;: &quot;011862212345678&quot;,
+      &quot;state&quot;: &quot;CA&quot;
+    }
+    }
+  }
+  ],
+  &quot;note_to_payer&quot;: &quot;Contact us for any questions on your order.&quot;,
+  &quot;redirect_urls&quot;: {
+  &quot;return_url&quot;: &quot;https://www.example.com/return&quot;,
+  &quot;cancel_url&quot;: &quot;https://www.example.com/cancel&quot;
+  }
+}'
+</code></pre>
+
+<p>to post a payment to paypal.</p>
+
+<h4 id="automation-with-postman">Automation with Postman</h4>
+
+<p>Using Postman we can automate the copy and pasting of the Basic Auth using Pre-request script part</p>
+
+<p>Here is the Pre-request script block:</p>
+
+<pre><code class="language-js">require('btoa');
+
+var client_id = postman.getEnvironmentVariable(&quot;client_id&quot;);
+var client_secret = postman.getEnvironmentVariable(&quot;client_secret&quot;);
+
+// Base 64 Encode client id and secret
+var encodeCredentials = btoa(client_id + &quot;:&quot; + client_secret);
+
+postman.setEnvironmentVariable(&quot;encodeCredentials&quot;, encodeCredentials);
+</code></pre>
+
+<p>Here is a screenshot of the script:</p>
+
+
+<figure >
+    
+        <img src="/media/preRequestScript.png" />
+    
+    
+</figure>
+
+
+<p>Notice here that we saved client_id and client_secret into environment variables and  <code>require('btoa')</code> into the script</p>
+
+<p>You can read more about the <a href="https://www.getpostman.com/docs/postman/scripts/pre_request_scripts" target="_blank">Pre-request script in Postman</a></p>
+
+<p>To get a full listing of the Postman Sandbox API look <a href="https://www.getpostman.com/docs/postman/scripts/postman_sandbox_api_reference" target="_blank">Here</a></p>
+
+<p>One thing to note is that to get the response payload we must use the Test section in Postman, the Pre-request script will not have access to the response body</p>
+
+<p>Here is the Test script to set access_token:</p>
+
+<pre><code class="language-js">// Parse JSON response
+var responseBody = JSON.parse(responseBody);
+
+var access_token = responseBody.access_token;
+var token_type = responseBody.token_type;
+
+postman.setEnvironmentVariable(&quot;access_token&quot;, token_type + &quot; &quot; + access_token);
+
+pm.test(&quot;Token Type is Bearer&quot;, function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.token_type).to.eql(&quot;Bearer&quot;);
+});
+</code></pre>
+
+<p>Here is a screenshot of the Test script section:</p>
+
+
+<figure >
+    
+        <img src="/media/testScript.png" />
+    
+    
+</figure>
+
+
+<p>You can read more about the <a href="https://www.getpostman.com/docs/postman/scripts/test_scripts" target="_blank">Test Script Section in Postman</a></p>
+
+<p>We can completely automate the <code>POST https://api.sandbox.paypal.com/v1/payments/payment</code> endpoint with environment variables set in test script</p>
+
+<p>Now the environment variable <code>access_token</code> has been set in Postman</p>
+
+<p>We can write the following Test Script now:</p>
+
+<pre><code class="language-js">var responseBody = JSON.parse(responseBody);
+
+pm.test(&quot;Status code is 201&quot;, function () {
+    pm.response.to.have.status(201);
+});
+
+pm.test(&quot;State is created&quot;, function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.state).to.eql(&quot;created&quot;);
+});
+</code></pre>
+
+<p>Notice that Postman has its own flavor of testing using <code>pm.test</code> method.</p>
+
+<p>When you click the <em>Send</em> button you will see the following in Test results:</p>
+
+
+<figure >
+    
+        <img src="/media/testResults.png" />
+    
+    
+</figure>
+
+
+<p>If you like this Blog post please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont at Github</a></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/page-object-pattern/"><span
+      aria-hidden="true">&larr;</span> Page Object Pattern</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
