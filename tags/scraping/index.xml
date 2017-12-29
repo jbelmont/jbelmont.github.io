@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scraping on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/scraping/</link>
+    <description>Recent content in Scraping on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Thu, 28 Dec 2017 18:54:03 -0500</lastBuildDate>
+    <atom:link href="/tags/scraping/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Scraping</title>
+      <link>https://www.marcelbelmont.com/post/web-scraping/</link>
+      <pubDate>Thu, 28 Dec 2017 18:54:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/web-scraping/</guid>
+      <description>
+
+&lt;h2 id=&#34;web-scraping&#34;&gt;Web scraping&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites.&lt;/p&gt;
+
+&lt;p&gt;While web scraping can be done manually by a software user, the term typically refers to automated processes implemented using a bot or web crawler.&lt;/p&gt;
+
+&lt;p&gt;Web scraping a web page involves fetching it and extracting from it.&lt;/p&gt;
+
+&lt;p&gt;Fetching is the downloading of a page (which a browser does when you view the page). Therefore, web crawling is a main component of web scraping, to fetch pages for later processing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In my own mind web scraping is a great tool at your disposal to automate tasks for working with UIs.&lt;/p&gt;
+
+&lt;p&gt;Instead of manually clicking buttons and submitting forms you instead write a web scraping script to do the job&lt;/p&gt;
+
+&lt;h2 id=&#34;web-scraping-with-nodejs&#34;&gt;Web scraping with Nodejs&lt;/h2&gt;
+
+&lt;p&gt;You can use tools like &lt;a href=&#34;https://github.com/cheeriojs/cheerio&#34; target=&#34;_blank&#34;&gt;Cheerio&lt;/a&gt; and &lt;a href=&#34;https://github.com/request/request&#34; target=&#34;_blank&#34;&gt;Request&lt;/a&gt; to do web scraping with Node.js&lt;/p&gt;
+
+&lt;p&gt;Here is a very simple script for web scraping:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const request = require(&#39;request&#39;);
+const cheerio = require(&#39;cheerio&#39;);
+
+const URL = &#39;https://api-university.com/&#39;;
+
+request(URL, (error, response, html) =&amp;gt; {
+  if (!error &amp;amp;&amp;amp; response.statusCode == 200) {
+    // load all of html into cheerio for dom manipulation
+    const $ = cheerio.load(html);
+
+    const submenu = $(&#39;.sub-menu&#39;);
+    console.log(submenu.text());
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Essentially here I am dumping all of the HTML from &lt;code&gt;GET https://api-university.com/&lt;/code&gt; into the cheerio load function.&lt;/p&gt;
+
+&lt;p&gt;Now I can use jquery like syntax to simulate button clicks, find elements in the dom and more.&lt;/p&gt;
+
+&lt;p&gt;You can use other tools but keep in mind that web scraping is a good tool for automation and getting data from websites in a programmatic manner.&lt;/p&gt;
+
+&lt;p&gt;If you like this POST please check out &lt;a href=&#34;https://github.com/jbelmont/web-scraping&#34; target=&#34;_blank&#34;&gt;Web Scraping Repo&lt;/a&gt; for more updates to the scripts and follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
