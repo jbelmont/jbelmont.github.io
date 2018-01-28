@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
@@ -16,8 +18,16 @@
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/academic/</guid>
-      <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
-</description>
+      <description>Here is a list of all the content that has been tagged as academic.</description>
+    </item>
+    
+    <item>
+      <title>Agile</title>
+      <link>https://www.marcelbelmont.com/tags/agile/</link>
+      <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/agile/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -32,7 +42,7 @@
     <item>
       <title>Api</title>
       <link>https://www.marcelbelmont.com/tags/api/</link>
-      <pubDate>Wed, 20 Dec 2017 14:47:18 -0500</pubDate>
+      <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/api/</guid>
       <description></description>
@@ -120,15 +130,6 @@
     </item>
     
     <item>
-      <title>Development</title>
-      <link>https://www.marcelbelmont.com/tags/development/</link>
-      <pubDate>Wed, 20 Dec 2017 14:47:18 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>E2e</title>
       <link>https://www.marcelbelmont.com/tags/e2e/</link>
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
@@ -143,6 +144,186 @@
       <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interface</title>
+      <link>https://www.marcelbelmont.com/tags/interface/</link>
+      <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/interface/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://www.marcelbelmont.com/tags/jenkins/</link>
+      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jwt</title>
+      <link>https://www.marcelbelmont.com/tags/jwt/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Memoization</title>
+      <link>https://www.marcelbelmont.com/tags/memoization/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/memoization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Node.js</title>
+      <link>https://www.marcelbelmont.com/tags/node.js/</link>
+      <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/node.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oauth</title>
+      <link>https://www.marcelbelmont.com/tags/oauth/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/oauth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Object Oriented Design</title>
+      <link>https://www.marcelbelmont.com/tags/object-oriented-design/</link>
+      <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/object-oriented-design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Owasp</title>
+      <link>https://www.marcelbelmont.com/tags/owasp/</link>
+      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/owasp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Page Objects</title>
+      <link>https://www.marcelbelmont.com/tags/page-objects/</link>
+      <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/page-objects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>https://www.marcelbelmont.com/tags/paper/</link>
+      <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Papers We Love</title>
+      <link>https://www.marcelbelmont.com/tags/papers-we-love/</link>
+      <pubDate>Wed, 14 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/papers-we-love/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://www.marcelbelmont.com/tags/redis/</link>
+      <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Saml</title>
+      <link>https://www.marcelbelmont.com/tags/saml/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/saml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scrum</title>
+      <link>https://www.marcelbelmont.com/tags/scrum/</link>
+      <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/scrum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://www.marcelbelmont.com/tags/security/</link>
+      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sso</title>
+      <link>https://www.marcelbelmont.com/tags/sso/</link>
+      <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/sso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tdd</title>
+      <link>https://www.marcelbelmont.com/tags/tdd/</link>
+      <pubDate>Thu, 31 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/tdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testing</title>
+      <link>https://www.marcelbelmont.com/tags/testing/</link>
+      <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Travis Ci</title>
+      <link>https://www.marcelbelmont.com/tags/travis-ci/</link>
+      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/travis-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ui</title>
+      <link>https://www.marcelbelmont.com/tags/ui/</link>
+      <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/ui/</guid>
       <description></description>
     </item>
     

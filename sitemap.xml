@@ -5,17 +5,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/post/web-scraping/</loc>
-      <lastmod>2017-12-28T18:54:03-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/post/api-testing/</loc>
-      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
+      <loc>https://www.marcelbelmont.com/post/agile-patterns/</loc>
+      <lastmod>2018-01-28T15:48:12-05:00</lastmod>
     </url>
     
   
@@ -230,6 +221,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/agile/</loc>
+      <lastmod>2018-01-28T15:48:12-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/animation/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -241,7 +242,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/api/</loc>
-      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
+      <lastmod>2017-02-10T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -341,16 +342,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/design/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/development/</loc>
-      <lastmod>2017-12-20T14:47:18-05:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -528,18 +519,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/scraping/</loc>
-      <lastmod>2017-12-28T18:54:03-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/scripting/</loc>
-      <lastmod>2017-12-28T18:54:03-05:00</lastmod>
+      <loc>https://www.marcelbelmont.com/tags/scrum/</loc>
+      <lastmod>2018-01-28T15:48:12-05:00</lastmod>
       <priority>0</priority>
     </url>
     

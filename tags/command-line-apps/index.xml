@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
     <lastBuildDate>Tue, 10 Oct 2017 18:49:29 -0400</lastBuildDate>
-    <atom:link href="/tags/command-line-apps/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/command-line-apps/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Compare and Contrast Golang and Nodejs for Commandline Apps</title>
@@ -16,167 +18,9 @@
       <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</guid>
-      <description>
-
-&lt;h1 id=&#34;command-line-applications&#34;&gt;Command Line Applications&lt;/h1&gt;
-
-&lt;p&gt;Building command line applications is a refreshing change to building UIs.
-In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang&lt;/p&gt;
-
-&lt;h2 id=&#34;node-js-commandline&#34;&gt;Node.js CommandLine&lt;/h2&gt;
-
-&lt;p&gt;First off I did not use a &lt;code&gt;commander.js&lt;/code&gt; or any third party libraries to make my contrived application. I used vanilla node.js&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;use strict&#39;;
-
-const process = require(&#39;process&#39;);
-const fs = require(&#39;fs&#39;);
-
-const lib = require(&#39;../lib&#39;);
-const utf8 = require(&#39;../constants&#39;).utf8;
-
-const args = process.argv.slice(2);
-
-const tsvOrCsv = args.some(arg =&amp;gt; {
-  return arg === &#39;--tsv-file&#39; || arg === &#39;--csv-file&#39;;
-});
-
-if (!tsvOrCsv) {
-  lib.UsageMessage();
-  process.exit(1);
-}
-
-const csvIndex = args.findIndex(arg =&amp;gt; arg === &#39;--csv-file&#39;);
-let csv, tsv;
-if (csvIndex &amp;gt; -1) {
-  csv  = args.slice(csvIndex);
-}
-
-const tsvIndex = args.findIndex(arg =&amp;gt; arg === &#39;--tsv-file&#39;);
-if (tsvIndex &amp;gt; -1) {
-  tsv = args.slice(tsvIndex);
-}
-if (csv) {
-  const csvPath = csv[1];
-  const fileContents = [];
-  fileReader(csvPath, function(err, data) {
-    if (err) throw err;
-    const [
-      language,
-      frequency
-    ] = data.split(&#39;,&#39;);
-    console.log(language);
-    console.log(frequency);
-  });
-} else if (tsv) {
-  const tsvPath = tsv[1];
-  console.log(tsvPath);
-} else {
-  lib.UsageMessage();
-  process.exit(1);
-}
-
-function fileReader(filePath, cb) {
-  fs.readFile(`${__dirname}/../${filePath}`, utf8, function(err, data) {
-    if (err) return cb(err);
-    cb(null, data);
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is a snippet of code I used for node.js on one hand you can parse flags relatively easy but there is niceties missing.&lt;/p&gt;
-
-&lt;p&gt;In node.js you can just use &lt;code&gt;process.argv&lt;/code&gt; and parse out the flags that were passed in via the commmandline&lt;/p&gt;
-
-&lt;h2 id=&#34;golang-commandline-application&#34;&gt;Golang CommandLine application&lt;/h2&gt;
-
-&lt;p&gt;Golang has many things baked into their standard library that make building command line applications very easy.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import (
-	&amp;quot;bufio&amp;quot;
-	&amp;quot;encoding/csv&amp;quot;
-	&amp;quot;encoding/json&amp;quot;
-	&amp;quot;flag&amp;quot;
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;io&amp;quot;
-	&amp;quot;os&amp;quot;
-)
-
-func convertToJSON(f *os.File, isTSVFile bool) {
-	rows := make([]map[string]string, 0)
-	var columns = []string{&amp;quot;language&amp;quot;, &amp;quot;frequency&amp;quot;}
-	// Create a new reader.
-	csvReader := csv.NewReader(bufio.NewReader(f))
-	csvReader.TrimLeadingSpace = true
-	if isTSVFile {
-		csvReader.Comma = &#39;\t&#39; // Use tab-delimited instead of comma
-	}
-	for {
-		record, err := csvReader.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			fmt.Println(err)
-		}
-		row := make(map[string]string)
-		for i, n := range columns {
-			row[n] = record[i]
-		}
-		rows = append(rows, row)
-	}
-	data, err := json.MarshalIndent(&amp;amp;rows, &amp;quot;&amp;quot;, &amp;quot;  &amp;quot;)
-	if err != nil {
-		fmt.Println(err)
-	}
-	// print the reformatted struct as JSON
-	fmt.Printf(&amp;quot;%s\n&amp;quot;, data)
-}
-
-func main() {
-	csvPtr := flag.String(&amp;quot;csv-file&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;CSV File to parse. (Required)&amp;quot;)
-	tsvPtr := flag.String(&amp;quot;tsv-file&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;TSV File to parse. (Required)&amp;quot;)
-	flag.Parse()
-
-	if *csvPtr == &amp;quot;&amp;quot; &amp;amp;&amp;amp; *tsvPtr == &amp;quot;&amp;quot; {
-		flag.PrintDefaults()
-		os.Exit(1)
-	} else if *csvPtr != &amp;quot;&amp;quot; {
-		f, err := os.Open(*csvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, false)
-	} else {
-		f, err := os.Open(*tsvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, true)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice here that I just used the &lt;code&gt;flag&lt;/code&gt; builtin library and it does the job of parsing command line flags.&lt;/p&gt;
-
-&lt;p&gt;Also dealing with asychronous code in &lt;code&gt;Golang&lt;/code&gt; is much easier in my opinion.&lt;/p&gt;
-
-&lt;p&gt;There are many design patterns baked into Golang that make writing commandline applications a joy to work with.&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-summary&#34;&gt;Quick summary&lt;/h2&gt;
-
-&lt;p&gt;You can easily use either node.js or &lt;code&gt;Golang&lt;/code&gt; but consider writing a command line application in Go.&lt;/p&gt;
-
-&lt;h2 id=&#34;link-to-golang-workshop&#34;&gt;Link to Golang Workshop&lt;/h2&gt;
-
-&lt;p&gt;I wrote a &lt;a href=&#34;https://github.com/jbelmont/golang-workshop&#34; target=&#34;_blank&#34;&gt;Golang workshop&lt;/a&gt; which you can check out if you aren&amp;rsquo;t familiar with Go.&lt;/p&gt;
-
-&lt;p&gt;Follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont&lt;/a&gt; if you like this.&lt;/p&gt;
-</description>
+      <description>Command Line Applications Building command line applications is a refreshing change to building UIs. In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang
+Node.js CommandLine First off I did not use a commander.js or any third party libraries to make my contrived application. I used vanilla node.js
+&#39;use strict&#39;; const process = require(&#39;process&#39;); const fs = require(&#39;fs&#39;); const lib = require(&#39;.</description>
     </item>
     
   </channel>
