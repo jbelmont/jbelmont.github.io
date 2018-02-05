@@ -11,6 +11,271 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Api Testing</title>
+      <link>https://www.marcelbelmont.com/post/api-testing/</link>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
+      <description>
+
+&lt;h1 id=&#34;restful-api-testing&#34;&gt;Restful API Testing&lt;/h1&gt;
+
+&lt;p&gt;API testing is a necessary task to do while building APIs.&lt;/p&gt;
+
+&lt;p&gt;Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as &lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;Curl&lt;/a&gt; and &lt;a href=&#34;https://www.getpostman.com/&#34; target=&#34;_blank&#34;&gt;Postman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using a Rest Client you can make Rest calls such as for &lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;HTTP Verbs&lt;/a&gt; such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;GET&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;POST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;PUT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;DELETE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;PATCH&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When we test an API, we deal with &lt;a href=&#34;https://en.wikipedia.org/wiki/JSON&#34; target=&#34;_blank&#34;&gt;JSON&lt;/a&gt;, &lt;a href=&#34;https://en.wikipedia.org/wiki/XML&#34; target=&#34;_blank&#34;&gt;XML&lt;/a&gt;, and &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_service&#34; target=&#34;_blank&#34;&gt;Web Services&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;3rd-party-apis&#34;&gt;3rd Party APIs&lt;/h2&gt;
+
+&lt;p&gt;Here is a list of 3rd Party APIs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/apis-explorer/&#34; target=&#34;_blank&#34;&gt;Google APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.yahoo.com/everything.html&#34; target=&#34;_blank&#34;&gt;Yahoo APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.facebook.com/&#34; target=&#34;_blank&#34;&gt;Facebook APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stripe.com/docs/api&#34; target=&#34;_blank&#34;&gt;Stripe APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.amazon.com/services-and-apis&#34; target=&#34;_blank&#34;&gt;Amazon APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.walmart.com/#/home&#34; target=&#34;_blank&#34;&gt;Walmart APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.github.com/v3/&#34; target=&#34;_blank&#34;&gt;Github APIs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;https://www.programmableweb.com/&#34; target=&#34;_blank&#34;&gt;Programmable Web&lt;/a&gt; to get a complete list of 3rd Party APIs you can utilize&lt;/p&gt;
+
+&lt;h2 id=&#34;testing-restful-apis&#34;&gt;Testing Restful APIs&lt;/h2&gt;
+
+&lt;p&gt;You can utilize many different types of tools to test APIs such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;Curl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.getpostman.com/&#34; target=&#34;_blank&#34;&gt;Postman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://httpie.org/&#34; target=&#34;_blank&#34;&gt;HTTPie&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://insomnia.rest/&#34; target=&#34;_blank&#34;&gt;Insomnia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Telnet&#34; target=&#34;_blank&#34;&gt;Telnet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are other Rest Clients you can use I just listed a few here&lt;/p&gt;
+
+&lt;h2 id=&#34;postman-rest-client-advantages&#34;&gt;Postman Rest Client Advantages&lt;/h2&gt;
+
+&lt;p&gt;I tend to favor Rest Clients like Postman because it helps to automate testing Restful APIs if you utilize some of its advanced features&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/postman-collection.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that you can create collection folders that can categorize APIs.&lt;/p&gt;
+
+&lt;p&gt;You can do much more than this however&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/header-variables.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that &lt;code&gt;Basic {{encodeCredentials}}&lt;/code&gt; has curly braces around &lt;code&gt;encodeCredentials&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In Postman you surround variables in double curly braces&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/pre-request-script.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;If you want to set variables before the HTTP call goes out than using &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/pre_request_scripts&#34; target=&#34;_blank&#34;&gt;Pre-request Script&lt;/a&gt; is what you want&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Pre-request scripts are snippets of code associated with a collection request that are executed before the request is sent.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;This is perfect for use-cases like including the timestamp in the request headers or sending a random alphanumeric string in the URL parameters.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pre-request scripts are written in JavaScript, and the syntax is exactly like that of test scripts except that the response object is not present.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notice here that I am using &lt;em&gt;common js&lt;/em&gt; syntax in Postman and in particular &lt;code&gt;require(&#39;btoa&#39;&lt;/code&gt;)` which is using &lt;strong&gt;Postman Sandbox API&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can find a more complete list in the &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox_api_reference&#34; target=&#34;_blank&#34;&gt;Postman Sandbox API reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also read &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox&#34; target=&#34;_blank&#34;&gt;Postman Sandbox&lt;/a&gt; for other libraries available in Postman Rest Client&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/test-script.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that the Test script section is similar to Pre-Request Script&lt;/p&gt;
+
+&lt;p&gt;With Postman you can write and run tests for each request using the JavaScript language.&lt;/p&gt;
+
+&lt;p&gt;But more than that you can set variables in the Test script section that you can save for later use&lt;/p&gt;
+
+&lt;p&gt;Notice here the use of &lt;code&gt;postman.setEnvironmentVariable(&amp;quot;access_token&amp;quot;, token_type + &amp;quot; &amp;quot; + access_token);&lt;/code&gt; to set &lt;strong&gt;access_token&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is really useful because we can save the &lt;strong&gt;access_token&lt;/strong&gt; for other Rest calls&lt;/p&gt;
+
+&lt;p&gt;Instead of manually setting the access token in a variable each day since access tokens tend to expire quickly you can use the tests script section to do that in an automated way.&lt;/p&gt;
+
+&lt;p&gt;Notice that we also wrote a test in the test script section as well&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Parse JSON response
+var responseBody = JSON.parse(responseBody);
+
+var access_token = responseBody.access_token;
+var token_type = responseBody.token_type;
+
+postman.setEnvironmentVariable(&amp;quot;access_token&amp;quot;, token_type + &amp;quot; &amp;quot; + access_token);
+
+pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.token_type).to.eql(&amp;quot;Bearer&amp;quot;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/test-results.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here we get a passing test since we got an access token from the Paypal API&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/environment.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we set the environment for Paypal here&lt;/p&gt;
+
+&lt;p&gt;Here we can use global variables that can be used per environment&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/global-variables.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Here I greyed out the environment variables for security reasons but you can read more about &lt;a href=&#34;https://www.getpostman.com/docs/postman/environments_and_globals/manage_globals&#34; target=&#34;_blank&#34;&gt;Global Variables at Postman Docs&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/presets.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Another useful feature in Postman is the Presets for Headers which you can read in the &lt;a href=&#34;https://www.getpostman.com/docs/postman/sending_api_requests/requests&#34; target=&#34;_blank&#34;&gt;Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Header Presets are useful if you find yourself reusing a lot of HTTP Header values often and you can simply set a preset to autofill the HTTP headers for you in one click.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/group-edit.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we can use the group edit feature to quickly set header values in key value pairs in the group edit view.&lt;/p&gt;
+
+&lt;p&gt;You can easily go back to the normal view by clicking &lt;code&gt;Key-Value Edit&lt;/code&gt; button again.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/http-verbs.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Postman supports all of the HTTP Verbs in their dropdown menu&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/params.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;You can easily set query string parameters utilizing the params section in postman&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/developer-tools.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we can utilize developer tools in Postman.&lt;/p&gt;
+
+&lt;p&gt;This is useful when you want to debug the &lt;em&gt;Pre-request Script&lt;/em&gt; and &lt;em&gt;Test script&lt;/em&gt; sections in Postman&lt;/p&gt;
+
+&lt;p&gt;You can easily set &lt;code&gt;console.log&lt;/code&gt; statements to debug things.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/collection-runner.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we can run all of the collections utilizing the collection runner.&lt;/p&gt;
+
+&lt;p&gt;You can read more about the &lt;a href=&#34;https://www.getpostman.com/docs/postman/collection_runs/starting_a_collection_run&#34; target=&#34;_blank&#34;&gt;Postman Collection Runner Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can import Postman collections easily and if you have Postman Pro account you can share collections with team members.&lt;/p&gt;
+
+&lt;p&gt;I covered a good amount of features that Postman offers but read the Fine docs in Postman for more information.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Agile Terminology</title>
       <link>https://www.marcelbelmont.com/post/agile-patterns/</link>
       <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>
@@ -7540,412 +7805,6 @@ OK
 &lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; did a great job presenting his containerized golang &amp;amp; vue demo! Thank you &lt;a href=&#34;https://twitter.com/moderndotweb?ref_src=twsrc%5Etfw&#34;&gt;@moderndotweb&lt;/a&gt; for posting! &lt;a href=&#34;https://t.co/tT7GetnwF7&#34;&gt;https://t.co/tT7GetnwF7&lt;/a&gt;&lt;/p&gt;&amp;mdash; My Info (@coreylcole) &lt;a href=&#34;https://twitter.com/coreylcole/status/902951613748264960?ref_src=twsrc%5Etfw&#34;&gt;August 30, 2017&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 &lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A Review of No Silver Bullet paper</title>
-      <link>https://www.marcelbelmont.com/post/no_silver_bullet/</link>
-      <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/no_silver_bullet/</guid>
-      <description>
-
-&lt;h1 id=&#34;no-silver-bullet-essence-and-accident-in-software-engineering&#34;&gt;No Silver Bullet Essence and Accident in Software Engineering&lt;/h1&gt;
-
-&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#does-it-have-to-be-hard&#34;&gt;Does It Have To Be Hard&lt;/a&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#complexity&#34;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#conformity&#34;&gt;Conformity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#changeability&#34;&gt;Changeability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#invisibility&#34;&gt;Invisibility&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#past-breakthroughs-solved-accidental-difficulties&#34;&gt;Past Breakthroughs Solved Accidental Difficulties&lt;/a&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#high-level-languages&#34;&gt;High-level languages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#time-sharing&#34;&gt;Time-sharing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#unified-programming-environments&#34;&gt;Unified programming environments&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hopes-for-the-silver&#34;&gt;Hopes for the Silver&lt;/a&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#ada-and-other-high-level-language-advances&#34;&gt;Ada and other high-level language advances&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#object-oriented-programming&#34;&gt;Object-oriented programming&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#artificial-intelligence&#34;&gt;Artificial intelligence&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#expert-systems&#34;&gt;Expert systems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#automatic-programming&#34;&gt;Automatic programming&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#graphical-programming&#34;&gt;Graphical Programming&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#program-verification&#34;&gt;Program verification&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#environments-and-tools&#34;&gt;Environments and tools&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#workstations&#34;&gt;Workstations&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#promising-attacks-on-the-conceptual-essence&#34;&gt;Promising Attacks on the Conceptual Essence&lt;/a&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;#buy-versus-build&#34;&gt;Buy versus build&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#requirements-refinement-and-rapid-prototyping&#34;&gt;Requirements refinement and rapid prototyping&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#incremental-development-grow-not-build-software&#34;&gt;Incremental development grow not build software&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#great-designers&#34;&gt;Great designers&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;There is no single development, in either technology or management technique, which by itself promises even one  order of magnitude improvement in productivity, in reliability, in simplicity.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Innovations in the software can yield an &amp;ldquo;order-of-magnitude&amp;rdquo; improvement&lt;/li&gt;
-&lt;li&gt;Example given in medicine where doctors where taught the benefits of cleanliness improving health of patients
-
-&lt;ul&gt;
-&lt;li&gt;In the same way improving processes in software can help improve software step by step&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;does-it-have-to-be-hard&#34;&gt;Does It Have To Be Hard&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Software can&amp;rsquo;t hope to see the gains that hardware has seen with improved chip design every 2 years.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Software construction really can&amp;rsquo;t be compared with hardware constructions.
-
-&lt;ol&gt;
-&lt;li&gt;Hardware advances in the last 30 years cannot be compared to any other technology&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Difficulties in Software:
-&amp;gt; I believe the hard part of building software to be the specification, design, and testing of this conceptual construct, not the labor of representing it and testing the fidelity of the representation.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Syntax errors in software pale in comparison to conceptual errors in a system&lt;/li&gt;
-&lt;li&gt;There is no silver bullet&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;complexity&#34;&gt;Complexity&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Computers themselves are among the most complicated things humans build&lt;/li&gt;
-&lt;li&gt;Software Construction is more than merely putting parts together
-
-&lt;ul&gt;
-&lt;li&gt;Elements of a software system interact in nonlinear ways&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Example given in mathematics where advances in math came for 3 straight centuries because of simplified models&lt;/li&gt;
-&lt;li&gt;Complexities in Software Construction create the following issues:
-
-&lt;ul&gt;
-&lt;li&gt;Communication among team members&lt;/li&gt;
-&lt;li&gt;In turn produces product flaws, cost overruns, schedule delays&lt;/li&gt;
-&lt;li&gt;Complexity in understanding all possible states of a system and enumerating the states of a system&lt;/li&gt;
-&lt;li&gt;This drives unreliability&lt;/li&gt;
-&lt;li&gt;Complexity thereby make programs hard to use&lt;/li&gt;
-&lt;li&gt;Complexity makes programs harder to extend newer functionality and consequently introducing side effects&lt;/li&gt;
-&lt;li&gt;Complexity also makes security of a software system more difficult to understand&lt;/li&gt;
-&lt;li&gt;Complexity also makes management more difficult&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;conformity&#34;&gt;Conformity&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Software engineers face added complexity because they must conform to decisions made by others&lt;/li&gt;
-&lt;li&gt;Conforming to other software components itself makes software systems more complex&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;changeability&#34;&gt;Changeability&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Since software is much more malleable and easier to change this by itself introduces more challenges&lt;/li&gt;
-&lt;li&gt;Users of a software system find new uses for software and thereby introduce new complexities&lt;/li&gt;
-&lt;li&gt;A combination of users of a software system, laws introduced, and new software machinery add difficulties as well&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;invisibility&#34;&gt;Invisibility&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Software is inherently invisible and hard to visualize if even possible&lt;/li&gt;
-&lt;li&gt;Attempts to visualize a system become difficult because of all the working pieces&lt;/li&gt;
-&lt;li&gt;Since software cannot be easily visualized this in turn adds more complexity to systems&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;past-breakthroughs-solved-accidental-difficulties&#34;&gt;Past Breakthroughs Solved Accidental Difficulties&lt;/h2&gt;
-
-&lt;p&gt;The 3 Steps in software that have helped accidental difficulties:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;High-level Languages&lt;/li&gt;
-&lt;li&gt;Time-sharing&lt;/li&gt;
-&lt;li&gt;Unified programming environments&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;high-level-languages&#34;&gt;High-level languages&lt;/h4&gt;
-
-&lt;p&gt;High-level languages helps in the following ways:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Alleviates accidental complexity&lt;/li&gt;
-&lt;li&gt;Diminish complexities that arose from programming in assembly language and understanding machine code&lt;/li&gt;
-&lt;li&gt;Improve processes by the use of higher level concepts such as data structures and data types&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;time-sharing&#34;&gt;Time-sharing&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Reduced compilation and execution times of software systems help keep program logic in context
-
-&lt;ul&gt;
-&lt;li&gt;This is true because a shorter feedback loop helps engineers keep focused on the task at hand&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;unified-programming-environments&#34;&gt;Unified programming environments&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Development of Unix and Interlisp helped with using software programs together and improving productivity&lt;/li&gt;
-&lt;li&gt;Unified file formats, and integrated libraries helped immeasurably as well&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;hopes-for-the-silver&#34;&gt;Hopes for the Silver&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Looking at possible silve bullets&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;ada-and-other-high-level-language-advances&#34;&gt;Ada and other high-level language advances&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ada is touted as a very influential programming language&lt;/li&gt;
-&lt;li&gt;Ada&amp;rsquo;s philosophy more than its features as a language have been influential&lt;/li&gt;
-&lt;li&gt;Fred Brooks makes a prediction that Ada will have an impact by training engineers with modern software practices&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;object-oriented-programming&#34;&gt;Object-oriented programming&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Argues that object-oriented programming (OOP) helps remove boilerplate of previous software constructs&lt;/li&gt;
-&lt;li&gt;OOP helps with higher-order design of software systems&lt;/li&gt;
-&lt;li&gt;Argues that OOP can only help if some of the troubles of &lt;code&gt;type specification&lt;/code&gt; is reduced in systems&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;artificial-intelligence&#34;&gt;Artificial intelligence&lt;/h4&gt;
-
-&lt;p&gt;Brooks examines argument made by &lt;code&gt;Parnas&lt;/code&gt; on AI&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;The use of computers to solve problems that previously could only be solved by applying human intelligence.
-
-&lt;ol&gt;
-&lt;li&gt;Argument is made that what people consider is AI today can rapidly change, kind of like a floating goal.&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;The use of a specific set of programming techniques knows as heuristic or rule-based programming.
-
-&lt;ol&gt;
-&lt;li&gt;Not detail expounded on rule based systems but I can surmise that there are unspoken challenges since this requires expert knowledge that must be gleaned from an actual expert&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;expert-systems&#34;&gt;Expert systems&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Inference engines offer advantages over deterministic logic through application independence and varied use&lt;/li&gt;
-&lt;li&gt;Rule sets can encode universal ideas that can be applied to different applications thereby distributing complexity&lt;/li&gt;
-&lt;li&gt;Argues that separation of application complexity from the software program itself is an important advance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Applications for software tasks:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Suggest interface rules&lt;/li&gt;
-&lt;li&gt;Help with testing strategies&lt;/li&gt;
-&lt;li&gt;Optimization strategies&lt;/li&gt;
-&lt;li&gt;Argues that rule-based systems should become more hierarchically modularized in the same that a system does&lt;/li&gt;
-&lt;li&gt;Argues that test case generation is work that has to be done anyways and rules can help maintenance of a system&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Difficulties in Expert Systems:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Difficult going from program structure specification to the semi-automatic generation of diagnostic rules&lt;/li&gt;
-&lt;li&gt;Knowledge Acquisation is difficult for several reasons:
-
-&lt;ol&gt;
-&lt;li&gt;Finding experts that are articulate enough and understand why they do things.&lt;/li&gt;
-&lt;li&gt;Extracting information from experts in order to distill into the rule bases is another&lt;/li&gt;
-&lt;li&gt;Experts are required&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Distilling knowledge to inexperienced programmers from the best programmers is also no simple task.&lt;/li&gt;
-&lt;li&gt;A tool that disseminates this knowledge is extremely important&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;automatic-programming&#34;&gt;Automatic programming&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;In short, automatic programming always has been a euphemism for programming with a higher-level language than was presently available to the programmer.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Automatic Programming favorable qualities:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The problems are readily characterized by relatively few parameters.&lt;/li&gt;
-&lt;li&gt;There are many known methods of solution to provide a library of alternatives.&lt;/li&gt;
-&lt;li&gt;Extensive analysis has led to explicit rules for selecting solution techniques, given problem parameters&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Argues that such programming seems difficult to even achieve&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;graphical-programming&#34;&gt;Graphical Programming&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Argues that uses of flow-chart is a poor abstraction of software construction&lt;/li&gt;
-&lt;li&gt;Argues that it is a useless design tool used by programmers since it is used after writing programs not before&lt;/li&gt;
-&lt;li&gt;Argues that desktop computer sophistication is a hindrance to software systems underlying complexity
-
-&lt;ul&gt;
-&lt;li&gt;As this was written in 1986 many advances have occurred with software so not sure about this point&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Argues that software is very difficult to visualize
-
-&lt;ul&gt;
-&lt;li&gt;The following graphical tools:&lt;/li&gt;
-&lt;li&gt;Diagram control flow, varible scope nesting, variable cross-references, data flow, hierarchical data structures&lt;/li&gt;
-&lt;li&gt;Even with these tools it is difficult to get a global overview of a software system.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;A software systems cannot be visualized in the same way that hardware systems can&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;program-verification&#34;&gt;Program verification&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Argues that Program verification is powerful but labor intensive and very few programs have been proven correct&lt;/li&gt;
-&lt;li&gt;Argues that program verification can only assert that a program meets its specification&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The hardest part of the software task is arriving at a complete and consistent specification, and much of the essence of building a program is in fact the debugging of the specification.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;environments-and-tools&#34;&gt;Environments and tools&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Smart Editors at most can help with syntactic errors and simple semantic errors&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;Integrated Database Systems&amp;rdquo; that keep track of details that programmer&amp;rsquo;s must understand
-
-&lt;ul&gt;
-&lt;li&gt;I am assuming here that &amp;ldquo;Object Relational Mappers&amp;rdquo; could be considered nice tools to extract business logic&lt;/li&gt;
-&lt;li&gt;Examples like linq instead of using Stored Procedures and Table Triggers&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;workstations&#34;&gt;Workstations&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The point is made that even with factor of 10 speed increases in developer workstations you still have think time
-
-&lt;ul&gt;
-&lt;li&gt;Think time being the time a developer uses modelling out business logic and program flow I assume&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;promising-attacks-on-the-conceptual-essence&#34;&gt;Promising Attacks on the Conceptual Essence&lt;/h2&gt;
-
-&lt;p&gt;Productivity Equation:&lt;/p&gt;
-
-&lt;p&gt;$$ \sum(Frequency)_i x (Time)_i $$&lt;/p&gt;
-
-&lt;p&gt;Focusing on the task at hand or the conceptual essence is not the silver bullet as well&lt;/p&gt;
-
-&lt;h4 id=&#34;buy-versus-build&#34;&gt;Buy versus build&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;It is cheaper to buy production ready software than try to write homegrown software
-
-&lt;ul&gt;
-&lt;li&gt;Argues that a software system costing $100,000 could be roughly equivalent to a yearly salary of a developer&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Argument made that the ratio of hardware/software cost has changed dramatically
-
-&lt;ul&gt;
-&lt;li&gt;if you spent 2 million on a piece of hardware then spending another $250,000 on software is a drop in the bucket&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Development of spreadsheet and office technologies has enabled the mainline computer user to find new uses
-
-&lt;ul&gt;
-&lt;li&gt;Argues such office software has the possibility of being a force multiplier in advances through novel uses&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;requirements-refinement-and-rapid-prototyping&#34;&gt;Requirements refinement and rapid prototyping&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Clients find it hard to nail down the exact requirements that they want&lt;/li&gt;
-&lt;li&gt;Will often take multiple versions of a prototype to nail down what the client wants&lt;/li&gt;
-&lt;li&gt;Points out that rapid prototype tools can assist greatly in solving software problems&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The  purpose  of  the  prototype  is  to  make  real  the  conceptual  structure  specified,  so  that  the  client  can  test  it  for  consistency  and  usability&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Iterative development and the use of prototypes is key to building satisfactory software system&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;incremental-development-grow-not-build-software&#34;&gt;Incremental development grow not build software&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Calls for iterative development in software
-
-&lt;ul&gt;
-&lt;li&gt;Flesh out details bit by bit in a system&lt;/li&gt;
-&lt;li&gt;I would argue that TDD can help with such things by facilitating with incremental design&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;That is, the system should first be made to run, even though it does nothing useful except call the proper set of dummy subprograms.  Then, bit-by-bit it is fleshed out, with the subprograms in turn being developed into actions or calls to empty stubs in the level below&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The main point is see in this section is that having a running system at all times keeps you focused and attentive&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;great-designers&#34;&gt;Great designers&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Good design can help drive quality of a system
-
-&lt;ul&gt;
-&lt;li&gt;Organizations like the Software Engineering Institute help promote good software systems&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Argues that great design minds (meaning individuals) can accomplish more than a committee of designers&lt;/li&gt;
-&lt;li&gt;Find ways to nurture highly creative minds as they can pave the way to the future
-
-&lt;ul&gt;
-&lt;li&gt;Examples are given with Unix, SmallTalk, Fortran and others that were largely individual efforts&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Argues that organizations must cultivate great designers just like they would with management prospects&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Highlights the following ways to grow great designers:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Systematically identify top designers as early as possible. The best are often not the most experienced&lt;/li&gt;
-&lt;li&gt;Assign a career mentor to be responsible for the development of the prospect, and keep a careful career file&lt;/li&gt;
-&lt;li&gt;Devise and maintain a career development plan for each prospect&lt;/li&gt;
-&lt;li&gt;including carefully selected apprenticeships with top designers, episodes of advanced formal education&lt;/li&gt;
-&lt;li&gt;short courses, all interspersed with solo design and technical leadership assignments&lt;/li&gt;
-&lt;li&gt;Provide opportunities for growing designers to interact with and stimulate each other&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

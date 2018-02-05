@@ -13,6 +13,18 @@
     
     
     <item>
+      <title>Api Testing</title>
+      <link>https://www.marcelbelmont.com/post/api-testing/</link>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
+      <description>Restful API Testing API testing is a necessary task to do while building APIs.
+Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
+Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
+ GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
+    </item>
+    
+    <item>
       <title>Agile Terminology</title>
       <link>https://www.marcelbelmont.com/post/agile-patterns/</link>
       <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>

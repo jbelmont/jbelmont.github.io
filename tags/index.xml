@@ -247,11 +247,29 @@
     </item>
     
     <item>
+      <title>Postman</title>
+      <link>https://www.marcelbelmont.com/tags/postman/</link>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/postman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Redis</title>
       <link>https://www.marcelbelmont.com/tags/redis/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rest</title>
+      <link>https://www.marcelbelmont.com/tags/rest/</link>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/rest/</guid>
       <description></description>
     </item>
     
@@ -303,7 +321,7 @@
     <item>
       <title>Testing</title>
       <link>https://www.marcelbelmont.com/tags/testing/</link>
-      <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/testing/</guid>
       <description></description>

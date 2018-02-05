@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Wed, 06 Dec 2017 10:09:18 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 04 Feb 2018 20:21:03 -0500</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Api Testing</title>
+      <link>https://www.marcelbelmont.com/post/api-testing/</link>
+      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
+      <description>Restful API Testing API testing is a necessary task to do while building APIs.
+Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
+Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
+ GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
+    </item>
     
     <item>
       <title>Page Object Pattern</title>
