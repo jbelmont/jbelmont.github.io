@@ -593,6 +593,15 @@ Ensure transparency into the upcoming work of the product development team.&lt;/
     </item>
     
     <item>
+      <title>Containerized Golang applications with Docker and Vue.js</title>
+      <link>https://www.marcelbelmont.com/talk/trilug-talk/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/trilug-talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Page Object Pattern</title>
       <link>https://www.marcelbelmont.com/post/page-object-pattern/</link>
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
@@ -7779,32 +7788,6 @@ OK
 &lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Here are my review notes &lt;a href=&#34;https://t.co/ERNo7ue7ik&#34;&gt;https://t.co/ERNo7ue7ik&lt;/a&gt; for the science of &lt;a href=&#34;https://twitter.com/greatui?ref_src=twsrc%5Etfw&#34;&gt;@greatui&lt;/a&gt;  which come straight from the course &lt;a href=&#34;https://t.co/Lep7cOUIOs&#34;&gt;https://t.co/Lep7cOUIOs&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jean-Marcel Belmont (@jbelmont80) &lt;a href=&#34;https://twitter.com/jbelmont80/status/891414055222685696?ref_src=twsrc%5Etfw&#34;&gt;July 29, 2017&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
-</description>
-    </item>
-    
-    <item>
-      <title>Containerized Golang Applications (with Vue.js) </title>
-      <link>https://www.marcelbelmont.com/talk/modern-web-golang-docker/</link>
-      <pubDate>Tue, 25 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/talk/modern-web-golang-docker/</guid>
-      <description>&lt;p&gt;A Modern Web Demonstration using Golang, Docker, and Vue.js&lt;/p&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Learning about how to build containerized &lt;a href=&#34;https://twitter.com/golang?ref_src=twsrc%5Etfw&#34;&gt;@golang&lt;/a&gt; applications with &lt;a href=&#34;https://twitter.com/Docker?ref_src=twsrc%5Etfw&#34;&gt;@docker&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/vuejs?ref_src=twsrc%5Etfw&#34;&gt;@vuejs&lt;/a&gt; at our event tonight in the Triangle w &lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; &lt;a href=&#34;https://t.co/XtE4r1rv0a&#34;&gt;pic.twitter.com/XtE4r1rv0a&lt;/a&gt;&lt;/p&gt;&amp;mdash; Modern Web (@moderndotweb) &lt;a href=&#34;https://twitter.com/moderndotweb/status/889986506466750464?ref_src=twsrc%5Etfw&#34;&gt;July 25, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;There&amp;#39;s &lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; speaking about Golang, Docker, and Vue; &lt;a href=&#34;https://twitter.com/ben336?ref_src=twsrc%5Etfw&#34;&gt;@ben336&lt;/a&gt; talking about &lt;a href=&#34;https://twitter.com/gatsbyjs?ref_src=twsrc%5Etfw&#34;&gt;@gatsbyjs&lt;/a&gt;; and &lt;a href=&#34;https://twitter.com/ladyleet?ref_src=twsrc%5Etfw&#34;&gt;@ladyleet&lt;/a&gt; talking about &lt;a href=&#34;https://twitter.com/hashtag/RxJS?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#RxJS&lt;/a&gt; ! MANY here!&lt;/p&gt;&amp;mdash; Rob Ocel (@robocell) &lt;a href=&#34;https://twitter.com/robocell/status/889993688541212672?ref_src=twsrc%5Etfw&#34;&gt;July 25, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Had a blast paneling with &lt;a href=&#34;https://twitter.com/ben336?ref_src=twsrc%5Etfw&#34;&gt;@ben336&lt;/a&gt; &lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/moderndotweb?ref_src=twsrc%5Etfw&#34;&gt;@moderndotweb&lt;/a&gt; last night! &lt;a href=&#34;https://t.co/O4bwAXuec1&#34;&gt;pic.twitter.com/O4bwAXuec1&lt;/a&gt;&lt;/p&gt;&amp;mdash; Tracy Lee | ladyleet (@ladyleet) &lt;a href=&#34;https://twitter.com/ladyleet/status/890185159282241540?ref_src=twsrc%5Etfw&#34;&gt;July 26, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; did a great job presenting his containerized golang &amp;amp; vue demo! Thank you &lt;a href=&#34;https://twitter.com/moderndotweb?ref_src=twsrc%5Etfw&#34;&gt;@moderndotweb&lt;/a&gt; for posting! &lt;a href=&#34;https://t.co/tT7GetnwF7&#34;&gt;https://t.co/tT7GetnwF7&lt;/a&gt;&lt;/p&gt;&amp;mdash; My Info (@coreylcole) &lt;a href=&#34;https://twitter.com/coreylcole/status/902951613748264960?ref_src=twsrc%5Etfw&#34;&gt;August 30, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
 </description>
     </item>
     
