@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.34" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/elk-stack-getting-started/">
+
+  
+
+  <title>A quick look at the Elastic Stack | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">A quick look at the Elastic Stack</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2018-03-18 12:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Sun, Mar 18, 2018
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/elastic-search">Elastic Search</a
+    >, 
+    
+    <a href="/tags/logstash">Logstash</a
+    >, 
+    
+    <a href="/tags/kibana">Kibana</a
+    >, 
+    
+    <a href="/tags/filebeat">Filebeat</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2felk-stack-getting-started%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=A%20quick%20look%20at%20the%20Elastic%20Stack&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2felk-stack-getting-started%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2felk-stack-getting-started%2f&amp;title=A%20quick%20look%20at%20the%20Elastic%20Stack"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2felk-stack-getting-started%2f&amp;title=A%20quick%20look%20at%20the%20Elastic%20Stack"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=A%20quick%20look%20at%20the%20Elastic%20Stack&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2felk-stack-getting-started%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="elastic-search-logstash-and-kibana">Elastic Search, Logstash and Kibana</h1>
+
+<p>This quick post will get you up and running with the elk stack.</p>
+
+<p>Please clone my github repository where the scripts I created live and so that you can follow along with the post.</p>
+
+<p>Go to <a href="https://github.com/jbelmont/elkstack-practice" target="_blank">Elkstack Practice</a></p>
+
+<p>If you want to generate movies.json then do the following command:</p>
+
+<p><code>go run main.go &gt; movies.json</code></p>
+
+<p>If you want to generate tags.json then do the following command:</p>
+
+<p><code>cd tags; go run main.go &gt; tag.json</code></p>
+
+<p>Install elasticsearch via homebrew:</p>
+
+<pre><code class="language-bash">brew install elasticsearch
+</code></pre>
+
+<p>Install kibana via homebrew:</p>
+
+<pre><code class="language-bash">brew install kibana
+</code></pre>
+
+<p>Install logstash via homebrew:</p>
+
+<pre><code class="language-bash">brew install logstash
+</code></pre>
+
+<p>Make sure that all the services are up and running:</p>
+
+<pre><code class="language-bash">brew services start kibana
+brew services start elasticsearch
+brew services start logstash
+</code></pre>
+
+<p>You should see all the services up and running:</p>
+
+<pre><code class="language-bash">brew services list
+</code></pre>
+
+<p>Make sure that the elastic stack is up and running:</p>
+
+<pre><code class="language-curl">curl -X GET 127.0.0.1:9200
+{
+  &quot;name&quot; : &quot;M43AiJz&quot;,
+  &quot;cluster_name&quot; : &quot;elasticsearch_jean-marcelbelmont&quot;,
+  &quot;cluster_uuid&quot; : &quot;8dHbumffQ3iAOUU32Sx1Jw&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;6.2.2&quot;,
+    &quot;build_hash&quot; : &quot;10b1edd&quot;,
+    &quot;build_date&quot; : &quot;2018-02-16T19:01:30.685723Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;7.2.1&quot;,
+    &quot;minimum_wire_compatibility_version&quot; : &quot;5.6.0&quot;,
+    &quot;minimum_index_compatibility_version&quot; : &quot;5.0.0&quot;
+  },
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
+</code></pre>
+
+<p>You can see all the indices available with the following command:</p>
+
+<pre><code class="language-curl">curl -X GET 127.0.0.1:9200/_cat/indices?v
+health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   logstash-2017.05.04             hfY9yL1vTt-IQGE8G591VQ   5   1      16762            0      7.1mb          7.1mb
+green  open   .monitoring-es-6-2018.03.18     FWPFXqVBTWmt84HfT4-_Pw   1   0       9903            0      5.7mb          5.7mb
+yellow open   logstash-2017.05.02             T6DtDxYJQEm_rwaXg_YLfA   5   1      16278            0        7mb            7mb
+green  open   .monitoring-kibana-6-2018.03.18 -tr0EU_0T16tskWdvbGBmg   1   0        314            0    197.5kb        197.5kb
+green  open   .triggered_watches              zcs8Nqi2SQ6sUVI2TsBTUg   1   0          0            0     16.2kb         16.2kb
+yellow open   app                             oRwQ4n5aSOqFZ_sWPg_iuA   5   1          1            0      5.4kb          5.4kb
+yellow open   tags                            CY18aLQuQt-VsLZDce2kZw   5   1       1296            0    342.4kb        342.4kb
+yellow open   movies                          141JB-VbTxylwb6IFP6JKA   5   1       9125            0      1.3mb          1.3mb
+yellow open   logstash-2017.04.30             TH83PAHZTL6utR_wgxXU9A   5   1      14166            0      6.3mb          6.3mb
+yellow open   ratings                         4QXKvkNsTmGVayapswxwcA   5   1     100004            0     13.4mb         13.4mb
+green  open   .watches                        XMyhvohjTiSj1sG-ek97nw   1   0          6            0     33.3kb         33.3kb
+yellow open   logstash-2017.05.01             8Cs8mEyXSuW_jTQXdUXubg   5   1      15948            0      6.9mb          6.9mb
+yellow open   logs                            lXA5H-V_QSOrySGg6r6R1Q   5   1          1            0      5.8kb          5.8kb
+yellow open   logstash-2017.05.05             e1hwj1ddQDK69ZmKaRFi5A   5   1      18646            0      7.7mb          7.7mb
+yellow open   testindex                       RaI2XDStSBqDEz-jgl-5RQ   3   1          0            0       783b           783b
+green  open   .watcher-history-7-2018.03.18   mfe3zaV3Qvib5XLPBA1W0A   1   0        502            0    730.4kb        730.4kb
+green  open   .monitoring-alerts-6            IdSXd-D9RNqlGYXcWThGiA   1   0          1            0      6.1kb          6.1kb
+yellow open   shakespeare                     EjHjJW8WTpCe4ZyeOhAJXA   5   1     111396            0     21.6mb         21.6mb
+green  open   .kibana                         aZ2Fhv-PSsOf5BUTlDdhkw   1   0        143            1    142.5kb        142.5kb
+yellow open   logstash-2017.05.03             nklpkzxxSRCWOL990fD2Qg   5   1      21172            0      9.3mb          9.3mb
+</code></pre>
+
+<p>As you can tell there is a list of indices here</p>
+
+<p>We will add some movies via the go script I created:</p>
+
+<pre><code class="language-curl">curl -X PUT -H &quot;Content-Type: application/json&quot; 127.0.0.1:9200/_bulk?pretty --data-binary @movies.json
+</code></pre>
+
+<p>This imports movies json file into elastic</p>
+
+<p>Here we will create a new movie entry to movie index:</p>
+
+<pre><code class="language-curl">curl -X POST -H &quot;Content-Type: application/json&quot; 127.0.0.1:9200/movies/movie/180895/_update -d '
+{
+  &quot;doc&quot; : {
+    &quot;title&quot;: &quot;BoneHead Man&quot;
+  }
+}'
+</code></pre>
+
+<p>Here is an example of using filters in elastic search:</p>
+
+<pre><code class="language-curl">curl -X GET -H 'Content-Type: application/json' '127.0.0.1:9200/logstash-2017.05.04/_search?size=0&amp;pretty' -d '
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+    &quot;agent&quot;: &quot;Googlebot&quot;
+   }
+},
+  &quot;aggs&quot;: {
+    &quot;timestamp&quot;: {
+      &quot;date_histogram&quot;: {
+        &quot;field&quot;: &quot;@timestamp&quot;, &quot;interval&quot;: &quot;minute&quot;
+      }
+    }
+  }
+}'
+</code></pre>
+
+<p>This query will query and match via a user agent of <code>Googlebot</code> and will do an aggregation based on timestamp and use an interval of a minute</p>
+
+<p>Instead of using <code>curl</code> you can use the Kibana Dashboard to help you do both queries and create indices and list indices and much more</p>
+
+
+<figure >
+    
+        <img src="/media/kibana-dev-tools.png" />
+    
+    
+</figure>
+
+
+<p>Notice here that I clicked on the <code>Dev Tools</code> tab.</p>
+
+<p>You get autocomplete functionality in the Dev tools and many other features.</p>
+
+<p>You can add more functionality to elastic search by installing the x-pack and you can do the following:</p>
+
+<p><code>elasticsearch-plugin install x-pack</code></p>
+
+<p>Here are some more recommended plugins to install:</p>
+
+<p><code>elasticsearch-plugin install ingest-user-agent</code></p>
+
+<p><code>elasticsearch-plugin install ingest-geoip</code></p>
+
+<p>Here is a copy of my <code>elasticsearch.yml</code> configuration file:</p>
+
+<pre><code class="language-yml"># ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+cluster.name: elasticsearch_jean-marcelbelmont
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+node.name: node-1
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+path.data: /usr/local/var/lib/elasticsearch/
+#
+# Path to log files:
+#
+path.logs: /usr/local/var/log/elasticsearch/
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+#network.host: 192.168.0.1
+#
+# Set a custom port for HTTP:
+#
+#http.port: 9200
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is [&quot;127.0.0.1&quot;, &quot;[::1]&quot;]
+#
+#discovery.zen.ping.unicast.hosts: [&quot;host1&quot;, &quot;host2&quot;]
+#
+# Prevent the &quot;split brain&quot; by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
+#
+#discovery.zen.minimum_master_nodes: 
+#
+# For more information, consult the zen discovery module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+#gateway.recover_after_nodes: 3
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
+
+xpack.security.enabled: false
+
+node.max_local_storage_nodes: 2
+</code></pre>
+
+<p>You should also consider adding filebeat to the elastic search and you can add it with the following command:</p>
+
+<p><code>brew install filebeat</code></p>
+
+<p>Here is my configuration file for <code>filebeat.yml</code>:</p>
+
+<pre><code class="language-yml">###################### Filebeat Configuration Example #########################
+
+# This file is an example configuration file highlighting only the most common
+# options. The filebeat.reference.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/filebeat/index.html
+
+# For more available modules and options, please see the filebeat.reference.yml sample
+# configuration file.
+
+#=========================== Filebeat prospectors =============================
+
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+
+- type: log
+
+  # Change to true to enable this prospector configuration.
+  enabled: false
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+  # Exclude lines. A list of regular expressions to match. It drops the lines that are
+  # matching any regular expression from the list.
+  #exclude_lines: ['^DBG']
+
+  # Include lines. A list of regular expressions to match. It exports the lines that are
+  # matching any regular expression from the list.
+  #include_lines: ['^ERR', '^WARN']
+
+  # Exclude files. A list of regular expressions to match. Filebeat drops the files that
+  # are matching any regular expression from the list. By default, no files are dropped.
+  #exclude_files: ['.gz$']
+
+  # Optional additional fields. These fields can be freely picked
+  # to add additional information to the crawled log files for filtering
+  #fields:
+  #  level: debug
+  #  review: 1
+
+  ### Multiline options
+
+  # Mutiline can be used for log messages spanning multiple lines. This is common
+  # for Java Stack Traces or C-Line Continuation
+
+  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
+  #multiline.pattern: ^\[
+
+  # Defines if the pattern set under pattern should be negated or not. Default is false.
+  #multiline.negate: false
+
+  # Match can be set to &quot;after&quot; or &quot;before&quot;. It is used to define if lines should be append to a pattern
+  # that was (not) matched before or after or as long as a pattern is not matched based on negate.
+  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
+  #multiline.match: after
+
+
+#============================= Filebeat modules ===============================
+
+filebeat.config.modules:
+  # Glob pattern for configuration loading
+  path: ${path.config}/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: false
+
+  # Period on which files under path should be checked for changes
+  #reload.period: 10s
+
+#==================== Elasticsearch template setting ==========================
+
+setup.template.settings:
+  index.number_of_shards: 3
+  #index.codec: best_compression
+  #_source.enabled: false
+
+#================================ General =====================================
+
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+#name:
+
+# The tags of the shipper are included in their own field with each
+# transaction published.
+#tags: [&quot;service-X&quot;, &quot;web-tier&quot;]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: staging
+
+
+#============================== Dashboards =====================================
+# These settings control loading the sample dashboards to the Kibana index. Loading
+# the dashboards is disabled by default and can be enabled either by setting the
+# options here, or by using the `-setup` CLI flag or the `setup` command.
+#setup.dashboards.enabled: false
+
+# The URL from where to download the dashboards archive. By default this URL
+# has a value which is computed based on the Beat name and version. For released
+# versions, this URL points to the dashboard archive on the artifacts.elastic.co
+# website.
+#setup.dashboards.url:
+
+#============================== Kibana =====================================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 5601)
+  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  host: &quot;localhost:5601&quot;
+
+#============================= Elastic Cloud ==================================
+
+# These settings simplify using filebeat with the Elastic Cloud (https://cloud.elastic.co/).
+
+# The cloud.id setting overwrites the `output.elasticsearch.hosts` and
+# `setup.kibana.host` options.
+# You can find the `cloud.id` in the Elastic Cloud web UI.
+#cloud.id:
+
+# The cloud.auth setting overwrites the `output.elasticsearch.username` and
+# `output.elasticsearch.password` settings. The format is `&lt;user&gt;:&lt;pass&gt;`.
+#cloud.auth:
+
+#================================ Outputs =====================================
+
+# Configure what output to use when sending the data collected by the beat.
+
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: [&quot;localhost:9200&quot;]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: &quot;https&quot;
+  #username: &quot;elastic&quot;
+  #password: &quot;changeme&quot;
+
+#----------------------------- Logstash output --------------------------------
+#output.logstash:
+  # The Logstash hosts
+  #hosts: [&quot;localhost:5044&quot;]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: [&quot;/etc/pki/root/ca.pem&quot;]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: &quot;/etc/pki/client/cert.pem&quot;
+
+  # Client Certificate Key
+  #ssl.key: &quot;/etc/pki/client/cert.key&quot;
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: error, warning, info, debug
+#logging.level: debug
+
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use [&quot;*&quot;]. Examples of other selectors are &quot;beat&quot;,
+# &quot;publish&quot;, &quot;service&quot;.
+#logging.selectors: [&quot;*&quot;]
+
+#============================== Xpack Monitoring ===============================
+# filebeat can export internal metrics to a central Elasticsearch monitoring
+# cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The
+# reporting is disabled by default.
+
+# Set to true to enable the monitoring reporter.
+#xpack.monitoring.enabled: false
+
+# Uncomment to send the metrics to Elasticsearch. Most settings from the
+# Elasticsearch output are accepted here as well. Any setting that is not set is
+# automatically inherited from the Elasticsearch output configuration, so if you
+# have the Elasticsearch output configured, you can simply uncomment the
+# following line.
+#xpack.monitoring.elasticsearch:
+</code></pre>
+
+<p>You will also need to configure <code>logstash.conf</code> file.</p>
+
+<p>Here is my configuration file:</p>
+
+<pre><code>input {
+	file {
+		path =&gt; &quot;/Users/jean-marcelbelmont/elk/access_log&quot;
+		start_position =&gt; &quot;beginning&quot;
+		ignore_older =&gt; 0
+	}
+}
+
+filter {
+	grok {
+		match =&gt; { &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot; }
+	}
+	date {
+		match =&gt; [ &quot;timestamp&quot;, &quot;dd/MMM/yyyy:HH:mm:ss Z&quot; ]
+	}
+}
+
+output {
+	elasticsearch {
+		hosts =&gt; [ &quot;localhost:9200&quot; ]
+	}
+	stdout {
+		codec =&gt; rubydebug
+	}
+}
+</code></pre>
+
+<p>Here I spin up logstash with my configuration file: <code>sudo logstash -f /etc/logstash/conf.d/logstash.conf</code></p>
+
+<p>I would highly suggest you check out <a href="https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on" target="_blank">Frank Kanes Udemy Course on the Elastic Stack</a></p>
+
+<p>If you like this post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @github</a></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/api-testing/"><span
+      aria-hidden="true">&larr;</span> Api Testing</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

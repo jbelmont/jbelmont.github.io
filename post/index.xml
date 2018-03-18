@@ -13,6 +13,20 @@
     
     
     <item>
+      <title>A quick look at the Elastic Stack</title>
+      <link>https://www.marcelbelmont.com/post/elk-stack-getting-started/</link>
+      <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/elk-stack-getting-started/</guid>
+      <description>Elastic Search, Logstash and Kibana This quick post will get you up and running with the elk stack.
+Please clone my github repository where the scripts I created live and so that you can follow along with the post.
+Go to Elkstack Practice
+If you want to generate movies.json then do the following command:
+go run main.go &amp;gt; movies.json
+If you want to generate tags.json then do the following command:</description>
+    </item>
+    
+    <item>
       <title>Api Testing</title>
       <link>https://www.marcelbelmont.com/post/api-testing/</link>
       <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>

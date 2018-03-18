@@ -11,6 +11,502 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>A quick look at the Elastic Stack</title>
+      <link>https://www.marcelbelmont.com/post/elk-stack-getting-started/</link>
+      <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/elk-stack-getting-started/</guid>
+      <description>
+
+&lt;h1 id=&#34;elastic-search-logstash-and-kibana&#34;&gt;Elastic Search, Logstash and Kibana&lt;/h1&gt;
+
+&lt;p&gt;This quick post will get you up and running with the elk stack.&lt;/p&gt;
+
+&lt;p&gt;Please clone my github repository where the scripts I created live and so that you can follow along with the post.&lt;/p&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;https://github.com/jbelmont/elkstack-practice&#34; target=&#34;_blank&#34;&gt;Elkstack Practice&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to generate movies.json then do the following command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go run main.go &amp;gt; movies.json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to generate tags.json then do the following command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd tags; go run main.go &amp;gt; tag.json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Install elasticsearch via homebrew:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install elasticsearch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install kibana via homebrew:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install kibana
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install logstash via homebrew:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install logstash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure that all the services are up and running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew services start kibana
+brew services start elasticsearch
+brew services start logstash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see all the services up and running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew services list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure that the elastic stack is up and running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET 127.0.0.1:9200
+{
+  &amp;quot;name&amp;quot; : &amp;quot;M43AiJz&amp;quot;,
+  &amp;quot;cluster_name&amp;quot; : &amp;quot;elasticsearch_jean-marcelbelmont&amp;quot;,
+  &amp;quot;cluster_uuid&amp;quot; : &amp;quot;8dHbumffQ3iAOUU32Sx1Jw&amp;quot;,
+  &amp;quot;version&amp;quot; : {
+    &amp;quot;number&amp;quot; : &amp;quot;6.2.2&amp;quot;,
+    &amp;quot;build_hash&amp;quot; : &amp;quot;10b1edd&amp;quot;,
+    &amp;quot;build_date&amp;quot; : &amp;quot;2018-02-16T19:01:30.685723Z&amp;quot;,
+    &amp;quot;build_snapshot&amp;quot; : false,
+    &amp;quot;lucene_version&amp;quot; : &amp;quot;7.2.1&amp;quot;,
+    &amp;quot;minimum_wire_compatibility_version&amp;quot; : &amp;quot;5.6.0&amp;quot;,
+    &amp;quot;minimum_index_compatibility_version&amp;quot; : &amp;quot;5.0.0&amp;quot;
+  },
+  &amp;quot;tagline&amp;quot; : &amp;quot;You Know, for Search&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can see all the indices available with the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET 127.0.0.1:9200/_cat/indices?v
+health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   logstash-2017.05.04             hfY9yL1vTt-IQGE8G591VQ   5   1      16762            0      7.1mb          7.1mb
+green  open   .monitoring-es-6-2018.03.18     FWPFXqVBTWmt84HfT4-_Pw   1   0       9903            0      5.7mb          5.7mb
+yellow open   logstash-2017.05.02             T6DtDxYJQEm_rwaXg_YLfA   5   1      16278            0        7mb            7mb
+green  open   .monitoring-kibana-6-2018.03.18 -tr0EU_0T16tskWdvbGBmg   1   0        314            0    197.5kb        197.5kb
+green  open   .triggered_watches              zcs8Nqi2SQ6sUVI2TsBTUg   1   0          0            0     16.2kb         16.2kb
+yellow open   app                             oRwQ4n5aSOqFZ_sWPg_iuA   5   1          1            0      5.4kb          5.4kb
+yellow open   tags                            CY18aLQuQt-VsLZDce2kZw   5   1       1296            0    342.4kb        342.4kb
+yellow open   movies                          141JB-VbTxylwb6IFP6JKA   5   1       9125            0      1.3mb          1.3mb
+yellow open   logstash-2017.04.30             TH83PAHZTL6utR_wgxXU9A   5   1      14166            0      6.3mb          6.3mb
+yellow open   ratings                         4QXKvkNsTmGVayapswxwcA   5   1     100004            0     13.4mb         13.4mb
+green  open   .watches                        XMyhvohjTiSj1sG-ek97nw   1   0          6            0     33.3kb         33.3kb
+yellow open   logstash-2017.05.01             8Cs8mEyXSuW_jTQXdUXubg   5   1      15948            0      6.9mb          6.9mb
+yellow open   logs                            lXA5H-V_QSOrySGg6r6R1Q   5   1          1            0      5.8kb          5.8kb
+yellow open   logstash-2017.05.05             e1hwj1ddQDK69ZmKaRFi5A   5   1      18646            0      7.7mb          7.7mb
+yellow open   testindex                       RaI2XDStSBqDEz-jgl-5RQ   3   1          0            0       783b           783b
+green  open   .watcher-history-7-2018.03.18   mfe3zaV3Qvib5XLPBA1W0A   1   0        502            0    730.4kb        730.4kb
+green  open   .monitoring-alerts-6            IdSXd-D9RNqlGYXcWThGiA   1   0          1            0      6.1kb          6.1kb
+yellow open   shakespeare                     EjHjJW8WTpCe4ZyeOhAJXA   5   1     111396            0     21.6mb         21.6mb
+green  open   .kibana                         aZ2Fhv-PSsOf5BUTlDdhkw   1   0        143            1    142.5kb        142.5kb
+yellow open   logstash-2017.05.03             nklpkzxxSRCWOL990fD2Qg   5   1      21172            0      9.3mb          9.3mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can tell there is a list of indices here&lt;/p&gt;
+
+&lt;p&gt;We will add some movies via the go script I created:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X PUT -H &amp;quot;Content-Type: application/json&amp;quot; 127.0.0.1:9200/_bulk?pretty --data-binary @movies.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This imports movies json file into elastic&lt;/p&gt;
+
+&lt;p&gt;Here we will create a new movie entry to movie index:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X POST -H &amp;quot;Content-Type: application/json&amp;quot; 127.0.0.1:9200/movies/movie/180895/_update -d &#39;
+{
+  &amp;quot;doc&amp;quot; : {
+    &amp;quot;title&amp;quot;: &amp;quot;BoneHead Man&amp;quot;
+  }
+}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is an example of using filters in elastic search:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET -H &#39;Content-Type: application/json&#39; &#39;127.0.0.1:9200/logstash-2017.05.04/_search?size=0&amp;amp;pretty&#39; -d &#39;
+{
+  &amp;quot;query&amp;quot;: {
+    &amp;quot;match&amp;quot;: {
+    &amp;quot;agent&amp;quot;: &amp;quot;Googlebot&amp;quot;
+   }
+},
+  &amp;quot;aggs&amp;quot;: {
+    &amp;quot;timestamp&amp;quot;: {
+      &amp;quot;date_histogram&amp;quot;: {
+        &amp;quot;field&amp;quot;: &amp;quot;@timestamp&amp;quot;, &amp;quot;interval&amp;quot;: &amp;quot;minute&amp;quot;
+      }
+    }
+  }
+}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This query will query and match via a user agent of &lt;code&gt;Googlebot&lt;/code&gt; and will do an aggregation based on timestamp and use an interval of a minute&lt;/p&gt;
+
+&lt;p&gt;Instead of using &lt;code&gt;curl&lt;/code&gt; you can use the Kibana Dashboard to help you do both queries and create indices and list indices and much more&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/kibana-dev-tools.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that I clicked on the &lt;code&gt;Dev Tools&lt;/code&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;You get autocomplete functionality in the Dev tools and many other features.&lt;/p&gt;
+
+&lt;p&gt;You can add more functionality to elastic search by installing the x-pack and you can do the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;elasticsearch-plugin install x-pack&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are some more recommended plugins to install:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;elasticsearch-plugin install ingest-user-agent&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;elasticsearch-plugin install ingest-geoip&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a copy of my &lt;code&gt;elasticsearch.yml&lt;/code&gt; configuration file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+cluster.name: elasticsearch_jean-marcelbelmont
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+node.name: node-1
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+path.data: /usr/local/var/lib/elasticsearch/
+#
+# Path to log files:
+#
+path.logs: /usr/local/var/log/elasticsearch/
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+#network.host: 192.168.0.1
+#
+# Set a custom port for HTTP:
+#
+#http.port: 9200
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is [&amp;quot;127.0.0.1&amp;quot;, &amp;quot;[::1]&amp;quot;]
+#
+#discovery.zen.ping.unicast.hosts: [&amp;quot;host1&amp;quot;, &amp;quot;host2&amp;quot;]
+#
+# Prevent the &amp;quot;split brain&amp;quot; by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
+#
+#discovery.zen.minimum_master_nodes: 
+#
+# For more information, consult the zen discovery module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+#gateway.recover_after_nodes: 3
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
+
+xpack.security.enabled: false
+
+node.max_local_storage_nodes: 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should also consider adding filebeat to the elastic search and you can add it with the following command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;brew install filebeat&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is my configuration file for &lt;code&gt;filebeat.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;###################### Filebeat Configuration Example #########################
+
+# This file is an example configuration file highlighting only the most common
+# options. The filebeat.reference.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/filebeat/index.html
+
+# For more available modules and options, please see the filebeat.reference.yml sample
+# configuration file.
+
+#=========================== Filebeat prospectors =============================
+
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+
+- type: log
+
+  # Change to true to enable this prospector configuration.
+  enabled: false
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+  # Exclude lines. A list of regular expressions to match. It drops the lines that are
+  # matching any regular expression from the list.
+  #exclude_lines: [&#39;^DBG&#39;]
+
+  # Include lines. A list of regular expressions to match. It exports the lines that are
+  # matching any regular expression from the list.
+  #include_lines: [&#39;^ERR&#39;, &#39;^WARN&#39;]
+
+  # Exclude files. A list of regular expressions to match. Filebeat drops the files that
+  # are matching any regular expression from the list. By default, no files are dropped.
+  #exclude_files: [&#39;.gz$&#39;]
+
+  # Optional additional fields. These fields can be freely picked
+  # to add additional information to the crawled log files for filtering
+  #fields:
+  #  level: debug
+  #  review: 1
+
+  ### Multiline options
+
+  # Mutiline can be used for log messages spanning multiple lines. This is common
+  # for Java Stack Traces or C-Line Continuation
+
+  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
+  #multiline.pattern: ^\[
+
+  # Defines if the pattern set under pattern should be negated or not. Default is false.
+  #multiline.negate: false
+
+  # Match can be set to &amp;quot;after&amp;quot; or &amp;quot;before&amp;quot;. It is used to define if lines should be append to a pattern
+  # that was (not) matched before or after or as long as a pattern is not matched based on negate.
+  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
+  #multiline.match: after
+
+
+#============================= Filebeat modules ===============================
+
+filebeat.config.modules:
+  # Glob pattern for configuration loading
+  path: ${path.config}/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: false
+
+  # Period on which files under path should be checked for changes
+  #reload.period: 10s
+
+#==================== Elasticsearch template setting ==========================
+
+setup.template.settings:
+  index.number_of_shards: 3
+  #index.codec: best_compression
+  #_source.enabled: false
+
+#================================ General =====================================
+
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+#name:
+
+# The tags of the shipper are included in their own field with each
+# transaction published.
+#tags: [&amp;quot;service-X&amp;quot;, &amp;quot;web-tier&amp;quot;]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: staging
+
+
+#============================== Dashboards =====================================
+# These settings control loading the sample dashboards to the Kibana index. Loading
+# the dashboards is disabled by default and can be enabled either by setting the
+# options here, or by using the `-setup` CLI flag or the `setup` command.
+#setup.dashboards.enabled: false
+
+# The URL from where to download the dashboards archive. By default this URL
+# has a value which is computed based on the Beat name and version. For released
+# versions, this URL points to the dashboard archive on the artifacts.elastic.co
+# website.
+#setup.dashboards.url:
+
+#============================== Kibana =====================================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 5601)
+  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  host: &amp;quot;localhost:5601&amp;quot;
+
+#============================= Elastic Cloud ==================================
+
+# These settings simplify using filebeat with the Elastic Cloud (https://cloud.elastic.co/).
+
+# The cloud.id setting overwrites the `output.elasticsearch.hosts` and
+# `setup.kibana.host` options.
+# You can find the `cloud.id` in the Elastic Cloud web UI.
+#cloud.id:
+
+# The cloud.auth setting overwrites the `output.elasticsearch.username` and
+# `output.elasticsearch.password` settings. The format is `&amp;lt;user&amp;gt;:&amp;lt;pass&amp;gt;`.
+#cloud.auth:
+
+#================================ Outputs =====================================
+
+# Configure what output to use when sending the data collected by the beat.
+
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: [&amp;quot;localhost:9200&amp;quot;]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: &amp;quot;https&amp;quot;
+  #username: &amp;quot;elastic&amp;quot;
+  #password: &amp;quot;changeme&amp;quot;
+
+#----------------------------- Logstash output --------------------------------
+#output.logstash:
+  # The Logstash hosts
+  #hosts: [&amp;quot;localhost:5044&amp;quot;]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: [&amp;quot;/etc/pki/root/ca.pem&amp;quot;]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: &amp;quot;/etc/pki/client/cert.pem&amp;quot;
+
+  # Client Certificate Key
+  #ssl.key: &amp;quot;/etc/pki/client/cert.key&amp;quot;
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: error, warning, info, debug
+#logging.level: debug
+
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use [&amp;quot;*&amp;quot;]. Examples of other selectors are &amp;quot;beat&amp;quot;,
+# &amp;quot;publish&amp;quot;, &amp;quot;service&amp;quot;.
+#logging.selectors: [&amp;quot;*&amp;quot;]
+
+#============================== Xpack Monitoring ===============================
+# filebeat can export internal metrics to a central Elasticsearch monitoring
+# cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The
+# reporting is disabled by default.
+
+# Set to true to enable the monitoring reporter.
+#xpack.monitoring.enabled: false
+
+# Uncomment to send the metrics to Elasticsearch. Most settings from the
+# Elasticsearch output are accepted here as well. Any setting that is not set is
+# automatically inherited from the Elasticsearch output configuration, so if you
+# have the Elasticsearch output configured, you can simply uncomment the
+# following line.
+#xpack.monitoring.elasticsearch:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will also need to configure &lt;code&gt;logstash.conf&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Here is my configuration file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;input {
+	file {
+		path =&amp;gt; &amp;quot;/Users/jean-marcelbelmont/elk/access_log&amp;quot;
+		start_position =&amp;gt; &amp;quot;beginning&amp;quot;
+		ignore_older =&amp;gt; 0
+	}
+}
+
+filter {
+	grok {
+		match =&amp;gt; { &amp;quot;message&amp;quot; =&amp;gt; &amp;quot;%{COMBINEDAPACHELOG}&amp;quot; }
+	}
+	date {
+		match =&amp;gt; [ &amp;quot;timestamp&amp;quot;, &amp;quot;dd/MMM/yyyy:HH:mm:ss Z&amp;quot; ]
+	}
+}
+
+output {
+	elasticsearch {
+		hosts =&amp;gt; [ &amp;quot;localhost:9200&amp;quot; ]
+	}
+	stdout {
+		codec =&amp;gt; rubydebug
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here I spin up logstash with my configuration file: &lt;code&gt;sudo logstash -f /etc/logstash/conf.d/logstash.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I would highly suggest you check out &lt;a href=&#34;https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on&#34; target=&#34;_blank&#34;&gt;Frank Kanes Udemy Course on the Elastic Stack&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you like this post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Api Testing</title>
       <link>https://www.marcelbelmont.com/post/api-testing/</link>
       <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
@@ -7498,296 +7994,6 @@ OK
 &lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
 
 &lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/caching-and-memoization&#34; target=&#34;_blank&#34;&gt;Caching and Memoization&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A Review of the Science Of Great UI</title>
-      <link>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</link>
-      <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</guid>
-      <description>
-
-&lt;h1 id=&#34;the-science-of-great-ui-review&#34;&gt;The Science of Great UI Review&lt;/h1&gt;
-
-&lt;p&gt;This repository is a review of Mark Miller&amp;rsquo;s Course (The Science of Great UI)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#converting-light-into-understanding&#34;&gt;Converting Light into Understanding&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#certainty-,-ambiguity-,-context&#34;&gt;Certainty, Ambiguity, Context&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#grouping&#34;&gt;Grouping&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#symbols&#34;&gt;Symbols&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cognitive-load&#34;&gt;Cognitive Load&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#granularity&#34;&gt;Granularity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#visual-search&#34;&gt;Visual Search&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#background-and-foreground-part-1&#34;&gt;Background and Foreground (part 1)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#noise-,-weak-signal-,-and-clarity&#34;&gt;Noise, Weak Signal, and Clarity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#recognition-vs.-recall-,-orienteering-,-and-paths&#34;&gt;Recognition vs. Recall, Orienteering, and Paths&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#responsiveness-&amp;amp;-the-feedback-loop&#34;&gt;Responsiveness &amp;amp; The Feedback Loop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#discoverability&#34;&gt;Discoverability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#wrapping-up-efficiency-in-thought-and-motion&#34;&gt;Wrapping Up Efficiency in Thought and Motion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#resources&#34;&gt;Resources&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#personal-thoughts&#34;&gt;Personal Thoughts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#purchase-the-course&#34;&gt;Purchase the Course&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mark Miller discusses high level concepts that the course will review&lt;/li&gt;
-&lt;li&gt;Miller also talks about a concept called Dark Design patterns very briefly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;converting-light-into-understanding&#34;&gt;Converting Light into Understanding&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Interesting facts about the eye and brain are discussed&lt;/li&gt;
-&lt;li&gt;The fovea is responsible for sharp central vision (also called foveal vision)
-
-&lt;ul&gt;
-&lt;li&gt;Necessary in humans for activities where visual detail is of primary importance, such as reading and driving&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Rods in Human eye
-
-&lt;ul&gt;
-&lt;li&gt;120 Million&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Cones in Human eye
-
-&lt;ul&gt;
-&lt;li&gt;7 million&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Fovea and rapid eye movement help make a visual field&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Most of what we think is true is a series of shortcuts designed to keep us alive&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;certainty-ambiguity-context&#34;&gt;Certainty, Ambiguity, Context&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ambiguity makes &lt;strong&gt;certainty&lt;/strong&gt; impossible&lt;/li&gt;
-&lt;li&gt;Sufficient context is the cure for ambiguity&lt;/li&gt;
-&lt;li&gt;The &lt;strong&gt;Blivet&lt;/strong&gt; Anti-pattern happens when an ambiguous presentation is adjoined by conflicting &lt;strong&gt;context&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;To fix the Blivet Anti-pattern, remove the conflicting &lt;strong&gt;context&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;RTFM&lt;/strong&gt; (Read the Freaking Manual) design smell occurs when there is excessive/redundant instructions on how to use (or not use) the UI.&lt;/li&gt;
-&lt;li&gt;When the RTFM design smell is present, see if the UI can be &lt;strong&gt;simplified&lt;/strong&gt; (to no longer need the instructions).&lt;/li&gt;
-&lt;li&gt;If you can&amp;rsquo;t fix the RTFM design smell, edit the instructions to use &lt;strong&gt;fewer&lt;/strong&gt; words.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;grouping&#34;&gt;Grouping&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Grouping is something the mind naturally wants to do
-
-&lt;ul&gt;
-&lt;li&gt;It&amp;rsquo;s part of our attempts to reduce complexity&lt;/li&gt;
-&lt;li&gt;It&amp;rsquo;s like a natural compression algorithm in our head&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;We can group in a variety of ways to make it easier for humans
-
-&lt;ul&gt;
-&lt;li&gt;Containers&lt;/li&gt;
-&lt;li&gt;Proximity&lt;/li&gt;
-&lt;li&gt;Color (opacity, brightness, saturation)&lt;/li&gt;
-&lt;li&gt;Symmetry&lt;/li&gt;
-&lt;li&gt;Continuity (along a continuous line or curve)&lt;/li&gt;
-&lt;li&gt;Shape&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;symbols&#34;&gt;Symbols&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A simple image that represents something bigger, like an idea&lt;/li&gt;
-&lt;li&gt;Complex detailed symbols take more time to parse than simple ones&lt;/li&gt;
-&lt;li&gt;To make it easier to &lt;strong&gt;recognize&lt;/strong&gt; symbols, they should be &lt;strong&gt;distinct&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Our minds have a huge capacity to associate meaning to symbols
-
-&lt;ul&gt;
-&lt;li&gt;Consider the alphabet&lt;/li&gt;
-&lt;li&gt;In english, 52 letters (Upper and Lower characters)&lt;/li&gt;
-&lt;li&gt;In Chinese roughly 30,000 to 80,0000 characters&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;cognitive-load&#34;&gt;Cognitive Load&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Sharp corners seem to inspire a slightly higher cognitive load in the brain.&lt;/li&gt;
-&lt;li&gt;We tend to see sharp corners as more salient &lt;strong&gt;(important)&lt;/strong&gt; than obtuse corners.&lt;/li&gt;
-&lt;li&gt;Use sharp corners for important corners &lt;strong&gt;(a point)&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Use rounded corners for everything else.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;granularity&#34;&gt;Granularity&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;We can increase overall message capacity by &lt;strong&gt;combining&lt;/strong&gt; channels&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This increases channel bit capacity, but it is not an additive operation.&lt;/li&gt;
-&lt;li&gt;(Other limits on our ability to handle complexity can also be at play)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;We may be able to reduce communication errors by:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Adding &lt;strong&gt;redundant channels&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Adding &lt;strong&gt;reference points&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Parts of Speech:
-
-&lt;ul&gt;
-&lt;li&gt;Nouns&lt;/li&gt;
-&lt;li&gt;Pronouns&lt;/li&gt;
-&lt;li&gt;Adjectives&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Channel capacity limits will be a constraining force on other guidelines.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;visual-search&#34;&gt;Visual Search&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Sampling Density inside the fovea is high.&lt;/li&gt;
-&lt;li&gt;As we move farther from the fovea:
-
-&lt;ul&gt;
-&lt;li&gt;Sampling density diminishes&lt;/li&gt;
-&lt;li&gt;We lose color perception&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Peripheral vision detects motion and helps you balance and move through space.&lt;/li&gt;
-&lt;li&gt;Our brains can search the entire visual field using parallel processes.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Visual searches that heavily utilize our brain&amp;rsquo;s cognitive powers:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Can operate only on a restricted portion of the visual field.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;When designing icons:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Avoid thin lines and tiny details&lt;/li&gt;
-&lt;li&gt;Thick lines and filled shapes are more easily seen in the periphery.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;background-and-foreground-part-1&#34;&gt;Background and Foreground Part 1&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Backgrounds:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Should be a solid color&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Emphasis should match &lt;strong&gt;Information Relevance&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Constrained by Channel Capacity Limits&lt;/li&gt;
-&lt;li&gt;No more than 3 levels in the brightness channel&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Background Color&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Reference Points and Relativity&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Minimum Distance for Readability&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Color and Perceived Brightness&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;noise-weak-signal-and-clarity&#34;&gt;Noise, Weak Signal, and Clarity&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hindering Clarity are 2 things:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Visual Noise&lt;/li&gt;
-&lt;li&gt;Weak Signal&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;recognition-vs-recall-orienteering-and-paths&#34;&gt;Recognition vs. Recall, Orienteering, and Paths&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Long Paths:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Are harder to remember (increased cognitive load, increased likelihood of mistakes)&lt;/li&gt;
-&lt;li&gt;Take longer to perform&lt;/li&gt;
-&lt;li&gt;More movement, more thought&lt;/li&gt;
-&lt;li&gt;Can induce fatigue&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Narrow paths:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Are harder to perform (require more precision)&lt;/li&gt;
-&lt;li&gt;Increase likelihood of mistakes&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Strenuous/steep paths:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Induce more fatigue&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Erratic paths (require context shifts)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;responsiveness-the-feedback-loop&#34;&gt;Responsiveness &amp;amp; The Feedback Loop&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mark Miller discusses a tool that he built which you can find at github &lt;a href=&#34;https://github.com/MillerMark/FeedbackLoopExplorer&#34; target=&#34;_blank&#34;&gt;HERE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;discoverability&#34;&gt;Discoverability&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Discoverability should be fluid and in parallel (avoid modal instruction)&lt;/li&gt;
-&lt;li&gt;Discoverability should be close in proximity to the content of interest.&lt;/li&gt;
-&lt;li&gt;Discoverability content should be concise and clear.&lt;/li&gt;
-&lt;li&gt;Use images (especially when the text can become more concise)&lt;/li&gt;
-&lt;li&gt;Live preview is the best discoverability&lt;/li&gt;
-&lt;li&gt;When you invent new UI:
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Set aside time&lt;/strong&gt; in the &lt;strong&gt;schedule&lt;/strong&gt; to design and implement good discoverability.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;wrapping-up-efficiency-in-thought-and-motion&#34;&gt;Wrapping Up Efficiency in Thought and Motion&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Discuss how our brains work and interact with the world.&lt;/li&gt;
-&lt;li&gt;Some short clips with music are presented.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A pdf is given at the end with more condensed notes on all the videos is given.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;personal-thoughts&#34;&gt;Personal Thoughts&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Very impressive collection of strategies are presented, I am very intrigued with all the findings and think others will enjoy the course as well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;purchase-the-course&#34;&gt;Purchase the Course&lt;/h2&gt;
-
-&lt;p&gt;Go to &lt;a href=&#34;https://app.deviq.com/courses/the-science-of-great-ui&#34; target=&#34;_blank&#34;&gt;Science of Great UI&lt;/a&gt; to purchase and watch this great course.&lt;/p&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Here are my review notes &lt;a href=&#34;https://t.co/ERNo7ue7ik&#34;&gt;https://t.co/ERNo7ue7ik&lt;/a&gt; for the science of &lt;a href=&#34;https://twitter.com/greatui?ref_src=twsrc%5Etfw&#34;&gt;@greatui&lt;/a&gt;  which come straight from the course &lt;a href=&#34;https://t.co/Lep7cOUIOs&#34;&gt;https://t.co/Lep7cOUIOs&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jean-Marcel Belmont (@jbelmont80) &lt;a href=&#34;https://twitter.com/jbelmont80/status/891414055222685696?ref_src=twsrc%5Etfw&#34;&gt;July 29, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
 </description>
     </item>
     

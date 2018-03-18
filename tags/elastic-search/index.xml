@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elastic Search on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/elastic-search/</link>
+    <description>Recent content in Elastic Search on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sun, 18 Mar 2018 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/elastic-search/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A quick look at the Elastic Stack</title>
+      <link>https://www.marcelbelmont.com/post/elk-stack-getting-started/</link>
+      <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/elk-stack-getting-started/</guid>
+      <description>Elastic Search, Logstash and Kibana This quick post will get you up and running with the elk stack.
+Please clone my github repository where the scripts I created live and so that you can follow along with the post.
+Go to Elkstack Practice
+If you want to generate movies.json then do the following command:
+go run main.go &amp;gt; movies.json
+If you want to generate tags.json then do the following command:</description>
+    </item>
+    
+  </channel>
+</rss>

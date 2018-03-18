@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/elk-stack-getting-started/</loc>
+      <lastmod>2018-03-18T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/api-testing/</loc>
       <lastmod>2018-02-04T20:21:03-05:00</lastmod>
     </url>
@@ -378,6 +387,26 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/elastic-search/</loc>
+      <lastmod>2018-03-18T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/filebeat/</loc>
+      <lastmod>2018-03-18T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/golang/</loc>
       <lastmod>2017-10-10T18:49:29-04:00</lastmod>
       <priority>0</priority>
@@ -410,6 +439,26 @@
     
       <loc>https://www.marcelbelmont.com/tags/jwt/</loc>
       <lastmod>2017-09-06T14:41:25-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/kibana/</loc>
+      <lastmod>2018-03-18T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/logstash/</loc>
+      <lastmod>2018-03-18T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
