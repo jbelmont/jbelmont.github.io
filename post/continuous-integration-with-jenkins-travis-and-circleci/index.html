@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.34" />
+  <meta name="generator" content="Hugo 0.37.1" />
   <meta name="author" content="Jean-Marcel Belmont">
   <meta name="description" content="Senior Software Engineer">
 
@@ -31,6 +31,19 @@
   <link rel="stylesheet" href="/css/hugo-academic.css">
   
 
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
   
 
   <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
@@ -1336,7 +1349,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 
 <ol>
 <li>
-<figure >
+<figure>
     
         <img src="/media/unlock-jenkins.png" />
     
@@ -1346,7 +1359,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Enter Password from the command <code>cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword</code> and copy the password</li>
 <li>Click Continue</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/install-plugins.png" />
     
@@ -1356,7 +1369,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Click <code>Select Plugins to Install</code></li>
 <li>Search for node.js in list of plugins and click the checkbox</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/add-plugins.png" />
     
@@ -1366,7 +1379,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Click Install</li>
 <li>Wait for the installation to complete</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/create-user.png" />
     
@@ -1375,7 +1388,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 </li>
 <li>Click <code>Save and Finish</code></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/jenkins-is-ready.png" />
     
@@ -1384,7 +1397,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 </li>
 <li>Click <code>Start using Jenkins</code></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/initial-screen.png" />
     
@@ -1393,7 +1406,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 </li>
 <li>Click <code>New Item</code></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/add-new-item.png" />
     
@@ -1403,7 +1416,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Enter a name for your first build</li>
 <li>Click <code>Freestyle project</code></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/configure-build.png" />
     
@@ -1417,7 +1430,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <ol>
 <li>If you specify polling you need to use crontab syntax <code>H */5 * * *</code> which runs every 5 hours</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/github-webhook.png" />
     
@@ -1437,7 +1450,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 </ol></li>
 <li>Click <code>Build Now</code> to have your first build run</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/first-build.png" />
     
@@ -1446,7 +1459,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 </li>
 <li>Click on the Build Number</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/build-screen.png" />
     
@@ -1457,7 +1470,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>In case a build fails there is where you want to go to.</li>
 <li>You can add Post Build Sections</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/manage-jenkins.png" />
     
@@ -1469,7 +1482,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Make sure to check Restart so that the plugin is available</li>
 <li>Click <code>Configure</code> and click on <code>Post-build Actions</code></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/add-post-build-section.png" />
     
@@ -1481,7 +1494,7 @@ test.cb('add user url should return 201 response and the newly added user', t =&
 <li>Click <code>Build Now</code></li>
 <li>Once build finished you should see a new section for code coverage</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/code-coverage.png" />
     
@@ -1552,7 +1565,7 @@ after_success:
 <ol>
 <li>Create a Github Account <a href="https://github.com/" target="_blank">HERE</a></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/github.png" />
     
@@ -1561,7 +1574,7 @@ after_success:
 </li>
 <li>Sign Up for Travis CI <a href="https://travis-ci.org/" target="_blank">HERE</a></li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/travis-ci-signup.png" />
     
@@ -1570,7 +1583,7 @@ after_success:
 </li>
 <li>Then Click <code>Sign in With Github</code> button</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/toggle-repo.png" />
     
@@ -1586,7 +1599,7 @@ after_success:
 <li>This goes to my travis ci builds</li>
 <li>Click on the build you want for example I clicked on the following build</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/travis-ci-build.png" />
     
@@ -1600,7 +1613,7 @@ after_success:
 <li>Everything is designated by the <code>.travis.yml</code> file</li>
 <li>Notice the code coverage run in the build</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/coverage.png" />
     
@@ -1733,7 +1746,7 @@ stuff:
 <ul>
 <li>Click Sign Up For Free</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/circle-ci-signup.png" />
     
@@ -1742,7 +1755,7 @@ stuff:
 </li>
 <li>Authorize Github access for Circle CI</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/switch-org.png" />
     
@@ -1820,7 +1833,7 @@ jobs:
 <li>Click Add Service</li>
 <li>Now Circle CI is configured as webhook when you push onto master</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/circle-ci-webhook.png" />
     
@@ -1833,7 +1846,7 @@ jobs:
 
 <ul>
 <li>
-<figure >
+<figure>
     
         <img src="/media/list-of-builds.png" />
     
@@ -1842,7 +1855,7 @@ jobs:
 </li>
 <li>Click into a specific build</li>
 <li>
-<figure >
+<figure>
     
         <img src="/media/specific-build.png" />
     

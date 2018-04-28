@@ -150,7 +150,7 @@ yellow open   logstash-2017.05.03             nklpkzxxSRCWOL990fD2Qg   5   1    
 &lt;p&gt;Instead of using &lt;code&gt;curl&lt;/code&gt; you can use the Kibana Dashboard to help you do both queries and create indices and list indices and much more&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/kibana-dev-tools.png&#34; /&gt;
     
@@ -567,7 +567,7 @@ output {
 &lt;p&gt;I tend to favor Rest Clients like Postman because it helps to automate testing Restful APIs if you utilize some of its advanced features&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/postman-collection.png&#34; /&gt;
     
@@ -580,7 +580,7 @@ output {
 &lt;p&gt;You can do much more than this however&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/header-variables.png&#34; /&gt;
     
@@ -593,7 +593,7 @@ output {
 &lt;p&gt;In Postman you surround variables in double curly braces&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/pre-request-script.png&#34; /&gt;
     
@@ -618,7 +618,7 @@ output {
 &lt;p&gt;You can also read &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox&#34; target=&#34;_blank&#34;&gt;Postman Sandbox&lt;/a&gt; for other libraries available in Postman Rest Client&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/test-script.png&#34; /&gt;
     
@@ -655,7 +655,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/test-results.png&#34; /&gt;
     
@@ -666,7 +666,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;Notice here we get a passing test since we got an access token from the Paypal API&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/environment.png&#34; /&gt;
     
@@ -679,7 +679,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;Here we can use global variables that can be used per environment&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/global-variables.png&#34; /&gt;
     
@@ -690,7 +690,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;Here I greyed out the environment variables for security reasons but you can read more about &lt;a href=&#34;https://www.getpostman.com/docs/postman/environments_and_globals/manage_globals&#34; target=&#34;_blank&#34;&gt;Global Variables at Postman Docs&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/presets.png&#34; /&gt;
     
@@ -703,7 +703,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;Header Presets are useful if you find yourself reusing a lot of HTTP Header values often and you can simply set a preset to autofill the HTTP headers for you in one click.&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/group-edit.png&#34; /&gt;
     
@@ -716,7 +716,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;You can easily go back to the normal view by clicking &lt;code&gt;Key-Value Edit&lt;/code&gt; button again.&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/http-verbs.png&#34; /&gt;
     
@@ -727,7 +727,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;Postman supports all of the HTTP Verbs in their dropdown menu&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/params.png&#34; /&gt;
     
@@ -738,7 +738,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;You can easily set query string parameters utilizing the params section in postman&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/developer-tools.png&#34; /&gt;
     
@@ -753,7 +753,7 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 &lt;p&gt;You can easily set &lt;code&gt;console.log&lt;/code&gt; statements to debug things.&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/collection-runner.png&#34; /&gt;
     
@@ -1482,7 +1482,7 @@ func main() {
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/bar-chart.png&#34; /&gt;
     
@@ -1502,7 +1502,7 @@ func main() {
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/line-chart.png&#34; /&gt;
     
@@ -1521,7 +1521,7 @@ func main() {
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/scatter-plot.png&#34; /&gt;
     
@@ -2297,7 +2297,7 @@ d3.csv(&#39;demographic-states-by-city.csv&#39;, (err, data) =&amp;gt; {
 &lt;h2 id=&#34;shapes&#34;&gt;Shapes&lt;/h2&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/shapes.png&#34; /&gt;
     
@@ -2335,7 +2335,7 @@ d3.csv(&#39;demographic-states-by-city.csv&#39;, (err, data) =&amp;gt; {
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/bostock-line-chart.png&#34; /&gt;
     
@@ -2422,7 +2422,7 @@ arc(); // &amp;quot;M0,-100A100,100,0,0,1,100,0L0,0Z&amp;quot;
 &lt;p&gt;&lt;a href=&#34;https://bost.ocks.org/mike/join/&#34; target=&#34;_blank&#34;&gt;Mike Bostock&amp;rsquo;s Blog Post on Thinking with Joins&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/three-circles.png&#34; /&gt;
     
@@ -2503,7 +2503,7 @@ d3.selectAll(&amp;quot;.orange&amp;quot;).transition(t)
 &lt;p&gt;In the domain of information visualization, physical simulations are useful for studying networks and hierarchies!&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/force-dragging.png&#34; /&gt;
     
@@ -5570,7 +5570,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 
 &lt;ol&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/unlock-jenkins.png&#34; /&gt;
     
@@ -5580,7 +5580,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Enter Password from the command &lt;code&gt;cat /Users/Shared/Jenkins/Home/secrets/initialAdminPassword&lt;/code&gt; and copy the password&lt;/li&gt;
 &lt;li&gt;Click Continue&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/install-plugins.png&#34; /&gt;
     
@@ -5590,7 +5590,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Click &lt;code&gt;Select Plugins to Install&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Search for node.js in list of plugins and click the checkbox&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/add-plugins.png&#34; /&gt;
     
@@ -5600,7 +5600,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Click Install&lt;/li&gt;
 &lt;li&gt;Wait for the installation to complete&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/create-user.png&#34; /&gt;
     
@@ -5609,7 +5609,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;Save and Finish&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/jenkins-is-ready.png&#34; /&gt;
     
@@ -5618,7 +5618,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;Start using Jenkins&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/initial-screen.png&#34; /&gt;
     
@@ -5627,7 +5627,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;New Item&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/add-new-item.png&#34; /&gt;
     
@@ -5637,7 +5637,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Enter a name for your first build&lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;Freestyle project&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/configure-build.png&#34; /&gt;
     
@@ -5651,7 +5651,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;ol&gt;
 &lt;li&gt;If you specify polling you need to use crontab syntax &lt;code&gt;H */5 * * *&lt;/code&gt; which runs every 5 hours&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/github-webhook.png&#34; /&gt;
     
@@ -5671,7 +5671,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;Build Now&lt;/code&gt; to have your first build run&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/first-build.png&#34; /&gt;
     
@@ -5680,7 +5680,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;/li&gt;
 &lt;li&gt;Click on the Build Number&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/build-screen.png&#34; /&gt;
     
@@ -5691,7 +5691,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;In case a build fails there is where you want to go to.&lt;/li&gt;
 &lt;li&gt;You can add Post Build Sections&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/manage-jenkins.png&#34; /&gt;
     
@@ -5703,7 +5703,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Make sure to check Restart so that the plugin is available&lt;/li&gt;
 &lt;li&gt;Click &lt;code&gt;Configure&lt;/code&gt; and click on &lt;code&gt;Post-build Actions&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/add-post-build-section.png&#34; /&gt;
     
@@ -5715,7 +5715,7 @@ test.cb(&#39;add user url should return 201 response and the newly added user&#3
 &lt;li&gt;Click &lt;code&gt;Build Now&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Once build finished you should see a new section for code coverage&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/code-coverage.png&#34; /&gt;
     
@@ -5786,7 +5786,7 @@ after_success:
 &lt;ol&gt;
 &lt;li&gt;Create a Github Account &lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;HERE&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/github.png&#34; /&gt;
     
@@ -5795,7 +5795,7 @@ after_success:
 &lt;/li&gt;
 &lt;li&gt;Sign Up for Travis CI &lt;a href=&#34;https://travis-ci.org/&#34; target=&#34;_blank&#34;&gt;HERE&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/travis-ci-signup.png&#34; /&gt;
     
@@ -5804,7 +5804,7 @@ after_success:
 &lt;/li&gt;
 &lt;li&gt;Then Click &lt;code&gt;Sign in With Github&lt;/code&gt; button&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/toggle-repo.png&#34; /&gt;
     
@@ -5820,7 +5820,7 @@ after_success:
 &lt;li&gt;This goes to my travis ci builds&lt;/li&gt;
 &lt;li&gt;Click on the build you want for example I clicked on the following build&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/travis-ci-build.png&#34; /&gt;
     
@@ -5834,7 +5834,7 @@ after_success:
 &lt;li&gt;Everything is designated by the &lt;code&gt;.travis.yml&lt;/code&gt; file&lt;/li&gt;
 &lt;li&gt;Notice the code coverage run in the build&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/coverage.png&#34; /&gt;
     
@@ -5967,7 +5967,7 @@ stuff:
 &lt;ul&gt;
 &lt;li&gt;Click Sign Up For Free&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/circle-ci-signup.png&#34; /&gt;
     
@@ -5976,7 +5976,7 @@ stuff:
 &lt;/li&gt;
 &lt;li&gt;Authorize Github access for Circle CI&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/switch-org.png&#34; /&gt;
     
@@ -6054,7 +6054,7 @@ jobs:
 &lt;li&gt;Click Add Service&lt;/li&gt;
 &lt;li&gt;Now Circle CI is configured as webhook when you push onto master&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/circle-ci-webhook.png&#34; /&gt;
     
@@ -6067,7 +6067,7 @@ jobs:
 
 &lt;ul&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/list-of-builds.png&#34; /&gt;
     
@@ -6076,7 +6076,7 @@ jobs:
 &lt;/li&gt;
 &lt;li&gt;Click into a specific build&lt;/li&gt;
 &lt;li&gt;
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/specific-build.png&#34; /&gt;
     
@@ -6872,7 +6872,7 @@ jobs:
 &lt;h3 id=&#34;proximity&#34;&gt;Proximity&lt;/h3&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/gas-station-buttons.jpeg&#34; /&gt;
     
@@ -6886,7 +6886,7 @@ jobs:
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/elevator-buttons.jpg&#34; /&gt;
     
@@ -6909,7 +6909,7 @@ jobs:
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/bad-html-table.jpg&#34; /&gt;
     
@@ -6923,7 +6923,7 @@ jobs:
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/nicer-html-table.png&#34; /&gt;
     
@@ -7009,7 +7009,7 @@ jobs:
 &lt;/ul&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://www.marcelbelmont.com/media/olympic-graphics.jpg&#34; /&gt;
     
