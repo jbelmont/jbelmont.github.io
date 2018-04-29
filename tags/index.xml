@@ -121,6 +121,15 @@
     </item>
     
     <item>
+      <title>Debugging</title>
+      <link>https://www.marcelbelmont.com/tags/debugging/</link>
+      <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Design</title>
       <link>https://www.marcelbelmont.com/tags/design/</link>
       <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
@@ -159,7 +168,7 @@
     <item>
       <title>Golang</title>
       <link>https://www.marcelbelmont.com/tags/golang/</link>
-      <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
+      <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/golang/</guid>
       <description></description>
@@ -369,6 +378,15 @@
       <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/travis-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tricks</title>
+      <link>https://www.marcelbelmont.com/tags/tricks/</link>
+      <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/tricks/</guid>
       <description></description>
     </item>
     

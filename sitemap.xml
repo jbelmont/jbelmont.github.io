@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</loc>
+      <lastmod>2018-04-28T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/elk-stack-getting-started/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
     </url>
@@ -367,6 +376,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/debugging/</loc>
+      <lastmod>2018-04-28T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/design/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -408,7 +427,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/golang/</loc>
-      <lastmod>2017-10-10T18:49:29-04:00</lastmod>
+      <lastmod>2018-04-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -678,6 +697,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/travis-ci/</loc>
       <lastmod>2017-08-28T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/tricks/</loc>
+      <lastmod>2018-04-28T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
