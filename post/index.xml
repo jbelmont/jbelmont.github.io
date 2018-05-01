@@ -123,16 +123,6 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
     </item>
     
     <item>
-      <title>Continuous Integration Concepts using Travis CI, Circle CI, and Jenkins</title>
-      <link>https://www.marcelbelmont.com/post/continuous-integration-with-jenkins-travis-and-circleci/</link>
-      <pubDate>Mon, 28 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/continuous-integration-with-jenkins-travis-and-circleci/</guid>
-      <description>Continuous Integration Core Concepts  Getting Started Introduction to Continuous Integration Reducing Risks Building Software with Code Changes CI for Database Integration Continuous Testing Continuous Inspection Continuous Deployment Continuous Feedback  Jenkins Travis CI Circle CI  Continuous Integration Core Concepts Most of the notes in this section were gleaned from the Continuous Integration Book
-This is a fantastic resource and full of insightful wisdom from Steve Matyas and Paul M.</description>
-    </item>
-    
-    <item>
       <title>Growing Object-Oriented Software, Guided by Tests</title>
       <link>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</link>
       <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
