@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Acceptance Testing</title>
+      <link>https://www.marcelbelmont.com/post/acceptance-testing/</link>
+      <pubDate>Sun, 20 May 2018 15:48:12 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/acceptance-testing/</guid>
+      <description>In this blog post we will define acceptance testing, explain why acceptance testing is important, utilize a library to write acceptance tests in and go over a method called Given When Then in Acceptance Testing, and incorporate acceptance testing into a CI/CD pipeline,.
+Define Acceptance Testing Acceptance Testing
+An acceptance test is a formal description of the behavior of a software product, generally expressed as an example or a usage scenario.</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks with Golang</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</link>
       <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
