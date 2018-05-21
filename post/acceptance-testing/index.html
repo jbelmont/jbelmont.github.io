@@ -420,6 +420,36 @@ Then('I get a larger result that is the sum of the numbers', function () {
 0m00.001s
 </code></pre>
 
+<p>Here is the npm script <code>acceptance:tests</code>:</p>
+
+<pre><code class="language-js">{
+  &quot;name&quot;: &quot;cucumber-examples&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A repo exploring Behavior Driven Development with Cucumber&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;acceptance:tests&quot;: &quot;cucumber-js&quot;
+  },
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;git+https://github.com/jbelmont/cucumber-examples.git&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jbelmont/cucumber-examples/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/jbelmont/cucumber-examples#readme&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;chai&quot;: &quot;^4.1.2&quot;,
+    &quot;cucumber&quot;: &quot;^4.2.1&quot;
+  }
+}
+</code></pre>
+
+<p>Notice that the scripts block is where the script is run.</p>
+
 <h2 id="incorporate-tests-into-a-ci-cd-pipeline">Incorporate Tests into a CI/CD Pipeline</h2>
 
 <p>In order to incorporate cucumber into a CI/CD pipeline you will need to choose a CI/CD tool. For the purposes of this blog post we will use Travis CI.</p>
@@ -442,6 +472,8 @@ script:
 <h2 id="final-thoughts">Final Thoughts</h2>
 
 <p>This example while trivial is a good illustration on why using a tool like cucumber is really useful to test your Acceptance Requirements in a programmatic way.</p>
+
+<p>If you would like to look at the <a href="https://github.com/jbelmont/cucumber-examples" target="_blank">Cucumber Examples Repo Go Here</a></p>
 
 <p>If you like this blog post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont at Github</a></p>
 

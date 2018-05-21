@@ -203,6 +203,36 @@ Then(&#39;I get a larger result that is the sum of the numbers&#39;, function ()
 0m00.001s
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;Here is the npm script &lt;code&gt;acceptance:tests&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{
+  &amp;quot;name&amp;quot;: &amp;quot;cucumber-examples&amp;quot;,
+  &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;A repo exploring Behavior Driven Development with Cucumber&amp;quot;,
+  &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;,
+  &amp;quot;scripts&amp;quot;: {
+    &amp;quot;acceptance:tests&amp;quot;: &amp;quot;cucumber-js&amp;quot;
+  },
+  &amp;quot;repository&amp;quot;: {
+    &amp;quot;type&amp;quot;: &amp;quot;git&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;git+https://github.com/jbelmont/cucumber-examples.git&amp;quot;
+  },
+  &amp;quot;keywords&amp;quot;: [],
+  &amp;quot;author&amp;quot;: &amp;quot;&amp;quot;,
+  &amp;quot;license&amp;quot;: &amp;quot;ISC&amp;quot;,
+  &amp;quot;bugs&amp;quot;: {
+    &amp;quot;url&amp;quot;: &amp;quot;https://github.com/jbelmont/cucumber-examples/issues&amp;quot;
+  },
+  &amp;quot;homepage&amp;quot;: &amp;quot;https://github.com/jbelmont/cucumber-examples#readme&amp;quot;,
+  &amp;quot;devDependencies&amp;quot;: {
+    &amp;quot;chai&amp;quot;: &amp;quot;^4.1.2&amp;quot;,
+    &amp;quot;cucumber&amp;quot;: &amp;quot;^4.2.1&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the scripts block is where the script is run.&lt;/p&gt;
+
 &lt;h2 id=&#34;incorporate-tests-into-a-ci-cd-pipeline&#34;&gt;Incorporate Tests into a CI/CD Pipeline&lt;/h2&gt;
 
 &lt;p&gt;In order to incorporate cucumber into a CI/CD pipeline you will need to choose a CI/CD tool. For the purposes of this blog post we will use Travis CI.&lt;/p&gt;
@@ -225,6 +255,8 @@ script:
 &lt;h2 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h2&gt;
 
 &lt;p&gt;This example while trivial is a good illustration on why using a tool like cucumber is really useful to test your Acceptance Requirements in a programmatic way.&lt;/p&gt;
+
+&lt;p&gt;If you would like to look at the &lt;a href=&#34;https://github.com/jbelmont/cucumber-examples&#34; target=&#34;_blank&#34;&gt;Cucumber Examples Repo Go Here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
 </description>
