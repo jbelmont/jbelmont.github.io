@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Browser Automation</title>
+      <link>https://www.marcelbelmont.com/post/browser-automation/</link>
+      <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/browser-automation/</guid>
+      <description>In this blog post we will look at cypress.io and puppeteer as viable replacements to Selenium WebDriver. Selenium WebDriver is still a good option for writing End to End Tests but over the years some newer libraries have spawned that use Chrome DevTools Protocol or to be more specific use Chrome to UI Tests.
+Selenium WebDriver Selenium WebDriver has been in use for a long while and Selenium WebDriver drives the browser by utilizing an Object Oriented API that is built in Java.</description>
+    </item>
+    
+    <item>
       <title>Acceptance Testing</title>
       <link>https://www.marcelbelmont.com/post/acceptance-testing/</link>
       <pubDate>Sun, 20 May 2018 15:48:12 -0500</pubDate>

@@ -11,6 +11,285 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Browser Automation</title>
+      <link>https://www.marcelbelmont.com/post/browser-automation/</link>
+      <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/browser-automation/</guid>
+      <description>
+
+&lt;p&gt;In this blog post we will look at cypress.io and puppeteer as viable replacements to Selenium WebDriver. Selenium WebDriver is still a good option for writing End to End Tests but over the years some newer libraries have spawned that use Chrome DevTools Protocol or to be more specific use Chrome to UI Tests.&lt;/p&gt;
+
+&lt;h2 id=&#34;selenium-webdriver&#34;&gt;Selenium WebDriver&lt;/h2&gt;
+
+&lt;p&gt;Selenium WebDriver has been in use for a long while and Selenium WebDriver drives the browser by utilizing an Object Oriented API that is built in Java. Selenium has client apis in Java, C#, Ruby, Python, and JavaScript.&lt;/p&gt;
+
+&lt;h4 id=&#34;some-drawbacks-to-selenium&#34;&gt;Some Drawbacks to Selenium&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;End to End tests written in Selenium tend to be brittle&lt;/li&gt;
+&lt;li&gt;Setup can be very complicated&lt;/li&gt;
+&lt;li&gt;Tests can be really slow as each tests spins up a browser instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;options-to-selenium&#34;&gt;Options to Selenium&lt;/h2&gt;
+
+&lt;p&gt;There are other options instead of Selenium now and in this blog post we will examine &lt;a href=&#34;https://pptr.dev/#?product=Puppeteer&amp;amp;version=v1.5.0&amp;amp;show=api-overview&#34; target=&#34;_blank&#34;&gt;Puppeteer&lt;/a&gt; and &lt;a href=&#34;https://docs.cypress.io/guides/overview/why-cypress.html&#34; target=&#34;_blank&#34;&gt;Cypress.io&lt;/a&gt; in detail.&lt;/p&gt;
+
+&lt;h2 id=&#34;puppeteer&#34;&gt;Puppeteer&lt;/h2&gt;
+
+&lt;p&gt;Puppeteer is a Node library which provides a high-level API to control Chromium or Chrome over the DevTools Protocol. Puppeteer is relatively new as it was released in 2017 as an open source project by a Googler. Puppeteer is a good option to replace &lt;a href=&#34;http://phantomjs.org/&#34; target=&#34;_blank&#34;&gt;Phantomjs&lt;/a&gt; which has been suspended from further development.&lt;/p&gt;
+
+&lt;h4 id=&#34;advantages-of-puppeteer&#34;&gt;Advantages of Puppeteer&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Puppeteer has support for parallelization for running tests in a CI Build&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Spawn multiple browser sessions to help simulate load that a particular service may encounter with multiple clients&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Record snapshots of tests while they run&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;setup-puppeteer&#34;&gt;Setup Puppeteer&lt;/h4&gt;
+
+&lt;p&gt;Installing &lt;a href=&#34;https://pptr.dev/&#34; target=&#34;_blank&#34;&gt;Puppeteer&lt;/a&gt; is easy as you can just use npm to install it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install --save-dev puppeteer&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After you have installed puppeteer onto your project the next thing to do is to require puppeteer and to use the puppeteer api to launch a Chrome browser and run your tests.&lt;/p&gt;
+
+&lt;h4 id=&#34;puppeteer-usage-requirements&#34;&gt;Puppeteer Usage Requirements&lt;/h4&gt;
+
+&lt;p&gt;Puppeteer can work with Node v6.4.0 or greater but most of the examples in Puppeteer use async and await which is only supported in Node v7.6.0 or greater. So consider adding this to your package.json.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;engines&amp;quot;: {
+  &amp;quot;node&amp;quot;: &amp;quot;&amp;gt;=7.6.0&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;This will ensure that only node version 7.6.0 or greater is used&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;puppeteer-example&#34;&gt;Puppeteer Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const puppeteer = require(&#39;puppeteer&#39;);
+
+(async () =&amp;gt; {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(&#39;https://marcelbelmont.com&#39;);
+  await page.screenshot({path: &#39;blog.png&#39;});
+
+  await browser.close();
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that in the code snippet above we are using async and await in node.js. Take note that async and await are a way to deal with asynchronous action in JavaScript. It is a nicer way to work with asynchronous code over callbacks and promises.&lt;/p&gt;
+
+&lt;h4 id=&#34;adding-a-web-scraping-test-with-jest&#34;&gt;Adding a Web Scraping Test with Jest&lt;/h4&gt;
+
+&lt;p&gt;We will be writing a test with the &lt;a href=&#34;https://facebook.github.io/jest/&#34; target=&#34;_blank&#34;&gt;Jest Testing Library&lt;/a&gt; by Facebook and using Puppeteer.&lt;/p&gt;
+
+&lt;p&gt;In order to install jest run &lt;code&gt;npm install --save-dev jest&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Jest has mocha like syntax and can be used with many different types of FrontEnd Libraries.&lt;/p&gt;
+
+&lt;p&gt;For the purposes of this blog post we will simply be using to write node.js code.&lt;/p&gt;
+
+&lt;h6 id=&#34;code-snippet-with-blog-test&#34;&gt;Code Snippet with Blog Test&lt;/h6&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
+
+const puppeteer = require(&amp;quot;puppeteer&amp;quot;);
+
+let page;
+let browser;
+const webpage = &amp;quot;https://github.com/GoogleChrome/puppeteer&amp;quot;;
+const width = 1440;
+const height = 900;
+const myBlog = &amp;quot;blog.png&amp;quot;
+
+describe(&amp;quot;Scrape the Puppeteer github repository&amp;quot;, () =&amp;gt; {
+
+  beforeAll(async () =&amp;gt; {
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [&amp;quot;--no-sandbox&amp;quot;, &amp;quot;--disable-setuid-sandbox&amp;quot;]
+    });
+    page = await browser.newPage();
+    await page.setViewport({ width, height });
+  });
+
+  afterAll(async () =&amp;gt; {
+    await page.screenshot({path: myBlog});
+    browser.close();
+  });
+
+  it(&amp;quot;Should have a list of uls for features in Puppeteer&amp;quot;, async () =&amp;gt; {
+    await page.goto(webpage);
+    const textContent = await page.evaluate(() =&amp;gt; document.querySelector(&#39;.markdown-body.entry-content blockquote p&#39;).textContent);
+    expect(textContent).toEqual(&amp;quot;Puppeteer is a Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.&amp;quot;);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that in this code snippet we are writing a test that launches puppeteer and then uses the Puppeteer api to navigate to Puppeteer github repository and web scrape the offical quote for Puppeteer.&lt;/p&gt;
+
+&lt;p&gt;The Puppeteer api is very intuitive to use as the code is almost self documenting.&lt;/p&gt;
+
+&lt;p&gt;Using async and await features makes writing this test very nice!!&lt;/p&gt;
+
+&lt;h6 id=&#34;output-of-running-test&#34;&gt;Output of running test&lt;/h6&gt;
+
+&lt;p&gt;In the scripts section of your package.json file and the following entry:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;scripts&amp;quot;: {
+  &amp;quot;test&amp;quot;: &amp;quot;jest&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all you have to do is run &lt;code&gt;npm test&lt;/code&gt; and the test will run and you will get output in your Terminal and or Command Shell in Windows.&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/puppeteer-console-log.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;cypress-io&#34;&gt;Cypress.io&lt;/h2&gt;
+
+&lt;p&gt;Next we will look at the &lt;a href=&#34;https://docs.cypress.io/guides/overview/why-cypress.html#&#34; target=&#34;_blank&#34;&gt;Cypress.io Testing Library&lt;/a&gt; which is a newer testing tool that has some exciting features.&lt;/p&gt;
+
+&lt;p&gt;Cypress also uses node.js and can be installed with npm&lt;/p&gt;
+
+&lt;h4 id=&#34;advantages-of-cypress-io&#34;&gt;Advantages of Cypress.io&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.cypress.io/guides/overview/key-differences.html#Architecture&#34; target=&#34;_blank&#34;&gt;Key Differences in Cypress.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Most testing tools (like Selenium) operate by running outside of the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application.&lt;/p&gt;
+
+&lt;p&gt;Behind Cypress is a Node.js server process. Cypress and the Node.js process constantly communicate, synchronize, and perform tasks on behalf of each other. Having access to both parts (front and back) gives us the ability to respond to your application’s events in real time, while at the same time work outside of the browser for tasks that require a higher privilege.&lt;/p&gt;
+
+&lt;p&gt;Cypress also operates at the network layer by reading and altering web traffic on the fly. This enables Cypress to not only modify everything coming in and out of the browser, but also to change code that may interfere with its ability to automate the browser.&lt;/p&gt;
+
+&lt;p&gt;Cypress ultimately controls the entire automation process from top to bottom, which puts it in the unique position of being able to understand everything happening in and outside of the browser. This means Cypress is capable of delivering more consistent results than any other testing tool.&lt;/p&gt;
+
+&lt;p&gt;Because Cypress is installed locally on your machine, it can additionally tap into the operating system for automation tasks. This makes performing tasks such as taking screenshots, recording videos, general file system operations and network operations possible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;setup-cypress-io&#34;&gt;Setup Cypress.io&lt;/h4&gt;
+
+&lt;p&gt;Installing &lt;a href=&#34;https://docs.cypress.io/guides/getting-started/installing-cypress.html&#34; target=&#34;_blank&#34;&gt;Cypress.io&lt;/a&gt; is easy as all you have to do is run &lt;code&gt;npm install --save-dev cypress&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have installed Cypress.io all you have to do is require it and then start writing your tests.&lt;/p&gt;
+
+&lt;h4 id=&#34;cypress-io-usage-requirements&#34;&gt;Cypress.io Usage Requirements&lt;/h4&gt;
+
+&lt;p&gt;Cypress is a desktop application that is installed on your computer.&lt;/p&gt;
+
+&lt;p&gt;The desktop application supports these operating systems:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac OS 10.9+ (Mavericks+), only 64bit binaries are provided for macOS.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Linux Ubuntu 12.04+, Fedora 21, Debian 8&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Windows 7+, only 32bit binaries are provided for Windows.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;cypress-io-example&#34;&gt;Cypress.io Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;describe(&#39;My First Test&#39;, function() {
+  it(&#39;Does not do much!&#39;, function() {
+    expect(true).to.equal(true)
+  })
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This code snippet above has a mocha like syntax and running it is very easy&lt;/p&gt;
+
+&lt;h6 id=&#34;running-cypress-tests&#34;&gt;Running Cypress Tests&lt;/h6&gt;
+
+&lt;p&gt;Add the following entry into the scripts section of your package.json file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;scripts&amp;quot;: {
+  &amp;quot;cypress:open&amp;quot;: &amp;quot;cypress open&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now all you have to do to run the test file is to execute the command like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm run cypress:open&lt;/code&gt; and this will open desktop application and run any of your tests&lt;/p&gt;
+
+&lt;h4 id=&#34;writing-a-test-that-will-web-scrape-my-github-repository&#34;&gt;Writing a Test that will Web Scrape my github repository&lt;/h4&gt;
+
+&lt;p&gt;Let us now write a test in Cypress.io that will Web Scrape my github repository called browser automation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
+
+const url = &amp;quot;https://github.com/jbelmont/browser-automation&amp;quot;
+
+describe(&amp;quot;Web Scraping&amp;quot;, function() {
+    it(&amp;quot;Visits the browser-automation repository&amp;quot;, function() {
+        cy.visit(url);
+
+        cy
+        .get(&amp;quot;.markdown-body.entry-content h1&amp;quot;)
+        .should(&amp;quot;contain&amp;quot;, &amp;quot;browser-automation&amp;quot;);
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the conciseness in the syntax for Cypress you say you want to visit provided url and then use get to get the dom node and make your assertion.&lt;/p&gt;
+
+&lt;p&gt;The DOM Manipulation code that you have to write is abstracted away for you with the nice Cypress.io api.&lt;/p&gt;
+
+&lt;h6 id=&#34;output-of-running-desktop-application-for-cypress&#34;&gt;Output of Running Desktop Application for Cypress&lt;/h6&gt;
+
+&lt;p&gt;In the screenshot below we have a running Desktop application for Cypress.io which opened after we gave command &lt;code&gt;npm run cypress:open&lt;/code&gt; in the terminal.&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-desktop-running.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that in the screenshot we have blog_spec.js at the top.&lt;/p&gt;
+
+&lt;p&gt;In order for your tests to run in Cypress.io you will need to add them into &lt;code&gt;cypress/integration&lt;/code&gt; folder which is automatically created with examples when you first open Cypress.&lt;/p&gt;
+
+&lt;p&gt;While the desktop client is running it will watch for file changes and update in real time.&lt;/p&gt;
+
+&lt;p&gt;If we click the the entry &lt;em&gt;blog_spec.js&lt;/em&gt; it will start running our tests in Cypress.io&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-test-running.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that the Cypress Desktop Application has our test results and visually shows us the web page that we are visiting.&lt;/p&gt;
+
+&lt;h4 id=&#34;thoughts-on-cypress-io-and-puppeteer&#34;&gt;Thoughts on Cypress.io and Puppeteer&lt;/h4&gt;
+
+&lt;p&gt;I believe that both Cypress.io and Puppeteer are great options to using Selenium. I would say that Cypress.io has many compelling features and the Desktop Client is a joy to use.&lt;/p&gt;
+
+&lt;p&gt;If you would like to look at the &lt;a href=&#34;https://github.com/jbelmont/browser-automation&#34; target=&#34;_blank&#34;&gt;browser-automation repository go here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Acceptance Testing</title>
       <link>https://www.marcelbelmont.com/post/acceptance-testing/</link>
       <pubDate>Sun, 20 May 2018 15:48:12 -0500</pubDate>
@@ -5598,236 +5877,6 @@ test(&#39;addition is commutative&#39;, check(gen.int, gen.int, (t, numA, numB) 
 &lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
 
 &lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/software-security&#34; target=&#34;_blank&#34;&gt;Software Security&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A Review of Design Like a Pro</title>
-      <link>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</link>
-      <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</guid>
-      <description>
-
-&lt;h1 id=&#34;design-like-a-pro-review&#34;&gt;Design Like a Pro Review&lt;/h1&gt;
-
-&lt;p&gt;This is a review of Mark Miller&amp;rsquo;s Course (Design Like a Pro)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#interesting-points-of-the-course&#34;&gt;Interesting Points of the Course&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-was-surprising&#34;&gt;What was surprising&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-mark-miller-did-well&#34;&gt;What Mark Miller did well&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-could-have-been-done-better&#34;&gt;What could have been done better&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#purchase-the-course&#34;&gt;Purchase the Course&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;interesting-points-of-the-course&#34;&gt;Interesting Points of the Course&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;An interesting fact of the course is how much proximity plays a role with UI.&lt;/li&gt;
-&lt;li&gt;If elements of a UI are placed in close proximity, users typically assume they are related&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;So if you should group related items in a UI in close proximity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;contrast&#34;&gt;Contrast&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrast is also important in UI
-
-&lt;ul&gt;
-&lt;li&gt;For example if you hover a button the contrast should be small not large&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;proximity&#34;&gt;Proximity&lt;/h3&gt;
-
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/gas-station-buttons.jpeg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;In this picture notice that the label of the Gas Type is inside the button&lt;/li&gt;
-&lt;li&gt;Mark Miller explains that having the element in close proximity to the action is key&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/elevator-buttons.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;Notice that in this picture the proximity and the layout of the buttons in the elevator are confusing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;borders&#34;&gt;Borders&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Another interesting point made is about Borders
-
-&lt;ul&gt;
-&lt;li&gt;Borders Contrast should be low and should be thin&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/bad-html-table.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;Notice that in this table borders are rubbing up next to each other&lt;/li&gt;
-&lt;li&gt;The lines are more prominent and the actual data is hard to extract&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/nicer-html-table.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;In this table the borders are thin and the table is much easier to read&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;controls&#34;&gt;Controls&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Another point of the course talks about controls&lt;/li&gt;
-&lt;li&gt;Users don&amp;rsquo;t read tons of text if you have to present information then consider a tooltip&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;text&#34;&gt;Text&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There was a section detailing how text can confuse dyslexic readers&lt;/li&gt;
-&lt;li&gt;This really goes hand and hand with modern web accesibility design&lt;/li&gt;
-&lt;li&gt;If you design UIs with users that may have disabilities in mind then general readers benefit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;My key takeaways for text:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Don&amp;rsquo;t use black and white instead use gray and off-white&lt;/li&gt;
-&lt;li&gt;Use concise sentences instead of long paragraphs.&lt;/li&gt;
-&lt;li&gt;Increase Padding in between paragraphs.&lt;/li&gt;
-&lt;li&gt;Left-justify text&lt;/li&gt;
-&lt;li&gt;Use single spaces after sentences and never double space&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;information-dimension&#34;&gt;Information Dimension&lt;/h3&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Serial (through time)&lt;/th&gt;
-&lt;th&gt;Parallel (in space)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Takes longer to consume&lt;/td&gt;
-&lt;td&gt;Evaluated instantly&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Comparisons are hard&lt;/td&gt;
-&lt;td&gt;Comparisons are easy&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Burden on recall&lt;/td&gt;
-&lt;td&gt;No burden on recall&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Pacing Issues&lt;/td&gt;
-&lt;td&gt;Viewer controls Pace&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Harder to Understand&lt;/td&gt;
-&lt;td&gt;Easier to Understand&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;As you can see from the table above it is easier to present information in parallel over serial to users&lt;/p&gt;
-
-&lt;h3 id=&#34;graphic-language&#34;&gt;Graphic Language&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Match known physical items to make symbols easier to read&lt;/li&gt;
-&lt;li&gt;Graphic Language should be independent of color&lt;/li&gt;
-&lt;li&gt;There should be consistency of colors&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/olympic-graphics.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Notice here in both the simplicity of the icons but the clarity in their message&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You can clearly tell each sport in each graphic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;what-was-surprising&#34;&gt;What was surprising&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I was surprised to learn that simplicity of design seems to be the hardest thing to get right&lt;/li&gt;
-&lt;li&gt;Fancy effects don&amp;rsquo;t provide as much value as clarity of intent&lt;/li&gt;
-&lt;li&gt;Accomodating to users with disabilities improves overall design&lt;/li&gt;
-&lt;li&gt;Proximity of elements natural groups elements so you have to get the right proximity&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;what-mark-miller-did-well&#34;&gt;What Mark Miller did well&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mark Miller know how to clearly explain key design principles that help you build great UIs&lt;/li&gt;
-&lt;li&gt;The course is rich with imagery and clear examples on what constitutes good UIs&lt;/li&gt;
-&lt;li&gt;There is also a great transition from the Science of Great UI course
-
-&lt;ul&gt;
-&lt;li&gt;Incremental steps on each course help facilitate key design points&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;what-could-have-been-done-better&#34;&gt;What could have been done better&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There wasn&amp;rsquo;t any mention of using Sketch app and instead Adobe Creative Cloud was heavily used&lt;/li&gt;
-&lt;li&gt;It would be great to mention tools like Sketch and Omnigraffle&lt;/li&gt;
-&lt;li&gt;More opinions on using design tools would be nice although it might detract from the course intent&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Overall this course is wonderfully crafted, job well done&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;purchase-the-course&#34;&gt;Purchase the Course&lt;/h2&gt;
-
-&lt;p&gt;Go to &lt;a href=&#34;http://app.deviq.com/courses/design-like-a-pro&#34; target=&#34;_blank&#34;&gt;Design Like a Pro&lt;/a&gt; to purchase and watch this great course.&lt;/p&gt;
 </description>
     </item>
     

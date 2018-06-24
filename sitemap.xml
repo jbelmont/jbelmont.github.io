@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/browser-automation/</loc>
+      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/acceptance-testing/</loc>
       <lastmod>2018-05-20T15:48:12-05:00</lastmod>
     </url>
@@ -287,6 +296,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/automation/</loc>
+      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/caching/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -377,7 +396,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/e2e/</loc>
-      <lastmod>2018-05-20T15:48:12-05:00</lastmod>
+      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -656,7 +675,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/testing/</loc>
-      <lastmod>2018-05-20T15:48:12-05:00</lastmod>
+      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
