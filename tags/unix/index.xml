@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rest on Software Musings</title>
-    <link>https://www.marcelbelmont.com/tags/rest/</link>
-    <description>Recent content in Rest on Software Musings</description>
+    <title>Unix on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/unix/</link>
+    <description>Recent content in Unix on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
     <lastBuildDate>Sun, 22 Jul 2018 09:13:27 -0400</lastBuildDate>
     
-	<atom:link href="https://www.marcelbelmont.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.marcelbelmont.com/tags/unix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,18 +19,6 @@
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</guid>
       <description>Tips and Tricks With Curl and Jq In this blog post we will work with Restful APIs and use jq, which is a command line processor for json. We will use curl to make Rest calls and then use jq to parse the json response into more useful information. By using jq we can do many useful transformation with json such as aggregating data like averages from a json response payload and extracting only the fields that we are interested in working with instead of an entire payload and much more.</description>
-    </item>
-    
-    <item>
-      <title>Api Testing</title>
-      <link>https://www.marcelbelmont.com/post/api-testing/</link>
-      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
-      <description>Restful API Testing API testing is a necessary task to do while building APIs.
-Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
-Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
- GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
     </item>
     
   </channel>

@@ -11,6 +11,228 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Tips and Tricks With Curl and Jq</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</link>
+      <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</guid>
+      <description>
+
+&lt;h1 id=&#34;tips-and-tricks-with-curl-and-jq&#34;&gt;Tips and Tricks With Curl and Jq&lt;/h1&gt;
+
+&lt;p&gt;In this blog post we will work with Restful APIs and use jq, which is a command line processor for json. We will use curl to make Rest calls and then use jq to parse the json response into more useful information. By using jq we can do many useful transformation with json such as aggregating data like averages from a json response payload and extracting only the fields that we are interested in working with instead of an entire payload and much more.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites-for-the-blog-post&#34;&gt;Prerequisites for the Blog Post&lt;/h2&gt;
+
+&lt;h4 id=&#34;jq-installation&#34;&gt;jq installation&lt;/h4&gt;
+
+&lt;p&gt;To install jq please read the instructions in the &lt;a href=&#34;https://stedolan.github.io/jq/download/&#34; target=&#34;_blank&#34;&gt;jq installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mac OS X users can use &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; to install &lt;a href=&#34;https://stedolan.github.io/jq/&#34; target=&#34;_blank&#34;&gt;jq&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Run this command to install jq with homebrew:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install jq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;curl-installation&#34;&gt;curl installation&lt;/h4&gt;
+
+&lt;p&gt;To install curl please read the instructions in the &lt;a href=&#34;https://curl.haxx.se/download.html&#34; target=&#34;_blank&#34;&gt;curl installation documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mac OS X users already have curl installed by default but can also use &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; to install &lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Run this command to install curl with homebrew:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install curl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;list-of-public-apis&#34;&gt;List of Public APIs&lt;/h2&gt;
+
+&lt;p&gt;You can get a list of public apis in &lt;a href=&#34;https://github.com/toddmotto/public-apis&#34; target=&#34;_blank&#34;&gt;Todd Motto&amp;rsquo;s github repo&lt;/a&gt;.
+We will use some of the public apis listed in this repo.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-curl-to-make-restful-api-calls&#34;&gt;Using curl to make restful api calls&lt;/h2&gt;
+
+&lt;h4 id=&#34;brief-description-of-curl&#34;&gt;Brief description of curl&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl&lt;/a&gt; is used in command line applications or scripts to transfer data. It is used in a broad range of applications ranging from cars, tvs to audio equipment. We will be using curl to work with HTTP APIs but curl can work with many other protocols besides HTTP.&lt;/p&gt;
+
+&lt;h4 id=&#34;making-a-restful-api-call-with-curl&#34;&gt;Making a restful api call with curl&lt;/h4&gt;
+
+&lt;p&gt;Let us work with the &lt;a href=&#34;https://www.goodreads.com/&#34; target=&#34;_blank&#34;&gt;goodreads&lt;/a&gt; api to list some good book recommendations and first we need to authorize the &lt;a href=&#34;https://www.goodreads.com/api&#34; target=&#34;_blank&#34;&gt;goodreads api&lt;/a&gt; by creating an account with goodreads or by authorizing twitter or facebook as an oauth application with the goodreads application. You will need to go the &lt;a href=&#34;https://www.goodreads.com/api/keys&#34; target=&#34;_blank&#34;&gt;API Key page in good reads&lt;/a&gt; to register your oauth application with good reads.&lt;/p&gt;
+
+&lt;h6 id=&#34;rest-call-to-get-the-reviews-for-a-book-given-a-title-string&#34;&gt;Rest call to get the reviews for a book given a title string&lt;/h6&gt;
+
+&lt;p&gt;We will make a rest call to the following endpoint with the goodreads api:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;GET https://www.goodreads.com/book/title.json??author=Erich+Gamma&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Design Patterns&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where &lt;em&gt;format&lt;/em&gt; can be either json or xml as the data-interchange format and isbn is the the ISBN of the book to lookup.&lt;/p&gt;
+
+&lt;p&gt;Now we will use curl in the command line to make a GET request to the goodreads api by running the following command in a command prompt or terminal application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl &#39;https://www.goodreads.com/book/title.json?author=Arthur+Conan+Doyle&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Hound+of+the+Baskervilles&#39; -H &#39;Accept: application/json&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is json that we get back from the API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{&amp;quot;reviews_widget&amp;quot;:&amp;quot;\u003cstyle\u003e\n  #goodreads-widget {\n    font-family: georgia, serif;\n    padding: 18px 0;\n    width:565px;\n  }\n  #goodreads-widget h1 {\n    font-weight:normal;\n    font-size: 16px;\n    border-bottom: 1px solid #BBB596;\n    margin-bottom: 0;\n  }\n  #goodreads-widget a {\n    text-decoration: none;\n    color:#660;\n  }\n  iframe{\n    background-color: #fff;\n  }\n  #goodreads-widget a:hover { text-decoration: underline; }\n  #goodreads-widget a:active {\n    color:#660;\n  }\n  #gr_footer {\n    width: 100%;\n    border-top: 1px solid #BBB596;\n    text-align: right;\n  }\n  #goodreads-widget .gr_branding{\n    color: #382110;\n    font-size: 11px;\n    text-decoration: none;\n    font-family: \&amp;quot;Helvetica Neue\&amp;quot;, Helvetica, Arial, sans-serif;\n  }\n\u003c/style\u003e\n\u003cdiv id=\&amp;quot;goodreads-widget\&amp;quot;\u003e\n  \u003cdiv id=\&amp;quot;gr_header\&amp;quot;\u003e\u003ch1\u003e\u003ca rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles\&amp;quot;\u003eThe Hound of the Baskervilles Reviews\u003c/a\u003e\u003c/h1\u003e\u003c/div\u003e\n  \u003ciframe id=\&amp;quot;the_iframe\&amp;quot; src=\&amp;quot;https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID\u0026amp;format=html\u0026amp;isbn=0451528018\u0026amp;links=660\u0026amp;review_back=fff\u0026amp;stars=000\u0026amp;text=000\&amp;quot; width=\&amp;quot;565\&amp;quot; height=\&amp;quot;400\&amp;quot; frameborder=\&amp;quot;0\&amp;quot;\u003e\u003c/iframe\u003e\n  \u003cdiv id=\&amp;quot;gr_footer\&amp;quot;\u003e\n    \u003ca class=\&amp;quot;gr_branding\&amp;quot; target=\&amp;quot;_blank\&amp;quot; rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles?utm_medium=api\u0026amp;utm_source=reviews_widget\&amp;quot;\u003eReviews from Goodreads.com\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Notice here that the json output is not very pretty let us now use the jq command line processor to pretty print our json.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We will now use a Unix Pipe to pipe the output of our rest call into jq which will pretty print our json by default.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl &#39;https://www.goodreads.com/book/title.json?author=Arthur+Conan+Doyle&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Hound+of+the+Baskervilles&#39; -H &#39;Pragma: no-cache&#39; -H &#39;Accept: application/json&#39; | jq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the output of the json using jq:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;reviews_widget&amp;quot;: &amp;quot;&amp;lt;style&amp;gt;\n  #goodreads-widget {\n    font-family: georgia, serif;\n    padding: 18px 0;\n    width:565px;\n  }\n  #goodreads-widget h1 {\n    font-weight:normal;\n    font-size: 16px;\n    border-bottom: 1px solid #BBB596;\n    margin-bottom: 0;\n  }\n  #goodreads-widget a {\n    text-decoration: none;\n    color:#660;\n  }\n  iframe{\n    background-color: #fff;\n  }\n  #goodreads-widget a:hover { text-decoration: underline; }\n  #goodreads-widget a:active {\n    color:#660;\n  }\n  #gr_footer {\n    width: 100%;\n    border-top: 1px solid #BBB596;\n    text-align: right;\n  }\n  #goodreads-widget .gr_branding{\n    color: #382110;\n    font-size: 11px;\n    text-decoration: none;\n    font-family: \&amp;quot;Helvetica Neue\&amp;quot;, Helvetica, Arial, sans-serif;\n  }\n&amp;lt;/style&amp;gt;\n&amp;lt;div id=\&amp;quot;goodreads-widget\&amp;quot;&amp;gt;\n  &amp;lt;div id=\&amp;quot;gr_header\&amp;quot;&amp;gt;&amp;lt;h1&amp;gt;&amp;lt;a rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles\&amp;quot;&amp;gt;The Hound of the Baskervilles Reviews&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;\n  &amp;lt;iframe id=\&amp;quot;the_iframe\&amp;quot; src=\&amp;quot;https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID&amp;amp;amp;format=html&amp;amp;amp;isbn=0451528018&amp;amp;amp;links=660&amp;amp;amp;review_back=fff&amp;amp;amp;stars=000&amp;amp;amp;text=000\&amp;quot; width=\&amp;quot;565\&amp;quot; height=\&amp;quot;400\&amp;quot; frameborder=\&amp;quot;0\&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;\n  &amp;lt;div id=\&amp;quot;gr_footer\&amp;quot;&amp;gt;\n    &amp;lt;a class=\&amp;quot;gr_branding\&amp;quot; target=\&amp;quot;_blank\&amp;quot; rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles?utm_medium=api&amp;amp;amp;utm_source=reviews_widget\&amp;quot;&amp;gt;Reviews from Goodreads.com&amp;lt;/a&amp;gt;\n  &amp;lt;/div&amp;gt;\n&amp;lt;/div&amp;gt;\n&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;post-request-with-curl&#34;&gt;POST Request with curl&lt;/h4&gt;
+
+&lt;p&gt;Curl has many command line options for dealing with HTTP APIs and we will have a section for each option.&lt;/p&gt;
+
+&lt;h6 id=&#34;http-request-option-for-curl&#34;&gt;HTTP Request Option for curl&lt;/h6&gt;
+
+&lt;p&gt;The command line option for http requests is either &lt;code&gt;-X&lt;/code&gt; or &lt;code&gt;--request&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can find all the HTTP Verbs documented in the HTTP 1.1 specification:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;OPTIONS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PUT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DELETE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TRACE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CONNECT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HEAD&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code&gt;PATCH&lt;/code&gt; HTTP Verb came later and is documented in &lt;a href=&#34;https://tools.ietf.org/html/rfc5789#section-1&#34; target=&#34;_blank&#34;&gt;RFC 5789&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can read more about this in &lt;a href=&#34;https://tools.ietf.org/html/rfc2616#section-9&#34; target=&#34;_blank&#34;&gt;RFC 2616 Section 9&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;example-post-request-to-circle-ci-api&#34;&gt;Example POST Request to CIRCLE CI API&lt;/h6&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://circleci.com/docs/api/v1-reference/&#34; target=&#34;_blank&#34;&gt;CIRCLE CI API V1 Reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We will make a POST request to Circle CI to test out a local configuration script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl --user ${CIRCLECI_API_TOKEN_GITHUB}: \
+    --request POST \
+    --form revision=7d7c87e2c35df34f74f5b0cdfc47244f296c5fed \
+    --form config=@config.yml \
+    --form notify=false \
+    https://circleci.com/api/v1.1/project/github/packtci/go-template-example-with-circle-ci/tree/master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we are providing the option &amp;ndash;user which takes &lt;code&gt;USER[:PASSWORD]  Server user and password&lt;/code&gt;
+The &lt;code&gt;--form&lt;/code&gt; which takes &lt;code&gt;CONTENT  Specify HTTP multipart POST data (H)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;using-curl-and-jq-to-parse-out-response-payloads&#34;&gt;Using curl and jq to parse out response payloads&lt;/h2&gt;
+
+&lt;h4 id=&#34;extract-top-level-attribute-in-json-payload&#34;&gt;Extract top level attribute in JSON Payload&lt;/h4&gt;
+
+&lt;p&gt;We will now make a GET Request to the CIRCLE CI API to get information about the user and extract an attribute.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X GET \
+    --header &amp;quot;Accept: application/json&amp;quot; \
+    &amp;quot;https://circleci.com/api/v1.1/me?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;quot; \
+    | jq &#39;.name&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we use the &lt;a href=&#34;https://stedolan.github.io/jq/manual/#Basicfilters&#34; target=&#34;_blank&#34;&gt;jq&lt;/a&gt; utility to pluck out the name attribute which is a top level attribute in the response payload for the &lt;code&gt;GET&lt;/code&gt; request.&lt;/p&gt;
+
+&lt;h4 id=&#34;parse-out-nested-attribute-in-big-response-payload&#34;&gt;Parse out nested attribute in big response payload&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X GET \
+    --header &amp;quot;Accept: application/json&amp;quot; \
+    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
+    | jq &#39;.[] | .subject&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we iterate through all the elements of the array and then parse out the nested subject attribute from the response&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-parse.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;using-jq-play-to-interactively-experiment&#34;&gt;Using jq play to interactively experiment&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jqplay.org/&#34; target=&#34;_blank&#34;&gt;jq play&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can craft more complicated jq queries with ease if you use the jq playground.&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-play.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice in this screenshot above that we used a combination of builtin functions in jq such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;select&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;length&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notice that we were able to use the JavaScript equivalence operator of &lt;code&gt;==&lt;/code&gt; to check our condition&lt;/p&gt;
+
+&lt;h6 id=&#34;add-the-jq-query-to-our-curl-command&#34;&gt;Add the jq query to our curl command&lt;/h6&gt;
+
+&lt;p&gt;Let use add the jq query in the bottom of the screenshot to an existing curl command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/bash
+
+curl -X GET \
+    --header &amp;quot;Accept: application/json&amp;quot; \
+    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
+    | jq &#39;map(select(.ssh_disabled == false)) | length&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice how useful the jq playground editor is in crafting jq queries&lt;/p&gt;
+
+&lt;h6 id=&#34;compute-average-build-times-with-jq&#34;&gt;Compute average build times with jq&lt;/h6&gt;
+
+&lt;p&gt;Now let us compute the average build time in Circle CI using jq.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/bash
+
+curl -X GET \
+    --header &amp;quot;Accept: application/json&amp;quot; \
+    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
+    | jq &#39;(reduce .[].build_time_millis as $build_time (0; . + $build_time) ) / length&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/&#34; target=&#34;_blank&#34;&gt;jq manual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jqplay.org/&#34; target=&#34;_blank&#34;&gt;jq playground&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ec.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl book&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jbelmont/tips-and-tricks-with-curl-and-jq&#34; target=&#34;_blank&#34;&gt;Repo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Browser Automation</title>
       <link>https://www.marcelbelmont.com/post/browser-automation/</link>
       <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
@@ -5409,474 +5631,6 @@ test(&#39;addition is commutative&#39;, check(gen.int, gen.int, (t, numA, numB) 
 &lt;li&gt;Using timers can deliver false positives on UI changes&lt;/li&gt;
 &lt;li&gt;Take snapshots of the UI throughout the lifecycle of the User Workflow&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>OWASP and Software Security</title>
-      <link>https://www.marcelbelmont.com/post/software-security/</link>
-      <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/software-security/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#software-security&#34;&gt;Software Security&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#difference-between-software-security-and-application-security&#34;&gt;Difference between Software Security and Application Security&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#language-based-security&#34;&gt;Language-Based Security&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#objectives-of-language-based-security&#34;&gt;Objectives of Language Based Security&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#application-level-security&#34;&gt;Application Level Security&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#definition&#34;&gt;Definition&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#terms&#34;&gt;Terms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#techniques&#34;&gt;Techniques&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#application-threats-or-attacks&#34;&gt;Application threats or attacks&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp&#34;&gt;OWASP&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#background-on-owasp&#34;&gt;Background on OWASP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-core-values&#34;&gt;OWASP Core Values&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-principles&#34;&gt;OWASP Principles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-mailing-lists&#34;&gt;OWASP Mailing Lists&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-chapter&#34;&gt;OWASP Chapter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-membership&#34;&gt;OWASP Membership&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-projects&#34;&gt;OWASP Projects&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-github-organization&#34;&gt;OWASP Github Organization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-member-portal&#34;&gt;OWASP Member Portal&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-top-10&#34;&gt;OWASP Top 10&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#owasp-top-10-comparison-table-for-2013-vs-2017&#34;&gt;OWASP Top 10 comparsion table for 2013 vs 2017&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#github-repository&#34;&gt;Github Repository&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;software-security&#34;&gt;Software Security&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Software security entails software that continues to function correctly under malicious attack.&lt;/li&gt;
-&lt;li&gt;Most engineers acknowledge that security is important but don&amp;rsquo;t know the steps to tackle security&lt;/li&gt;
-&lt;li&gt;Software security best practices leverage good software engineering practice
-
-&lt;ul&gt;
-&lt;li&gt;Involve thinking about security early in the software lifecycle, knowing and understanding common threats&lt;/li&gt;
-&lt;li&gt;Including language-based flaws and pitfalls&lt;/li&gt;
-&lt;li&gt;designing for security&lt;/li&gt;
-&lt;li&gt;Putting all software components thorough objective risk analyses and testing.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;difference-between-software-security-and-application-security&#34;&gt;Difference between Software Security and Application Security&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.garymcgraw.com/&#34; target=&#34;_blank&#34;&gt;Gary McGraw&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Gary McGraw maintains that application security is a reactive approach, taking place once software has been deployed. Software security, on the other hand, involves a proactive approach, taking place within the pre-deployment phase.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.synopsys.com/blogs/software-security/application-security-vs-software-security/&#34; target=&#34;_blank&#34;&gt;Difference between Software Security and Application Security&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Software security (pre-deployment) activities include:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Secure software design&lt;/li&gt;
-&lt;li&gt;Development of secure coding guidelines for developers to follow&lt;/li&gt;
-&lt;li&gt;Development of secure configuration procedures and standards for the deployment phase&lt;/li&gt;
-&lt;li&gt;Secure coding that follows established guidelines&lt;/li&gt;
-&lt;li&gt;Validation of user input and implementation of a suitable encoding strategy&lt;/li&gt;
-&lt;li&gt;User authentication&lt;/li&gt;
-&lt;li&gt;User session management&lt;/li&gt;
-&lt;li&gt;Function level access control&lt;/li&gt;
-&lt;li&gt;Use of strong cryptography to secure data at rest and in transit&lt;/li&gt;
-&lt;li&gt;Validation of third-party components&lt;/li&gt;
-&lt;li&gt;Arrest of any flaws in software design/architecture&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Application security (post-deployment) activities include:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Post deployment security tests&lt;/li&gt;
-&lt;li&gt;Capture of flaws in software environment configuration&lt;/li&gt;
-&lt;li&gt;Malicious code detection (implemented by the developer to create backdoor, time bomb)&lt;/li&gt;
-&lt;li&gt;Patch/upgrade
-
-&lt;ul&gt;
-&lt;li&gt;Meaning that situations like third party software or dependencies needing to be patched&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;IP filtering
-
-&lt;ul&gt;
-&lt;li&gt;White List Known Good IP addresses instead of leaving a bunch IP addresses open&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Lock down executables
-
-&lt;ul&gt;
-&lt;li&gt;This in my mind goes more hand in hand with compiled languages but I could be wrong&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Monitoring of programs at runtime to enforce the software use policy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;language-based-security&#34;&gt;Language-Based Security&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Language-based_security&#34; target=&#34;_blank&#34;&gt;Language Based Security&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Language-based security (LBS) is a set of techniques that may be used to strengthen the security of applications on a high level by using the properties of programming languages. LBS is considered to enforce computer security on an application-level, making it possible to prevent vulnerabilities which traditional operating system security is unable to handle.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;objectives-of-language-based-security&#34;&gt;Objectives of Language Based Security&lt;/h3&gt;
-
-&lt;p&gt;Objective of Language-based security:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Prevent common programming errors such as allowing buffer overflows and illegal information flows to occur&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Provide some proof to the consumer about the security properties of the software&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Helps the consumer trust the software without having to check source code for errors.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;A compiler, taking source code as input, performs several language specific operations on the code&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Lexical analysis, preprocessing, parsing, semantic analysis, code generation, and code optimization&lt;/li&gt;
-&lt;li&gt;By analyzing the source code and gathering best practices for the language&lt;/li&gt;
-&lt;li&gt;The compiler will attempt to correctly translate the high-level code into low-level code
-
-&lt;ul&gt;
-&lt;li&gt;Preserving the behavior of the program.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;For Dynamic Libraries such as Javasript/Node.js you can use tools such as eslint that help with static analysis and best practices that you should follow&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;application-level-security&#34;&gt;Application Level Security&lt;/h2&gt;
-
-&lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Encompasses measures taken to improve the security of an application
-
-&lt;ul&gt;
-&lt;li&gt;By finding, fixing and preventing security vulnerabilities.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;terms&#34;&gt;Terms&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Asset
-
-&lt;ul&gt;
-&lt;li&gt;Data in a database, money in an account, file on the filesystem or any system resource.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Vulnerability
-
-&lt;ul&gt;
-&lt;li&gt;A gap in security program that can be exploited by threats to gain unauthorized access to an asset.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Attack
-
-&lt;ul&gt;
-&lt;li&gt;An action taken to harm an asset.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Threat
-
-&lt;ul&gt;
-&lt;li&gt;Anything that can exploit a vulnerability and obtain, damage, or destroy an asset.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;techniques&#34;&gt;Techniques&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Code review
-
-&lt;ul&gt;
-&lt;li&gt;Security engineer who understands the application through manually reviewing the source code notices avenues of exploit.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Blackbox security audit
-
-&lt;ul&gt;
-&lt;li&gt;This is testing an application for security vulnerabilities not looking at source code&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Design review
-
-&lt;ul&gt;
-&lt;li&gt;Thinking about possible threat models before writing code or using a spec that has it detailed.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Tooling
-
-&lt;ul&gt;
-&lt;li&gt;Automated tools that check security vulnerabilities&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;application-threats-or-attacks&#34;&gt;Application threats or attacks&lt;/h3&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;code&gt;Category&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Threats / Attacks&lt;/code&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Input Validation&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Buffer overflow; cross-site scripting; SQL injection; canonicalization&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Software Tampering&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Attacker modifies an existing application&amp;rsquo;s runtime behavior to perform unauthorized actions; exploited via binary patching, code substitution, or code extension&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Authentication&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Network eavesdropping ; Brute force attack; dictionary attacks; cookie replay; credential theft&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Authorization&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Elevation of privilege; disclosure of confidential data; data tampering; luring attacks&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Configuration management&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Unauthorized access to administration interfaces; unauthorized access to configuration stores; retrieval of clear text configuration data; lack of individual accountability; over-privileged process and service accounts&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Sensitive information&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Access sensitive code or data in storage; network eavesdropping; code/data tampering&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Session management&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Session hijacking; session replay; man in the middle&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Cryptography&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Poor key generation or key management; weak or custom encryption&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Parameter manipulation&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Query string manipulation; form field manipulation; cookie manipulation; HTTP header manipulation&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Exception management&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;Information disclosure; denial of service&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;Auditing and logging&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;User denies performing an operation; attacker exploits an application without trace; attacker covers his or her tracks&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Application_security&#34; target=&#34;_blank&#34;&gt;Application Security&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;owasp&#34;&gt;OWASP&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;The Open Web Application Security Project (OWASP)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;background-on-owasp&#34;&gt;Background on OWASP&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mission is to make software security visible, so that individuals/organizations can make informed decisions.&lt;/li&gt;
-&lt;li&gt;Operates as a community of security minded professionals&lt;/li&gt;
-&lt;li&gt;OWASP issues software tools and knowledge-based documentation on application security.&lt;/li&gt;
-&lt;li&gt;The OWASP Foundation came online on December 1st 2001 it was established as a not-for-profit charitable org&lt;/li&gt;
-&lt;li&gt;In the United States on April 21, 2004 to ensure the ongoing availability and support for our work at OWASP.&lt;/li&gt;
-&lt;li&gt;OWASP is an international organization and the OWASP Foundation supports OWASP efforts around the world.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;owasp-core-values&#34;&gt;OWASP Core Values&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OPEN Everything at OWASP is radically transparent from our finances to our code.&lt;/li&gt;
-&lt;li&gt;INNOVATION OWASP encourages and supports innovation and experiments for solutions to software security challenges.&lt;/li&gt;
-&lt;li&gt;GLOBAL Anyone around the world is encouraged to participate in the OWASP community.&lt;/li&gt;
-&lt;li&gt;INTEGRITY OWASP is an honest and truthful, vendor neutral, global community.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;owasp-principles&#34;&gt;OWASP Principles&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Free &amp;amp; Open&lt;/li&gt;
-&lt;li&gt;Governed by rough consensus &amp;amp; running code&lt;/li&gt;
-&lt;li&gt;Abide by a code of ethics (see ethics)&lt;/li&gt;
-&lt;li&gt;Not-for-profit&lt;/li&gt;
-&lt;li&gt;Not driven by commercial interests&lt;/li&gt;
-&lt;li&gt;Risk based approach&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;owasp-mailing-lists&#34;&gt;OWASP Mailing Lists&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://lists.owasp.org/mailman/listinfo&#34; target=&#34;_blank&#34;&gt;Mailing Lists&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-chapter&#34;&gt;OWASP Chapter&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.owasp.org/index.php/Triangle&#34; target=&#34;_blank&#34;&gt;Triangle OWASP Chapter&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-membership&#34;&gt;OWASP Membership&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.owasp.org/index.php/Membership&#34; target=&#34;_blank&#34;&gt;OWASP Members&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-projects&#34;&gt;OWASP Projects&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.owasp.org/index.php/Category:OWASP_Project&#34; target=&#34;_blank&#34;&gt;OWASP Projects&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-github-organization&#34;&gt;OWASP Github Organization&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/OWASP&#34; target=&#34;_blank&#34;&gt;OWASP Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-member-portal&#34;&gt;OWASP Member Portal&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.owasp.org/index.php/Portal&#34; target=&#34;_blank&#34;&gt;Member Portal&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-top-10&#34;&gt;OWASP Top 10&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project#tab=OWASP_Top_10_for_2017_Release_Candidate&#34; target=&#34;_blank&#34;&gt;Top 10&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We will be reviewing the OWASP top 10 list for this workshop&lt;/p&gt;
-
-&lt;p&gt;OWASP Top 10 Most Critical Web Application Security Risks (in the Release Candidate) are:
-* Injection
-* Broken Authentication and Session Management
-* Cross-Site Scripting (XSS)
-* Broken Access Control (As it was in 2004)
-* Security Misconfiguration
-* Sensitive Data Exposure
-* Insufficient Attack Protection (NEW)
-* Cross-Site Request Forgery (CSRF)
-* Using Components with Known Vulnerabilities
-* Underprotected APIs (NEW)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/OWASP/Top10/raw/master/2017/OWASP%20Top%2010%20-%202017%20RC1-English.pdf&#34; target=&#34;_blank&#34;&gt;OWASP Top 10 2017 Release Candidate&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;owasp-top-10-comparsion-table-for-2013-vs-2017&#34;&gt;OWASP Top 10 comparsion table for 2013 vs 2017&lt;/h3&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;code&gt;OWASP Top 10 – 2013 (Previous)&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;OWASP Top 10 – 2017 (New)&lt;/code&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;A1 - Injection&lt;/td&gt;
-&lt;td&gt;A1 - Injection&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A2 - Broken Authentication and Session Management&lt;/td&gt;
-&lt;td&gt;A2 - Broken Authentication and Session Management&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A3 - Cross-Site Scripting (XSS)&lt;/td&gt;
-&lt;td&gt;A3 - Cross-Site Scripting (XSS)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A4 - Insecure Direct Object References - Merged with A7&lt;/td&gt;
-&lt;td&gt;A4 - Broken Access Control (Original category in &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2004&lt;/sub&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A5 - Security Misconfiguration&lt;/td&gt;
-&lt;td&gt;A5 - Security Misconfiguration&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A6 - Sensitive Data Exposure&lt;/td&gt;
-&lt;td&gt;A6 - Sensitive Data Exposure&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A7 - Missing Function Level Access Control - Merged with A4&lt;/td&gt;
-&lt;td&gt;A7 – Insufficient Attack Protection (NEW)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A8 – Cross-Site Request Forgery (CSRF)&lt;/td&gt;
-&lt;td&gt;A8 – Cross-Site Request Forgery (CSRF)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A9 – Using Components with Known Vulnerabilities&lt;/td&gt;
-&lt;td&gt;A9 – Using Components with Known Vulnerabilities&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;A10 – Unvalidated Redirects and Forwards -Dropped&lt;/td&gt;
-&lt;td&gt;A10 – UnderprotectedAPIs (NEW)Release NotesRN&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;code&gt;Threat Agents&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Attack Vectors&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Weakness Prevalence&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Weakness Detectability&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Technical Impacts&lt;/code&gt;&lt;/th&gt;
-&lt;th&gt;&lt;code&gt;Business Impacts&lt;/code&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;App Specific&lt;/td&gt;
-&lt;td&gt;Easy&lt;/td&gt;
-&lt;td&gt;Widespread&lt;/td&gt;
-&lt;td&gt;Easy&lt;/td&gt;
-&lt;td&gt;Severe&lt;/td&gt;
-&lt;td&gt;App/Business Specific&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;App Specific&lt;/td&gt;
-&lt;td&gt;Average&lt;/td&gt;
-&lt;td&gt;Common&lt;/td&gt;
-&lt;td&gt;Average&lt;/td&gt;
-&lt;td&gt;Moderate&lt;/td&gt;
-&lt;td&gt;App/Business Specific&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;App Specific&lt;/td&gt;
-&lt;td&gt;Difficult&lt;/td&gt;
-&lt;td&gt;Uncommon&lt;/td&gt;
-&lt;td&gt;Difficult&lt;/td&gt;
-&lt;td&gt;Minor&lt;/td&gt;
-&lt;td&gt;App/Business Specific&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;github-repository&#34;&gt;Github Repository&lt;/h2&gt;
-
-&lt;p&gt;If you like this information then please star this repository on Github at &lt;a href=&#34;https://github.com/jbelmont/software-security&#34; target=&#34;_blank&#34;&gt;Software Security&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
