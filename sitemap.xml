@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</loc>
+      <lastmod>2018-08-26T20:30:37-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</loc>
       <lastmod>2018-07-22T09:13:27-04:00</lastmod>
     </url>
@@ -474,6 +483,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/languages/</loc>
+      <lastmod>2018-08-26T20:30:37-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/logstash/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -605,6 +624,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/rest/</loc>
       <lastmod>2018-07-22T09:13:27-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/rustlang/</loc>
+      <lastmod>2018-08-26T20:30:37-04:00</lastmod>
       <priority>0</priority>
     </url>
     

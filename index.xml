@@ -11,6 +11,237 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Getting started with Rustlang</title>
+      <link>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</link>
+      <pubDate>Sun, 26 Aug 2018 20:30:37 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</guid>
+      <description>
+
+&lt;h1 id=&#34;in-this-blog-post-i-go-over-getting-started-with-rustlang&#34;&gt;In this Blog Post I go over getting started with Rustlang&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;installing-rust-in-mac-os-x-linux&#34;&gt;Installing Rust in Mac OS X / Linux&lt;/h2&gt;
+
+&lt;p&gt;To install Rust in Linux and Mac OS X run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl https://sh.rustup.rs -sSf | sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For other installation methods please read the following &lt;a href=&#34;https://www.rust-lang.org/en-US/other-installers.html&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Add the cargo binaries to your path by adding the following entry in &lt;em&gt;~/.profile&lt;/em&gt;, &lt;em&gt;~/.bash_profile&lt;/em&gt; &lt;em&gt;~/.bashrc&lt;/em&gt;, &lt;em&gt;~/.zshrc&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;export PATH=&amp;quot;$HOME/.cargo/bin:$PATH&amp;quot;&amp;quot; &amp;gt;&amp;gt; ~/.zshrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note here that I appended this using &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; to &lt;em&gt;~/.zshrc&lt;/em&gt; but you may choose &lt;em&gt;~/.bashrc&lt;/em&gt; or another file.&lt;/p&gt;
+
+&lt;h4 id=&#34;installing-rust-in-windows&#34;&gt;Installing Rust in Windows&lt;/h4&gt;
+
+&lt;p&gt;On Windows, go to &lt;a href=&#34;https://www.rust-lang.org/install.html&#34; target=&#34;_blank&#34;&gt;install&lt;/a&gt; and follow the instructions for installing Rust.&lt;/p&gt;
+
+&lt;p&gt;You will need to install C++ build tools for Visual Studio 2013 or later here but it is best to just install &lt;a href=&#34;https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017&#34; target=&#34;_blank&#34;&gt;Visual Studio Build Tools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The tools are in the Other Tools and Frameworks section which looks like this:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/vs-build-tools.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;check-rust-installation&#34;&gt;Check Rust Installation&lt;/h4&gt;
+
+&lt;p&gt;If Rust is installed then you should be able to run the following command in your terminal windows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustc --version
+rustc 1.26.2 (594fb253c 2018-06-01)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;updating-rustlang&#34;&gt;Updating Rustlang&lt;/h2&gt;
+
+&lt;p&gt;In order to update the rust binaries you need to run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustup update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now when we run the &lt;code&gt;--version&lt;/code&gt; options with rustc a new version should be reported if the update found a new version:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustc --version
+rustc 1.28.0 (9634041f0 2018-07-30)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;viewing-local-documentation&#34;&gt;Viewing Local Documentation&lt;/h2&gt;
+
+&lt;p&gt;In order to see local documentation you can run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustup doc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;cargo-package-manager&#34;&gt;Cargo Package Manager&lt;/h2&gt;
+
+&lt;p&gt;Rust comes with a powerful package manager called &lt;strong&gt;cargo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can create new rust packages by using the cargo package manager.&lt;/p&gt;
+
+&lt;p&gt;The command you use is: &lt;code&gt;cargo new&lt;/code&gt; with options and provide a name&lt;/p&gt;
+
+&lt;h4 id=&#34;create-a-new-binary-template-package&#34;&gt;Create a new binary template package&lt;/h4&gt;
+
+&lt;p&gt;If you want to create a new rust binary template application then run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo new PACKAGE_NAME --bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;create-a-new-library-template-package&#34;&gt;Create a new library template package&lt;/h4&gt;
+
+&lt;p&gt;If you want to create a new rust library template application then run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo new PACKAGE_NAME --lib
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;the-contents-of-a-new-binary-template-package&#34;&gt;The contents of a new binary template package&lt;/h4&gt;
+
+&lt;p&gt;When you create a new binary application cargo will create the following files:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/new_rust_package_contents.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that the following files were created:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cargo.lock
+
+&lt;ul&gt;
+&lt;li&gt;This file locks your dependencies&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cargo.toml
+
+&lt;ul&gt;
+&lt;li&gt;This file will have basic metadata for the rust package and dependencies&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;src directory
+
+&lt;ul&gt;
+&lt;li&gt;main.rs
+
+&lt;ul&gt;
+&lt;li&gt;This will be main program for the application&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Contents of &lt;em&gt;Cargo.toml&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[package]
+name = &amp;quot;hello-world&amp;quot;
+version = &amp;quot;0.1.0&amp;quot;
+authors = [&amp;quot;Jean-Marcel Belmont &amp;lt;marcelbelmont@gmail.com&amp;gt;&amp;quot;]
+
+[dependencies]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Contents of &lt;em&gt;src/main.rs&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;fn main() {
+    println!(&amp;quot;Hello, world!&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;build-rust-package&#34;&gt;Build Rust package&lt;/h4&gt;
+
+&lt;p&gt;In order to build the rust package you can run the following command:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/cargo-build.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;This command generates the &lt;em&gt;target&lt;/em&gt; directory with the following content:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/target-directory.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;running-rust-package&#34;&gt;Running Rust package&lt;/h4&gt;
+
+&lt;p&gt;You could run rust packages by issuing the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will build and run the rust package.&lt;/p&gt;
+
+&lt;h4 id=&#34;check-the-rust-package-for-build-issues&#34;&gt;Check the Rust package for build issues&lt;/h4&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;cargo check&lt;/code&gt; command to see if your package will build but it will not create an executable.&lt;/p&gt;
+
+&lt;h4 id=&#34;running-tests-with-cargo&#34;&gt;Running tests with Cargo&lt;/h4&gt;
+
+&lt;p&gt;You can easily run tests by using the &lt;code&gt;cargo test&lt;/code&gt; command in the root of your project.&lt;/p&gt;
+
+&lt;p&gt;Whenever you create a new library it will stub out a test for you in &lt;em&gt;src/lib.rs&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+        assert_eq!(2 + 2, 4);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Notice here that there is an annotation of &lt;code&gt;#[cfg(test)]&lt;/code&gt; for the tests module and &lt;code&gt;#[test]&lt;/code&gt; for the test case.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;resources-to-learn-rustlang&#34;&gt;Resources to learn Rustlang&lt;/h2&gt;
+
+&lt;p&gt;Arguably the best resource to learn Rust is the &lt;a href=&#34;https://doc.rust-lang.org/book/2018-edition/index.html&#34; target=&#34;_blank&#34;&gt;Official Rust Book&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Rust Book will walk you through each and every aspect of the Rust Language so please read it!&lt;/p&gt;
+
+&lt;h4 id=&#34;read-the-standard-library&#34;&gt;Read the Standard Library&lt;/h4&gt;
+
+&lt;p&gt;Another way to learn Rust well is to read the Standard Library &lt;a href=&#34;https://doc.rust-lang.org/std/index.html&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You should also read &lt;a href=&#34;https://doc.rust-lang.org/std/index.html#a-tour-of-the-rust-standard-library&#34; target=&#34;_blank&#34;&gt;A tour of the standard library&lt;/a&gt; which will list all the primitive types, modules, and macros in Rust.&lt;/p&gt;
+
+&lt;h4 id=&#34;using-the-rust-playground&#34;&gt;Using the Rust Playground&lt;/h4&gt;
+
+&lt;p&gt;Much like Golang has a playground so does Rust.&lt;/p&gt;
+
+&lt;p&gt;Here is a link to the Rust Playground that uses Rust nightly and has debugging mode enabled &lt;a href=&#34;https://play.rust-lang.org/?version=nightly&amp;amp;mode=debug&amp;amp;edition=2018&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;community-links&#34;&gt;Community Links&lt;/h2&gt;
+
+&lt;p&gt;Check out all the community related information &lt;a href=&#34;https://www.rust-lang.org/en-US/community.html&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you like this Blog Post please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks With Curl and Jq</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</link>
       <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
@@ -5364,273 +5595,6 @@ test(&#39;addition is commutative&#39;, check(gen.int, gen.int, (t, numA, numB) 
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;If you like this post please star &lt;a href=&#34;https://github.com/jbelmont/software-testing&#34; target=&#34;_blank&#34;&gt;Software Testing on Gitub&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Growing Object-Oriented Software, Guided by Tests</title>
-      <link>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</link>
-      <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</guid>
-      <description>
-
-&lt;h1 id=&#34;growing-object-oriented-software-guided-by-tests&#34;&gt;Growing Object Oriented Software Guided By Tests&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#what-is-the-point-of-test-driven-development&#34;&gt;What is the Point of Test-Driven Development&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#test-driven-development-with-objects&#34;&gt;Test-Driven Development with Objects&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#an-introduction-to-the-tools&#34;&gt;An Introduction to the Tools&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#kick-starting-the-test-driven-cycle&#34;&gt;Kick-Starting the Test-Driven Cycle&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#maintaining-the-test-driven-cycle&#34;&gt;Maintaining The Test-Driven Cycle&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#object-oriented-style&#34;&gt;Object-Oriented Style&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;achieving-object-oriented-design&#34; target=&#34;_blank&#34;&gt;Achieving Object-Oriented Design&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#building-on-third-party-code&#34;&gt;Building on Third-Party Code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#commissioning-on-auction-sniper&#34;&gt;Commissioning on Auction Sniper&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#the-walking-skeleton&#34;&gt;The Walking Skeleton&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#passing-the-first-test&#34;&gt;Passing the First Test&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#chapters-12-to-18&#34;&gt;Chapters 12 to 18&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sniping-for-multiple-items&#34;&gt;Sniping for Multiple Items&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#teasing-apart-main&#34;&gt;Teasing apart Main&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#filling-in-the-details&#34;&gt;Filling in the Details&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#listening-to-the-tests&#34;&gt;Listening to the Tests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#test-readability&#34;&gt;Test Readability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#constructing-complex-test-data&#34;&gt;Constructing Complex Test Data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#test-diagnostics&#34;&gt;Test Diagnostics&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#test-flexibility&#34;&gt;Test Flexibility&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#chapters-25-to-27&#34;&gt;Chapters 25 to 27&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;what-is-the-point-of-test-driven-development&#34;&gt;What is the Point of Test-Driven Development&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Feedback is the most fundamental tool at our disposal&lt;/li&gt;
-&lt;li&gt;TDD is a practice that supports change&lt;/li&gt;
-&lt;li&gt;You should never write new functionality without a failing test.&lt;/li&gt;
-&lt;li&gt;This first chapter basically explains the benefits of TDD&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;test-driven-development-with-objects&#34;&gt;Test-Driven Development with Objects&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Objects should communicate their intent to other objects
-
-&lt;ul&gt;
-&lt;li&gt;Tell Don&amp;rsquo;t Ask principle&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Mock Objects when you use &amp;ldquo;Tell Don&amp;rsquo;t Ask&amp;rdquo; principle&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;an-introduction-to-the-tools&#34;&gt;An Introduction to the Tools&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Testing Tools are introduced in the chapter
-
-&lt;ul&gt;
-&lt;li&gt;JUnit and JMock are mentioned&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;JavaScript Test Runners like &lt;code&gt;ava.js&lt;/code&gt;, &lt;code&gt;mocha.js&lt;/code&gt;, and &lt;code&gt;jest&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sinon.js&lt;/code&gt;, and &lt;code&gt;testdouble.js&lt;/code&gt; serve as mocking libraries&lt;/li&gt;
-&lt;li&gt;Test Fixtures are mentioned in this chapter as well&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;kick-starting-the-test-driven-cycle&#34;&gt;Kick-Starting the Test-Driven Cycle&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Using Test Fixtures and Mock Objects is mentioned&lt;/li&gt;
-&lt;li&gt;Examples are using JUnit and JMock&lt;/li&gt;
-&lt;li&gt;A test fixture is the fixed state that exists at the start of a test.&lt;/li&gt;
-&lt;li&gt;A test fixture ensures that a test is repeatable
-
-&lt;ul&gt;
-&lt;li&gt;Every time a test is run it starts in the same state so it should produce the same results.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;A fixture may be set up before the test runs and torn down after it has finished&lt;/li&gt;
-&lt;li&gt;Assertion Libraries are talked about but mainly how to write tests using assertions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;maintaining-the-test-driven-cycle&#34;&gt;Maintaining The Test-Driven Cycle&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Start each feature with an acceptance test&lt;/li&gt;
-&lt;li&gt;An acceptance test basically is how you test a feature in a UI&lt;/li&gt;
-&lt;li&gt;An acceptance test should fail unti the feature is implemented&lt;/li&gt;
-&lt;li&gt;Find the simplest success case&lt;/li&gt;
-&lt;li&gt;User Acceptance Tests (UATs) should be easy to read&lt;/li&gt;
-&lt;li&gt;You should be unit testing behavior and not methods&lt;/li&gt;
-&lt;li&gt;Pay attention to trouble areas that are hard to test
-
-&lt;ul&gt;
-&lt;li&gt;This indicates a possible area for refactoring&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;object-oriented-style&#34;&gt;Object-Oriented Style&lt;/h2&gt;
-
-&lt;p&gt;Object Oriented Design:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Have clear &lt;code&gt;separation of concerns&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Behavior should be grouped in logical places&lt;/li&gt;
-&lt;li&gt;This helps isolate changes to &lt;code&gt;areas of concern&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Group components into &lt;code&gt;Higher Levels of Abstraction&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Don&amp;rsquo;t program with variables and control flow in mind but instead with larger abstractions&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Encapsulation is a concept where behavior of an object is only affected through its API&lt;/li&gt;
-&lt;li&gt;Information Hiding deals with the fact that Objects should hide lower level work in its API from public use&lt;/li&gt;
-&lt;li&gt;Every object should have only have responsibility aka &lt;code&gt;Single Responsibility Principle&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;The Composition of several objects should be simpler than the sum of all the objects&lt;/li&gt;
-&lt;li&gt;Objects should have enough &lt;code&gt;context&lt;/code&gt; of their environment&lt;/li&gt;
-&lt;li&gt;Whatever information you need should be passed in or to put it another way you can use &lt;code&gt;dependency injection&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;achieving-object-oriented-design&#34;&gt;Achieving Object-Oriented Design&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Writing test first influence the design of a system&lt;/li&gt;
-&lt;li&gt;TDD with mock objects expresses intent that you should mock an object&amp;rsquo;s peer dependencies but not the internals of an object&lt;/li&gt;
-&lt;li&gt;Value types is mentioned with explicit caveat that they are immmutable while Objects are stateful&lt;/li&gt;
-&lt;li&gt;An object should be broken apart if it becomes difficult to test&lt;/li&gt;
-&lt;li&gt;Interfaces should be not be fat and with that being said you will need more interfaces&lt;/li&gt;
-&lt;li&gt;You will need more interfaces in order to keep your interfaces &lt;code&gt;lean&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This means you should refactor interfaces as well&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;System Behavior should rely on composition and not inheritance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;building-on-third-party-code&#34;&gt;Building on Third-Party Code&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You should only mock object that you own&lt;/li&gt;
-&lt;li&gt;Don&amp;rsquo;t mock third party code&lt;/li&gt;
-&lt;li&gt;Instead write an Adapter Layer&lt;/li&gt;
-&lt;li&gt;Write a Database Adapter Layer so that if you change databases you can easily swap them out&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;commissioning-on-auction-sniper&#34;&gt;Commissioning on Auction Sniper&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A user scenario is described in this chapter detailing the auction process&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;the-walking-skeleton&#34;&gt;The Walking Skeleton&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;In this chapter the first test is described which is an end to end test&lt;/li&gt;
-&lt;li&gt;One example library that comes to mind is &lt;code&gt;Nightwatch.js&lt;/code&gt; and &lt;code&gt;Cypress.io&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;These libraries help you write end to end tests in modern web UIs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;passing-the-first-test&#34;&gt;Passing the First Test&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A &lt;em&gt;TODOLIST&lt;/em&gt; is used in this chapter and the first item is crossed out&lt;/li&gt;
-&lt;li&gt;An important concept that I derive is that User Workflows help influence the design and indicate important UI elements&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;chapters-12-to-18&#34;&gt;Chapters 12 to 18&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;These chapters essential detail iterating through software design&lt;/li&gt;
-&lt;li&gt;Small slices of behavior should be tested and implemented iteratively&lt;/li&gt;
-&lt;li&gt;Don&amp;rsquo;t be afraid of changing design of the system while iterating through a User Workflow&lt;/li&gt;
-&lt;li&gt;Architecture should be developed incrementally&lt;/li&gt;
-&lt;li&gt;Types in a system should be defined with &lt;code&gt;Domain Types&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Modelling systems with &lt;code&gt;Domain Types&lt;/code&gt; helps better describe a software system&lt;/li&gt;
-&lt;li&gt;Avoid using Magic Numbers or Strings&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;handling-failure&#34;&gt;Handling Failure&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Use smaller methods or utility methods that act as helpers for objects&lt;/li&gt;
-&lt;li&gt;Logging should be designed as a feature
-
-&lt;ul&gt;
-&lt;li&gt;Avoid scattering logging statements all throughout a system&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;listening-to-the-tests&#34;&gt;Listening to the Tests&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;An interesting point is made that implicit dependencies are still dependencies&lt;/li&gt;
-&lt;li&gt;A good corollary to this can be made with npm dependencies&lt;/li&gt;
-&lt;li&gt;Typically npm dependencies have dependencies of their own and if not isolated they carry an implicit dependency of their own&lt;/li&gt;
-&lt;li&gt;Don&amp;rsquo;t mock values or immutable values since you can just create instances but instead mock stateful objects&lt;/li&gt;
-&lt;li&gt;Bloated &lt;code&gt;constructors&lt;/code&gt; ones that take many parameters should signal a refactor possibly add a service or a message broker&lt;/li&gt;
-&lt;li&gt;Bloated &lt;code&gt;constructors&lt;/code&gt; can also signal that an object has too many responsilities&lt;/li&gt;
-&lt;li&gt;You shouldn&amp;rsquo;t have too many test assertions in any given test this probably signals that you should broke apart a test&lt;/li&gt;
-&lt;li&gt;A test should have few assertions/expectations&lt;/li&gt;
-&lt;li&gt;Knowledge of an object should be as close to the origin
-
-&lt;ul&gt;
-&lt;li&gt;Keeping knowledge close helps make pluggable components&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;We should explicitly name a behavior to help control the behavior&lt;/li&gt;
-&lt;li&gt;Try to add more names in order to extract more domain information&lt;/li&gt;
-&lt;li&gt;Pass behavior rather than data&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;test-readability&#34;&gt;Test Readability&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Test Names should describe Features of a system&lt;/li&gt;
-&lt;li&gt;Tests should follow a structure like this:
-
-&lt;ul&gt;
-&lt;li&gt;Setup&lt;/li&gt;
-&lt;li&gt;Execute Actions&lt;/li&gt;
-&lt;li&gt;Teardown&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Test structure should help explain behavior and should help share valuable information&lt;/li&gt;
-&lt;li&gt;Delegate to subordinate objects&lt;/li&gt;
-&lt;li&gt;Assertions/Expectations should communicate the exact behavior of a system&lt;/li&gt;
-&lt;li&gt;Avoid magic variables and instead use constants that explicitly show intent&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;constructing-complex-test-data&#34;&gt;Constructing Complex Test Data&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A builder pattern helps in constructing complex test data&lt;/li&gt;
-&lt;li&gt;Builder pattern helps break apart complex test data into some chainable methods&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;test-diagnostics&#34;&gt;Test Diagnostics&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Tests are made to fail&lt;/li&gt;
-&lt;li&gt;We want tests to fail or report failures when they occur&lt;/li&gt;
-&lt;li&gt;Write small and focused tests that are well named&lt;/li&gt;
-&lt;li&gt;Add explanatory statements in test assertion/expections to help find error in a stack trace&lt;/li&gt;
-&lt;li&gt;Use test matchers for detailing methods&lt;/li&gt;
-&lt;li&gt;Tests should be self describing&lt;/li&gt;
-&lt;li&gt;Tracer objects help map where failures occur&lt;/li&gt;
-&lt;li&gt;Write a Failing Test ==&amp;gt; Make Diagnostics Clear ==&amp;gt; Make Tests Pass ==&amp;gt; Refactor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;test-flexibility&#34;&gt;Test Flexibility&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Write precise assertions/expectations or just test the relevant parts of a method&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;chapters-25-to-27&#34;&gt;Chapters 25 to 27&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Persistence or CRUD actions can be tested with fine-grained integration tests&lt;/li&gt;
-&lt;li&gt;Unit testing concurrent code can be difficult and it is easy to receive false positives&lt;/li&gt;
-&lt;li&gt;Test Asychronous code by testing incremental changes in the UI&lt;/li&gt;
-&lt;li&gt;Using timers can deliver false positives on UI changes&lt;/li&gt;
-&lt;li&gt;Take snapshots of the UI throughout the lifecycle of the User Workflow&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rustlang on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/rustlang/</link>
+    <description>Recent content in Rustlang on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sun, 26 Aug 2018 20:30:37 -0400</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/rustlang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting started with Rustlang</title>
+      <link>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</link>
+      <pubDate>Sun, 26 Aug 2018 20:30:37 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</guid>
+      <description>In this Blog Post I go over getting started with Rustlang  Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
+ Installing Rust in Mac OS X / Linux To install Rust in Linux and Mac OS X run the following command:
+curl https://sh.rustup.rs -sSf | sh  For other installation methods please read the following documentation
+Add the cargo binaries to your path by adding the following entry in ~/.</description>
+    </item>
+    
+  </channel>
+</rss>

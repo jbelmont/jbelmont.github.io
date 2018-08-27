@@ -13,6 +13,18 @@
     
     
     <item>
+      <title>Getting started with Rustlang</title>
+      <link>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</link>
+      <pubDate>Sun, 26 Aug 2018 20:30:37 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</guid>
+      <description>In this Blog Post I go over getting started with Rustlang  Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
+ Installing Rust in Mac OS X / Linux To install Rust in Linux and Mac OS X run the following command:
+curl https://sh.rustup.rs -sSf | sh  For other installation methods please read the following documentation
+Add the cargo binaries to your path by adding the following entry in ~/.</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks With Curl and Jq</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</link>
       <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
