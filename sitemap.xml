@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/publication/ci_cd_book/</loc>
+      <lastmod>2018-08-28T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</loc>
       <lastmod>2018-08-26T20:30:37-04:00</lastmod>
     </url>
@@ -133,6 +142,15 @@
     
       <loc>https://www.marcelbelmont.com/post/software-testing/</loc>
       <lastmod>2017-08-31T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/publication/</loc>
+      <lastmod>2017-08-28T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -277,6 +295,16 @@
     
       <loc>https://www.marcelbelmont.com/project/code_craftsmanship_saturdays/</loc>
       <lastmod>2016-06-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/publication_types/5/</loc>
+      <lastmod>2018-08-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -604,6 +632,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/publication_types/</loc>
+      <lastmod>2018-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

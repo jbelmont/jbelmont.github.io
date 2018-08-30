@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Software Musings</title>
+    <link>https://www.marcelbelmont.com/publication/</link>
+    <description>Recent content in Publications on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Mon, 28 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/publication/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hands-On Continuous Integration and Delivery</title>
+      <link>https://www.marcelbelmont.com/publication/ci_cd_book/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/publication/ci_cd_book/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
