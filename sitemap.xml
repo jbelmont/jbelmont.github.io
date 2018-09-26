@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-vscode-and-chrome/</loc>
+      <lastmod>2018-09-23T19:09:59-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/publication/ci_cd_book/</loc>
       <lastmod>2018-08-28T00:00:00+00:00</lastmod>
     </url>
@@ -371,6 +380,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/chrome/</loc>
+      <lastmod>2018-09-23T19:09:59-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</loc>
       <lastmod>2016-06-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -443,6 +462,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/e2e/</loc>
       <lastmod>2018-06-24T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/editor/</loc>
+      <lastmod>2018-09-23T19:09:59-04:00</lastmod>
       <priority>0</priority>
     </url>
     

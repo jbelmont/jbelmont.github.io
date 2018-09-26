@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editor on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/editor/</link>
+    <description>Recent content in Editor on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sun, 23 Sep 2018 19:09:59 -0400</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/editor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tips and Tricks With VS Code and Chrome</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-vscode-and-chrome/</link>
+      <pubDate>Sun, 23 Sep 2018 19:09:59 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-vscode-and-chrome/</guid>
+      <description>Editor Tips and Tricks with VS Code Here are some suggested plugins by programming language.
+Golang Extensions Go for Visual Studio Code
+Set &amp;quot;go.useLanguageServer&amp;quot;: true in settings.json to use the Go language server from Sourcegraph for features like Hover, Definition, Find All References, Signature Help, Go to Symbol in File and Workspace.
+GO Language Server
+You will see Analysis Tools Missing in the bottom right, clicking this will offer to install all of the dependent Go tools.</description>
+    </item>
+    
+  </channel>
+</rss>
