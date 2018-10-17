@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 23 Sep 2018 19:09:59 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 17 Oct 2018 19:09:59 -0400</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/tags/editor/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A review of Hands On Continuous Integration and Delivery Book</title>
+      <link>https://www.marcelbelmont.com/post/continuous-integration-and-delivery-book-review/</link>
+      <pubDate>Wed, 17 Oct 2018 19:09:59 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/continuous-integration-and-delivery-book-review/</guid>
+      <description>Hands-On Continuous Integration and Delivery On August 2018 my book Hands On Continuous Integration and Delivery was released on Packt Publishing and the book covers many aspects of Continuous Integration and Delivery.
+In particular the book covers how to use tools such as Jenkins, Travis and Circle CI with good CI/CD practices.
+The First 4 Chapters introduce the concepts of:
+ Continuous Integration Continuous Delivery Automation The business impact of these 3 concepts in Software Development  Definition of Automation Automation is essentially any task that is completed without human interaction.</description>
+    </item>
     
     <item>
       <title>Tips and Tricks With VS Code</title>
