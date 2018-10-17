@@ -14,10 +14,10 @@
     
     <item>
       <title>A review of Hands On Continuous Integration and Delivery Book</title>
-      <link>https://www.marcelbelmont.com/post/continuous-integration-and-delivery-book-review/</link>
-      <pubDate>Wed, 17 Oct 2018 19:09:59 -0400</pubDate>
+      <link>https://www.marcelbelmont.com/post/ci-cd-book/</link>
+      <pubDate>Wed, 17 Oct 2018 19:22:45 -0400</pubDate>
       
-      <guid>https://www.marcelbelmont.com/post/continuous-integration-and-delivery-book-review/</guid>
+      <guid>https://www.marcelbelmont.com/post/ci-cd-book/</guid>
       <description>Hands-On Continuous Integration and Delivery On August 2018 my book Hands On Continuous Integration and Delivery was released on Packt Publishing and the book covers many aspects of Continuous Integration and Delivery.
 In particular the book covers how to use tools such as Jenkins, Travis and Circle CI with good CI/CD practices.
 The First 4 Chapters introduce the concepts of:
