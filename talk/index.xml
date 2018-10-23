@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Writing Rust Commandline Applications</title>
+      <link>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</guid>
+      <description>An All Things Open Conference Presentation on building commandline applications in Rust and Golang.
+😀Learning to build #rustlang CLI applications with @jbelmont80 @AllThingsOpen !! 🧠 pic.twitter.com/Nw0AIHjlPK
+&amp;mdash; 乃ﾑ尺刀ﾑ乃ﾑ丂 乃uﾚｱ乇ｲｲ (@_bulpett) October 23, 2018  </description>
+    </item>
+    
+    <item>
       <title>Containerized Golang applications with Docker and Vue.js</title>
       <link>https://www.marcelbelmont.com/talk/trilug-talk/</link>
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
@@ -30,7 +41,7 @@
       <description>A Modern Web Demonstration using Golang, Docker, and Vue.js
 Learning about how to build containerized @golang applications with @docker and @vuejs at our event tonight in the Triangle w @jbelmont80 pic.twitter.com/XtE4r1rv0a
 &amp;mdash; Modern Web (@moderndotweb) July 25, 2017  There&amp;#39;s @jbelmont80 speaking about Golang, Docker, and Vue; @ben336 talking about @gatsbyjs; and @ladyleet talking about #RxJS ! MANY here!
-&amp;mdash; Rob Ocel (@robocell) July 25, 2017  Had a blast paneling with @ben336 @jbelmont80 at @moderndotweb last night!</description>
+&amp;mdash; Rob Ocel @AllThingsOpen (@robocell) July 25, 2017  Had a blast paneling with @ben336 @jbelmont80 at @moderndotweb last night!</description>
     </item>
     
     <item>
