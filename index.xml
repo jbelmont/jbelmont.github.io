@@ -34,23 +34,12 @@
 
 &lt;h1 id=&#34;hands-on-continuous-integration-and-delivery&#34;&gt;Hands-On Continuous Integration and Delivery&lt;/h1&gt;
 
-&lt;p&gt;On August 2018 my book &lt;a href=&#34;https://www.packtpub.com/virtualization-and-cloud/hands-continuous-integration-and-delivery&#34; target=&#34;_blank&#34;&gt;Hands On Continuous Integration and Delivery&lt;/a&gt; was released on Packt Publishing and the book covers many aspects of Continuous Integration and Delivery.&lt;/p&gt;
-
-&lt;p&gt;In particular the book covers how to use tools such as Jenkins, Travis and Circle CI with good CI/CD practices.&lt;/p&gt;
-
-&lt;p&gt;The First 4 Chapters introduce the concepts of:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Continuous Integration&lt;/li&gt;
-&lt;li&gt;Continuous Delivery&lt;/li&gt;
-&lt;li&gt;Automation&lt;/li&gt;
-&lt;li&gt;The business impact of these 3 concepts in Software Development&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;There are several terms that are important when trying to learn about Continuous Integration and Continuous Delivery:&lt;/p&gt;
 
 &lt;h2 id=&#34;definition-of-automation&#34;&gt;Definition of Automation&lt;/h2&gt;
 
 &lt;p&gt;Automation is essentially any task that is completed without human interaction.
-Let us say that you manually test a UI feature, if you write a script instead than it can be said that you have automated the task.&lt;/p&gt;
+Let us say that you manually test a UI feature, if you write a script instead of manually test it than it can be said that you have automated the task.&lt;/p&gt;
 
 &lt;h2 id=&#34;definition-of-continuous-integration&#34;&gt;Definition of Continuous Integration&lt;/h2&gt;
 
@@ -98,8 +87,7 @@ It can consist of a compilation step, a testing phase, a code inspection phase, 
   stages {
     stage(&#39;Build&#39;) {
       steps {
-        sh &#39;&#39;&#39;node --version
-npm install&#39;&#39;&#39;
+        sh &#39;npm install&#39;
       }
     }
     stage(&#39;Cucumber Tests&#39;) {
@@ -113,13 +101,26 @@ npm install&#39;&#39;&#39;
 
 &lt;p&gt;Here we create a series of stages with the first stage creating a docker image to setup our environment.&lt;/p&gt;
 
-&lt;p&gt;The next stage we get our environment ready and in the last stage we run an acceptance test suite.&lt;/p&gt;
+&lt;p&gt;Notice that the docker block has &lt;em&gt;image&lt;/em&gt; for the docker image and &lt;em&gt;args&lt;/em&gt; for the arguments which in this case specify the location of the data mount.&lt;/p&gt;
 
-&lt;p&gt;There are many more features with Jenkins that I cover in great detail in my book this is just a little snippet.&lt;/p&gt;
+&lt;p&gt;In the next stage of the pipeline we get our environment ready to build by issuing the command &lt;em&gt;npm install&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In the last stage we run an acceptance test suite.&lt;/p&gt;
+
+&lt;p&gt;Here is a screenshot of the Jenkins Pipeline:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-jenkins-pipeline.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
 
 &lt;h2 id=&#34;using-travis-ci-for-ci-cd&#34;&gt;Using Travis CI for CI/CD&lt;/h2&gt;
 
-&lt;p&gt;Travis CI is a hosted and automation solution for CI Builds.&lt;/p&gt;
+&lt;p&gt;Travis CI is a hosted and automated solution for CI Builds.&lt;/p&gt;
 
 &lt;p&gt;The main difference between Travis CI and Jenkins is that Jenkins is a self managed automation solution for CI/CD. You can configure Jenkins in a fully customized manner whereas Travis CI is generally used in open source software projects.&lt;/p&gt;
 
@@ -152,37 +153,62 @@ after_success:
   - if [ -n &amp;quot;$TRAVIS_TAG&amp;quot; ]; then curl -sL https://git.io/goreleaser | bash; fi
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Here we use the Golang Programming language and set some environment variables that will help us run some tasks in a Makefile that has the following content:&lt;/p&gt;
+&lt;p&gt;Here is a breakdown of the travis yml script:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;BIN_DIR := &amp;quot;bin/apid&amp;quot;
-APID_MAIN := &amp;quot;cmd/apid/main.go&amp;quot;
+&lt;p&gt;In the &lt;em&gt;language&lt;/em&gt; field we specify the programming language which is &lt;a href=&#34;https://golang.org/&#34; target=&#34;_blank&#34;&gt;Golang&lt;/a&gt;&lt;/p&gt;
 
-all: ensure lint test-cover
+&lt;p&gt;In the &lt;em&gt;services&lt;/em&gt; field we specify the services we expect the Travis Virtual Machine to start on each CI build for us.&lt;/p&gt;
 
-ensure:
-				go get -u github.com/mattn/goveralls
-				go get -u github.com/philwinder/gocoverage
-				go get -u github.com/alecthomas/gometalinter
-				go get -u github.com/golang/dep/cmd/dep
-				go get -u golang.org/x/tools/cmd/cover
-				dep ensure
+&lt;p&gt;In the &lt;em&gt;go&lt;/em&gt; field we specify the go version we want to use&lt;/p&gt;
 
-lint:
-			gometalinter --install
-			gometalinter ./cmd/... ./internal/...
+&lt;p&gt;In the &lt;em&gt;os&lt;/em&gt; field we specify the operating system we expect to use which can be mac or linux which you can read more about in &lt;a href=&#34;https://docs.travis-ci.com/user/reference/osx/&#34; target=&#34;_blank&#34;&gt;Travis Docs&lt;/a&gt;&lt;/p&gt;
 
-compile: 	cmd/apid/main.go
-						CGO_ENABLED=0 go build -i -o ${BIN_DIR} ${APID_MAIN}
+&lt;p&gt;In the &lt;em&gt;sudo&lt;/em&gt; field you specify the following values:&lt;/p&gt;
 
-test:
-			go test ./... -v
+&lt;ul&gt;
+&lt;li&gt;required
 
-test-cover:
-						go test ./... -cover
+&lt;ul&gt;
+&lt;li&gt;You will get a fully virtualized environment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;false
 
-## Travis automation scripts
+&lt;ul&gt;
+&lt;li&gt;You will get a container based environment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-travis-install:
+&lt;p&gt;In the &lt;em&gt;env&lt;/em&gt; field we specify environment variables to be set for our CI build, which in this case consist of a &lt;em&gt;matrix&lt;/em&gt; field which has the environment variables of &lt;strong&gt;PORT&lt;/strong&gt; and &lt;strong&gt;ENVIRONMENT&lt;/strong&gt;. The &lt;em&gt;global&lt;/em&gt; field has an encrypted variable that we created with the travis cli.&lt;/p&gt;
+
+&lt;p&gt;There are several lifecycle events that we can use in travis ci:&lt;/p&gt;
+
+&lt;h4 id=&#34;before-install-lifecycle-event&#34;&gt;before_install lifecycle event&lt;/h4&gt;
+
+&lt;p&gt;This event is useful when you want to set some values and/or install some dependencies before the actual default &lt;em&gt;install&lt;/em&gt; lifecycle event&lt;/p&gt;
+
+&lt;h4 id=&#34;install-lifecycle-event&#34;&gt;install lifecycle event&lt;/h4&gt;
+
+&lt;p&gt;This event is done on every build and essentially gets the environment ready for use to run your tests, lint code and more.&lt;/p&gt;
+
+&lt;h4 id=&#34;before-script-lifecycle-event&#34;&gt;before_script lifecycle event&lt;/h4&gt;
+
+&lt;p&gt;This event is useful when you want to run some actions before the actual &lt;em&gt;script&lt;/em&gt; lifecycle event.&lt;/p&gt;
+
+&lt;h4 id=&#34;script-lifecycle-event&#34;&gt;script lifecycle event&lt;/h4&gt;
+
+&lt;p&gt;This event will comprise the bulk of the actions you will do in your CI build&lt;/p&gt;
+
+&lt;h4 id=&#34;after-success-lifecycle-event&#34;&gt;after_success lifecycle event&lt;/h4&gt;
+
+&lt;p&gt;This event is used when you want to do some actions on a successful CI build.&lt;/p&gt;
+
+&lt;p&gt;Notice that we are using Makefile tasks in the script section.&lt;/p&gt;
+
+&lt;h2 id=&#34;makefile-contents&#34;&gt;Makefile Contents&lt;/h2&gt;
+
+&lt;p&gt;Here are the contents of the makefile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;travis-install:
 								go get -u github.com/mattn/goveralls
 								go get -u github.com/philwinder/gocoverage
 								go get -u github.com/alecthomas/gometalinter
@@ -200,13 +226,11 @@ travis-script:
 								goveralls -coverprofile=profile.cov -repotoken=${COVERALLS_TOKEN}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Notice that in the &lt;em&gt;.travis.yml&lt;/em&gt; script we run the &lt;em&gt;travis-script&lt;/em&gt; in the Makefile.&lt;/p&gt;
+&lt;p&gt;In the &lt;em&gt;travis-install&lt;/em&gt; makefile task we install all the golang library dependencies required for a CI build.&lt;/p&gt;
 
-&lt;p&gt;Here we lint the codebase, run unit tests and compute code coverage and then finish by generating a code coverage report in the Coveralls service.&lt;/p&gt;
+&lt;p&gt;In the &lt;em&gt;travis-script&lt;/em&gt; makefile task we run a lint task, run tests, and push a code coverage report.&lt;/p&gt;
 
-&lt;p&gt;There are many different ways to use Travis CI as well as its powerful CLI that I discuss in the book.&lt;/p&gt;
-
-&lt;h2 id=&#34;using-travis-ci-for-ci-cd-1&#34;&gt;Using Travis CI for CI/CD&lt;/h2&gt;
+&lt;h2 id=&#34;using-circle-ci-for-ci-cd&#34;&gt;Using Circle CI for CI/CD&lt;/h2&gt;
 
 &lt;p&gt;Circle CI like Travis CI is a hosted and managed automation solution.&lt;/p&gt;
 
@@ -273,13 +297,32 @@ workflows:
 
 &lt;p&gt;Notice that here we create several steps for the CI/CD build.&lt;/p&gt;
 
-&lt;p&gt;In the first step we get the build environment setup and then we run a suite of acceptance tests inand then finally deploy our Build to Heroku!&lt;/p&gt;
+&lt;p&gt;This is using a yaml syntax like Travis CI with different fields obviously.&lt;/p&gt;
 
-&lt;p&gt;I cover many more aspects of Circle CI in my book as well as using the cli.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;version&lt;/em&gt; field is where we specify the particular version of Circle CI syntax.&lt;/p&gt;
 
-&lt;h2 id=&#34;best-practices-of-ci-cd&#34;&gt;Best Practices of CI/CD&lt;/h2&gt;
+&lt;p&gt;The &lt;em&gt;jobs&lt;/em&gt; field is where we specify each job we want to run for Circle CI.&lt;/p&gt;
 
-&lt;p&gt;In the final chapters of the book I cover best practices with CI/CD and how to manage secrets using &lt;a href=&#34;https://www.vaultproject.io/&#34; target=&#34;_blank&#34;&gt;Vault by HashiCorp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Using the &lt;em&gt;docker&lt;/em&gt; field we can specify the particular docker images we need for our CI builds.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;workflows&lt;/em&gt; field is where we can schedule the jobs to run.&lt;/p&gt;
+
+&lt;p&gt;Here is a screenshot of the Circle CI build steps:&lt;/p&gt;
+
+
+&lt;figure&gt;
+    
+        &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-circle-ci.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;hands-on-continuous-integration-and-delivery-1&#34;&gt;Hands On Continuous Integration and Delivery&lt;/h2&gt;
+
+&lt;p&gt;You can read more about Continuous Integration and Delivery by reading my books:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.packtpub.com/virtualization-and-cloud/hands-continuous-integration-and-delivery&#34; target=&#34;_blank&#34;&gt;Hands On Continuous Integration and Delivery&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

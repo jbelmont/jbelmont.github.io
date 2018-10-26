@@ -18,10 +18,9 @@
       <pubDate>Wed, 17 Oct 2018 19:22:45 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/ci-cd-book/</guid>
-      <description>Hands-On Continuous Integration and Delivery On August 2018 my book Hands On Continuous Integration and Delivery was released on Packt Publishing and the book covers many aspects of Continuous Integration and Delivery.
-In particular the book covers how to use tools such as Jenkins, Travis and Circle CI with good CI/CD practices.
-The First 4 Chapters introduce the concepts of:
- Continuous Integration Continuous Delivery Automation The business impact of these 3 concepts in Software Development  Definition of Automation Automation is essentially any task that is completed without human interaction.</description>
+      <description>Hands-On Continuous Integration and Delivery There are several terms that are important when trying to learn about Continuous Integration and Continuous Delivery:
+Definition of Automation Automation is essentially any task that is completed without human interaction. Let us say that you manually test a UI feature, if you write a script instead of manually test it than it can be said that you have automated the task.
+Definition of Continuous Integration Continuous Integration can be viewed as a software engineering task where source code is merged and tested in a version controlled project such as Git.</description>
     </item>
     
     <item>
