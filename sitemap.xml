@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/getting-started-with-latex/</loc>
+      <lastmod>2018-11-11T21:26:43-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</loc>
       <lastmod>2018-10-23T00:00:00+00:00</lastmod>
     </url>
@@ -558,6 +567,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/latex/</loc>
+      <lastmod>2018-11-11T21:26:43-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/logstash/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -788,8 +807,28 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/tex/</loc>
+      <lastmod>2018-11-11T21:26:43-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/tricks/</loc>
       <lastmod>2018-04-28T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/typesetting/</loc>
+      <lastmod>2018-11-11T21:26:43-05:00</lastmod>
       <priority>0</priority>
     </url>
     

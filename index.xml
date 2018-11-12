@@ -11,6 +11,394 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Getting Started With Latex</title>
+      <link>https://www.marcelbelmont.com/post/getting-started-with-latex/</link>
+      <pubDate>Sun, 11 Nov 2018 21:26:43 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/getting-started-with-latex/</guid>
+      <description>
+
+&lt;p&gt;LaTex is a Typesetting system which was designed by &lt;a href=&#34;https://en.wikipedia.org/wiki/Leslie_Lamport&#34; target=&#34;_blank&#34;&gt;Leslie Lamport&lt;/a&gt; and derives much of its power from &lt;a href=&#34;https://en.wikipedia.org/wiki/TeX&#34; target=&#34;_blank&#34;&gt;Tex&lt;/a&gt;. It can be argued that LaTex is a set of macros.&lt;/p&gt;
+
+&lt;h2 id=&#34;difference-between-tex-and-latex&#34;&gt;Difference between Tex and LaTex&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;TeX is about formatting with document/template designers in mind while LaTeX is all about  the content for document writers.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Please read this &lt;a href=&#34;https://tex.stackexchange.com/questions/49/what-is-the-difference-between-tex-and-latex&#34; target=&#34;_blank&#34;&gt;stackexchange post for more details&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-is-latex-useful&#34;&gt;Why is LaTex useful?&lt;/h2&gt;
+
+&lt;p&gt;You can more fine grain control of the quality of your document by using LaTex.&lt;/p&gt;
+
+&lt;p&gt;Particularly if you are writing documents heavy in Mathematics, Science and Research Papers.&lt;/p&gt;
+
+&lt;p&gt;Also LaTex lets you separate out the content of your writing from the layout of your document.&lt;/p&gt;
+
+&lt;p&gt;LaTex lets you focus on the &amp;ldquo;what&amp;rdquo; of what you are writing and not &amp;ldquo;how&amp;rdquo; the final document will look.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-latex-in-mac-os-x&#34;&gt;Installing LaTex in Mac OS X&lt;/h2&gt;
+
+&lt;p&gt;You can install LaTex in Mac OS X easily by going to &lt;a href=&#34;http://www.tug.org/mactex/&#34; target=&#34;_blank&#34;&gt;MacTex&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You will get all the LaTex macros, compilers, editors and more in this full blown LaTex working environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-latext-in-windows&#34;&gt;Installing LaText in Windows&lt;/h2&gt;
+
+&lt;p&gt;You can install LaTex in Windows by going to &lt;a href=&#34;https://miktex.org/download&#34; target=&#34;_blank&#34;&gt;MikTex&lt;/a&gt; and to &lt;a href=&#34;http://www.tug.org/texlive/acquire-netinstall.html&#34; target=&#34;_blank&#34;&gt;Tex Live&lt;/a&gt;. It is best to install the full LaTex distribution.&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-syntax-of-a-latex-document&#34;&gt;Basic syntax of a LaTex Document&lt;/h2&gt;
+
+&lt;p&gt;Here is a simple LaTex Document:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;helloWorld.tex&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{article}
+
+\begin{document}
+Hello world!
+\end{document}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You begin a LaTex document with &lt;code&gt;\documentclass&lt;/code&gt; command and then you use &lt;code&gt;\begin{document}&lt;/code&gt; command to start.&lt;/p&gt;
+
+&lt;p&gt;Notice that here we placed &lt;em&gt;Hello, world!&lt;/em&gt; in between &lt;code&gt;\begin{document}&lt;/code&gt; and &lt;code&gt;\end{document}&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;compile-latex-documents-with-latexmk-command&#34;&gt;Compile LaTex Documents with latexmk command&lt;/h2&gt;
+
+&lt;p&gt;We can compile our latex document with this command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;latexmk -pdf helloWorld.tex&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/latex-helloworld.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Here is the generated pdf with this command:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/latex-helloworld-pdf.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;compile-latex-documents-with-latex-command&#34;&gt;Compile LaTex Documents with latex command&lt;/h2&gt;
+
+&lt;p&gt;Let us look at another Tex document with tables now:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{article} 
+\usepackage[english]{babel}
+
+\begin{document}
+
+Without specifying width for last column:
+\begin{center}
+    \begin{tabular}{| l | l | l | l |}
+    \hline
+    Day &amp;amp; Min Temp &amp;amp; Max Temp &amp;amp; Summary \\ \hline
+    Monday &amp;amp; 11C &amp;amp; 22C &amp;amp; A clear day with lots of sunshine.
+    However, the strong breeze will bring down the temperatures. \\ \hline
+    Tuesday &amp;amp; 9C &amp;amp; 19C &amp;amp; Cloudy with rain, across many northern regions. Clear spells 
+    across most of Scotland and Northern Ireland, 
+    but rain reaching the far northwest. \\ \hline
+    Wednesday &amp;amp; 10C &amp;amp; 21C &amp;amp; Rain will still linger for the morning. 
+    Conditions will improve by early afternoon and continue 
+    throughout the evening. \\
+    \hline
+    \end{tabular}
+\end{center}
+
+With width specified:
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    Day &amp;amp; Min Temp &amp;amp; Max Temp &amp;amp; Summary \\ \hline
+    Monday &amp;amp; 11C &amp;amp; 22C &amp;amp; A clear day with lots of sunshine.  
+    However, the strong breeze will bring down the temperatures. \\ \hline
+    Tuesday &amp;amp; 9C &amp;amp; 19C &amp;amp; Cloudy with rain, across many northern regions. Clear spells 
+    across most of Scotland and Northern Ireland, 
+    but rain reaching the far northwest. \\ \hline
+    Wednesday &amp;amp; 10C &amp;amp; 21C &amp;amp; Rain will still linger for the morning. 
+    Conditions will improve by early afternoon and continue 
+    throughout the evening. \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can compile this document with the the &lt;em&gt;latex&lt;/em&gt; command now and then use &lt;code&gt;dvipdfm&lt;/code&gt; to convert from dvi to pdf:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/convert-dvi-to-pdf.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;compile-latex-documents-with-pdflatex-command&#34;&gt;Compile LaTex documents with pdflatex command&lt;/h2&gt;
+
+&lt;p&gt;We can compile directly into pdf with the &lt;em&gt;pdflatex&lt;/em&gt; command:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/pdflatex-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;global-structure-of-latex-document&#34;&gt;Global Structure of LaTex Document&lt;/h2&gt;
+
+&lt;p&gt;Every file should have this structure but there are exceptions to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{...}
+
+\begin{document}
+...
+\end{document}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;The area between \documentclass{&amp;hellip;} and \begin{document} is called the preamble.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It normally contains commands that affect the entire document.&lt;/p&gt;
+
+&lt;h4 id=&#34;document-classes&#34;&gt;Document Classes&lt;/h4&gt;
+
+&lt;p&gt;This table has a complete list of all LaTex Document Classes:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Document Class&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;article&lt;/td&gt;
+&lt;td&gt;For articles in scientific journals, presentations, short reports, program documentation, invitations, &amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;IEEEtran&lt;/td&gt;
+&lt;td&gt;For articles with the IEEE Transactions format.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;proc&lt;/td&gt;
+&lt;td&gt;A class for proceedings based on the article class.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;report&lt;/td&gt;
+&lt;td&gt;For longer reports containing several chapters, small books, thesis, &amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;book&lt;/td&gt;
+&lt;td&gt;For real books.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;slides&lt;/td&gt;
+&lt;td&gt;For slides. The class uses big sans serif letters.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;memoir&lt;/td&gt;
+&lt;td&gt;For changing sensibly the output of the document. It is based on the book class, but you can create any kind of document with it&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;letter&lt;/td&gt;
+&lt;td&gt;For writing letters.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;beamer&lt;/td&gt;
+&lt;td&gt;For writing presentations (see LaTeX/Presentations).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;using-packages-in-latex&#34;&gt;Using Packages in LaTex&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Packages&#34; target=&#34;_blank&#34;&gt;Packages Wiki&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;While writing your document, you will probably find that there are some areas where basic LaTeX cannot solve your problem.&lt;/p&gt;
+
+&lt;p&gt;If you want to include graphics, colored text or source code from a file into your document, you need to enhance the capabilities of LaTeX.&lt;/p&gt;
+
+&lt;p&gt;Such enhancements are called packages. Some packages come with the LaTeX base distribution. Others are provided separately. Modern TeX distributions come with a large number of packages pre-installed. The command to use a package is pretty simple: \usepackage&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here is an example usage for importing packages:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;using-sections-in-latex&#34;&gt;Using Sections in LaTex&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The commands for inserting sections are fairly intuitive. Of course, certain commands are appropriate to different document classes. For example, a book has chapters but an article doesn&amp;rsquo;t.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\chapter{Introduction}
+This chapter&#39;s content...
+
+\section{Structure}
+This section&#39;s content...
+
+\subsection{Top Matter}
+This subsection&#39;s content...
+
+\subsubsection{Article Information}
+This subsubsection&#39;s content...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;getting-started-with-travis-ci&#34;&gt;Getting started with Travis CI&lt;/h2&gt;
+
+&lt;p&gt;If you want to get setup with Travis CI please read this blog post:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/&#34; target=&#34;_blank&#34;&gt;https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-overall-advice-on-latex&#34;&gt;Getting overall advice on LaTex&lt;/h2&gt;
+
+&lt;p&gt;Please read this very informative Github Repo on &lt;a href=&#34;https://github.com/dspinellis/latex-advice&#34; target=&#34;_blank&#34;&gt;LaTex&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;different-types-of-file-types-in-latex&#34;&gt;Different Types of File Types in LaTex&lt;/h2&gt;
+
+&lt;p&gt;There are a myriad of different file types that LaTex can work with:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;FileType&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;.aux&lt;/td&gt;
+&lt;td&gt;A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.bbl&lt;/td&gt;
+&lt;td&gt;Bibliography file output by BiBTeX and used by LaTeX&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.bib&lt;/td&gt;
+&lt;td&gt;Bibliography database file. (where you can store a list of full bibliographic citations)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.blg&lt;/td&gt;
+&lt;td&gt;BiBTeX log file. (errors are logged here)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.bst&lt;/td&gt;
+&lt;td&gt;BiBTeX style file.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.cls&lt;/td&gt;
+&lt;td&gt;Class files define what your document looks like. They are selected with the \documentclass command.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.dtx&lt;/td&gt;
+&lt;td&gt;Documented TeX. This is the main distribution format for LaTeX style files. If you process a .dtx file you get documented macro code of the LaTeX package contained in the .dtx file.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.ins&lt;/td&gt;
+&lt;td&gt;The installer for the files contained in the matching .dtx file. If you download a LaTeX package from the net, you will normally get a .dtx and a .ins file. Run LaTeX on the .ins file to unpack the .dtx file.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.fd&lt;/td&gt;
+&lt;td&gt;Font description file telling LaTeX about new fonts.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.dvi&lt;/td&gt;
+&lt;td&gt;Device Independent File. This is the main result of a LaTeX compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.pdf&lt;/td&gt;
+&lt;td&gt;Portable Document Format. This is the main result of a LaTeX compile run with pdflatex. You can look at its content or print it with any PDF viewer.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.log&lt;/td&gt;
+&lt;td&gt;Gives a detailed account of what happened during the last compiler run.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.toc&lt;/td&gt;
+&lt;td&gt;Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.lof&lt;/td&gt;
+&lt;td&gt;This is like .toc but for the list of figures.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.lot&lt;/td&gt;
+&lt;td&gt;And again the same for the list of tables.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.idx&lt;/td&gt;
+&lt;td&gt;If your document contains an index. LaTeX stores all the words that go into the index in this file. Process this file with makeindex.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.ind&lt;/td&gt;
+&lt;td&gt;The processed .idx file, ready for inclusion into your document on the next compile cycle.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.ilg&lt;/td&gt;
+&lt;td&gt;Logfile telling what makeindex did.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.sty&lt;/td&gt;
+&lt;td&gt;LaTeX Macro package. This is a file you can load into your LaTeX document using the \usepackage command.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.tex&lt;/td&gt;
+&lt;td&gt;LaTeX or TeX input file. It can be compiled with latex.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;.out&lt;/td&gt;
+&lt;td&gt;hyperref package file, just one for the master file.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;read-online-latex-book&#34;&gt;Read Online LaTex Book&lt;/h2&gt;
+
+&lt;p&gt;Please read the following &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX&#34; target=&#34;_blank&#34;&gt;LaTex Wiki Book&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-find-me&#34;&gt;How to find me&lt;/h2&gt;
+
+&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Writing Rust Commandline Applications</title>
       <link>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
@@ -109,12 +497,8 @@ It can consist of a compilation step, a testing phase, a code inspection phase, 
 
 &lt;p&gt;Here is a screenshot of the Jenkins Pipeline:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-jenkins-pipeline.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-jenkins-pipeline.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -309,12 +693,8 @@ workflows:
 
 &lt;p&gt;Here is a screenshot of the Circle CI build steps:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-circle-ci.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-circle-ci.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -362,12 +742,8 @@ workflows:
 
 &lt;p&gt;Press &lt;em&gt;command p&lt;/em&gt; to open any files in the VS Code Workspace/Window&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -375,23 +751,15 @@ workflows:
 
 &lt;p&gt;Press &lt;em&gt;command shift o&lt;/em&gt; to open the Symbols Menu to find symbols such as functions and more&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;Press &lt;em&gt;shift f12&lt;/em&gt; in order to find all usages of a function&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-command-prompt.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -401,12 +769,8 @@ workflows:
 
 &lt;p&gt;Press &lt;em&gt;F1&lt;/em&gt; in your keyboard and then enter &lt;em&gt;change language mode&lt;/em&gt;&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/change-language-mode.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/change-language-mode.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -432,48 +796,28 @@ workflows:
 
 &lt;p&gt;Here is a set of screenshots with a large json blog:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/large-json-blog.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/large-json-blog.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/change-language-mode.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/change-language-mode.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/format-document.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/format-document.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/json-entry.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/json-entry.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/formatted-doc.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/formatted-doc.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -498,23 +842,15 @@ workflows:
 
 &lt;p&gt;Then open the zip file which should look like this:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/fira-zip-file.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/fira-zip-file.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;And when you open up all the ttf files you will see the following Font Book application&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/font-book.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/font-book.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -541,12 +877,8 @@ workflows:
 
 &lt;p&gt;Here are all of my Editor Themes:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-color-themes.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/vscode-color-themes.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -605,12 +937,8 @@ workflows:
 
 &lt;p&gt;The tools are in the Other Tools and Frameworks section which looks like this:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/vs-build-tools.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/vs-build-tools.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -668,12 +996,8 @@ rustc 1.28.0 (9634041f0 2018-07-30)
 
 &lt;p&gt;When you create a new binary application cargo will create the following files:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/new_rust_package_contents.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/new_rust_package_contents.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -722,23 +1046,15 @@ authors = [&amp;quot;Jean-Marcel Belmont &amp;lt;marcelbelmont@gmail.com&amp;gt;
 
 &lt;p&gt;In order to build the rust package you can run the following command:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/cargo-build.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/cargo-build.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;This command generates the &lt;em&gt;target&lt;/em&gt; directory with the following content:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/target-directory.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/target-directory.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -947,12 +1263,8 @@ The &lt;code&gt;--form&lt;/code&gt; which takes &lt;code&gt;CONTENT  Specify HTT
 
 &lt;p&gt;Here we iterate through all the elements of the array and then parse out the nested subject attribute from the response&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-parse.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-parse.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -962,12 +1274,8 @@ The &lt;code&gt;--form&lt;/code&gt; which takes &lt;code&gt;CONTENT  Specify HTT
 
 &lt;p&gt;You can craft more complicated jq queries with ease if you use the jq playground.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-play.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-play.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1159,12 +1467,8 @@ describe(&amp;quot;Scrape the Puppeteer github repository&amp;quot;, () =&amp;gt
 
 &lt;p&gt;Now all you have to do is run &lt;code&gt;npm test&lt;/code&gt; and the test will run and you will get output in your Terminal and or Command Shell in Windows.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/puppeteer-console-log.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/puppeteer-console-log.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1261,12 +1565,8 @@ describe(&amp;quot;Web Scraping&amp;quot;, function() {
 
 &lt;p&gt;In the screenshot below we have a running Desktop application for Cypress.io which opened after we gave command &lt;code&gt;npm run cypress:open&lt;/code&gt; in the terminal.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-desktop-running.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-desktop-running.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1278,12 +1578,8 @@ describe(&amp;quot;Web Scraping&amp;quot;, function() {
 
 &lt;p&gt;If we click the the entry &lt;em&gt;blog_spec.js&lt;/em&gt; it will start running our tests in Cypress.io&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-test-running.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-test-running.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1605,12 +1901,8 @@ GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-argumen
 
 &lt;p&gt;One trick that I do is that I copy the import statement in my editor like this:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/goimport.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/goimport.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1618,12 +1910,8 @@ GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-argumen
 
 &lt;p&gt;Type &lt;code&gt;godoc.org/&lt;/code&gt; into a browser window and paste the package into the URL:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/gourl.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/gourl.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1631,12 +1919,8 @@ GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-argumen
 
 &lt;p&gt;Now for a protip type &lt;code&gt;?&lt;/code&gt; in the documentation page and get a help context menu like this:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/gohelpmenu.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/gohelpmenu.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1644,12 +1928,8 @@ GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-argumen
 
 &lt;p&gt;Press &lt;code&gt;f&lt;/code&gt;:&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/gofindmenu.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/gofindmenu.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -1850,12 +2130,8 @@ yellow open   logstash-2017.05.03             nklpkzxxSRCWOL990fD2Qg   5   1    
 
 &lt;p&gt;Instead of using &lt;code&gt;curl&lt;/code&gt; you can use the Kibana Dashboard to help you do both queries and create indices and list indices and much more&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/kibana-dev-tools.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/kibana-dev-tools.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2267,12 +2543,8 @@ output {
 
 &lt;p&gt;I tend to favor Rest Clients like Postman because it helps to automate testing Restful APIs if you utilize some of its advanced features&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/postman-collection.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/postman-collection.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2280,12 +2552,8 @@ output {
 
 &lt;p&gt;You can do much more than this however&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/header-variables.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/header-variables.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2293,12 +2561,8 @@ output {
 
 &lt;p&gt;In Postman you surround variables in double curly braces&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/pre-request-script.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/pre-request-script.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2318,12 +2582,8 @@ output {
 
 &lt;p&gt;You can also read &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox&#34; target=&#34;_blank&#34;&gt;Postman Sandbox&lt;/a&gt; for other libraries available in Postman Rest Client&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/test-script.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/test-script.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2355,23 +2615,15 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 });
 &lt;/code&gt;&lt;/pre&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/test-results.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/test-results.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;Notice here we get a passing test since we got an access token from the Paypal API&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/environment.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/environment.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2379,23 +2631,15 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 
 &lt;p&gt;Here we can use global variables that can be used per environment&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/global-variables.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/global-variables.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;Here I greyed out the environment variables for security reasons but you can read more about &lt;a href=&#34;https://www.getpostman.com/docs/postman/environments_and_globals/manage_globals&#34; target=&#34;_blank&#34;&gt;Global Variables at Postman Docs&lt;/a&gt;&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/presets.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/presets.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2403,12 +2647,8 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 
 &lt;p&gt;Header Presets are useful if you find yourself reusing a lot of HTTP Header values often and you can simply set a preset to autofill the HTTP headers for you in one click.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/group-edit.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/group-edit.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2416,34 +2656,22 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 
 &lt;p&gt;You can easily go back to the normal view by clicking &lt;code&gt;Key-Value Edit&lt;/code&gt; button again.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/http-verbs.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/http-verbs.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;Postman supports all of the HTTP Verbs in their dropdown menu&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/params.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/params.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
 &lt;p&gt;You can easily set query string parameters utilizing the params section in postman&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/developer-tools.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/developer-tools.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2453,12 +2681,8 @@ pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
 
 &lt;p&gt;You can easily set &lt;code&gt;console.log&lt;/code&gt; statements to debug things.&lt;/p&gt;
 
-
 &lt;figure&gt;
-    
-        &lt;img src=&#34;https://www.marcelbelmont.com/media/collection-runner.png&#34; /&gt;
-    
-    
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/collection-runner.png&#34;/&gt; 
 &lt;/figure&gt;
 
 
@@ -2951,175 +3175,6 @@ Ensure transparency into the upcoming work of the product development team.&lt;/
 &lt;p&gt;&lt;em&gt;Please read the following article &lt;a href=&#34;https://www.guru99.com/introduction-webdriver-comparison-selenium-rc.html&#34; target=&#34;_blank&#34;&gt;Introduction to WebDriver &amp;amp; Comparison with Selenium RC&lt;/a&gt; by guru99 to get a more in-depth look at WebDriver.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this post then follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Compare and Contrast Golang and Nodejs for Commandline Apps</title>
-      <link>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</link>
-      <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</guid>
-      <description>
-
-&lt;h1 id=&#34;command-line-applications&#34;&gt;Command Line Applications&lt;/h1&gt;
-
-&lt;p&gt;Building command line applications is a refreshing change to building UIs.
-In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang&lt;/p&gt;
-
-&lt;h2 id=&#34;node-js-commandline&#34;&gt;Node.js CommandLine&lt;/h2&gt;
-
-&lt;p&gt;First off I did not use a &lt;code&gt;commander.js&lt;/code&gt; or any third party libraries to make my contrived application. I used vanilla node.js&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;use strict&#39;;
-
-const process = require(&#39;process&#39;);
-const fs = require(&#39;fs&#39;);
-
-const lib = require(&#39;../lib&#39;);
-const utf8 = require(&#39;../constants&#39;).utf8;
-
-const args = process.argv.slice(2);
-
-const tsvOrCsv = args.some(arg =&amp;gt; {
-  return arg === &#39;--tsv-file&#39; || arg === &#39;--csv-file&#39;;
-});
-
-if (!tsvOrCsv) {
-  lib.UsageMessage();
-  process.exit(1);
-}
-
-const csvIndex = args.findIndex(arg =&amp;gt; arg === &#39;--csv-file&#39;);
-let csv, tsv;
-if (csvIndex &amp;gt; -1) {
-  csv  = args.slice(csvIndex);
-}
-
-const tsvIndex = args.findIndex(arg =&amp;gt; arg === &#39;--tsv-file&#39;);
-if (tsvIndex &amp;gt; -1) {
-  tsv = args.slice(tsvIndex);
-}
-if (csv) {
-  const csvPath = csv[1];
-  const fileContents = [];
-  fileReader(csvPath, function(err, data) {
-    if (err) throw err;
-    const [
-      language,
-      frequency
-    ] = data.split(&#39;,&#39;);
-    console.log(language);
-    console.log(frequency);
-  });
-} else if (tsv) {
-  const tsvPath = tsv[1];
-  console.log(tsvPath);
-} else {
-  lib.UsageMessage();
-  process.exit(1);
-}
-
-function fileReader(filePath, cb) {
-  fs.readFile(`${__dirname}/../${filePath}`, utf8, function(err, data) {
-    if (err) return cb(err);
-    cb(null, data);
-  });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is a snippet of code I used for node.js on one hand you can parse flags relatively easy but there is niceties missing.&lt;/p&gt;
-
-&lt;p&gt;In node.js you can just use &lt;code&gt;process.argv&lt;/code&gt; and parse out the flags that were passed in via the commmandline&lt;/p&gt;
-
-&lt;h2 id=&#34;golang-commandline-application&#34;&gt;Golang CommandLine application&lt;/h2&gt;
-
-&lt;p&gt;Golang has many things baked into their standard library that make building command line applications very easy.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import (
-	&amp;quot;bufio&amp;quot;
-	&amp;quot;encoding/csv&amp;quot;
-	&amp;quot;encoding/json&amp;quot;
-	&amp;quot;flag&amp;quot;
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;io&amp;quot;
-	&amp;quot;os&amp;quot;
-)
-
-func convertToJSON(f *os.File, isTSVFile bool) {
-	rows := make([]map[string]string, 0)
-	var columns = []string{&amp;quot;language&amp;quot;, &amp;quot;frequency&amp;quot;}
-	// Create a new reader.
-	csvReader := csv.NewReader(bufio.NewReader(f))
-	csvReader.TrimLeadingSpace = true
-	if isTSVFile {
-		csvReader.Comma = &#39;\t&#39; // Use tab-delimited instead of comma
-	}
-	for {
-		record, err := csvReader.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			fmt.Println(err)
-		}
-		row := make(map[string]string)
-		for i, n := range columns {
-			row[n] = record[i]
-		}
-		rows = append(rows, row)
-	}
-	data, err := json.MarshalIndent(&amp;amp;rows, &amp;quot;&amp;quot;, &amp;quot;  &amp;quot;)
-	if err != nil {
-		fmt.Println(err)
-	}
-	// print the reformatted struct as JSON
-	fmt.Printf(&amp;quot;%s\n&amp;quot;, data)
-}
-
-func main() {
-	csvPtr := flag.String(&amp;quot;csv-file&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;CSV File to parse. (Required)&amp;quot;)
-	tsvPtr := flag.String(&amp;quot;tsv-file&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;TSV File to parse. (Required)&amp;quot;)
-	flag.Parse()
-
-	if *csvPtr == &amp;quot;&amp;quot; &amp;amp;&amp;amp; *tsvPtr == &amp;quot;&amp;quot; {
-		flag.PrintDefaults()
-		os.Exit(1)
-	} else if *csvPtr != &amp;quot;&amp;quot; {
-		f, err := os.Open(*csvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, false)
-	} else {
-		f, err := os.Open(*tsvPtr)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer f.Close()
-		convertToJSON(f, true)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice here that I just used the &lt;code&gt;flag&lt;/code&gt; builtin library and it does the job of parsing command line flags.&lt;/p&gt;
-
-&lt;p&gt;Also dealing with asychronous code in &lt;code&gt;Golang&lt;/code&gt; is much easier in my opinion.&lt;/p&gt;
-
-&lt;p&gt;There are many design patterns baked into Golang that make writing commandline applications a joy to work with.&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-summary&#34;&gt;Quick summary&lt;/h2&gt;
-
-&lt;p&gt;You can easily use either node.js or &lt;code&gt;Golang&lt;/code&gt; but consider writing a command line application in Go.&lt;/p&gt;
-
-&lt;h2 id=&#34;link-to-golang-workshop&#34;&gt;Link to Golang Workshop&lt;/h2&gt;
-
-&lt;p&gt;I wrote a &lt;a href=&#34;https://github.com/jbelmont/golang-workshop&#34; target=&#34;_blank&#34;&gt;Golang workshop&lt;/a&gt; which you can check out if you aren&amp;rsquo;t familiar with Go.&lt;/p&gt;
-
-&lt;p&gt;Follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont&lt;/a&gt; if you like this.&lt;/p&gt;
 </description>
     </item>
     

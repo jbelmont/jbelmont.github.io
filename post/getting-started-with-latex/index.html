@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.50" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/getting-started-with-latex/">
+
+  
+
+  <title>Getting Started With Latex | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Getting Started With Latex</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2018-11-11 21:26:43 -0500 EST" itemprop="datePublished">
+      Sun, Nov 11, 2018
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/tex">Tex</a
+    >, 
+    
+    <a href="/tags/latex">Latex</a
+    >, 
+    
+    <a href="/tags/typesetting">TypeSetting</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgetting-started-with-latex%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Getting%20Started%20With%20Latex&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgetting-started-with-latex%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgetting-started-with-latex%2f&amp;title=Getting%20Started%20With%20Latex"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgetting-started-with-latex%2f&amp;title=Getting%20Started%20With%20Latex"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Getting%20Started%20With%20Latex&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fgetting-started-with-latex%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>LaTex is a Typesetting system which was designed by <a href="https://en.wikipedia.org/wiki/Leslie_Lamport" target="_blank">Leslie Lamport</a> and derives much of its power from <a href="https://en.wikipedia.org/wiki/TeX" target="_blank">Tex</a>. It can be argued that LaTex is a set of macros.</p>
+
+<h2 id="difference-between-tex-and-latex">Difference between Tex and LaTex</h2>
+
+<p><em>TeX is about formatting with document/template designers in mind while LaTeX is all about  the content for document writers.</em></p>
+
+<p>Please read this <a href="https://tex.stackexchange.com/questions/49/what-is-the-difference-between-tex-and-latex" target="_blank">stackexchange post for more details</a></p>
+
+<h2 id="why-is-latex-useful">Why is LaTex useful?</h2>
+
+<p>You can more fine grain control of the quality of your document by using LaTex.</p>
+
+<p>Particularly if you are writing documents heavy in Mathematics, Science and Research Papers.</p>
+
+<p>Also LaTex lets you separate out the content of your writing from the layout of your document.</p>
+
+<p>LaTex lets you focus on the &ldquo;what&rdquo; of what you are writing and not &ldquo;how&rdquo; the final document will look.</p>
+
+<h2 id="installing-latex-in-mac-os-x">Installing LaTex in Mac OS X</h2>
+
+<p>You can install LaTex in Mac OS X easily by going to <a href="http://www.tug.org/mactex/" target="_blank">MacTex</a>.</p>
+
+<p>You will get all the LaTex macros, compilers, editors and more in this full blown LaTex working environment.</p>
+
+<h2 id="installing-latext-in-windows">Installing LaText in Windows</h2>
+
+<p>You can install LaTex in Windows by going to <a href="https://miktex.org/download" target="_blank">MikTex</a> and to <a href="http://www.tug.org/texlive/acquire-netinstall.html" target="_blank">Tex Live</a>. It is best to install the full LaTex distribution.</p>
+
+<h2 id="basic-syntax-of-a-latex-document">Basic syntax of a LaTex Document</h2>
+
+<p>Here is a simple LaTex Document:</p>
+
+<p><em>helloWorld.tex</em>:</p>
+
+<pre><code class="language-tex">\documentclass{article}
+
+\begin{document}
+Hello world!
+\end{document}
+</code></pre>
+
+<p>You begin a LaTex document with <code>\documentclass</code> command and then you use <code>\begin{document}</code> command to start.</p>
+
+<p>Notice that here we placed <em>Hello, world!</em> in between <code>\begin{document}</code> and <code>\end{document}</code></p>
+
+<h2 id="compile-latex-documents-with-latexmk-command">Compile LaTex Documents with latexmk command</h2>
+
+<p>We can compile our latex document with this command:</p>
+
+<p><code>latexmk -pdf helloWorld.tex</code></p>
+
+<figure>
+    <img src="/media/latex-helloworld.png"/> 
+</figure>
+
+
+<p>Here is the generated pdf with this command:</p>
+
+<figure>
+    <img src="/media/latex-helloworld-pdf.png"/> 
+</figure>
+
+
+<h2 id="compile-latex-documents-with-latex-command">Compile LaTex Documents with latex command</h2>
+
+<p>Let us look at another Tex document with tables now:</p>
+
+<pre><code class="language-tex">\documentclass{article} 
+\usepackage[english]{babel}
+
+\begin{document}
+
+Without specifying width for last column:
+\begin{center}
+    \begin{tabular}{| l | l | l | l |}
+    \hline
+    Day &amp; Min Temp &amp; Max Temp &amp; Summary \\ \hline
+    Monday &amp; 11C &amp; 22C &amp; A clear day with lots of sunshine.
+    However, the strong breeze will bring down the temperatures. \\ \hline
+    Tuesday &amp; 9C &amp; 19C &amp; Cloudy with rain, across many northern regions. Clear spells 
+    across most of Scotland and Northern Ireland, 
+    but rain reaching the far northwest. \\ \hline
+    Wednesday &amp; 10C &amp; 21C &amp; Rain will still linger for the morning. 
+    Conditions will improve by early afternoon and continue 
+    throughout the evening. \\
+    \hline
+    \end{tabular}
+\end{center}
+
+With width specified:
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    Day &amp; Min Temp &amp; Max Temp &amp; Summary \\ \hline
+    Monday &amp; 11C &amp; 22C &amp; A clear day with lots of sunshine.  
+    However, the strong breeze will bring down the temperatures. \\ \hline
+    Tuesday &amp; 9C &amp; 19C &amp; Cloudy with rain, across many northern regions. Clear spells 
+    across most of Scotland and Northern Ireland, 
+    but rain reaching the far northwest. \\ \hline
+    Wednesday &amp; 10C &amp; 21C &amp; Rain will still linger for the morning. 
+    Conditions will improve by early afternoon and continue 
+    throughout the evening. \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
+</code></pre>
+
+<p>We can compile this document with the the <em>latex</em> command now and then use <code>dvipdfm</code> to convert from dvi to pdf:</p>
+
+<figure>
+    <img src="/media/convert-dvi-to-pdf.png"/> 
+</figure>
+
+
+<h2 id="compile-latex-documents-with-pdflatex-command">Compile LaTex documents with pdflatex command</h2>
+
+<p>We can compile directly into pdf with the <em>pdflatex</em> command:</p>
+
+<figure>
+    <img src="/media/pdflatex-command.png"/> 
+</figure>
+
+
+<h2 id="global-structure-of-latex-document">Global Structure of LaTex Document</h2>
+
+<p>Every file should have this structure but there are exceptions to this:</p>
+
+<pre><code class="language-tex">\documentclass{...}
+
+\begin{document}
+...
+\end{document}
+</code></pre>
+
+<p><em>The area between \documentclass{&hellip;} and \begin{document} is called the preamble.</em></p>
+
+<p>It normally contains commands that affect the entire document.</p>
+
+<h4 id="document-classes">Document Classes</h4>
+
+<p>This table has a complete list of all LaTex Document Classes:</p>
+
+<table>
+<thead>
+<tr>
+<th>Document Class</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>article</td>
+<td>For articles in scientific journals, presentations, short reports, program documentation, invitations, &hellip;</td>
+</tr>
+
+<tr>
+<td>IEEEtran</td>
+<td>For articles with the IEEE Transactions format.</td>
+</tr>
+
+<tr>
+<td>proc</td>
+<td>A class for proceedings based on the article class.</td>
+</tr>
+
+<tr>
+<td>report</td>
+<td>For longer reports containing several chapters, small books, thesis, &hellip;</td>
+</tr>
+
+<tr>
+<td>book</td>
+<td>For real books.</td>
+</tr>
+
+<tr>
+<td>slides</td>
+<td>For slides. The class uses big sans serif letters.</td>
+</tr>
+
+<tr>
+<td>memoir</td>
+<td>For changing sensibly the output of the document. It is based on the book class, but you can create any kind of document with it</td>
+</tr>
+
+<tr>
+<td>letter</td>
+<td>For writing letters.</td>
+</tr>
+
+<tr>
+<td>beamer</td>
+<td>For writing presentations (see LaTeX/Presentations).</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="using-packages-in-latex">Using Packages in LaTex</h4>
+
+<p><a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Packages" target="_blank">Packages Wiki</a></p>
+
+<blockquote>
+<p>While writing your document, you will probably find that there are some areas where basic LaTeX cannot solve your problem.</p>
+
+<p>If you want to include graphics, colored text or source code from a file into your document, you need to enhance the capabilities of LaTeX.</p>
+
+<p>Such enhancements are called packages. Some packages come with the LaTeX base distribution. Others are provided separately. Modern TeX distributions come with a large number of packages pre-installed. The command to use a package is pretty simple: \usepackage</p>
+</blockquote>
+
+<p>Here is an example usage for importing packages:</p>
+
+<pre><code class="language-tex">\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+</code></pre>
+
+<h4 id="using-sections-in-latex">Using Sections in LaTex</h4>
+
+<blockquote>
+<p>The commands for inserting sections are fairly intuitive. Of course, certain commands are appropriate to different document classes. For example, a book has chapters but an article doesn&rsquo;t.</p>
+</blockquote>
+
+<p>Here is an example:</p>
+
+<pre><code class="language-tex">\chapter{Introduction}
+This chapter's content...
+
+\section{Structure}
+This section's content...
+
+\subsection{Top Matter}
+This subsection's content...
+
+\subsubsection{Article Information}
+This subsubsection's content...
+</code></pre>
+
+<h2 id="getting-started-with-travis-ci">Getting started with Travis CI</h2>
+
+<p>If you want to get setup with Travis CI please read this blog post:</p>
+
+<p><a href="https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/" target="_blank">https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/</a></p>
+
+<h2 id="getting-overall-advice-on-latex">Getting overall advice on LaTex</h2>
+
+<p>Please read this very informative Github Repo on <a href="https://github.com/dspinellis/latex-advice" target="_blank">LaTex</a></p>
+
+<h2 id="different-types-of-file-types-in-latex">Different Types of File Types in LaTex</h2>
+
+<p>There are a myriad of different file types that LaTex can work with:</p>
+
+<table>
+<thead>
+<tr>
+<th>FileType</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>.aux</td>
+<td>A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.</td>
+</tr>
+
+<tr>
+<td>.bbl</td>
+<td>Bibliography file output by BiBTeX and used by LaTeX</td>
+</tr>
+
+<tr>
+<td>.bib</td>
+<td>Bibliography database file. (where you can store a list of full bibliographic citations)</td>
+</tr>
+
+<tr>
+<td>.blg</td>
+<td>BiBTeX log file. (errors are logged here)</td>
+</tr>
+
+<tr>
+<td>.bst</td>
+<td>BiBTeX style file.</td>
+</tr>
+
+<tr>
+<td>.cls</td>
+<td>Class files define what your document looks like. They are selected with the \documentclass command.</td>
+</tr>
+
+<tr>
+<td>.dtx</td>
+<td>Documented TeX. This is the main distribution format for LaTeX style files. If you process a .dtx file you get documented macro code of the LaTeX package contained in the .dtx file.</td>
+</tr>
+
+<tr>
+<td>.ins</td>
+<td>The installer for the files contained in the matching .dtx file. If you download a LaTeX package from the net, you will normally get a .dtx and a .ins file. Run LaTeX on the .ins file to unpack the .dtx file.</td>
+</tr>
+
+<tr>
+<td>.fd</td>
+<td>Font description file telling LaTeX about new fonts.</td>
+</tr>
+
+<tr>
+<td>.dvi</td>
+<td>Device Independent File. This is the main result of a LaTeX compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.</td>
+</tr>
+
+<tr>
+<td>.pdf</td>
+<td>Portable Document Format. This is the main result of a LaTeX compile run with pdflatex. You can look at its content or print it with any PDF viewer.</td>
+</tr>
+
+<tr>
+<td>.log</td>
+<td>Gives a detailed account of what happened during the last compiler run.</td>
+</tr>
+
+<tr>
+<td>.toc</td>
+<td>Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.</td>
+</tr>
+
+<tr>
+<td>.lof</td>
+<td>This is like .toc but for the list of figures.</td>
+</tr>
+
+<tr>
+<td>.lot</td>
+<td>And again the same for the list of tables.</td>
+</tr>
+
+<tr>
+<td>.idx</td>
+<td>If your document contains an index. LaTeX stores all the words that go into the index in this file. Process this file with makeindex.</td>
+</tr>
+
+<tr>
+<td>.ind</td>
+<td>The processed .idx file, ready for inclusion into your document on the next compile cycle.</td>
+</tr>
+
+<tr>
+<td>.ilg</td>
+<td>Logfile telling what makeindex did.</td>
+</tr>
+
+<tr>
+<td>.sty</td>
+<td>LaTeX Macro package. This is a file you can load into your LaTeX document using the \usepackage command.</td>
+</tr>
+
+<tr>
+<td>.tex</td>
+<td>LaTeX or TeX input file. It can be compiled with latex.</td>
+</tr>
+
+<tr>
+<td>.out</td>
+<td>hyperref package file, just one for the master file.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="read-online-latex-book">Read Online LaTex Book</h2>
+
+<p>Please read the following <a href="https://en.wikibooks.org/wiki/LaTeX" target="_blank">LaTex Wiki Book</a></p>
+
+<h2 id="how-to-find-me">How to find me</h2>
+
+<p>If you like this blog post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/ci-cd-book/"><span
+      aria-hidden="true">&larr;</span> A review of Hands On Continuous Integration and Delivery Book</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+

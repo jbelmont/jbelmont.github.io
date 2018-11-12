@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/latex/</link>
+    <description>Recent content in Latex on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sun, 11 Nov 2018 21:26:43 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started With Latex</title>
+      <link>https://www.marcelbelmont.com/post/getting-started-with-latex/</link>
+      <pubDate>Sun, 11 Nov 2018 21:26:43 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/getting-started-with-latex/</guid>
+      <description>LaTex is a Typesetting system which was designed by Leslie Lamport and derives much of its power from Tex. It can be argued that LaTex is a set of macros.
+Difference between Tex and LaTex TeX is about formatting with document/template designers in mind while LaTeX is all about the content for document writers.
+Please read this stackexchange post for more details
+Why is LaTex useful? You can more fine grain control of the quality of your document by using LaTex.</description>
+    </item>
+    
+  </channel>
+</rss>
