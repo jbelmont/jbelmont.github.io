@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.52" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/">
+
+  
+
+  <title>Introduction to Reverse Engineering | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Introduction to Reverse Engineering</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2018-12-19 20:37:56 -0500 EST" itemprop="datePublished">
+      Wed, Dec 19, 2018
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/radare">Radare</a
+    >, 
+    
+    <a href="/tags/reverse-engineering">Reverse Engineering</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintroduction-to-reverse-engineering%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Introduction%20to%20Reverse%20Engineering&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintroduction-to-reverse-engineering%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintroduction-to-reverse-engineering%2f&amp;title=Introduction%20to%20Reverse%20Engineering"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintroduction-to-reverse-engineering%2f&amp;title=Introduction%20to%20Reverse%20Engineering"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Introduction%20to%20Reverse%20Engineering&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintroduction-to-reverse-engineering%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="reverse-engineering">Reverse Engineering</h1>
+
+<p>What is Reverse Engineering?</p>
+
+<p>According to Wikipedia Reverse Engineering is:</p>
+
+<blockquote>
+<p>is the process by which a man-made object is deconstructed to reveal its designs, architecture, or to extract knowledge from the object; similar to scientific research, the only difference being that scientific research is about a natural phenomenon.</p>
+</blockquote>
+
+<p>According to the c2Wiki Reverse Engineering is:</p>
+
+<blockquote>
+<p>is about presenting a piece of software at a higher level of abstraction. It can be based on sources or on binaries:</p>
+</blockquote>
+
+<h2 id="why-embark-on-reverse-engineering-at-all">Why embark on Reverse Engineering at all?</h2>
+
+<p><a href="https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Reengineering/Reverse_Engineering" target="_blank">Reverse Engineering Wiki</a></p>
+
+<p>Reasons for reverse engineering:</p>
+
+<ul>
+<li><p>Interoperability.</p></li>
+
+<li><p>Lost documentation: Reverse engineering often is done because the documentation of a particular device has been lost (or was never written), and the person who built it is no longer available.</p></li>
+
+<li><p>Integrated circuits often seem to have been designed on obsolete, proprietary systems, which means that the only way to incorporate the functionality into new technology is to reverse-engineer the existing chip and then re-design it.</p></li>
+
+<li><p>Product analysis. To examine how a product works, what components it consists of, estimate costs, and identify potential patent infringement.</p></li>
+
+<li><p>Digital update/correction. To update the digital version (e.g. CAD model) of an object to match an &ldquo;as-built&rdquo; condition.</p></li>
+
+<li><p>Security auditing.</p></li>
+
+<li><p>Acquiring sensitive data by disassembling and analysing the design of a system component.</p></li>
+
+<li><p>Military or commercial espionage. Learning about an enemy&rsquo;s or competitor&rsquo;s latest research by stealing or capturing a prototype and dismantling it.</p></li>
+
+<li><p>Removal of copy protection, circumvention of access restrictions.</p></li>
+
+<li><p>Creation of unlicensed/unapproved duplicates.</p></li>
+
+<li><p>Materials harvesting, sorting, or scrapping.</p></li>
+
+<li><p>Academic/learning purposes.</p></li>
+
+<li><p>Curiosity.</p></li>
+
+<li><p>Competitive technical intelligence (understand what your competitor is actually doing versus what they say they are doing).</p></li>
+
+<li><p>Learning: learn from others&rsquo; mistakes. Do not make the same mistakes that others have already made and subsequently corrected.</p></li>
+</ul>
+
+<p><em>As you can see some of the reasons of reverse engineering can be nefarious but my intent for this blog post is for my personal curiosity and learning only</em></p>
+
+<h2 id="list-of-reverse-engineering-tools">List of Reverse Engineering Tools</h2>
+
+<ul>
+<li><p><a href="https://ibotpeaches.github.io/Apktool/" target="_blank">Apktool</a></p>
+
+<ul>
+<li>A tool for reverse engineering 3rd party, closed, binary Android apps. It can decode resources to nearly original form and rebuild them after making some modifications. It also makes working with an app easier because of the project like file structure and automation of some repetitive tasks like building apk, etc.</li>
+<li>It is NOT intended for piracy and other non-legal uses. It could be used for localizing, adding some features or support for custom platforms, analyzing applications and much more.</li>
+</ul></li>
+
+<li><p><a href="https://github.com/pxb1988/dex2jar" target="_blank">dex2jar</a></p>
+
+<ul>
+<li>dex2jar is a tool for converting Android&rsquo;s .dex format to Java&rsquo;s .class format. just one binary format to another binary format, not to source.</li>
+</ul></li>
+
+<li><p><a href="https://clang.llvm.org/" target="_blank">Clang LLVM Compiler</a></p>
+
+<ul>
+<li>The Clang project provides a language front-end and tooling infrastructure for languages in the C language family (C, C++, Objective C/C++, OpenCL, CUDA, and RenderScript) for the LLVM project. Both a GCC-compatible compiler driver (clang) and an MSVC-compatible compiler driver (clang-cl.exe are provided.</li>
+</ul></li>
+
+<li><p><a href="https://github.com/eteran/edb-debugger" target="_blank">edb (evans debugger)</a></p>
+
+<ul>
+<li>edb is a cross platform AArch32/x86/x86-64 debugger. It was inspired by Ollydbg, but aims to function on AArch32, x86, and x86-64 as well as multiple OS&rsquo;s. Linux is the only officially supported platform at the moment, but FreeBSD, OpenBSD, OSX and Windows ports are underway with varying degrees of functionality.</li>
+</ul></li>
+
+<li><p><a href="https://github.com/gdabah/distorm/" target="_blank">distorm3</a></p>
+
+<ul>
+<li>diStorm3 is really a decomposer, which means it takes an instruction and returns a binary structure which describes it rather than static text, which is great for advanced binary code analysis.</li>
+</ul></li>
+
+<li><p><a href="http://flasm.sourceforge.net/" target="_blank">flasm</a></p>
+
+<ul>
+<li>Flasm disassembles your entire SWF including all the timelines and events. Looking at disassembly, you learn how the Flash compiler works, which improves your ActionScript skills. You can also do some optimizations on the disassembled code by hand or adjust the code as you wish. Flasm then applies your changes to the original SWF, replacing original actions.</li>
+</ul></li>
+
+<li><p><a href="http://www.javadecompilers.com/jad" target="_blank">jad decompiler</a></p>
+
+<ul>
+<li>jad is a command line program that decompiles java code</li>
+</ul></li>
+
+<li><p><a href="https://tools.kali.org/reverse-engineering/javasnoop" target="_blank">javasnoop</a></p>
+
+<ul>
+<li>javasnoop is a tool created by aspect security that allows you to attach to an existing process (like a debugger) and instantly begin tampering with method calls, run custom code, or just watch what’s happening on the system.</li>
+</ul></li>
+
+<li><p><a href="http://www.ollydbg.de/" target="_blank">ollydbg</a></p>
+
+<ul>
+<li>OllyDbg is a 32-bit assembler level analysing debugger for Microsoft Windows. Emphasis on binary code analysis makes it particularly useful in cases where source is unavailable. OllyDbg is a shareware, but you can download and use it for free.</li>
+</ul></li>
+
+<li><p><a href="https://www.nasm.us/xdoc/2.14/html/nasmdoc1.html" target="_blank">nasm</a></p>
+
+<ul>
+<li>The Netwide Assembler, NASM, is an 80x86 and x86-64 assembler designed for portability and modularity. It supports a range of object file formats, including Linux and *BSD a.out, ELF, COFF, Mach-O, 16-bit and 32-bit OBJ (OMF) format, Win32 and Win64. It will also output plain binary files, Intel hex and Motorola S-Record formats. Its syntax is designed to be simple and easy to understand, similar to the syntax in the Intel Software Developer Manual with minimal complexity. It supports all currently known x86 architectural extensions, and has strong support for macros.</li>
+</ul></li>
+
+<li><p><a href="http://www.valgrind.org/" target="_blank">Valgrind</a></p>
+
+<ul>
+<li>Valgrind is an instrumentation framework for building dynamic analysis tools. There are Valgrind tools that can automatically detect many memory management and threading bugs, and profile your programs in detail. You can also use Valgrind to build new tools.</li>
+</ul></li>
+
+<li><p><a href="https://github.com/radare/radare2" target="_blank">radare2</a></p>
+
+<ul>
+<li>Radare2 (also known as r2) is a complete framework for reverse-engineering and analyzing binaries; composed of a set of small utilities that can be used together or independently from the command line. Built around a disassembler for computer software which generates assembly language source code from machine-executable code, it supports a variety of executable formats for different processors and operating systems.</li>
+</ul></li>
+</ul>
+
+<h2 id="basic-unix-tools-to-inspect-binary-executables">Basic Unix Tools to inspect binary executables</h2>
+
+<p><em>strings - print the strings of printable characters in files.</em></p>
+
+<p>It is mainly used to look at printable characters in a binary executable</p>
+
+<p>Let us say that we have the following hello world file written in c</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(){
+	printf(&quot;Hello, world!\n&quot;);
+
+	exit(0);
+}
+</code></pre>
+
+<p>Now let us say that we generate a binary executable with gcc like this: <code>gcc -o hello.c hello</code></p>
+
+<p>We could use the strings command to print out the contents of it</p>
+
+<p>In the screenshot below we print out the contents of the binary executable with strings</p>
+
+<figure>
+    <img src="/media/strings.png"/> 
+</figure>
+
+
+<p>We can use the <em>objdump</em> command to explore: <em>objdump - display information from object files.</em></p>
+
+<p>objdump displays information about one or more object files.</p>
+
+<p>The options control what particular information to display.</p>
+
+<p>This information is mostly useful to programmers who are working on the compilation tools, as opposed to programmers who just want their program to compile and work.</p>
+
+<p>Notice in this screenshot we got an object dump using intel and we are looking for the main method here</p>
+
+<figure>
+    <img src="/media/objdump.png"/> 
+</figure>
+
+
+<p>Next we can use the <em>xxd</em> command to look at that particular address printed in the screen:</p>
+
+<p><em>xxd - make a hexdump or do the reverse.</em></p>
+
+<figure>
+    <img src="/media/xxd.png"/> 
+</figure>
+
+
+<p>In this screenshot we got the hexdump of the address space that corresponds with the objdump information from the previous screenshot.</p>
+
+<h2 id="kali-linux-tools-for-reverse-engineering-penetration-testing-and-more">Kali Linux Tools for Reverse Engineering, Penetration Testing and More</h2>
+
+<p>You can use many of the tools I listed earlier in the blog post in the Kali Linux Operating System.</p>
+
+<p>Kali Linux is a Debian-derived Linux distribution designed for digital forensics and penetration testing.</p>
+
+<p>You can download <a href="https://www.kali.org/downloads/" target="_blank">Kali Linux Here</a></p>
+
+<h2 id="a-quick-look-at-radare-for-reverse-engineering">A quick look at Radare for reverse engineering</h2>
+
+<p>Now recall that earlier we had compiled a simple hello world program written and c and compiled it using the gcc compiler.</p>
+
+<p>Using [radare2] we can look at the compiled executable and look at the opcodes and assembly code.</p>
+
+<p>We can look at the main function using radare.</p>
+
+<p>In a terminal session let us look at which teletype (tty) to help radare hook into the proper shell session.</p>
+
+<figure>
+    <img src="/media/tty.png"/> 
+</figure>
+
+
+<p>Next let us keep the tty session a long time by using the sleep command like this:</p>
+
+<figure>
+    <img src="/media/sleep.png"/> 
+</figure>
+
+
+<p>We can create a target script with a <code>.rr2</code> file extension which will run in radare2 at startup time</p>
+
+<p><em>hello.rr2</em>:</p>
+
+<pre><code class="language-sh">#!/usr/bin/env radare2
+program=hello
+stdio=/dev/pts/1
+</code></pre>
+
+<p>Now that we have a configuration setup let us start using radare2. The actual command is <code>r2</code></p>
+
+<p>In the screenshot below we start the hello world binary executable:</p>
+
+<figure>
+    <img src="/media/r2-initate.png"/> 
+</figure>
+
+
+<p>We can enter <code>aaa</code> into the radare2 session to have radare2 analyze the binary executable.</p>
+
+<p>Here is the information printed by radare2:</p>
+
+<figure>
+    <img src="/media/aaa.png"/> 
+</figure>
+
+
+<p>Now radare also has a lot of Vim mappings so if you enter the <em>V</em> command and press enter you get into Visual Mode which looks like this:</p>
+
+<figure>
+    <img src="/media/visual-mode-r2.png"/> 
+</figure>
+
+
+<p>Now this mode can be confusing so enter the command <code>?</code> to see all the available commands while in visual mode:</p>
+
+<figure>
+    <img src="/media/visual-mode-help.png"/> 
+</figure>
+
+
+<p>You can change how the visual mode show information by cycling through with the p command which can have the following modes:</p>
+
+<ul>
+<li>hex</li>
+<li>disasm</li>
+<li>debug</li>
+<li>words</li>
+<li>buf</li>
+</ul>
+
+<p>I like the debug mode in radare which looks like this:</p>
+
+<figure>
+    <img src="/media/visual-mode-debug.png"/> 
+</figure>
+
+
+<p>Now in order to enter a command in visual mode press <code>:</code> key in your keyboard</p>
+
+<p>You should see a screen like this:</p>
+
+<figure>
+    <img src="/media/visual-mode-main.png"/> 
+</figure>
+
+
+<p>Now notice that we hit a breakpoint in radare</p>
+
+<figure>
+    <img src="/media/visual-mode-breakpoint.png"/> 
+</figure>
+
+
+<p>There are many more feature and options in Radare which you can read at in the official <a href="https://radare.gitbooks.io/radare2book/" target="_blank">Radare2 Gitbook</a></p>
+
+<h2 id="how-to-find-me">How to find me</h2>
+
+<p>If you like this blog post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a></p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/getting-started-with-latex/"><span
+      aria-hidden="true">&larr;</span> Getting Started With Latex</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+

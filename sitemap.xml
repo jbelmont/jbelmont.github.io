@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</loc>
+      <lastmod>2018-12-19T20:37:56-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/getting-started-with-latex/</loc>
       <lastmod>2018-11-11T21:26:43-05:00</lastmod>
     </url>
@@ -697,6 +706,16 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/radare/</loc>
+      <lastmod>2018-12-19T20:37:56-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/redis/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -709,6 +728,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/rest/</loc>
       <lastmod>2018-07-22T09:13:27-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/reverse-engineering/</loc>
+      <lastmod>2018-12-19T20:37:56-05:00</lastmod>
       <priority>0</priority>
     </url>
     

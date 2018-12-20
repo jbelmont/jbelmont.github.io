@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse Engineering on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/reverse-engineering/</link>
+    <description>Recent content in Reverse Engineering on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Wed, 19 Dec 2018 20:37:56 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction to Reverse Engineering</title>
+      <link>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</link>
+      <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</guid>
+      <description>Reverse Engineering What is Reverse Engineering?
+According to Wikipedia Reverse Engineering is:
+ is the process by which a man-made object is deconstructed to reveal its designs, architecture, or to extract knowledge from the object; similar to scientific research, the only difference being that scientific research is about a natural phenomenon.
+ According to the c2Wiki Reverse Engineering is:
+ is about presenting a piece of software at a higher level of abstraction.</description>
+    </item>
+    
+  </channel>
+</rss>

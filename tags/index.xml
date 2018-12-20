@@ -310,6 +310,15 @@
     </item>
     
     <item>
+      <title>Radare</title>
+      <link>https://www.marcelbelmont.com/tags/radare/</link>
+      <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/radare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Redis</title>
       <link>https://www.marcelbelmont.com/tags/redis/</link>
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
@@ -324,6 +333,15 @@
       <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reverse Engineering</title>
+      <link>https://www.marcelbelmont.com/tags/reverse-engineering/</link>
+      <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/reverse-engineering/</guid>
       <description></description>
     </item>
     
