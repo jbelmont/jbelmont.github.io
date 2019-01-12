@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nosql on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/nosql/</link>
+    <description>Recent content in Nosql on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sat, 12 Jan 2019 16:46:47 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tips and Tricks With Mongodb</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</link>
+      <pubDate>Sat, 12 Jan 2019 16:46:47 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</guid>
+      <description>In this blog post I go over some tips and tricks with MongoDB and focus on using the mongodbshell.
+What is MongoDB MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+Installing MongoDB MongoDB is released as two editions: Community and Enterprise.
+Community is the open source release of MongoDB.
+Enterprise provides additional administration, authentication, and monitoring features.</description>
+    </item>
+    
+  </channel>
+</rss>

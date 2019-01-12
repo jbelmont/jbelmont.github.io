@@ -11,6 +11,152 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Tips and Tricks With Mongodb</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</link>
+      <pubDate>Sat, 12 Jan 2019 16:46:47 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</guid>
+      <description>
+
+&lt;p&gt;In this blog post I go over some tips and tricks with MongoDB and focus on using the mongodbshell.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-is-mongodb&#34;&gt;What is MongoDB&lt;/h1&gt;
+
+&lt;p&gt;MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-mongodb&#34;&gt;Installing MongoDB&lt;/h2&gt;
+
+&lt;p&gt;MongoDB is released as two editions: Community and Enterprise.&lt;/p&gt;
+
+&lt;p&gt;Community is the open source release of MongoDB.&lt;/p&gt;
+
+&lt;p&gt;Enterprise provides additional administration, authentication, and monitoring features.&lt;/p&gt;
+
+&lt;p&gt;Installation steps vary depending on the edition; both procedures are outlined in this section.&lt;/p&gt;
+
+&lt;p&gt;Follow the &lt;a href=&#34;https://docs.mongodb.com/manual/installation/&#34; target=&#34;_blank&#34;&gt;Instructions to Download MongoDB per Platform&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;starting-interactive-mongodb-session&#34;&gt;Starting interactive mongodb session&lt;/h4&gt;
+
+&lt;p&gt;Once you have installed mongodb you need to make sure that is running and then you can simply type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; mongo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then get into an interactive mongo shell session:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-interactive-shell.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;pretty-print-trick-for-mongodb&#34;&gt;Pretty Print trick for mongodb&lt;/h4&gt;
+
+&lt;p&gt;You can set global settings in mongodb interactive shell in the &lt;em&gt;$SHELL/.mongorc.js&lt;/em&gt; configuration file.&lt;/p&gt;
+
+&lt;p&gt;In mongodb shell if you want to pretty print collections you need to use the pretty() function like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; db.heroes.find({}).pretty()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we set the following values in our &lt;em&gt;~/.mongorc.js&lt;/em&gt;:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-pretty-print.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now with this new setting we can simply query for documents and get pretty printing by default:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/pretty-print-by-default.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we did not specify the &lt;code&gt;.pretty()&lt;/code&gt; function and got pretty print behavior by default.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/using-unpretty-function.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;setting-default-number-of-documents-printed-to-standard-output&#34;&gt;Setting default number of documents printed to standard output&lt;/h4&gt;
+
+&lt;p&gt;You can set the number of documents to show at a time with the following setting in *$HOME/.mongorc.js:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;DBQuery.shellBatchSize = 25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;set-the-settings-for-a-mongodb-server-with-the-following-command&#34;&gt;Set the settings for a mongodb server with the following command:&lt;/h4&gt;
+
+&lt;p&gt;You can see the setting for the mongodb server with this command in the interactive shell:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-admin-server-settings.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;using-interactive-mongodb-session-full-javascript-console&#34;&gt;Using interactive mongodb session full javascript console&lt;/h4&gt;
+
+&lt;p&gt;Remember that the mongodb interactive shell is full blown javascript repl:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-interactive-repl.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-interactive-repl2.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;&lt;em&gt;Notice here that we were able to use the map javascript function in the mongodb shell session.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;extending-prototype-functions-in-javascript-available-in-mongo-shell&#34;&gt;Extending prototype functions in JavaScript available in mongo shell&lt;/h4&gt;
+
+&lt;p&gt;You can easily extend the available functions in mongo shell by adding them on &lt;em&gt;~/.mongorc.js&lt;/em&gt; configuration file:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/adding-prototype-functions-mongoshell.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now you can easily use this new function in a new mongo shell session like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/list-proto-length.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;using-mongostat&#34;&gt;Using mongostat&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.mongodb.com/manual/reference/program/mongostat/&#34; target=&#34;_blank&#34;&gt;mongostat docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The mongostat utility provides a quick overview of the status of a currently running mongod or mongos instance.&lt;/p&gt;
+
+&lt;p&gt;mongostat is functionally similar to the UNIX/Linux file system utility vmstat, but provides data regarding mongod and mongos instances.&lt;/p&gt;
+
+&lt;h4 id=&#34;finding-the-timestamp-for-when-a-particular-document-was-added&#34;&gt;Finding the timestamp for when a particular document was added&lt;/h4&gt;
+
+&lt;p&gt;You can run the &lt;code&gt;ObjectId(&amp;quot;&amp;quot;).getTimestamp()&lt;/code&gt; to get the timestamp for the added mongo document&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-shell-timestamp-function.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;using-esnext-features-in-mongo-shell-session&#34;&gt;Using ESNext features in mongo shell session&lt;/h4&gt;
+
+&lt;p&gt;You can use all the esnext features in JavaScript in the MongoShell session like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-shell-esnext-js.png&#34;/&gt; 
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
       <title>Introduction to Reverse Engineering</title>
       <link>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</link>
       <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
@@ -3323,15 +3469,6 @@ Ensure transparency into the upcoming work of the product development team.&lt;/
 &lt;li&gt;&lt;p&gt;When bugs are planned to be fixed in the sprint (as agreed during sprint planned) the bugs should also have tasks with estimated hours applied to them to track the work effort.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Containerized Golang applications with Docker and Vue.js</title>
-      <link>https://www.marcelbelmont.com/talk/trilug-talk/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/talk/trilug-talk/</guid>
-      <description></description>
     </item>
     
   </channel>
