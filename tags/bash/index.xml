@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/bash/</link>
+    <description>Recent content in Bash on Software Musings</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
+    <lastBuildDate>Sat, 16 Feb 2019 10:59:02 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.marcelbelmont.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tips and Tricks With Bash and Zsh</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</link>
+      <pubDate>Sat, 16 Feb 2019 10:59:02 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</guid>
+      <description>In this blog post I go over some tips and tricks with bash and cover some of the newer features in bash such as associative arrays which are available in Bash 4.
+Using Bash History features A lot of people know about hitting the up and down keys in their keyboard to access history but you can also utilize the !! operator to access history in bash.
+Say that we run the following command:</description>
+    </item>
+    
+  </channel>
+</rss>

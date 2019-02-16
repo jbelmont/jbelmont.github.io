@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/">
+
+  
+
+  <title>Tips and Tricks With Bash and Zsh | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Tips and Tricks With Bash and Zsh</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-02-16 10:59:02 -0500 EST" itemprop="datePublished">
+      Sat, Feb 16, 2019
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/bash">bash</a
+    >, 
+    
+    <a href="/tags/unix">unix</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f&amp;title=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f&amp;title=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>In this blog post I go over some tips and tricks with bash and cover some of the newer features in bash such as associative arrays which are available in Bash 4.</p>
+
+<h2 id="using-bash-history-features">Using Bash History features</h2>
+
+<p>A lot of people know about hitting the up and down keys in their keyboard to access history but you can also utilize the <code>!!</code> operator to access history in bash.</p>
+
+<p>Say that we run the following command:</p>
+
+<pre><code class="language-bash">brew update
+</code></pre>
+
+<p>We can run <code>sudo !!</code> to execute the previous command.</p>
+
+<p>Here is a shell session of this in action:</p>
+
+<figure>
+    <img src="/media/history-bang.png"/> 
+</figure>
+
+
+<p><em>Notice that in the screenshot above the command that was executed was printed first in the terminal.</em></p>
+
+<p>Here is a more advanced example of the power of history substitution:</p>
+
+<figure>
+    <img src="/media/history-substution-advanced.png"/> 
+</figure>
+
+
+<p>Notice here that we created 4 files file1.txt to file4.txt</p>
+
+<p>We then execute the <code>chmod</code> command and reuse the 2nd to last command.</p>
+
+<p>The command: <code>chmod +x !touch$</code> searches in shell history for the touch command which brings in the latest <em>touch</em> command and then we use the last arguments in that command in this history substition.</p>
+
+<p>You can search the shell history by typing in <code>control + r</code> in your terminal:</p>
+
+<figure>
+    <img src="/media/reverse-search.png"/> 
+</figure>
+
+
+<p>You can cycle through history individually by pressing <code>control + p</code> for previous and then press <code>control + n</code> for the next history item.</p>
+
+<p>You can also set your CDPATH variable in your .zshrc so that you can just <em>cd</em> into frequent directories:</p>
+
+<figure>
+    <img src="/media/cdpath.png"/> 
+</figure>
+
+
+<p>Here is an example of jumping into a directory from the CDPATH:</p>
+
+<figure>
+    <img src="/media/cdpath-example.png"/> 
+</figure>
+
+
+<p>Notice in the screenshot above that we went from the home directory <code>~</code> or <code>/Users/jean-marcelbelmont</code> directly into the directory <code>/Users/jean-marcelbelmont/go/src/github.com/jbelmont/nosql-workshop</code></p>
+
+<h2 id="process-substitution">Process Substitution</h2>
+
+<blockquote>
+<p>In computing, process substitution is a form of inter-process communication that allows the input or output of a command to appear as a file. The command is substituted in-line, where a file name would normally occur, by the command shell. This allows programs that normally only accept files to directly read from or write to another program.</p>
+</blockquote>
+
+<p>This is extremely useful with commands like <em>uniq</em>, <em>sort</em> that can take 2 arguments.</p>
+
+<p>Let us look at an example of this:</p>
+
+<figure>
+    <img src="/media/command-process-substitution.png"/> 
+</figure>
+
+
+<p>Notice that in the screenshot above that we created 2 files: file1, file2</p>
+
+<p>We used command process substitution and ran sort in file1 and file2 and then passed that as standard input into the uniq command which printed out:</p>
+
+<ul>
+<li>four</li>
+<li>one</li>
+<li>three</li>
+<li>two</li>
+</ul>
+
+<p>in sorted order and removed the duplicates in each file.</p>
+
+<h2 id="associative-arrays-in-bash-and-zsh">Associative arrays in bash and zsh</h2>
+
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Arrays.html" target="_blank">Associative arrays in bash</a></p>
+
+<blockquote>
+<p>Bash provides one-dimensional indexed and associative array variables. Any variable may be used as an indexed array; the declare builtin will explicitly declare an array. There is no maximum limit on the size of an array, nor any requirement that members be indexed or assigned contiguously. Indexed arrays are referenced using integers (including arithmetic expressions and are zero-based; associative arrays use arbitrary strings. Unless otherwise noted, indexed array indices must be non-negative integers.</p>
+</blockquote>
+
+<p>Let us look at an example:</p>
+
+<figure>
+    <img src="/media/associative-arrays.png"/> 
+</figure>
+
+
+<p>Notice in the screenshot above that we use the declare keyword:</p>
+
+<blockquote>
+<p>Declare variables and give them attributes.  If no NAMEs are given, display the attributes and values of all variables.</p>
+</blockquote>
+
+<ul>
+<li>-A    to make NAMEs associative arrays (if supported)*</li>
+</ul>
+
+<p>We then access the associative array with the syntax like this:</p>
+
+<p>echo ${MY_MAP[KEY]} which prints out ONE in our case</p>
+
+<p>Let us look at a more advanced example of using associative arrays:</p>
+
+<pre><code class="language-zsh">#! /usr/local/bin/zsh
+
+declare -A TEXT_INSIDE_PARENS_LIST
+
+TEXT_INSIDE_PARENS=$(pbpaste | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]')
+TEXT_TITLECASE=$(echo $TEXT_INSIDE_PARENS | gsed 's/.*/\L&amp;/;s/[a-z]*/\u&amp;/g;s/_/ /g')
+
+COUNTER=0
+for brackets in $TEXT_TITLECASE[@]
+do
+  TEXT_INSIDE_PARENS_LIST[$COUNTER]=$(echo $brackets | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]' | tr -d '\n')
+  printf &quot;[%s](%s)\n&quot; $brackets ${TEXT_INSIDE_PARENS_LIST[$COUNTER]}
+  COUNTER=$(($COUNTER+1))
+done
+</code></pre>
+
+<p>Here we create 2 lists and use an associative arrays that get a key in each loop of this script.</p>
+
+<p>If you like this blog post you can read more about unix programming in my free gitbook <a href="https://www.marcelbelmont.com/unix-programming-and-regular-expressions-workshop/" target="_blank">Unix Programming and Regular Expressions</a></p>
+
+<p>Please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a></p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/"><span
+      aria-hidden="true">&larr;</span> Tips and Tricks With Mongodb</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+

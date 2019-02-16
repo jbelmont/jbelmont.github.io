@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</loc>
+      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</loc>
       <lastmod>2019-01-12T16:46:47-05:00</lastmod>
     </url>
@@ -398,6 +407,16 @@
     
       <loc>https://www.marcelbelmont.com/tags/automation/</loc>
       <lastmod>2018-06-24T12:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/bash/</loc>
+      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -906,7 +925,7 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/unix/</loc>
-      <lastmod>2018-07-22T09:13:27-04:00</lastmod>
+      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
       <priority>0</priority>
     </url>
     
