@@ -155,6 +155,31 @@ done
 
 &lt;p&gt;Here we create 2 lists and use an associative arrays that get a key in each loop of this script.&lt;/p&gt;
 
+&lt;p&gt;We can write a more concise solution using IFS which is the internal field separator and using readarray.&lt;/p&gt;
+
+&lt;p&gt;readarray: Read lines from a file into an array variable.&lt;/p&gt;
+
+&lt;p&gt;We can also use here string.&lt;/p&gt;
+
+&lt;p&gt;Here is a more concise example using bash 4:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /usr/local/bin/bash
+
+IFS=$&#39;\n&#39;
+WORDS=$(pbpaste)
+readarray -t y &amp;lt;&amp;lt;&amp;lt; &amp;quot;$WORDS&amp;quot;
+
+for word in $WORDS
+do
+  TEXT_INSIDE_PARENS=$(echo $word | sed &#39;s/ /_/g&#39; | tr &#39;[:upper:]&#39; &#39;[:lower:]&#39;)
+  printf &amp;quot;[%s](#%s)\n&amp;quot; $word $TEXT_INSIDE_PARENS
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the script above we put the system clipboard contents from pbpaste into the WORDS variable.
+We then use the readarray builtin and here strings to create an array bash variable.
+We then loop over words and create a running TEXT_INSIDE_PARENS variable and use the printf command.&lt;/p&gt;
+
 &lt;p&gt;If you like this blog post you can read more about unix programming in my free gitbook &lt;a href=&#34;https://www.marcelbelmont.com/unix-programming-and-regular-expressions-workshop/&#34; target=&#34;_blank&#34;&gt;Unix Programming and Regular Expressions&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
