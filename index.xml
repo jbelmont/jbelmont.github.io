@@ -136,6 +136,53 @@ print(num1);
 &lt;/figure&gt;
 
 
+&lt;h2 id=&#34;adding-global-configuration-with-mongorc-js&#34;&gt;Adding global configuration with ~/.mongorc.js&lt;/h2&gt;
+
+&lt;p&gt;I have the following defined in my &lt;em&gt;~/.mongorc.js&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;DBQuery.prototype._prettyShell = true
+DBQuery.prototype.unpretty = function () {
+    this._prettyShell = false;
+    return this;
+}
+currentDir = pwd()
+currentDir = currentDir.split(&amp;quot;/&amp;quot;).slice(0, -1).join(&amp;quot;/&amp;quot;)
+callScript = function(script_name) {
+    load(`${currentDir}/playground/scripts/${script_name}`);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So from the top I have defined pretty print to be the default and have created a function called unpretty to get the regular behavior.&lt;/p&gt;
+
+&lt;p&gt;Notice that we can define functions in JavaScript and we can use ESNext Features in JavaScript.&lt;/p&gt;
+
+&lt;p&gt;I created a custom function called callScript that calls the load script function but takes an argument for the script name and looks at your current shell path.&lt;/p&gt;
+
+&lt;p&gt;Looks like at a live example using the callScript command and a new JavaScript file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
+
+let ids = [];
+for (let i = 0; i &amp;lt; 10; i++) {
+    let objectId = new objectId()
+    ids.push({
+        _id: objectId
+    });
+}
+printjson(ids);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we create an array of objects with ObjectIds in the mongo shell.&lt;/p&gt;
+
+&lt;p&gt;Here is an example session in the mongo shell:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/array-of-objectids.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we called the javascript file without passing a path because we have defined the script path location in the callScript function definition already.&lt;/p&gt;
+
 &lt;p&gt;There is a lot more you can do with scripts if you use your imagination :)&lt;/p&gt;
 
 &lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
