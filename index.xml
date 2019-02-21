@@ -11,6 +11,142 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Tips and Tricks With Mongodb Part 2</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</link>
+      <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</guid>
+      <description>
+
+&lt;p&gt;In this second blog post I go over how to loads scripts in the mongo shell and how to automate tasks in mongo shell&lt;/p&gt;
+
+&lt;h2 id=&#34;loading-scripts-in-the-mongo-shell&#34;&gt;Loading scripts in the Mongo Shell&lt;/h2&gt;
+
+&lt;p&gt;You can load scripts in the mongo shell as long as the mongo shell knows the path.&lt;/p&gt;
+
+&lt;p&gt;Let us get mongodb running with the following bash script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/bash
+
+docker run --name jbelmont-mongo-image-4 \
+  --rm \
+  -v ~/mongod_data.4.0.5:/data/db \
+  -p 27017:27017 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -d jbelmont/mongo-vim:4.0.5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that this is a custom docker image that I created&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-shell-prompt.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Not let us say that we wanted to write a script that shows all the numbers in the numbers collection and in particular the val field.&lt;/p&gt;
+
+&lt;p&gt;In the mongo shell we could get it like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-script-in-shell.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now let us write a script in a javascript file to do the same thing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
+
+db = connect(&amp;quot;localhost:27017/nosql_workshop&amp;quot;);
+
+db.numbers.find({}).forEach(num =&amp;gt; print(num.val));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will put this script in the following path in my computer:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;/Users/jean-marcelbelmont/go/src/github.com/jbelmont/nosql-workshop/scripts&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/load-scripts.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;The mongo shell needs to know the path in order to load the script. Notice that we used the native function &lt;code&gt;pwd()&lt;/code&gt; to verify the path and then we passed in the path to our script in the &lt;code&gt;load()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;We can set an environment variable in our &lt;em&gt;~/.bashrc,~/.zshrc&lt;/em&gt; for our mongodb scripts like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo $MONGO_SCRIPT_PATH
+/Users/jean-marcelbelmont/go/src/github.com/FoodLogiQ/playground/scripts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can call the javascript file outside of the mongo shell like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-script-load.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice how we used the environment variable of $MONGO_SCRIPT_PATH here and then just invoked our script file.&lt;/p&gt;
+
+&lt;p&gt;Some advantages of using the javascript file instead of the mongo shell is that the mongo shell has limits when you copy and paste large BSON objects and can explode at times.&lt;/p&gt;
+
+&lt;p&gt;If you use your javascript file you can use all the power of ESNext JavaScript features to do CRUD Operations in MongoDB.&lt;/p&gt;
+
+&lt;p&gt;Let us create the following script that stores 2 numbers in the numbers collection and then prints out the val field in the first number:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
+
+db = connect(&amp;quot;localhost:27017/nosql_workshop&amp;quot;);
+
+let id1 = new ObjectId();
+let id2 = new ObjectId();
+
+let numbers = [
+    {
+        &amp;quot;_id&amp;quot;: id1,
+        &amp;quot;val&amp;quot; : 2.1, 
+        &amp;quot;description&amp;quot; : &amp;quot;Decimal&amp;quot;
+    },
+    {
+        &amp;quot;_id&amp;quot;: id2,
+        &amp;quot;val&amp;quot;: 3.1,
+        &amp;quot;description&amp;quot; : &amp;quot;Decimal&amp;quot;
+    }
+];
+
+db.numbers.insertMany(numbers);
+
+let num1 = db.numbers.find({
+    _id: id1
+})[0].val;
+
+print(num1);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let us run the new script like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/complex-script.js&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now in the mongo shell we can look at our newest documents that we have added:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/new-numbers-in-collection.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;There is a lot more you can do with scripts if you use your imagination :)&lt;/p&gt;
+
+&lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks With Bash and Zsh</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</link>
       <pubDate>Sat, 16 Feb 2019 10:59:02 -0500</pubDate>
@@ -3118,219 +3254,6 @@ output {
 &lt;p&gt;I would highly suggest you check out &lt;a href=&#34;https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on&#34; target=&#34;_blank&#34;&gt;Frank Kanes Udemy Course on the Elastic Stack&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Api Testing</title>
-      <link>https://www.marcelbelmont.com/post/api-testing/</link>
-      <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
-      <description>
-
-&lt;h1 id=&#34;restful-api-testing&#34;&gt;Restful API Testing&lt;/h1&gt;
-
-&lt;p&gt;API testing is a necessary task to do while building APIs.&lt;/p&gt;
-
-&lt;p&gt;Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as &lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;Curl&lt;/a&gt; and &lt;a href=&#34;https://www.getpostman.com/&#34; target=&#34;_blank&#34;&gt;Postman&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Using a Rest Client you can make Rest calls such as for &lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;HTTP Verbs&lt;/a&gt; such as:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;GET&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;POST&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;PUT&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;DELETE&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods&#34; target=&#34;_blank&#34;&gt;PATCH&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When we test an API, we deal with &lt;a href=&#34;https://en.wikipedia.org/wiki/JSON&#34; target=&#34;_blank&#34;&gt;JSON&lt;/a&gt;, &lt;a href=&#34;https://en.wikipedia.org/wiki/XML&#34; target=&#34;_blank&#34;&gt;XML&lt;/a&gt;, and &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_service&#34; target=&#34;_blank&#34;&gt;Web Services&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;3rd-party-apis&#34;&gt;3rd Party APIs&lt;/h2&gt;
-
-&lt;p&gt;Here is a list of 3rd Party APIs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.google.com/apis-explorer/&#34; target=&#34;_blank&#34;&gt;Google APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.yahoo.com/everything.html&#34; target=&#34;_blank&#34;&gt;Yahoo APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.facebook.com/&#34; target=&#34;_blank&#34;&gt;Facebook APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stripe.com/docs/api&#34; target=&#34;_blank&#34;&gt;Stripe APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.amazon.com/services-and-apis&#34; target=&#34;_blank&#34;&gt;Amazon APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.walmart.com/#/home&#34; target=&#34;_blank&#34;&gt;Walmart APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.github.com/v3/&#34; target=&#34;_blank&#34;&gt;Github APIs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Go to &lt;a href=&#34;https://www.programmableweb.com/&#34; target=&#34;_blank&#34;&gt;Programmable Web&lt;/a&gt; to get a complete list of 3rd Party APIs you can utilize&lt;/p&gt;
-
-&lt;h2 id=&#34;testing-restful-apis&#34;&gt;Testing Restful APIs&lt;/h2&gt;
-
-&lt;p&gt;You can utilize many different types of tools to test APIs such as:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;Curl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.getpostman.com/&#34; target=&#34;_blank&#34;&gt;Postman&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://httpie.org/&#34; target=&#34;_blank&#34;&gt;HTTPie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://insomnia.rest/&#34; target=&#34;_blank&#34;&gt;Insomnia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Telnet&#34; target=&#34;_blank&#34;&gt;Telnet&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There are other Rest Clients you can use I just listed a few here&lt;/p&gt;
-
-&lt;h2 id=&#34;postman-rest-client-advantages&#34;&gt;Postman Rest Client Advantages&lt;/h2&gt;
-
-&lt;p&gt;I tend to favor Rest Clients like Postman because it helps to automate testing Restful APIs if you utilize some of its advanced features&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/postman-collection.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that you can create collection folders that can categorize APIs.&lt;/p&gt;
-
-&lt;p&gt;You can do much more than this however&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/header-variables.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that &lt;code&gt;Basic {{encodeCredentials}}&lt;/code&gt; has curly braces around &lt;code&gt;encodeCredentials&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In Postman you surround variables in double curly braces&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/pre-request-script.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;If you want to set variables before the HTTP call goes out than using &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/pre_request_scripts&#34; target=&#34;_blank&#34;&gt;Pre-request Script&lt;/a&gt; is what you want&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Pre-request scripts are snippets of code associated with a collection request that are executed before the request is sent.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;This is perfect for use-cases like including the timestamp in the request headers or sending a random alphanumeric string in the URL parameters.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Pre-request scripts are written in JavaScript, and the syntax is exactly like that of test scripts except that the response object is not present.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Notice here that I am using &lt;em&gt;common js&lt;/em&gt; syntax in Postman and in particular &lt;code&gt;require(&#39;btoa&#39;&lt;/code&gt;)` which is using &lt;strong&gt;Postman Sandbox API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;You can find a more complete list in the &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox_api_reference&#34; target=&#34;_blank&#34;&gt;Postman Sandbox API reference&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can also read &lt;a href=&#34;https://www.getpostman.com/docs/postman/scripts/postman_sandbox&#34; target=&#34;_blank&#34;&gt;Postman Sandbox&lt;/a&gt; for other libraries available in Postman Rest Client&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/test-script.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that the Test script section is similar to Pre-Request Script&lt;/p&gt;
-
-&lt;p&gt;With Postman you can write and run tests for each request using the JavaScript language.&lt;/p&gt;
-
-&lt;p&gt;But more than that you can set variables in the Test script section that you can save for later use&lt;/p&gt;
-
-&lt;p&gt;Notice here the use of &lt;code&gt;postman.setEnvironmentVariable(&amp;quot;access_token&amp;quot;, token_type + &amp;quot; &amp;quot; + access_token);&lt;/code&gt; to set &lt;strong&gt;access_token&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This is really useful because we can save the &lt;strong&gt;access_token&lt;/strong&gt; for other Rest calls&lt;/p&gt;
-
-&lt;p&gt;Instead of manually setting the access token in a variable each day since access tokens tend to expire quickly you can use the tests script section to do that in an automated way.&lt;/p&gt;
-
-&lt;p&gt;Notice that we also wrote a test in the test script section as well&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// Parse JSON response
-var responseBody = JSON.parse(responseBody);
-
-var access_token = responseBody.access_token;
-var token_type = responseBody.token_type;
-
-postman.setEnvironmentVariable(&amp;quot;access_token&amp;quot;, token_type + &amp;quot; &amp;quot; + access_token);
-
-pm.test(&amp;quot;Token Type is Bearer&amp;quot;, function () {
-    var jsonData = pm.response.json();
-    pm.expect(jsonData.token_type).to.eql(&amp;quot;Bearer&amp;quot;);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/test-results.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here we get a passing test since we got an access token from the Paypal API&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/environment.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that we set the environment for Paypal here&lt;/p&gt;
-
-&lt;p&gt;Here we can use global variables that can be used per environment&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/global-variables.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Here I greyed out the environment variables for security reasons but you can read more about &lt;a href=&#34;https://www.getpostman.com/docs/postman/environments_and_globals/manage_globals&#34; target=&#34;_blank&#34;&gt;Global Variables at Postman Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/presets.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Another useful feature in Postman is the Presets for Headers which you can read in the &lt;a href=&#34;https://www.getpostman.com/docs/postman/sending_api_requests/requests&#34; target=&#34;_blank&#34;&gt;Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Header Presets are useful if you find yourself reusing a lot of HTTP Header values often and you can simply set a preset to autofill the HTTP headers for you in one click.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/group-edit.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that we can use the group edit feature to quickly set header values in key value pairs in the group edit view.&lt;/p&gt;
-
-&lt;p&gt;You can easily go back to the normal view by clicking &lt;code&gt;Key-Value Edit&lt;/code&gt; button again.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/http-verbs.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Postman supports all of the HTTP Verbs in their dropdown menu&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/params.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;You can easily set query string parameters utilizing the params section in postman&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/developer-tools.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that we can utilize developer tools in Postman.&lt;/p&gt;
-
-&lt;p&gt;This is useful when you want to debug the &lt;em&gt;Pre-request Script&lt;/em&gt; and &lt;em&gt;Test script&lt;/em&gt; sections in Postman&lt;/p&gt;
-
-&lt;p&gt;You can easily set &lt;code&gt;console.log&lt;/code&gt; statements to debug things.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/collection-runner.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that we can run all of the collections utilizing the collection runner.&lt;/p&gt;
-
-&lt;p&gt;You can read more about the &lt;a href=&#34;https://www.getpostman.com/docs/postman/collection_runs/starting_a_collection_run&#34; target=&#34;_blank&#34;&gt;Postman Collection Runner Here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can import Postman collections easily and if you have Postman Pro account you can share collections with team members.&lt;/p&gt;
-
-&lt;p&gt;I covered a good amount of features that Postman offers but read the Fine docs in Postman for more information.&lt;/p&gt;
 </description>
     </item>
     

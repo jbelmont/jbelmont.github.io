@@ -52,11 +52,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/">
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/">
 
   
 
-  <title>Tips and Tricks With Bash and Zsh | Software Musings</title>
+  <title>Tips and Tricks With Mongodb Part 2 | Software Musings</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -169,14 +169,14 @@
 
 
   <div class="article-container">
-    <h1 itemprop="name">Tips and Tricks With Bash and Zsh</h1>
+    <h1 itemprop="name">Tips and Tricks With Mongodb Part 2</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2019-02-16 10:59:02 -0500 EST" itemprop="datePublished">
-      Sat, Feb 16, 2019
+    <time datetime="2019-02-20 18:38:15 -0500 EST" itemprop="datePublished">
+      Wed, Feb 20, 2019
     </time>
   </span>
 
@@ -188,10 +188,10 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/bash">bash</a
+    <a href="/tags/nosql">nosql</a
     >, 
     
-    <a href="/tags/unix">unix</a
+    <a href="/tags/mongodb">mongodb</a
     >
     
   </span>
@@ -204,35 +204,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-mongodb-part2%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f"
+         href="https://twitter.com/intent/tweet?text=Tips%20and%20Tricks%20With%20Mongodb%20Part%202&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-mongodb-part2%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f&amp;title=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-mongodb-part2%2f&amp;title=Tips%20and%20Tricks%20With%20Mongodb%20Part%202"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f&amp;title=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-mongodb-part2%2f&amp;title=Tips%20and%20Tricks%20With%20Mongodb%20Part%202"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Tips%20and%20Tricks%20With%20Bash%20and%20Zsh&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-bash%2f">
+         href="mailto:?subject=Tips%20and%20Tricks%20With%20Mongodb%20Part%202&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2ftips-and-tricks-with-mongodb-part2%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -247,169 +247,125 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>In this blog post I go over some tips and tricks with bash and cover some of the newer features in bash such as associative arrays which are available in Bash 4.</p>
+<p>In this second blog post I go over how to loads scripts in the mongo shell and how to automate tasks in mongo shell</p>
 
-<h2 id="using-bash-history-features">Using Bash History features</h2>
+<h2 id="loading-scripts-in-the-mongo-shell">Loading scripts in the Mongo Shell</h2>
 
-<p>A lot of people know about hitting the up and down keys in their keyboard to access history but you can also utilize the <code>!!</code> operator to access history in bash.</p>
+<p>You can load scripts in the mongo shell as long as the mongo shell knows the path.</p>
 
-<p>Say that we run the following command:</p>
+<p>Let us get mongodb running with the following bash script:</p>
 
-<pre><code class="language-bash">brew update
+<pre><code class="language-bash">#! /bin/bash
+
+docker run --name jbelmont-mongo-image-4 \
+  --rm \
+  -v ~/mongod_data.4.0.5:/data/db \
+  -p 27017:27017 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -d jbelmont/mongo-vim:4.0.5
 </code></pre>
 
-<p>We can run <code>sudo !!</code> to execute the previous command.</p>
-
-<p>Here is a shell session of this in action:</p>
+<p>Notice that this is a custom docker image that I created</p>
 
 <figure>
-    <img src="/media/history-bang.png"/> 
+    <img src="/media/mongo-shell-prompt.png"/> 
 </figure>
 
 
-<p><em>Notice that in the screenshot above the command that was executed was printed first in the terminal.</em></p>
+<p>Not let us say that we wanted to write a script that shows all the numbers in the numbers collection and in particular the val field.</p>
 
-<p>Here is a more advanced example of the power of history substitution:</p>
+<p>In the mongo shell we could get it like this:</p>
 
 <figure>
-    <img src="/media/history-substution-advanced.png"/> 
+    <img src="/media/mongo-script-in-shell.png"/> 
 </figure>
 
 
-<p>Notice here that we created 4 files file1.txt to file4.txt</p>
+<p>Now let us write a script in a javascript file to do the same thing:</p>
 
-<p>We then execute the <code>chmod</code> command and reuse the 2nd to last command.</p>
+<pre><code class="language-js">&quot;use strict&quot;;
 
-<p>The command: <code>chmod +x !touch$</code> searches in shell history for the touch command which brings in the latest <em>touch</em> command and then we use the last arguments in that command in this history substition.</p>
+db = connect(&quot;localhost:27017/nosql_workshop&quot;);
 
-<p>You can search the shell history by typing in <code>control + r</code> in your terminal:</p>
-
-<figure>
-    <img src="/media/reverse-search.png"/> 
-</figure>
-
-
-<p>You can cycle through history individually by pressing <code>control + p</code> for previous and then press <code>control + n</code> for the next history item.</p>
-
-<p>You can also set your CDPATH variable in your .zshrc so that you can just <em>cd</em> into frequent directories:</p>
-
-<figure>
-    <img src="/media/cdpath.png"/> 
-</figure>
-
-
-<p>Here is an example of jumping into a directory from the CDPATH:</p>
-
-<figure>
-    <img src="/media/cdpath-example.png"/> 
-</figure>
-
-
-<p>Notice in the screenshot above that we went from the home directory <code>~</code> or <code>/Users/jean-marcelbelmont</code> directly into the directory <code>/Users/jean-marcelbelmont/go/src/github.com/jbelmont/nosql-workshop</code></p>
-
-<h2 id="process-substitution">Process Substitution</h2>
-
-<blockquote>
-<p>In computing, process substitution is a form of inter-process communication that allows the input or output of a command to appear as a file. The command is substituted in-line, where a file name would normally occur, by the command shell. This allows programs that normally only accept files to directly read from or write to another program.</p>
-</blockquote>
-
-<p>This is extremely useful with commands like <em>uniq</em>, <em>sort</em> that can take 2 arguments.</p>
-
-<p>Let us look at an example of this:</p>
-
-<figure>
-    <img src="/media/command-process-substitution.png"/> 
-</figure>
-
-
-<p>Notice that in the screenshot above that we created 2 files: file1, file2</p>
-
-<p>We used command process substitution and ran sort in file1 and file2 and then passed that as standard input into the uniq command which printed out:</p>
-
-<ul>
-<li>four</li>
-<li>one</li>
-<li>three</li>
-<li>two</li>
-</ul>
-
-<p>in sorted order and removed the duplicates in each file.</p>
-
-<h2 id="associative-arrays-in-bash-and-zsh">Associative arrays in bash and zsh</h2>
-
-<p><a href="https://www.gnu.org/software/bash/manual/html_node/Arrays.html" target="_blank">Associative arrays in bash</a></p>
-
-<blockquote>
-<p>Bash provides one-dimensional indexed and associative array variables. Any variable may be used as an indexed array; the declare builtin will explicitly declare an array. There is no maximum limit on the size of an array, nor any requirement that members be indexed or assigned contiguously. Indexed arrays are referenced using integers (including arithmetic expressions and are zero-based; associative arrays use arbitrary strings. Unless otherwise noted, indexed array indices must be non-negative integers.</p>
-</blockquote>
-
-<p>Let us look at an example:</p>
-
-<figure>
-    <img src="/media/associative-arrays.png"/> 
-</figure>
-
-
-<p>Notice in the screenshot above that we use the declare keyword:</p>
-
-<blockquote>
-<p>Declare variables and give them attributes.  If no NAMEs are given, display the attributes and values of all variables.</p>
-</blockquote>
-
-<ul>
-<li>-A    to make NAMEs associative arrays (if supported)*</li>
-</ul>
-
-<p>We then access the associative array with the syntax like this:</p>
-
-<p>echo ${MY_MAP[KEY]} which prints out ONE in our case</p>
-
-<p>Let us look at a more advanced example of using associative arrays:</p>
-
-<pre><code class="language-zsh">#! /usr/local/bin/zsh
-
-declare -A TEXT_INSIDE_PARENS_LIST
-
-TEXT_INSIDE_PARENS=$(pbpaste | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]')
-TEXT_TITLECASE=$(echo $TEXT_INSIDE_PARENS | gsed 's/.*/\L&amp;/;s/[a-z]*/\u&amp;/g;s/_/ /g')
-
-COUNTER=0
-for brackets in $TEXT_TITLECASE[@]
-do
-  TEXT_INSIDE_PARENS_LIST[$COUNTER]=$(echo $brackets | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]' | tr -d '\n')
-  printf &quot;[%s](%s)\n&quot; $brackets ${TEXT_INSIDE_PARENS_LIST[$COUNTER]}
-  COUNTER=$(($COUNTER+1))
-done
+db.numbers.find({}).forEach(num =&gt; print(num.val));
 </code></pre>
 
-<p>Here we create 2 lists and use an associative arrays that get a key in each loop of this script.</p>
+<p>We will put this script in the following path in my computer:</p>
 
-<p>We can write a more concise solution using IFS which is the internal field separator and using readarray.</p>
+<p><em>/Users/jean-marcelbelmont/go/src/github.com/jbelmont/nosql-workshop/scripts</em></p>
 
-<p>readarray: Read lines from a file into an array variable.</p>
+<figure>
+    <img src="/media/load-scripts.png"/> 
+</figure>
 
-<p>We can also use here string.</p>
 
-<p>Here is a more concise example using bash 4:</p>
+<p>The mongo shell needs to know the path in order to load the script. Notice that we used the native function <code>pwd()</code> to verify the path and then we passed in the path to our script in the <code>load()</code> function.</p>
 
-<pre><code class="language-bash">#! /usr/local/bin/bash
+<p>We can set an environment variable in our <em>~/.bashrc,~/.zshrc</em> for our mongodb scripts like this:</p>
 
-IFS=$'\n'
-WORDS=$(pbpaste)
-readarray -t y &lt;&lt;&lt; &quot;$WORDS&quot;
-
-for word in $WORDS
-do
-  TEXT_INSIDE_PARENS=$(echo $word | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]')
-  printf &quot;[%s](#%s)\n&quot; $word $TEXT_INSIDE_PARENS
-done
+<pre><code class="language-bash">echo $MONGO_SCRIPT_PATH
+/Users/jean-marcelbelmont/go/src/github.com/FoodLogiQ/playground/scripts
 </code></pre>
 
-<p>In the script above we put the system clipboard contents from pbpaste into the WORDS variable.
-We then use the readarray builtin and here strings to create an array bash variable.
-We then loop over words and create a running TEXT_INSIDE_PARENS variable and use the printf command.</p>
+<p>Now we can call the javascript file outside of the mongo shell like this:</p>
 
-<p>If you like this blog post you can read more about unix programming in my free gitbook <a href="https://www.marcelbelmont.com/unix-programming-and-regular-expressions-workshop/" target="_blank">Unix Programming and Regular Expressions</a></p>
+<figure>
+    <img src="/media/mongo-script-load.png"/> 
+</figure>
+
+
+<p>Notice how we used the environment variable of $MONGO_SCRIPT_PATH here and then just invoked our script file.</p>
+
+<p>Some advantages of using the javascript file instead of the mongo shell is that the mongo shell has limits when you copy and paste large BSON objects and can explode at times.</p>
+
+<p>If you use your javascript file you can use all the power of ESNext JavaScript features to do CRUD Operations in MongoDB.</p>
+
+<p>Let us create the following script that stores 2 numbers in the numbers collection and then prints out the val field in the first number:</p>
+
+<pre><code class="language-js">&quot;use strict&quot;;
+
+db = connect(&quot;localhost:27017/nosql_workshop&quot;);
+
+let id1 = new ObjectId();
+let id2 = new ObjectId();
+
+let numbers = [
+    {
+        &quot;_id&quot;: id1,
+        &quot;val&quot; : 2.1, 
+        &quot;description&quot; : &quot;Decimal&quot;
+    },
+    {
+        &quot;_id&quot;: id2,
+        &quot;val&quot;: 3.1,
+        &quot;description&quot; : &quot;Decimal&quot;
+    }
+];
+
+db.numbers.insertMany(numbers);
+
+let num1 = db.numbers.find({
+    _id: id1
+})[0].val;
+
+print(num1);
+</code></pre>
+
+<p>Let us run the new script like this:</p>
+
+<figure>
+    <img src="/media/complex-script.js"/> 
+</figure>
+
+
+<p>Now in the mongo shell we can look at our newest documents that we have added:</p>
+
+<figure>
+    <img src="/media/new-numbers-in-collection.png"/> 
+</figure>
+
+
+<p>There is a lot more you can do with scripts if you use your imagination :)</p>
 
 <p>Please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a></p>
 
@@ -426,13 +382,10 @@ We then loop over words and create a running TEXT_INSIDE_PARENS variable and use
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/"><span
-      aria-hidden="true">&larr;</span> Tips and Tricks With Mongodb</a></li>
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/"><span
+      aria-hidden="true">&larr;</span> Tips and Tricks With Bash and Zsh</a></li>
     
 
-    
-    <li class="next"><a href="https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/">Tips and Tricks With Mongodb Part 2 <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>
@@ -513,13 +466,6 @@ We then loop over words and create a running TEXT_INSIDE_PARENS variable and use
       <script>hljs.initHighlightingOnLoad();</script>
     
 
-    
-    
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
-    </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 

@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sat, 12 Jan 2019 16:46:47 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 20 Feb 2019 18:38:15 -0500</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tips and Tricks With Mongodb Part 2</title>
+      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</link>
+      <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</guid>
+      <description>In this second blog post I go over how to loads scripts in the mongo shell and how to automate tasks in mongo shell
+Loading scripts in the Mongo Shell You can load scripts in the mongo shell as long as the mongo shell knows the path.
+Let us get mongodb running with the following bash script:
+#! /bin/bash docker run --name jbelmont-mongo-image-4 \ --rm \ -v ~/mongod_data.4.0.5:/data/db \ -p 27017:27017 \ -v /var/run/docker.</description>
+    </item>
     
     <item>
       <title>Tips and Tricks With Mongodb</title>
