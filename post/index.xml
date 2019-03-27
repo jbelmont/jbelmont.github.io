@@ -13,6 +13,19 @@
     
     
     <item>
+      <title>Debugging Rust With Lldb</title>
+      <link>https://www.marcelbelmont.com/post/debugging-rust-with-lldb/</link>
+      <pubDate>Tue, 26 Mar 2019 19:25:45 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/debugging-rust-with-lldb/</guid>
+      <description>In this blog post I go over using lldb with rust and how get setup with lldb on Mac OS X.
+Installing lldb Read the official guide link on installing lldb.
+If you have a Mac then you should already have lldb installed.
+  Notice that lldb reports the version of lldb and the version of swift.
+Various ways of Running Summation Program Let us look at a simple command line rust program that computes the summation provided as input.</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks With Mongodb Part 2</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</link>
       <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>

@@ -229,6 +229,15 @@
     </item>
     
     <item>
+      <title>Lldb</title>
+      <link>https://www.marcelbelmont.com/tags/lldb/</link>
+      <pubDate>Tue, 26 Mar 2019 19:25:45 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/lldb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Logstash</title>
       <link>https://www.marcelbelmont.com/tags/logstash/</link>
       <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
@@ -369,6 +378,15 @@
       <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/tags/reverse-engineering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>https://www.marcelbelmont.com/tags/rust/</link>
+      <pubDate>Tue, 26 Mar 2019 19:25:45 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/rust/</guid>
       <description></description>
     </item>
     

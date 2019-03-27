@@ -14,6 +14,15 @@
     
     <item>
       <title>Writing Rust Commandline Applications</title>
+      <link>https://www.marcelbelmont.com/talk/writing-rust-commandline-apps/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/writing-rust-commandline-apps/</guid>
+      <description>A talk centered on writing command line applications in Rustlang. I showcased how to write unit tests in Rust. I showed to write different types of command line applications and how to debug them using rust-lldb and more.</description>
+    </item>
+    
+    <item>
+      <title>Writing Rust Commandline Applications</title>
       <link>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       

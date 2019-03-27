@@ -11,6 +11,268 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Debugging Rust With Lldb</title>
+      <link>https://www.marcelbelmont.com/post/debugging-rust-with-lldb/</link>
+      <pubDate>Tue, 26 Mar 2019 19:25:45 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/debugging-rust-with-lldb/</guid>
+      <description>
+
+&lt;p&gt;In this blog post I go over using lldb with rust and how get setup with lldb on Mac OS X.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-lldb&#34;&gt;Installing lldb&lt;/h2&gt;
+
+&lt;p&gt;Read the official guide link on installing &lt;a href=&#34;https://lldb.llvm.org/download.html&#34; target=&#34;_blank&#34;&gt;lldb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you have a Mac then you should already have lldb installed.&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/rust-lldb-version.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that lldb reports the version of lldb and the version of swift.&lt;/p&gt;
+
+&lt;h2 id=&#34;various-ways-of-running-summation-program&#34;&gt;Various ways of Running Summation Program&lt;/h2&gt;
+
+&lt;p&gt;Let us look at a simple command line rust program that computes the summation provided as input.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; std::env;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; args: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; env::args().collect();
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; numbers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;args[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;..];
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; numbers: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;f32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers
+        .iter()
+        .map(&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; num.parse().unwrap())
+        .collect();
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; summation &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; summation_with_fold(numbers.clone());
+
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;summation_with_fold is {}&amp;#34;&lt;/span&gt;, summation);
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; summation &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; summation_with_loop(numbers.clone());
+
+    println&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;summation_with_loop is {}&amp;#34;&lt;/span&gt;, summation);
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;summation_with_loop&lt;/span&gt;(numbers: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;f32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;f32&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.0&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; num &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; numbers.iter() {
+        sum &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; num;
+    }
+    sum
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;summation_with_fold&lt;/span&gt;(numbers: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;f32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;f32&lt;/span&gt; {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers
+        .iter()
+        .fold(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.0&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;sum, val&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; val);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can run this program using the rust playground but we cannot supply argument like we can in a shell session:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/rust-playground.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can run this program using cargo run like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/cargo-run.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can also run our program by using the compiled binary executable like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/target-debug-run.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;running-summation-program-with-lldb&#34;&gt;Running summation program with lldb&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;We can run our rust program with the rust-lldb executable.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is the rust lldb bash script that gets invoked:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Exit if anything fails&lt;/span&gt;
+set -e
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Find out where to look for the pretty printer Python module&lt;/span&gt;
+RUSTC_SYSROOT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;rustc --print sysroot&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Find the host triple so we can find lldb in rustlib.&lt;/span&gt;
+host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;rustc -vV | sed -n -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/^host: //p&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+
+lldb&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;lldb
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$RUSTC_SYSROOT&lt;span style=&#34;color:#e6db74&#34;&gt;/lib/rustlib/&lt;/span&gt;$host&lt;span style=&#34;color:#e6db74&#34;&gt;/bin/lldb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+    lldb&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$RUSTC_SYSROOT&lt;span style=&#34;color:#e6db74&#34;&gt;/lib/rustlib/&lt;/span&gt;$host&lt;span style=&#34;color:#e6db74&#34;&gt;/bin/lldb&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+    LLDB_VERSION&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$lldb&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --version &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&amp;gt;/dev/null | head -1 | cut -d. -f1&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$LLDB_VERSION&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lldb-350&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+        echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;***&amp;#34;&lt;/span&gt;
+	echo &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;WARNING: This version of LLDB has known issues with Rust and cannot \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;display the contents of local variables!&amp;#34;&lt;/span&gt;
+        echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;***&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Prepare commands that will be loaded before any file on the command line has been loaded&lt;/span&gt;
+script_import&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;command script import \&amp;#34;&lt;/span&gt;$RUSTC_SYSROOT&lt;span style=&#34;color:#e6db74&#34;&gt;/lib/rustlib/etc/lldb_rust_formatters.py\&amp;#34;&amp;#34;&lt;/span&gt;
+category_definition&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type summary add --no-value --python-function lldb_rust_formatters.print_val -x \&amp;#34;.*\&amp;#34; --category Rust&amp;#34;&lt;/span&gt;
+category_enable&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type category enable Rust&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Call LLDB with the commands added to the argument list&lt;/span&gt;
+exec &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$lldb&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --one-line-before-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$script_import&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --one-line-before-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$category_definition&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    --one-line-before-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$category_enable&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When you install rust this bash script gets bundled with cargo:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/rust-lldb-path.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Not let us run our summation binary executable using rust-lldb like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/rust-lldb-first-run.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let us simply run summation with no arguments:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/lldb-run-no-args.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we get 0 since we didn&amp;rsquo;t provide any arguments.&lt;/p&gt;
+
+&lt;p&gt;Let us re run again no pun intended with args now!&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/run-with-args.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let us run the help on the b command:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/help-break-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now let us set a breakpoint in lldb on line 8 and 13:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/setting-breakpoints-lldb.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that we did it the long and then the short way in lldb.&lt;/p&gt;
+
+&lt;p&gt;We can list the breakpoints in lldb like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/list-breakpoints-lldb.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now let us rerun the main.rs file and notice that the breakpoint is hit on line 8 now!&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/hit-breakpoint-lldb.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let us continue to the next breakpoint typing the c command:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/continue-with-lldb.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let us step into the summation_with_fold function now using lldb using a couple of commands:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/thread-step-into.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can dynamically change the value of a variable in the summation_with_fold function like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/dyn-expr-keyword.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can look at the value of the variable now like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/print-vars.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;The po command stands for print object, p stands for print and frame variable is the current stack frame!&lt;/p&gt;
+
+&lt;p&gt;Next let us step out of the summation_with_fold function now.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/step-out-stack.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let us continue and see the current values:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/current-vars-value.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice how the summation_with_fold has the value 53 that we set dynamically.&lt;/p&gt;
+
+&lt;p&gt;We can unset our breakpoints like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/delete-breakpoint.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;There is a whole more you can do with lldb and please read the official &lt;a href=&#34;https://lldb.llvm.org/tutorial.html&#34; target=&#34;_blank&#34;&gt;lldb documentation for more&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Writing Rust Commandline Applications</title>
+      <link>https://www.marcelbelmont.com/talk/writing-rust-commandline-apps/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/writing-rust-commandline-apps/</guid>
+      <description>&lt;p&gt;A talk centered on writing command line applications in Rustlang. I showcased how to write unit tests in Rust. I showed to write different types of command line applications and how to debug them using rust-lldb and more.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Tips and Tricks With Mongodb Part 2</title>
       <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</link>
       <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>
@@ -2665,642 +2927,6 @@ script:
 &lt;p&gt;If you would like to look at the &lt;a href=&#34;https://github.com/jbelmont/cucumber-examples&#34; target=&#34;_blank&#34;&gt;Cucumber Examples Repo Go Here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Tips and Tricks with Golang</title>
-      <link>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</link>
-      <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</guid>
-      <description>
-
-&lt;h1 id=&#34;in-this-blog-post-i-go-over-tips-and-tricks-with-golang&#34;&gt;In this Blog Post I go over Tips and Tricks with Golang&lt;/h1&gt;
-
-&lt;p&gt;Make sure to have &lt;a href=&#34;https://golang.org/dl/&#34; target=&#34;_blank&#34;&gt;Golang Installed&lt;/a&gt; and you have the &lt;code&gt;GOPATH&lt;/code&gt; variable set.&lt;/p&gt;
-
-&lt;p&gt;Set your &lt;code&gt;GOPATH&lt;/code&gt; variable in Mac OS X by setting it in &lt;code&gt;~/.bashrc, ~/.zshrc&lt;/code&gt; etc&lt;/p&gt;
-
-&lt;p&gt;Add the following entry to your &lt;code&gt;.zshrc&lt;/code&gt;: &lt;code&gt;export GOPATH=$HOME/go&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Run &lt;code&gt;source ~/.zshrc&lt;/code&gt; to get the environment variable set in your current shell process.&lt;/p&gt;
-
-&lt;p&gt;Once golang is installed run the following command to see what is set:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go env
-GOARCH=&amp;quot;amd64&amp;quot;
-GOBIN=&amp;quot;&amp;quot;
-GOCACHE=&amp;quot;/Users/jean-marcelbelmont/Library/Caches/go-build&amp;quot;
-GOEXE=&amp;quot;&amp;quot;
-GOHOSTARCH=&amp;quot;amd64&amp;quot;
-GOHOSTOS=&amp;quot;darwin&amp;quot;
-GOOS=&amp;quot;darwin&amp;quot;
-GOPATH=&amp;quot;/Users/jean-marcelbelmont/go&amp;quot;
-GORACE=&amp;quot;&amp;quot;
-GOROOT=&amp;quot;/usr/local/Cellar/go/1.10/libexec&amp;quot;
-GOTMPDIR=&amp;quot;&amp;quot;
-GOTOOLDIR=&amp;quot;/usr/local/Cellar/go/1.10/libexec/pkg/tool/darwin_amd64&amp;quot;
-GCCGO=&amp;quot;gccgo&amp;quot;
-CC=&amp;quot;clang&amp;quot;
-CXX=&amp;quot;clang++&amp;quot;
-CGO_ENABLED=&amp;quot;1&amp;quot;
-CGO_CFLAGS=&amp;quot;-g -O2&amp;quot;
-CGO_CPPFLAGS=&amp;quot;&amp;quot;
-CGO_CXXFLAGS=&amp;quot;-g -O2&amp;quot;
-CGO_FFLAGS=&amp;quot;-g -O2&amp;quot;
-CGO_LDFLAGS=&amp;quot;-g -O2&amp;quot;
-PKG_CONFIG=&amp;quot;pkg-config&amp;quot;
-GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/g6/jldtb40j5vvfxtjmg0f5nt4h0000gp/T/go-build176900775=/tmp/go-build -gno-record-gcc-switches -fno-common&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice I have set my &lt;code&gt;GOPATH&lt;/code&gt; but there is some other defaults that are set.&lt;/p&gt;
-
-&lt;h2 id=&#34;using-go-docs&#34;&gt;Using Go Docs&lt;/h2&gt;
-
-&lt;p&gt;You can easily go into docs for any GO package by doing the following:&lt;/p&gt;
-
-&lt;p&gt;One trick that I do is that I copy the import statement in my editor like this:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/goimport.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Once you have that copied you just do the following:&lt;/p&gt;
-
-&lt;p&gt;Type &lt;code&gt;godoc.org/&lt;/code&gt; into a browser window and paste the package into the URL:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/gourl.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Now this takes straight you straight to the documentation for this package.&lt;/p&gt;
-
-&lt;p&gt;Now for a protip type &lt;code&gt;?&lt;/code&gt; in the documentation page and get a help context menu like this:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/gohelpmenu.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Assuming that you know what functions/methods you can easily jump to them by pressing &lt;code&gt;f&lt;/code&gt; in your keyboard:&lt;/p&gt;
-
-&lt;p&gt;Press &lt;code&gt;f&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/gofindmenu.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;In this example just type &lt;code&gt;WithStack&lt;/code&gt; and you can jump straight to the &lt;code&gt;WithStack&lt;/code&gt; function.&lt;/p&gt;
-
-&lt;p&gt;You can also go into your terminal and see the documentation by doing the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;go doc fmt.Printf&lt;/code&gt; ==&amp;gt; This command gives you the docs for &lt;code&gt;fmt.Printf&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;sharing-go-code&#34;&gt;Sharing Go Code&lt;/h2&gt;
-
-&lt;p&gt;You can easily share your go code with others by going to either the &lt;a href=&#34;https://play.golang.org/&#34; target=&#34;_blank&#34;&gt;Go Playground&lt;/a&gt; or &lt;a href=&#34;https://goplay.space/&#34; target=&#34;_blank&#34;&gt;Go Play&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;create-your-own-custom-assert-test-function&#34;&gt;Create your own custom assert test function&lt;/h2&gt;
-
-&lt;p&gt;Here is a sample test file from my &lt;a href=&#34;https://github.com/jbelmont/api-workshop/blob/master/internal/hero/hero_test.go&#34; target=&#34;_blank&#34;&gt;api-workshop&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;...
-// TestCreateInsertsProperly validates users can be created in the database.
-func TestCreateInsertHero(t *testing.T) {
-	// Insert User
-	heroInfo := heroInfo()
-	// Translate CreateProduct to Product in order to assert result.
-	cuBytes, _ := json.Marshal(heroInfo.hero)
-	var exH hero.Hero
-	json.Unmarshal(cuBytes, &amp;amp;exH)
-	h, err := hero.Create(ctx, masterDB, &amp;amp;heroInfo.hero)
-	if err != nil {
-		t.Fatalf(&amp;quot;Should be able to create a hero : %s.&amp;quot;, err)
-	}
-	if !h.ID.Valid() {
-		t.Errorf(&amp;quot;Should generate valid Hero ID, got: %s&amp;quot;, h.ID)
-	}
-	assertEqualUsers(&amp;amp;exH, h, t)
-
-	// Test the user context value
-	ctxValues := ctx.Value(apiContext.KeyValues).(*apiContext.Values)
-	HeroID := bson.ObjectIdHex(ctxValues.ID).Hex()
-	if *h.CreatedByID != HeroID {
-		t.Errorf(&amp;quot;Should create a user by userID: %s, got: %s&amp;quot;, HeroID, *h.CreatedByID)
-	}
-}
-
-func assertEqualUsers(actual *hero.Hero, expected *hero.Hero, t *testing.T) {
-	if actual.Name != expected.Name {
-		t.Errorf(&amp;quot;Should create hero Name: %s, but got: %s&amp;quot;, expected.Name, actual.Name)
-	}
-}
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you familiar with XUnit style assertions you can just write your own using a function in Golang.&lt;/p&gt;
-
-&lt;h2 id=&#34;go-tooling&#34;&gt;Go Tooling&lt;/h2&gt;
-
-&lt;p&gt;You can easily discover the go tooling by typing &lt;code&gt;go help&lt;/code&gt; in your terminal&lt;/p&gt;
-
-&lt;p&gt;If you like this Blog Post please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A quick look at the Elastic Stack</title>
-      <link>https://www.marcelbelmont.com/post/elk-stack-getting-started/</link>
-      <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/elk-stack-getting-started/</guid>
-      <description>
-
-&lt;h1 id=&#34;elastic-search-logstash-and-kibana&#34;&gt;Elastic Search, Logstash and Kibana&lt;/h1&gt;
-
-&lt;p&gt;This quick post will get you up and running with the elk stack.&lt;/p&gt;
-
-&lt;p&gt;Please clone my github repository where the scripts I created live and so that you can follow along with the post.&lt;/p&gt;
-
-&lt;p&gt;Go to &lt;a href=&#34;https://github.com/jbelmont/elkstack-practice&#34; target=&#34;_blank&#34;&gt;Elkstack Practice&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you want to generate movies.json then do the following command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;go run main.go &amp;gt; movies.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If you want to generate tags.json then do the following command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cd tags; go run main.go &amp;gt; tag.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Install elasticsearch via homebrew:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install elasticsearch
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Install kibana via homebrew:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install kibana
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Install logstash via homebrew:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install logstash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Make sure that all the services are up and running:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew services start kibana
-brew services start elasticsearch
-brew services start logstash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should see all the services up and running:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew services list
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Make sure that the elastic stack is up and running:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET 127.0.0.1:9200
-{
-  &amp;quot;name&amp;quot; : &amp;quot;M43AiJz&amp;quot;,
-  &amp;quot;cluster_name&amp;quot; : &amp;quot;elasticsearch_jean-marcelbelmont&amp;quot;,
-  &amp;quot;cluster_uuid&amp;quot; : &amp;quot;8dHbumffQ3iAOUU32Sx1Jw&amp;quot;,
-  &amp;quot;version&amp;quot; : {
-    &amp;quot;number&amp;quot; : &amp;quot;6.2.2&amp;quot;,
-    &amp;quot;build_hash&amp;quot; : &amp;quot;10b1edd&amp;quot;,
-    &amp;quot;build_date&amp;quot; : &amp;quot;2018-02-16T19:01:30.685723Z&amp;quot;,
-    &amp;quot;build_snapshot&amp;quot; : false,
-    &amp;quot;lucene_version&amp;quot; : &amp;quot;7.2.1&amp;quot;,
-    &amp;quot;minimum_wire_compatibility_version&amp;quot; : &amp;quot;5.6.0&amp;quot;,
-    &amp;quot;minimum_index_compatibility_version&amp;quot; : &amp;quot;5.0.0&amp;quot;
-  },
-  &amp;quot;tagline&amp;quot; : &amp;quot;You Know, for Search&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can see all the indices available with the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET 127.0.0.1:9200/_cat/indices?v
-health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
-yellow open   logstash-2017.05.04             hfY9yL1vTt-IQGE8G591VQ   5   1      16762            0      7.1mb          7.1mb
-green  open   .monitoring-es-6-2018.03.18     FWPFXqVBTWmt84HfT4-_Pw   1   0       9903            0      5.7mb          5.7mb
-yellow open   logstash-2017.05.02             T6DtDxYJQEm_rwaXg_YLfA   5   1      16278            0        7mb            7mb
-green  open   .monitoring-kibana-6-2018.03.18 -tr0EU_0T16tskWdvbGBmg   1   0        314            0    197.5kb        197.5kb
-green  open   .triggered_watches              zcs8Nqi2SQ6sUVI2TsBTUg   1   0          0            0     16.2kb         16.2kb
-yellow open   app                             oRwQ4n5aSOqFZ_sWPg_iuA   5   1          1            0      5.4kb          5.4kb
-yellow open   tags                            CY18aLQuQt-VsLZDce2kZw   5   1       1296            0    342.4kb        342.4kb
-yellow open   movies                          141JB-VbTxylwb6IFP6JKA   5   1       9125            0      1.3mb          1.3mb
-yellow open   logstash-2017.04.30             TH83PAHZTL6utR_wgxXU9A   5   1      14166            0      6.3mb          6.3mb
-yellow open   ratings                         4QXKvkNsTmGVayapswxwcA   5   1     100004            0     13.4mb         13.4mb
-green  open   .watches                        XMyhvohjTiSj1sG-ek97nw   1   0          6            0     33.3kb         33.3kb
-yellow open   logstash-2017.05.01             8Cs8mEyXSuW_jTQXdUXubg   5   1      15948            0      6.9mb          6.9mb
-yellow open   logs                            lXA5H-V_QSOrySGg6r6R1Q   5   1          1            0      5.8kb          5.8kb
-yellow open   logstash-2017.05.05             e1hwj1ddQDK69ZmKaRFi5A   5   1      18646            0      7.7mb          7.7mb
-yellow open   testindex                       RaI2XDStSBqDEz-jgl-5RQ   3   1          0            0       783b           783b
-green  open   .watcher-history-7-2018.03.18   mfe3zaV3Qvib5XLPBA1W0A   1   0        502            0    730.4kb        730.4kb
-green  open   .monitoring-alerts-6            IdSXd-D9RNqlGYXcWThGiA   1   0          1            0      6.1kb          6.1kb
-yellow open   shakespeare                     EjHjJW8WTpCe4ZyeOhAJXA   5   1     111396            0     21.6mb         21.6mb
-green  open   .kibana                         aZ2Fhv-PSsOf5BUTlDdhkw   1   0        143            1    142.5kb        142.5kb
-yellow open   logstash-2017.05.03             nklpkzxxSRCWOL990fD2Qg   5   1      21172            0      9.3mb          9.3mb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can tell there is a list of indices here&lt;/p&gt;
-
-&lt;p&gt;We will add some movies via the go script I created:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X PUT -H &amp;quot;Content-Type: application/json&amp;quot; 127.0.0.1:9200/_bulk?pretty --data-binary @movies.json
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This imports movies json file into elastic&lt;/p&gt;
-
-&lt;p&gt;Here we will create a new movie entry to movie index:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X POST -H &amp;quot;Content-Type: application/json&amp;quot; 127.0.0.1:9200/movies/movie/180895/_update -d &#39;
-{
-  &amp;quot;doc&amp;quot; : {
-    &amp;quot;title&amp;quot;: &amp;quot;BoneHead Man&amp;quot;
-  }
-}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is an example of using filters in elastic search:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-curl&#34;&gt;curl -X GET -H &#39;Content-Type: application/json&#39; &#39;127.0.0.1:9200/logstash-2017.05.04/_search?size=0&amp;amp;pretty&#39; -d &#39;
-{
-  &amp;quot;query&amp;quot;: {
-    &amp;quot;match&amp;quot;: {
-    &amp;quot;agent&amp;quot;: &amp;quot;Googlebot&amp;quot;
-   }
-},
-  &amp;quot;aggs&amp;quot;: {
-    &amp;quot;timestamp&amp;quot;: {
-      &amp;quot;date_histogram&amp;quot;: {
-        &amp;quot;field&amp;quot;: &amp;quot;@timestamp&amp;quot;, &amp;quot;interval&amp;quot;: &amp;quot;minute&amp;quot;
-      }
-    }
-  }
-}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This query will query and match via a user agent of &lt;code&gt;Googlebot&lt;/code&gt; and will do an aggregation based on timestamp and use an interval of a minute&lt;/p&gt;
-
-&lt;p&gt;Instead of using &lt;code&gt;curl&lt;/code&gt; you can use the Kibana Dashboard to help you do both queries and create indices and list indices and much more&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/kibana-dev-tools.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that I clicked on the &lt;code&gt;Dev Tools&lt;/code&gt; tab.&lt;/p&gt;
-
-&lt;p&gt;You get autocomplete functionality in the Dev tools and many other features.&lt;/p&gt;
-
-&lt;p&gt;You can add more functionality to elastic search by installing the x-pack and you can do the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;elasticsearch-plugin install x-pack&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Here are some more recommended plugins to install:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;elasticsearch-plugin install ingest-user-agent&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;elasticsearch-plugin install ingest-geoip&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is a copy of my &lt;code&gt;elasticsearch.yml&lt;/code&gt; configuration file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ======================== Elasticsearch Configuration =========================
-#
-# NOTE: Elasticsearch comes with reasonable defaults for most settings.
-#       Before you set out to tweak and tune the configuration, make sure you
-#       understand what are you trying to accomplish and the consequences.
-#
-# The primary way of configuring a node is via this file. This template lists
-# the most important settings you may want to configure for a production cluster.
-#
-# Please consult the documentation for further information on configuration options:
-# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
-#
-# ---------------------------------- Cluster -----------------------------------
-#
-# Use a descriptive name for your cluster:
-#
-cluster.name: elasticsearch_jean-marcelbelmont
-#
-# ------------------------------------ Node ------------------------------------
-#
-# Use a descriptive name for the node:
-#
-node.name: node-1
-#
-# Add custom attributes to the node:
-#
-#node.attr.rack: r1
-#
-# ----------------------------------- Paths ------------------------------------
-#
-# Path to directory where to store the data (separate multiple locations by comma):
-#
-path.data: /usr/local/var/lib/elasticsearch/
-#
-# Path to log files:
-#
-path.logs: /usr/local/var/log/elasticsearch/
-#
-# ----------------------------------- Memory -----------------------------------
-#
-# Lock the memory on startup:
-#
-#bootstrap.memory_lock: true
-#
-# Make sure that the heap size is set to about half the memory available
-# on the system and that the owner of the process is allowed to use this
-# limit.
-#
-# Elasticsearch performs poorly when the system is swapping the memory.
-#
-# ---------------------------------- Network -----------------------------------
-#
-# Set the bind address to a specific IP (IPv4 or IPv6):
-#
-#network.host: 192.168.0.1
-#
-# Set a custom port for HTTP:
-#
-#http.port: 9200
-#
-# For more information, consult the network module documentation.
-#
-# --------------------------------- Discovery ----------------------------------
-#
-# Pass an initial list of hosts to perform discovery when new node is started:
-# The default list of hosts is [&amp;quot;127.0.0.1&amp;quot;, &amp;quot;[::1]&amp;quot;]
-#
-#discovery.zen.ping.unicast.hosts: [&amp;quot;host1&amp;quot;, &amp;quot;host2&amp;quot;]
-#
-# Prevent the &amp;quot;split brain&amp;quot; by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
-#
-#discovery.zen.minimum_master_nodes: 
-#
-# For more information, consult the zen discovery module documentation.
-#
-# ---------------------------------- Gateway -----------------------------------
-#
-# Block initial recovery after a full cluster restart until N nodes are started:
-#
-#gateway.recover_after_nodes: 3
-#
-# For more information, consult the gateway module documentation.
-#
-# ---------------------------------- Various -----------------------------------
-#
-# Require explicit names when deleting indices:
-#
-#action.destructive_requires_name: true
-
-xpack.security.enabled: false
-
-node.max_local_storage_nodes: 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should also consider adding filebeat to the elastic search and you can add it with the following command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;brew install filebeat&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is my configuration file for &lt;code&gt;filebeat.yml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;###################### Filebeat Configuration Example #########################
-
-# This file is an example configuration file highlighting only the most common
-# options. The filebeat.reference.yml file from the same directory contains all the
-# supported options with more comments. You can use it as a reference.
-#
-# You can find the full configuration reference here:
-# https://www.elastic.co/guide/en/beats/filebeat/index.html
-
-# For more available modules and options, please see the filebeat.reference.yml sample
-# configuration file.
-
-#=========================== Filebeat prospectors =============================
-
-filebeat.prospectors:
-
-# Each - is a prospector. Most options can be set at the prospector level, so
-# you can use different prospectors for various configurations.
-# Below are the prospector specific configurations.
-
-- type: log
-
-  # Change to true to enable this prospector configuration.
-  enabled: false
-
-  # Paths that should be crawled and fetched. Glob based paths.
-  paths:
-    - /var/log/*.log
-    #- c:\programdata\elasticsearch\logs\*
-
-  # Exclude lines. A list of regular expressions to match. It drops the lines that are
-  # matching any regular expression from the list.
-  #exclude_lines: [&#39;^DBG&#39;]
-
-  # Include lines. A list of regular expressions to match. It exports the lines that are
-  # matching any regular expression from the list.
-  #include_lines: [&#39;^ERR&#39;, &#39;^WARN&#39;]
-
-  # Exclude files. A list of regular expressions to match. Filebeat drops the files that
-  # are matching any regular expression from the list. By default, no files are dropped.
-  #exclude_files: [&#39;.gz$&#39;]
-
-  # Optional additional fields. These fields can be freely picked
-  # to add additional information to the crawled log files for filtering
-  #fields:
-  #  level: debug
-  #  review: 1
-
-  ### Multiline options
-
-  # Mutiline can be used for log messages spanning multiple lines. This is common
-  # for Java Stack Traces or C-Line Continuation
-
-  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
-  #multiline.pattern: ^\[
-
-  # Defines if the pattern set under pattern should be negated or not. Default is false.
-  #multiline.negate: false
-
-  # Match can be set to &amp;quot;after&amp;quot; or &amp;quot;before&amp;quot;. It is used to define if lines should be append to a pattern
-  # that was (not) matched before or after or as long as a pattern is not matched based on negate.
-  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
-  #multiline.match: after
-
-
-#============================= Filebeat modules ===============================
-
-filebeat.config.modules:
-  # Glob pattern for configuration loading
-  path: ${path.config}/modules.d/*.yml
-
-  # Set to true to enable config reloading
-  reload.enabled: false
-
-  # Period on which files under path should be checked for changes
-  #reload.period: 10s
-
-#==================== Elasticsearch template setting ==========================
-
-setup.template.settings:
-  index.number_of_shards: 3
-  #index.codec: best_compression
-  #_source.enabled: false
-
-#================================ General =====================================
-
-# The name of the shipper that publishes the network data. It can be used to group
-# all the transactions sent by a single shipper in the web interface.
-#name:
-
-# The tags of the shipper are included in their own field with each
-# transaction published.
-#tags: [&amp;quot;service-X&amp;quot;, &amp;quot;web-tier&amp;quot;]
-
-# Optional fields that you can specify to add additional information to the
-# output.
-#fields:
-#  env: staging
-
-
-#============================== Dashboards =====================================
-# These settings control loading the sample dashboards to the Kibana index. Loading
-# the dashboards is disabled by default and can be enabled either by setting the
-# options here, or by using the `-setup` CLI flag or the `setup` command.
-#setup.dashboards.enabled: false
-
-# The URL from where to download the dashboards archive. By default this URL
-# has a value which is computed based on the Beat name and version. For released
-# versions, this URL points to the dashboard archive on the artifacts.elastic.co
-# website.
-#setup.dashboards.url:
-
-#============================== Kibana =====================================
-
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
-setup.kibana:
-
-  # Kibana Host
-  # Scheme and port can be left out and will be set to the default (http and 5601)
-  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
-  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: &amp;quot;localhost:5601&amp;quot;
-
-#============================= Elastic Cloud ==================================
-
-# These settings simplify using filebeat with the Elastic Cloud (https://cloud.elastic.co/).
-
-# The cloud.id setting overwrites the `output.elasticsearch.hosts` and
-# `setup.kibana.host` options.
-# You can find the `cloud.id` in the Elastic Cloud web UI.
-#cloud.id:
-
-# The cloud.auth setting overwrites the `output.elasticsearch.username` and
-# `output.elasticsearch.password` settings. The format is `&amp;lt;user&amp;gt;:&amp;lt;pass&amp;gt;`.
-#cloud.auth:
-
-#================================ Outputs =====================================
-
-# Configure what output to use when sending the data collected by the beat.
-
-#-------------------------- Elasticsearch output ------------------------------
-output.elasticsearch:
-  # Array of hosts to connect to.
-  hosts: [&amp;quot;localhost:9200&amp;quot;]
-
-  # Optional protocol and basic auth credentials.
-  #protocol: &amp;quot;https&amp;quot;
-  #username: &amp;quot;elastic&amp;quot;
-  #password: &amp;quot;changeme&amp;quot;
-
-#----------------------------- Logstash output --------------------------------
-#output.logstash:
-  # The Logstash hosts
-  #hosts: [&amp;quot;localhost:5044&amp;quot;]
-
-  # Optional SSL. By default is off.
-  # List of root certificates for HTTPS server verifications
-  #ssl.certificate_authorities: [&amp;quot;/etc/pki/root/ca.pem&amp;quot;]
-
-  # Certificate for SSL client authentication
-  #ssl.certificate: &amp;quot;/etc/pki/client/cert.pem&amp;quot;
-
-  # Client Certificate Key
-  #ssl.key: &amp;quot;/etc/pki/client/cert.key&amp;quot;
-
-#================================ Logging =====================================
-
-# Sets log level. The default log level is info.
-# Available log levels are: error, warning, info, debug
-#logging.level: debug
-
-# At debug level, you can selectively enable logging only for some components.
-# To enable all selectors use [&amp;quot;*&amp;quot;]. Examples of other selectors are &amp;quot;beat&amp;quot;,
-# &amp;quot;publish&amp;quot;, &amp;quot;service&amp;quot;.
-#logging.selectors: [&amp;quot;*&amp;quot;]
-
-#============================== Xpack Monitoring ===============================
-# filebeat can export internal metrics to a central Elasticsearch monitoring
-# cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The
-# reporting is disabled by default.
-
-# Set to true to enable the monitoring reporter.
-#xpack.monitoring.enabled: false
-
-# Uncomment to send the metrics to Elasticsearch. Most settings from the
-# Elasticsearch output are accepted here as well. Any setting that is not set is
-# automatically inherited from the Elasticsearch output configuration, so if you
-# have the Elasticsearch output configured, you can simply uncomment the
-# following line.
-#xpack.monitoring.elasticsearch:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will also need to configure &lt;code&gt;logstash.conf&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;p&gt;Here is my configuration file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;input {
-	file {
-		path =&amp;gt; &amp;quot;/Users/jean-marcelbelmont/elk/access_log&amp;quot;
-		start_position =&amp;gt; &amp;quot;beginning&amp;quot;
-		ignore_older =&amp;gt; 0
-	}
-}
-
-filter {
-	grok {
-		match =&amp;gt; { &amp;quot;message&amp;quot; =&amp;gt; &amp;quot;%{COMBINEDAPACHELOG}&amp;quot; }
-	}
-	date {
-		match =&amp;gt; [ &amp;quot;timestamp&amp;quot;, &amp;quot;dd/MMM/yyyy:HH:mm:ss Z&amp;quot; ]
-	}
-}
-
-output {
-	elasticsearch {
-		hosts =&amp;gt; [ &amp;quot;localhost:9200&amp;quot; ]
-	}
-	stdout {
-		codec =&amp;gt; rubydebug
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here I spin up logstash with my configuration file: &lt;code&gt;sudo logstash -f /etc/logstash/conf.d/logstash.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;I would highly suggest you check out &lt;a href=&#34;https://www.udemy.com/elasticsearch-6-and-elastic-stack-in-depth-and-hands-on&#34; target=&#34;_blank&#34;&gt;Frank Kanes Udemy Course on the Elastic Stack&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you like this post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @github&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
