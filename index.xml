@@ -252,6 +252,37 @@ exec &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$lldb&lt;sp
 &lt;/figure&gt;
 
 
+&lt;h2 id=&#34;using-help-in-lldb&#34;&gt;Using help in lldb&lt;/h2&gt;
+
+&lt;p&gt;You can find about the available command in lldb by running help:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/lldb-debugger-help.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;You can also get help on each particular command by running help like:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;help subcommand&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/lldb-help-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Some commands have subcommands like the breakpoint command which you can get help on:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/lldb-subcommand-help.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Some commands have aliases that you can run like b for breakpoint and more.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A great feature of the lldb debugger is that there is autocomplete that you can invoke by simply pressing the tab character&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;All in all I would say rust-lldb is a great addition to debugging rust programs.&lt;/p&gt;
+
 &lt;p&gt;There is a whole more you can do with lldb and please read the official &lt;a href=&#34;https://lldb.llvm.org/tutorial.html&#34; target=&#34;_blank&#34;&gt;lldb documentation for more&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
