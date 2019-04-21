@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Papers We Love on Software Musings</title>
+    <title>papers-we-love on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/papers-we-love/</link>
-    <description>Recent content in Papers We Love on Software Musings</description>
+    <description>Recent content in papers-we-love on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>

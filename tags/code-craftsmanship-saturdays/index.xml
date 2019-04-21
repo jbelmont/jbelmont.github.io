@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code Craftsmanship Saturdays on Software Musings</title>
+    <title>code-craftsmanship-saturdays on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</link>
-    <description>Recent content in Code Craftsmanship Saturdays on Software Musings</description>
+    <description>Recent content in code-craftsmanship-saturdays on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,10 +18,7 @@
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/project/code_craftsmanship_saturdays/</guid>
-      <description>Code Craftsmanship Saturdays  Code Craftsmanship Saturdays is a meetup group where people can learn and practice both new and old technologies in an informal environment.
- People learn best when paired in groups where they can share different ideas, thoughts, and approaches to problems.
- This group is heavily influenced from the Node School Organization, but is intended to be more generic in content.
- This code retreat is about practice, not about delivering a product on a deadline.</description>
+      <description>A Meetup based on the Code Retreat Model</description>
     </item>
     
   </channel>

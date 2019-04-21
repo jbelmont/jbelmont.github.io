@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 09:38:33 -0400</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Patches in Software</title>
+      <link>https://www.marcelbelmont.com/post/using-patches-in-git/</link>
+      <pubDate>Sun, 21 Apr 2019 09:38:33 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/using-patches-in-git/</guid>
+      <description>Software Patches can be used in different contexts.</description>
+    </item>
     
     <item>
       <title>Debugging Rust With Lldb</title>
@@ -18,11 +27,7 @@
       <pubDate>Tue, 26 Mar 2019 19:25:45 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/debugging-rust-with-lldb/</guid>
-      <description>In this blog post I go over using lldb with rust and how get setup with lldb on Mac OS X.
-Installing lldb Read the official guide link on installing lldb.
-If you have a Mac then you should already have lldb installed.
-  Notice that lldb reports the version of lldb and the version of swift.
-Various ways of Running Summation Program Let us look at a simple command line rust program that computes the summation provided as input.</description>
+      <description>Debugging Rust with lldb</description>
     </item>
     
     <item>
@@ -31,10 +36,7 @@ Various ways of Running Summation Program Let us look at a simple command line r
       <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</guid>
-      <description>In this second blog post I go over how to loads scripts in the mongo shell and how to automate tasks in mongo shell
-Loading scripts in the Mongo Shell You can load scripts in the mongo shell as long as the mongo shell knows the path.
-Let us get mongodb running with the following bash script:
-#! /bin/bash docker run --name jbelmont-mongo-image-4 \ --rm \ -v ~/mongod_data.4.0.5:/data/db \ -p 27017:27017 \ -v /var/run/docker.</description>
+      <description>Tips and Tricks with Mongo Scripts</description>
     </item>
     
     <item>
@@ -43,9 +45,7 @@ Let us get mongodb running with the following bash script:
       <pubDate>Sat, 16 Feb 2019 10:59:02 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</guid>
-      <description>In this blog post I go over some tips and tricks with bash and cover some of the newer features in bash such as associative arrays which are available in Bash 4.
-Using Bash History features A lot of people know about hitting the up and down keys in their keyboard to access history but you can also utilize the !! operator to access history in bash.
-Say that we run the following command:</description>
+      <description>Tips and Tricks With Bash</description>
     </item>
     
     <item>
@@ -54,11 +54,7 @@ Say that we run the following command:</description>
       <pubDate>Sat, 12 Jan 2019 16:46:47 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</guid>
-      <description>In this blog post I go over some tips and tricks with MongoDB and focus on using the mongodbshell.
-What is MongoDB MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
-Installing MongoDB MongoDB is released as two editions: Community and Enterprise.
-Community is the open source release of MongoDB.
-Enterprise provides additional administration, authentication, and monitoring features.</description>
+      <description>A list of Tips and Tricks with MongoDB</description>
     </item>
     
     <item>
@@ -67,11 +63,7 @@ Enterprise provides additional administration, authentication, and monitoring fe
       <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</guid>
-      <description>Reverse Engineering What is Reverse Engineering?
-According to Wikipedia Reverse Engineering is:
- is the process by which a man-made object is deconstructed to reveal its designs, architecture, or to extract knowledge from the object; similar to scientific research, the only difference being that scientific research is about a natural phenomenon.
- According to the c2Wiki Reverse Engineering is:
- is about presenting a piece of software at a higher level of abstraction.</description>
+      <description>An Introduction to Reverse Engineering</description>
     </item>
     
     <item>
@@ -80,10 +72,7 @@ According to Wikipedia Reverse Engineering is:
       <pubDate>Sun, 11 Nov 2018 21:26:43 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/getting-started-with-latex/</guid>
-      <description>LaTex is a Typesetting system which was designed by Leslie Lamport and derives much of its power from Tex. It can be argued that LaTex is a set of macros.
-Difference between Tex and LaTex TeX is about formatting with document/template designers in mind while LaTeX is all about the content for document writers.
-Please read this stackexchange post for more details
-Why is LaTex useful? You can more fine grain control of the quality of your document by using LaTex.</description>
+      <description>Getting started with Latex</description>
     </item>
     
     <item>
@@ -92,9 +81,7 @@ Why is LaTex useful? You can more fine grain control of the quality of your docu
       <pubDate>Wed, 17 Oct 2018 19:22:45 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/ci-cd-book/</guid>
-      <description>Hands-On Continuous Integration and Delivery There are several terms that are important when trying to learn about Continuous Integration and Continuous Delivery:
-Definition of Automation Automation is essentially any task that is completed without human interaction. Let us say that you manually test a UI feature, if you write a script instead of manually test it than it can be said that you have automated the task.
-Definition of Continuous Integration Continuous Integration can be viewed as a software engineering task where source code is merged and tested in a version controlled project such as Git.</description>
+      <description>Some fresh tips on Hands On Continuous Integration and Delivery Book</description>
     </item>
     
     <item>
@@ -103,11 +90,7 @@ Definition of Continuous Integration Continuous Integration can be viewed as a s
       <pubDate>Sun, 23 Sep 2018 19:09:59 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-vscode-and-chrome/</guid>
-      <description>Editor Tips and Tricks with VS Code Here are some suggested plugins by programming language.
-Golang Extensions Go for Visual Studio Code
-Set &amp;quot;go.useLanguageServer&amp;quot;: true in settings.json to use the Go language server from Sourcegraph for features like Hover, Definition, Find All References, Signature Help, Go to Symbol in File and Workspace.
-GO Language Server
-You will see Analysis Tools Missing in the bottom right, clicking this will offer to install all of the dependent Go tools.</description>
+      <description>Tips and Tricks With VS Code</description>
     </item>
     
     <item>
@@ -116,10 +99,7 @@ You will see Analysis Tools Missing in the bottom right, clicking this will offe
       <pubDate>Sun, 26 Aug 2018 20:30:37 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</guid>
-      <description>In this Blog Post I go over getting started with Rustlang  Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
- Installing Rust in Mac OS X / Linux To install Rust in Linux and Mac OS X run the following command:
-curl https://sh.rustup.rs -sSf | sh  For other installation methods please read the following documentation
-Add the cargo binaries to your path by adding the following entry in ~/.</description>
+      <description>Getting started with Rustlang</description>
     </item>
     
     <item>
@@ -128,7 +108,7 @@ Add the cargo binaries to your path by adding the following entry in ~/.</descri
       <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</guid>
-      <description>Tips and Tricks With Curl and Jq In this blog post we will work with Restful APIs and use jq, which is a command line processor for json. We will use curl to make Rest calls and then use jq to parse the json response into more useful information. By using jq we can do many useful transformation with json such as aggregating data like averages from a json response payload and extracting only the fields that we are interested in working with instead of an entire payload and much more.</description>
+      <description>Tips and Tricks With Curl and Jq</description>
     </item>
     
     <item>
@@ -137,8 +117,7 @@ Add the cargo binaries to your path by adding the following entry in ~/.</descri
       <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/browser-automation/</guid>
-      <description>In this blog post we will look at cypress.io and puppeteer as viable replacements to Selenium WebDriver. Selenium WebDriver is still a good option for writing End to End Tests but over the years some newer libraries have spawned that use Chrome DevTools Protocol or to be more specific use Chrome to UI Tests.
-Selenium WebDriver Selenium WebDriver has been in use for a long while and Selenium WebDriver drives the browser by utilizing an Object Oriented API that is built in Java.</description>
+      <description>End to End Testing with Cypress.io and Puppeteer</description>
     </item>
     
     <item>
@@ -147,9 +126,7 @@ Selenium WebDriver Selenium WebDriver has been in use for a long while and Selen
       <pubDate>Sun, 20 May 2018 15:48:12 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/acceptance-testing/</guid>
-      <description>In this blog post we will define acceptance testing, explain why acceptance testing is important, utilize a library to write acceptance tests in and go over a method called Given When Then in Acceptance Testing, and incorporate acceptance testing into a CI/CD pipeline,.
-Define Acceptance Testing Acceptance Testing
-An acceptance test is a formal description of the behavior of a software product, generally expressed as an example or a usage scenario.</description>
+      <description>Incorporating Automated Acceptance Testing into your CI/CD pipeline</description>
     </item>
     
     <item>
@@ -158,11 +135,7 @@ An acceptance test is a formal description of the behavior of a software product
       <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</guid>
-      <description>In this Blog Post I go over Tips and Tricks with Golang Make sure to have Golang Installed and you have the GOPATH variable set.
-Set your GOPATH variable in Mac OS X by setting it in ~/.bashrc, ~/.zshrc etc
-Add the following entry to your .zshrc: export GOPATH=$HOME/go
-Run source ~/.zshrc to get the environment variable set in your current shell process.
-Once golang is installed run the following command to see what is set:</description>
+      <description>Tips and Tricks with Golang</description>
     </item>
     
     <item>
@@ -171,12 +144,7 @@ Once golang is installed run the following command to see what is set:</descript
       <pubDate>Sun, 18 Mar 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/elk-stack-getting-started/</guid>
-      <description>Elastic Search, Logstash and Kibana This quick post will get you up and running with the elk stack.
-Please clone my github repository where the scripts I created live and so that you can follow along with the post.
-Go to Elkstack Practice
-If you want to generate movies.json then do the following command:
-go run main.go &amp;gt; movies.json
-If you want to generate tags.json then do the following command:</description>
+      <description>This is a quick look at using the Elastic Stack</description>
     </item>
     
     <item>
@@ -185,10 +153,7 @@ If you want to generate tags.json then do the following command:</description>
       <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
-      <description>Restful API Testing API testing is a necessary task to do while building APIs.
-Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
-Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
- GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
+      <description>Restful API Testing</description>
     </item>
     
     <item>
@@ -197,8 +162,7 @@ Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
       <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/agile-patterns/</guid>
-      <description>Table Of Contents:  12 Principles of Agile Manifesto Agile Terminology Sprint Duration Sprint Ceremonies Stories, Tasks and Bugs QA User Acceptance Testing Releases Integration with DevOps Jira Workflow Definition of Ready and Definition of Done  12 Principles of Agile Manifesto  Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
- Welcome changing requirements, even late in development. Agile processes harness change for the customer&amp;rsquo;s competitive advantage.</description>
+      <description>An explanation on Agile Software Development and Sprint Terminology</description>
     </item>
     
     <item>
@@ -207,10 +171,7 @@ Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/page-object-pattern/</guid>
-      <description>Page Objects What are Page Objects? Page Object Blog Post by Martin Fowler
- A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML.
- Page objects are a way to describe UI interactions in your page with application specific terminology instead of HTML specific language.
-This in turn helps you write tests that are more clear and also helps you be more dry (Don&amp;rsquo;t Repeat yourself) because you can reuse your page objects in other acceptance/end-to-end tests</description>
+      <description>A Look at the Page Object Pattern</description>
     </item>
     
     <item>
@@ -219,9 +180,7 @@ This in turn helps you write tests that are more clear and also helps you be mor
       <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</guid>
-      <description>Command Line Applications Building command line applications is a refreshing change to building UIs. In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang
-Node.js CommandLine First off I did not use a commander.js or any third party libraries to make my contrived application. I used vanilla node.js
-&#39;use strict&#39;; const process = require(&#39;process&#39;); const fs = require(&#39;fs&#39;); const lib = require(&#39;.</description>
+      <description>A Look at Golang and Node.js for Command Line applications</description>
     </item>
     
     <item>
@@ -230,7 +189,7 @@ Node.js CommandLine First off I did not use a commander.js or any third party li
       <pubDate>Sun, 24 Sep 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/data-visualization-and-d3/</guid>
-      <description>Data Visualization and D3.js Sections:  What is Data Visualization Types of Visual Diagrams D3 API Docs List of D3 Modules Selections and Data Enter and Append SVG Basic Shapes Scales and Axis Enter and Update Exit and Merge Transitions Force Layout D3 and Vuejs Data Visualization Best Practices General Data Visualization Resources Data Visualization Experts and Companies GitBook Link Github Repo  What is Data Visualization  Data visualization is the presentation of data in a pictorial or graphical format.</description>
+      <description>Data Visualization, D3.js and SVG</description>
     </item>
     
     <item>
@@ -239,7 +198,7 @@ Node.js CommandLine First off I did not use a commander.js or any third party li
       <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-book-review-of-designing-interface-animation/</guid>
-      <description>A Book Review of Designing Interface Animation  The Case for animation  Why you can&amp;rsquo;t ignore animation You Already know more about animation than you think Modern Principles of Interactive Animation  Using Animation to Solve Design Problems  Using Animation to Orient and Give Context Using Animation to Direct Focus and Attention Using Animation to Show Cause and Effect Using Animation for Feedback Using Animation to Demonstrate Using Animation to Express Your Brand  Animation in Your Work and Process  Where Animation Fits in your Design Process Prototyping Your Animation Ideas Animating Responsibly  Purchase Designing Interface Animation  The Case for animation PART I</description>
+      <description>A Book Review of Designing Interface Animation</description>
     </item>
     
     <item>
@@ -248,7 +207,7 @@ Node.js CommandLine First off I did not use a commander.js or any third party li
       <pubDate>Wed, 06 Sep 2017 14:41:25 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/concepts-in-single-sign-on-using-jwt-and-saml/</guid>
-      <description>Authentication, Authorization, Oauth, SAML  Basic Authentication with HTTP Digest Schemes Single Sign-On with Oauth and SAML Oauth Security Assertion Markup Language Repo Details  Basic Authentication with HTTP  &amp;ldquo;HTTP/1.0&amp;rdquo;, includes the specification for a Basic Access Authentication scheme. This scheme is not considered to be a secure method of user authentication (unless used in conjunction with some external secure system such as SSL [5]), as the user name and password are passed over the network as cleartext.</description>
+      <description></description>
     </item>
     
     <item>
@@ -257,9 +216,7 @@ Node.js CommandLine First off I did not use a commander.js or any third party li
       <pubDate>Thu, 31 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/software-testing/</guid>
-      <description>Unit Testing Integration Testing Test-Driven Development Behavior-Driven Development End-to-End Testing Mocking Test Fixtures Property Based Testing  Unit Testing To view lecture notes for this course, please consult the github-pages.
-Rediscovery of TDD
-Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.test.js and go to each TODO block. 3. Complete each todo block by adding unit tests. 4. Please run the following script to npm run unit:test in order to do the unit test exercises</description>
+      <description>Software Testing Foundations</description>
     </item>
     
     <item>
@@ -268,7 +225,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</guid>
-      <description>Growing Object Oriented Software Guided By Tests  What is the Point of Test-Driven Development Test-Driven Development with Objects An Introduction to the Tools Kick-Starting the Test-Driven Cycle Maintaining The Test-Driven Cycle Object-Oriented Style Achieving Object-Oriented Design Building on Third-Party Code Commissioning on Auction Sniper The Walking Skeleton Passing the First Test Chapters 12 to 18 Sniping for Multiple Items Teasing apart Main Filling in the Details Listening to the Tests Test Readability Constructing Complex Test Data Test Diagnostics Test Flexibility Chapters 25 to 27  What is the Point of Test-Driven Development  Feedback is the most fundamental tool at our disposal TDD is a practice that supports change You should never write new functionality without a failing test.</description>
+      <description>Growing Object-Oriented Software, Guided by Tests</description>
     </item>
     
     <item>
@@ -277,7 +234,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/software-security/</guid>
-      <description>Software Security  Difference between Software Security and Application Security  Language-Based Security  Objectives of Language Based Security  Application Level Security  Definition Terms Techniques Application threats or attacks  OWASP  Background on OWASP OWASP Core Values OWASP Principles OWASP Mailing Lists OWASP Chapter OWASP Membership OWASP Projects OWASP Github Organization OWASP Member Portal OWASP Top 10 OWASP Top 10 comparsion table for 2013 vs 2017  Github Repository  Software Security  Software security entails software that continues to function correctly under malicious attack.</description>
+      <description>Deep Dive into OWASP Top 10 and Software Security</description>
     </item>
     
     <item>
@@ -286,8 +243,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</guid>
-      <description>Design Like a Pro Review This is a review of Mark Miller&amp;rsquo;s Course (Design Like a Pro)
- Interesting Points of the Course What was surprising What Mark Miller did well What could have been done better Purchase the Course  Interesting Points of the Course  An interesting fact of the course is how much proximity plays a role with UI. If elements of a UI are placed in close proximity, users typically assume they are related  So if you should group related items in a UI in close proximity</description>
+      <description>Design Like a Pro</description>
     </item>
     
     <item>
@@ -296,7 +252,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/caching-and-memoization/</guid>
-      <description>Caching What Is Caching?  Caching is the term for storing reusable responses in order to make subsequent requests faster. There are different types of caching available. Application caches and memory caches are both popular for their ability to speed up certain responses.  Types of Cache  Disk cache: The page cache in main memory is managed by the operating system kernel. Web cache Memoization  A cache can store data that is computed on demand rather than retrieved from a backing store.</description>
+      <description>Deep Dive into Caching, Memoization and Redis.</description>
     </item>
     
     <item>
@@ -305,8 +261,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</guid>
-      <description>The Science of Great UI Review This repository is a review of Mark Miller&amp;rsquo;s Course (The Science of Great UI)
- Introduction Converting Light into Understanding Certainty, Ambiguity, Context Grouping Symbols Cognitive Load Granularity Visual Search Background and Foreground (part 1) Noise, Weak Signal, and Clarity Recognition vs. Recall, Orienteering, and Paths Responsiveness &amp;amp; The Feedback Loop Discoverability Wrapping Up Efficiency in Thought and Motion Resources Personal Thoughts Purchase the Course  Introduction  Mark Miller discusses high level concepts that the course will review Miller also talks about a concept called Dark Design patterns very briefly  Converting Light into Understanding  Interesting facts about the eye and brain are discussed The fovea is responsible for sharp central vision (also called foveal vision)  Necessary in humans for activities where visual detail is of primary importance, such as reading and driving  Rods in Human eye  120 Million  Cones in Human eye  7 million  Fovea and rapid eye movement help make a visual field   Most of what we think is true is a series of shortcuts designed to keep us alive</description>
+      <description>Science of Great UI.</description>
     </item>
     
     <item>
@@ -315,7 +270,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Mon, 10 Apr 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/no_silver_bullet/</guid>
-      <description>No Silver Bullet Essence and Accident in Software Engineering Table of Contents  Introduction Does It Have To Be Hard  Complexity Conformity Changeability Invisibility  Past Breakthroughs Solved Accidental Difficulties  High-level languages Time-sharing Unified programming environments  Hopes for the Silver  Ada and other high-level language advances Object-oriented programming Artificial intelligence Expert systems Automatic programming Graphical Programming Program verification Environments and tools Workstations  Promising Attacks on the Conceptual Essence  Buy versus build Requirements refinement and rapid prototyping Incremental development grow not build software Great designers   Introduction  There is no single development, in either technology or management technique, which by itself promises even one order of magnitude improvement in productivity, in reliability, in simplicity.</description>
+      <description>No Silver Bullet</description>
     </item>
     
     <item>
@@ -324,8 +279,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-design/</guid>
-      <description>The Little Manual of API Design Jasmin Blanchette
-Table of Contents  Introduction Characteristics of Good APIs  Easy to learn and memorize Leads to readable code Hard to misuse Easy to extend Complete  The Design Process  Know the requirements Write use cases before you write any other code Look for similar APIs in the same library Define the API before you implement it Have your peers review your API Write several examples against the API Prepare for extensions Don’t publish internal APIs without review When in doubt, leave it out  Design Guidelines  Choose self-explanatory names and signatures Choose unambiguous names for related things Beware of false consistency Avoid abbreviations Prefer specific names to general names Don&amp;rsquo;t be a slave of an underlying API&amp;rsquo;s naming practices  Semantics  Choose good defaults Avoid making your apis overly clever Pay attention to edge cases Be careful when defining virtual APIs  Structural  Strive for property-based APIs The best API is no API  Bread Crumb Navigation Github Repository  Introduction  An application programming interface, or API, is the set of symbols that are exported and available to the users of a library to write their applications.</description>
+      <description>Little Manual of API Design</description>
     </item>
     
   </channel>

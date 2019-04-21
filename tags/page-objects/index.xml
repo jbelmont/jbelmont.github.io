@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Page Objects on Software Musings</title>
+    <title>page objects on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/page-objects/</link>
-    <description>Recent content in Page Objects on Software Musings</description>
+    <description>Recent content in page objects on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,10 +18,7 @@
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/page-object-pattern/</guid>
-      <description>Page Objects What are Page Objects? Page Object Blog Post by Martin Fowler
- A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML.
- Page objects are a way to describe UI interactions in your page with application specific terminology instead of HTML specific language.
-This in turn helps you write tests that are more clear and also helps you be more dry (Don&amp;rsquo;t Repeat yourself) because you can reuse your page objects in other acceptance/end-to-end tests</description>
+      <description>A Look at the Page Object Pattern</description>
     </item>
     
   </channel>

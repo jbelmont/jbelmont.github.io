@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Owasp on Software Musings</title>
+    <title>OWASP on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/owasp/</link>
-    <description>Recent content in Owasp on Software Musings</description>
+    <description>Recent content in OWASP on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,7 +18,7 @@
       <pubDate>Fri, 18 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/software-security/</guid>
-      <description>Software Security  Difference between Software Security and Application Security  Language-Based Security  Objectives of Language Based Security  Application Level Security  Definition Terms Techniques Application threats or attacks  OWASP  Background on OWASP OWASP Core Values OWASP Principles OWASP Mailing Lists OWASP Chapter OWASP Membership OWASP Projects OWASP Github Organization OWASP Member Portal OWASP Top 10 OWASP Top 10 comparsion table for 2013 vs 2017  Github Repository  Software Security  Software security entails software that continues to function correctly under malicious attack.</description>
+      <description>Deep Dive into OWASP Top 10 and Software Security</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Testing on Software Musings</title>
+    <title>testing on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/testing/</link>
-    <description>Recent content in Testing on Software Musings</description>
+    <description>Recent content in testing on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,8 +18,7 @@
       <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/browser-automation/</guid>
-      <description>In this blog post we will look at cypress.io and puppeteer as viable replacements to Selenium WebDriver. Selenium WebDriver is still a good option for writing End to End Tests but over the years some newer libraries have spawned that use Chrome DevTools Protocol or to be more specific use Chrome to UI Tests.
-Selenium WebDriver Selenium WebDriver has been in use for a long while and Selenium WebDriver drives the browser by utilizing an Object Oriented API that is built in Java.</description>
+      <description>End to End Testing with Cypress.io and Puppeteer</description>
     </item>
     
     <item>
@@ -28,9 +27,7 @@ Selenium WebDriver Selenium WebDriver has been in use for a long while and Selen
       <pubDate>Sun, 20 May 2018 15:48:12 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/acceptance-testing/</guid>
-      <description>In this blog post we will define acceptance testing, explain why acceptance testing is important, utilize a library to write acceptance tests in and go over a method called Given When Then in Acceptance Testing, and incorporate acceptance testing into a CI/CD pipeline,.
-Define Acceptance Testing Acceptance Testing
-An acceptance test is a formal description of the behavior of a software product, generally expressed as an example or a usage scenario.</description>
+      <description>Incorporating Automated Acceptance Testing into your CI/CD pipeline</description>
     </item>
     
     <item>
@@ -39,10 +36,7 @@ An acceptance test is a formal description of the behavior of a software product
       <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
-      <description>Restful API Testing API testing is a necessary task to do while building APIs.
-Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
-Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
- GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
+      <description>Restful API Testing</description>
     </item>
     
     <item>
@@ -51,10 +45,7 @@ Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
       <pubDate>Wed, 06 Dec 2017 10:09:18 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/page-object-pattern/</guid>
-      <description>Page Objects What are Page Objects? Page Object Blog Post by Martin Fowler
- A page object wraps an HTML page, or fragment, with an application-specific API, allowing you to manipulate page elements without digging around in the HTML.
- Page objects are a way to describe UI interactions in your page with application specific terminology instead of HTML specific language.
-This in turn helps you write tests that are more clear and also helps you be more dry (Don&amp;rsquo;t Repeat yourself) because you can reuse your page objects in other acceptance/end-to-end tests</description>
+      <description>A Look at the Page Object Pattern</description>
     </item>
     
     <item>
@@ -63,9 +54,7 @@ This in turn helps you write tests that are more clear and also helps you be mor
       <pubDate>Thu, 31 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/software-testing/</guid>
-      <description>Unit Testing Integration Testing Test-Driven Development Behavior-Driven Development End-to-End Testing Mocking Test Fixtures Property Based Testing  Unit Testing To view lecture notes for this course, please consult the github-pages.
-Rediscovery of TDD
-Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.test.js and go to each TODO block. 3. Complete each todo block by adding unit tests. 4. Please run the following script to npm run unit:test in order to do the unit test exercises</description>
+      <description>Software Testing Foundations</description>
     </item>
     
   </channel>

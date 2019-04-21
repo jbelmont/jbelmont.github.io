@@ -18,11 +18,7 @@
       <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</guid>
-      <description>In this Blog Post I go over Tips and Tricks with Golang Make sure to have Golang Installed and you have the GOPATH variable set.
-Set your GOPATH variable in Mac OS X by setting it in ~/.bashrc, ~/.zshrc etc
-Add the following entry to your .zshrc: export GOPATH=$HOME/go
-Run source ~/.zshrc to get the environment variable set in your current shell process.
-Once golang is installed run the following command to see what is set:</description>
+      <description>Tips and Tricks with Golang</description>
     </item>
     
   </channel>

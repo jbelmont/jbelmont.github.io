@@ -18,10 +18,7 @@
       <pubDate>Sun, 11 Nov 2018 21:26:43 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/getting-started-with-latex/</guid>
-      <description>LaTex is a Typesetting system which was designed by Leslie Lamport and derives much of its power from Tex. It can be argued that LaTex is a set of macros.
-Difference between Tex and LaTex TeX is about formatting with document/template designers in mind while LaTeX is all about the content for document writers.
-Please read this stackexchange post for more details
-Why is LaTex useful? You can more fine grain control of the quality of your document by using LaTex.</description>
+      <description>Getting started with Latex</description>
     </item>
     
   </channel>

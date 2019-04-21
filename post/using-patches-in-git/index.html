@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.55.1" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/using-patches-in-git/">
+
+  
+
+  <title>Patches in Software | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Patches in Software</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-04-21 09:38:33 -0400 EDT" itemprop="datePublished">
+      Sun, Apr 21, 2019
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/patch">patch</a
+    >, 
+    
+    <a href="/tags/git">git</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fusing-patches-in-git%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Patches%20in%20Software&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fusing-patches-in-git%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fusing-patches-in-git%2f&amp;title=Patches%20in%20Software"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fusing-patches-in-git%2f&amp;title=Patches%20in%20Software"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Patches%20in%20Software&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fusing-patches-in-git%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="according-to-wikipedia-a-patch-in-software-is-defined-as">According to Wikipedia a Patch in software is defined as:</h1>
+
+<blockquote>
+<p>A patch is a set of changes to a computer program or its supporting data designed to update, fix, or improve it. This includes fixing security vulnerabilities and other bugs, with such patches usually being called bugfixes or bug fixes,[better source needed] and improving the usability or performance. Although meant to fix problems, poorly designed patches can sometimes introduce new problems (see software regressions). In some special cases updates may knowingly break the functionality or disable a device, for instance, by removing components for which the update provider is no longer licensed.</p>
+</blockquote>
+
+<h2 id="types-of-patches-in-software">Types of Patches in Software</h2>
+
+<p>We will be looking at source code patches in this blog post but there is also other types of patches such as:</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Patch_%28computing%29#Binary_patches" target="_blank">Binary Patches</a></li>
+</ul>
+
+<p><em>In software patches a patch is usually represented between a difference (diff) between 2 code files.</em></p>
+
+<h4 id="software-patch-variants">Software Patch Variants</h4>
+
+<p>According to Wikipedia there are several software patches:</p>
+
+<h6 id="hotfix">Hotfix</h6>
+
+<blockquote>
+<p>A hotfix or Quick Fix Engineering update (QFE update) is a single, cumulative package that includes information (often in the form of one or more files) that is used to address a problem in a software product (i.e., a software bug). Typically, hotfixes are made to address a specific customer situation. Microsoft once used this term but has stopped in favor of new terminology: General Distribution Release (GDR) and Limited Distribution Release (LDR). Blizzard Entertainment, however, defines a hotfix as &ldquo;a change made to the game deemed critical enough that it cannot be held off until a regular content patch&rdquo;.</p>
+</blockquote>
+
+<h6 id="point-release">Point release</h6>
+
+<blockquote>
+<p>A point release is a minor release of a software project, especially one intended to fix bugs or do small cleanups rather than add significant features. Often, there are too many bugs to be fixed in a single major or minor release, creating a need for a point release.</p>
+</blockquote>
+
+<h6 id="program-temporary-fix">Program temporary fix</h6>
+
+<blockquote>
+<p>Program temporary fix or Product temporary fix (PTF), depending on date, is the standard IBM terminology for a single bug fix, or group of fixes, distributed in a form ready to install for customers. A PTF was sometimes referred to as a &ldquo;ZAP&rdquo; see Customers sometime explain the acronym in a tongue-in-cheek manner as permanent temporary fix or more practically probably this fixes, because they have the option to make the PTF a permanent part of the operating system if the patch fixes the problem.</p>
+</blockquote>
+
+<h6 id="security-patches">Security patches</h6>
+
+<blockquote>
+<p>A security patch is a change applied to an asset to correct the weakness described by a vulnerability. This corrective action will prevent successful exploitation and remove or mitigate a threat&rsquo;s capability to exploit a specific vulnerability in an asset. Patch management is a part of Vulnerability management - the cyclical practice of identifying, classifying, remediating, and mitigating vulnerabilities.</p>
+
+<p>Security patches are the primary method of fixing security vulnerabilities in software. Currently Microsoft releases its security patches once a month, and other operating systems and software projects have security teams dedicated to releasing the most reliable software patches as soon after a vulnerability announcement as possible. Security patches are closely tied to responsible disclosure.</p>
+
+<p>These security patches are critical to ensure that business process does not get affected. In 2017, companies were struck by a ransomware called WannaCry which encrypts files in certain versions of Microsoft Windows and demands a ransom via BitCoin. In response to this, Microsoft released a patch which stops the ransomware from running.</p>
+</blockquote>
+
+<h6 id="service-pack">Service pack</h6>
+
+<blockquote>
+<p>A service pack or SP or a feature pack (FP) comprises a collection of updates, fixes, or enhancements to a software program delivered in the form of a single installable package. Companies often release a service pack when the number of individual patches to a given program reaches a certain (arbitrary) limit, or the software release has shown to be stabilized with a limited number of remaining issues based on users&rsquo; feedback and bug tracking such as bugzilla. In large software applications such as office suites, operating systems, database software, or network management, it is not uncommon to have a service pack issued within the first year or two of a product&rsquo;s release. Installing a service pack is easier and less error-prone than installing many individual patches, even more so when updating multiple computers over a network, where service packs are common.</p>
+</blockquote>
+
+<h6 id="unofficial-patches">Unofficial patches</h6>
+
+<blockquote>
+<p>An unofficial patch is a non-commercial patch for a commercial software created by a third party instead of the original developer. Similar to an ordinary patch, it alleviates bugs or shortcomings. Examples are security fixes by security specialists when an official patch by the software producers itself takes too long. Other examples are unofficial patches created by the game community of a video game which became unsupported abandonware.</p>
+</blockquote>
+
+<h2 id="creating-patches-in-git">Creating Patches in Git</h2>
+
+<p>We can generate patch files in a couple of different ways and there are several different commands associated with using patches in git:</p>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-am" target="_blank">git am manual page</a>:</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; git help am
+
+git-am - Apply a series of patches from a mailbox
+
+SYNOPSIS
+       git am <span style="color:#f92672">[</span>--signoff<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--keep<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">[</span>no-<span style="color:#f92672">]</span>keep-cr<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">[</span>no-<span style="color:#f92672">]</span>utf8<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[</span>--<span style="color:#f92672">[</span>no-<span style="color:#f92672">]</span>3way<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--interactive<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--committer-date-is-author-date<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[</span>--ignore-date<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--ignore-space-change | --ignore-whitespace<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[</span>--whitespace<span style="color:#f92672">=</span>&lt;option&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C&lt;n&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-p&lt;n&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--directory<span style="color:#f92672">=</span>&lt;dir&gt;<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[</span>--exclude<span style="color:#f92672">=</span>&lt;path&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--include<span style="color:#f92672">=</span>&lt;path&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--reject<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-q | --quiet<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[</span>--<span style="color:#f92672">[</span>no-<span style="color:#f92672">]</span>scissors<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S<span style="color:#f92672">[</span>&lt;keyid&gt;<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>--patch-format<span style="color:#f92672">=</span>&lt;format&gt;<span style="color:#f92672">]</span>
+                <span style="color:#f92672">[(</span>&lt;mbox&gt; | &lt;Maildir&gt;<span style="color:#f92672">)</span>...<span style="color:#f92672">]</span>
+       git am <span style="color:#f92672">(</span>--continue | --skip | --abort | --quit | --show-current-patch<span style="color:#f92672">)</span>
+
+
+DESCRIPTION
+       Splits mail messages in a mailbox into commit log message, authorship information and patches, and applies them to the
+       current branch.
+....................................................................................................
+....................................................................................................
+....................................................................................................</code></pre></div>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-apply" target="_blank">git apply manual page</a>:</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME
+       git-apply - Apply a patch to files and/or to the index
+
+SYNOPSIS
+       git apply <span style="color:#f92672">[</span>--stat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--numstat<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--summary<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--check<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--index | --intent-to-add<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--3way<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>--apply<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--no-add<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--build-fake-ancestor<span style="color:#f92672">=</span>&lt;file&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-R | --reverse<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>--allow-binary-replacement | --binary<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--reject<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-z<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>-p&lt;n&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-C&lt;n&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--inaccurate-eof<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--recount<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--cached<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>--ignore-space-change | --ignore-whitespace<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>--whitespace<span style="color:#f92672">=(</span>nowarn|warn|fix|error|error-all<span style="color:#f92672">)]</span>
+                 <span style="color:#f92672">[</span>--exclude<span style="color:#f92672">=</span>&lt;path&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--include<span style="color:#f92672">=</span>&lt;path&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--directory<span style="color:#f92672">=</span>&lt;root&gt;<span style="color:#f92672">]</span>
+                 <span style="color:#f92672">[</span>--verbose<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--unsafe-paths<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;patch&gt;...<span style="color:#f92672">]</span>
+
+
+DESCRIPTION
+       Reads the supplied diff output <span style="color:#f92672">(</span>i.e. <span style="color:#e6db74">&#34;a patch&#34;</span><span style="color:#f92672">)</span> and applies it to files. When running from a subdirectory in a
+       repository, patched paths outside the directory are ignored. With the --index option the patch is also applied to the
+       index, and with the --cached option the patch is only applied to the index. Without these options, the command applies
+       the patch only to files, and does not require them to be in a Git repository.
+
+       This command applies the patch but does not create a commit. Use git-am<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> to create commits from patches generated by
+       git-format-patch<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> and/or received by email.
+....................................................................................................
+....................................................................................................
+....................................................................................................</code></pre></div>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-cherry-pick" target="_blank">git cherry-pick manual page</a></li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME
+       git-cherry-pick - Apply the changes introduced by some existing commits
+
+SYNOPSIS
+       git cherry-pick <span style="color:#f92672">[</span>--edit<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-n<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m parent-number<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-x<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--ff<span style="color:#f92672">]</span>
+                         <span style="color:#f92672">[</span>-S<span style="color:#f92672">[</span>&lt;keyid&gt;<span style="color:#f92672">]]</span> &lt;commit&gt;...
+       git cherry-pick --continue
+       git cherry-pick --quit
+       git cherry-pick --abort
+
+
+DESCRIPTION
+       Given one or more existing commits, apply the change each one introduces, recording a new commit <span style="color:#66d9ef">for</span> each. This requires
+       your working tree to be clean <span style="color:#f92672">(</span>no modifications from the HEAD commit<span style="color:#f92672">)</span>.
+
+       When it is not obvious how to apply a change, the following happens:
+
+        <span style="color:#ae81ff">1</span>. The current branch and HEAD pointer stay at the last commit successfully made.
+
+        <span style="color:#ae81ff">2</span>. The CHERRY_PICK_HEAD ref is set to point at the commit that introduced the change that is difficult to apply.
+
+        <span style="color:#ae81ff">3</span>. Paths in which the change applied cleanly are updated both in the index file and in your working tree.
+
+        <span style="color:#ae81ff">4</span>. For conflicting paths, the index file records up to three versions, as described in the <span style="color:#e6db74">&#34;TRUE MERGE&#34;</span> section of git-
+           merge<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>. The working tree files will include a description of the conflict bracketed by the usual conflict markers
+           <span style="color:#f92672">&lt;&lt;&lt;&lt;&lt;&lt;</span>&lt; and &gt;&gt;&gt;&gt;&gt;&gt;&gt;.
+
+        <span style="color:#ae81ff">5</span>. No other modifications are made.
+
+       See git-merge<span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> some hints on resolving such conflicts.
+....................................................................................................
+....................................................................................................
+....................................................................................................</code></pre></div>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-diff" target="_blank">git diff manual page</a></li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME
+git-diff - Show changes between commits, commit and working tree, etc
+
+SYNOPSIS
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;commit&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> --cached <span style="color:#f92672">[</span>&lt;commit&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;commit&gt; &lt;commit&gt; <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;blob&gt; &lt;blob&gt;
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> --no-index <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> &lt;path&gt; &lt;path&gt;
+DESCRIPTION
+Show changes between the working tree and the index or a tree, changes between the index and a tree, changes between two trees, changes between two blob objects, or changes between two files on disk.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This form is to view the changes you made relative to the index <span style="color:#f92672">(</span>staging area <span style="color:#66d9ef">for</span> the next commit<span style="color:#f92672">)</span>. In other words, the differences are what you could tell Git to further add to the index but you still haven’t. You can stage these changes by using git-add<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> --no-index <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> &lt;path&gt; &lt;path&gt;
+This form is to compare the given two paths on the filesystem. You can omit the --no-index option when running the command in a working tree controlled by Git and at least one of the paths points outside the working tree, or when running the command outside a working tree controlled by Git.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> --cached <span style="color:#f92672">[</span>&lt;commit&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This form is to view the changes you staged <span style="color:#66d9ef">for</span> the next commit relative to the named &lt;commit&gt;. Typically you would want comparison with the latest commit, so <span style="color:#66d9ef">if</span> you <span style="color:#66d9ef">do</span> not give &lt;commit&gt;, it defaults to HEAD. If HEAD does not exist <span style="color:#f92672">(</span>e.g. unborn branches<span style="color:#f92672">)</span> and &lt;commit&gt; is not given, it shows all staged changes. --staged is a synonym of --cached.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;commit&gt; <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This form is to view the changes you have in your working tree relative to the named &lt;commit&gt;. You can use HEAD to compare it with the latest commit, or a branch name to compare with the tip of a different branch.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;commit&gt; &lt;commit&gt; <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This is to view the changes between two arbitrary &lt;commit&gt;.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;commit&gt;..&lt;commit&gt; <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This is synonymous to the previous form. If &lt;commit&gt; on one side is omitted, it will have the same effect as using HEAD instead.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;commit&gt;...&lt;commit&gt; <span style="color:#f92672">[</span>--<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;path&gt;…​<span style="color:#f92672">]</span>
+This form is to view the changes on the branch containing and up to the second &lt;commit&gt;, starting at a common ancestor of both &lt;commit&gt;. <span style="color:#e6db74">&#34;git diff A...B&#34;</span> is equivalent to <span style="color:#e6db74">&#34;git diff </span><span style="color:#66d9ef">$(</span>git merge-base A B<span style="color:#66d9ef">)</span><span style="color:#e6db74"> B&#34;</span>. You can omit any one of &lt;commit&gt;, which has the same effect as using HEAD instead.
+
+Just in <span style="color:#66d9ef">case</span> you are doing something exotic, it should be noted that all of the &lt;commit&gt; in the above description, except in the last two forms that use <span style="color:#e6db74">&#34;..&#34;</span> notations, can be any &lt;tree&gt;.
+
+For a more complete list of ways to spell &lt;commit&gt;, see <span style="color:#e6db74">&#34;SPECIFYING REVISIONS&#34;</span> section in gitrevisions<span style="color:#f92672">[</span><span style="color:#ae81ff">7</span><span style="color:#f92672">]</span>. However, <span style="color:#e6db74">&#34;diff&#34;</span> is about comparing two endpoints, not ranges, and the range notations <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;commit&gt;..&lt;commit&gt;&#34;</span> and <span style="color:#e6db74">&#34;&lt;commit&gt;...&lt;commit&gt;&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> not mean a range as defined in the <span style="color:#e6db74">&#34;SPECIFYING RANGES&#34;</span> section in gitrevisions<span style="color:#f92672">[</span><span style="color:#ae81ff">7</span><span style="color:#f92672">]</span>.
+
+git diff <span style="color:#f92672">[</span>&lt;options&gt;<span style="color:#f92672">]</span> &lt;blob&gt; &lt;blob&gt;
+This form is to view the differences between the raw contents of two blob objects.
+....................................................................................................
+....................................................................................................
+....................................................................................................</code></pre></div>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-format-patch" target="_blank">git format-patch manual page</a></li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME
+git-format-patch - Prepare patches <span style="color:#66d9ef">for</span> e-mail submission
+
+SYNOPSIS
+git format-patch <span style="color:#f92672">[</span>-k<span style="color:#f92672">]</span> <span style="color:#f92672">[(</span>-o|--output-directory<span style="color:#f92672">)</span> &lt;dir&gt; | --stdout<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--no-thread | --thread<span style="color:#f92672">[=</span>&lt;style&gt;<span style="color:#f92672">]]</span>
+		   <span style="color:#f92672">[(</span>--attach|--inline<span style="color:#f92672">)[=</span>&lt;boundary&gt;<span style="color:#f92672">]</span> | --no-attach<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>-s | --signoff<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--signature<span style="color:#f92672">=</span>&lt;signature&gt; | --no-signature<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--signature-file<span style="color:#f92672">=</span>&lt;file&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>-n | --numbered | -N | --no-numbered<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--start-number &lt;n&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--numbered-files<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--in-reply-to<span style="color:#f92672">=</span>Message-Id<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--suffix<span style="color:#f92672">=</span>.&lt;sfx&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--ignore-if-in-upstream<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--rfc<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--subject-prefix<span style="color:#f92672">=</span>Subject-Prefix<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[(</span>--reroll-count|-v<span style="color:#f92672">)</span> &lt;n&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--to<span style="color:#f92672">=</span>&lt;email&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--cc<span style="color:#f92672">=</span>&lt;email&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--<span style="color:#f92672">[</span>no-<span style="color:#f92672">]</span>cover-letter<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--quiet<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--notes<span style="color:#f92672">[=</span>&lt;ref&gt;<span style="color:#f92672">]]</span>
+		   <span style="color:#f92672">[</span>--interdiff<span style="color:#f92672">=</span>&lt;previous&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>--range-diff<span style="color:#f92672">=</span>&lt;previous&gt; <span style="color:#f92672">[</span>--creation-factor<span style="color:#f92672">=</span>&lt;percent&gt;<span style="color:#f92672">]]</span>
+		   <span style="color:#f92672">[</span>--progress<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span>&lt;common diff options&gt;<span style="color:#f92672">]</span>
+		   <span style="color:#f92672">[</span> &lt;since&gt; | &lt;revision range&gt; <span style="color:#f92672">]</span>
+DESCRIPTION
+Prepare each commit with its patch in one file per commit, formatted to resemble UNIX mailbox format. The output of this command is convenient <span style="color:#66d9ef">for</span> e-mail submission or <span style="color:#66d9ef">for</span> use with git am.
+
+There are two ways to specify which commits to operate on.
+
+A single commit, &lt;since&gt;, specifies that the commits leading to the tip of the current branch that are not in the history that leads to the &lt;since&gt; to be output.
+
+Generic &lt;revision range&gt; expression <span style="color:#f92672">(</span>see <span style="color:#e6db74">&#34;SPECIFYING REVISIONS&#34;</span> section in gitrevisions<span style="color:#f92672">[</span><span style="color:#ae81ff">7</span><span style="color:#f92672">])</span> means the commits in the specified range.
+
+The first rule takes precedence in the <span style="color:#66d9ef">case</span> of a single &lt;commit&gt;. To apply the second rule, i.e., format everything since the beginning of history up <span style="color:#66d9ef">until</span> &lt;commit&gt;, use the --root option: git format-patch --root &lt;commit&gt;. If you want to format only &lt;commit&gt; itself, you can <span style="color:#66d9ef">do</span> this with git format-patch -1 &lt;commit&gt;.
+
+By default, each output file is numbered sequentially from <span style="color:#ae81ff">1</span>, and uses the first line of the commit message <span style="color:#f92672">(</span>massaged <span style="color:#66d9ef">for</span> pathname safety<span style="color:#f92672">)</span> as the filename. With the --numbered-files option, the output file names will only be numbers, without the first line of the commit appended. The names of the output files are printed to standard output, unless the --stdout option is specified.
+
+If -o is specified, output files are created in &lt;dir&gt;. Otherwise they are created in the current working directory. The default path can be set with the format.outputDirectory configuration option. The -o option takes precedence over format.outputDirectory. To store patches in the current working directory even when format.outputDirectory points elsewhere, use -o ..
+
+By default, the subject of a single patch is <span style="color:#e6db74">&#34;[PATCH] &#34;</span> followed by the concatenation of lines from the commit message up to the first blank line <span style="color:#f92672">(</span>see the DISCUSSION section of git-commit<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">])</span>.
+
+When multiple patches are output, the subject prefix will instead be <span style="color:#e6db74">&#34;[PATCH n/m] &#34;</span>. To force <span style="color:#ae81ff">1</span>/1 to be added <span style="color:#66d9ef">for</span> a single patch, use -n. To omit patch numbers from the subject, use -N.
+
+If given --thread, git-format-patch will generate In-Reply-To and References headers to make the second and subsequent patch mails appear as replies to the first mail; this also generates a Message-Id header to reference.</code></pre></div>
+
+<p>There are other related git commands for working with commits that are related to patches such as:</p>
+
+<ul>
+<li><a href="https://git-scm.com/docs/git-rebase" target="_blank">git rebase</a></li>
+<li><a href="https://git-scm.com/docs/git-revert" target="_blank">git revert</a></li>
+</ul>
+
+<p><em>We will not go over these in this blog post.</em></p>
+
+<h4 id="using-git-diff-to-generate-a-patch-file">Using git diff to generate a patch file</h4>
+
+<p>We can use the <em>git diff</em> command to generate a patch file*</p>
+
+<p>Here is a sample session where we create patch file from the current changes in the repository. I show the current changes with an alias for <em>git status -s</em> command:</p>
+
+<figure>
+    <img src="/media/git-diff.png"/> 
+</figure>
+
+
+<h4 id="using-git-format-patch-command-to-generate-a-series-of-patches-in-patches-directory">Using git format-patch command to generate a series of patches in patches directory</h4>
+
+<blockquote>
+<p>Prepare each commit with its patch in one file per commit, formatted to resemble UNIX mailbox format. The output of this command is convenient for e-mail submission or for use with git am.</p>
+</blockquote>
+
+<p>We will use the <em>git format-patch</em> command to generate patches against a destination branch of master.</p>
+
+<figure>
+    <img src="/media/git-format-patches.png"/> 
+</figure>
+
+
+<p>Notice that the patches file looks a little bit like an email as this command is based on the UNIX mailbox format.</p>
+
+<p>Notice that in this next session we create the patches directory in the parent directory:</p>
+
+<figure>
+    <img src="/media/git-format-patches-other-dir.png"/> 
+</figure>
+
+
+<p>We can create a patches directory with a name for each repo with a command like this:</p>
+
+<figure>
+    <img src="/media/create-patches-dir.png"/> 
+</figure>
+
+
+<p>Now we can create a patches list with this directory structure like this:</p>
+
+<figure>
+    <img src="/media/git-format-patches-structure.png"/> 
+</figure>
+
+
+<h4 id="git-am-command">git am command</h4>
+
+<p>Now we can checkout back to the master branch and apply these changes by using <em>git am</em> command like this:</p>
+
+<figure>
+    <img src="/media/git-am-applied.png"/> 
+</figure>
+
+
+<p>Notice that in the screenshot below that our patches were replayed on top of existing commits:</p>
+
+<figure>
+    <img src="/media/git-replay-ontop.png"/> 
+</figure>
+
+
+<p>The difference between the <a href="https://git-scm.com/docs/git-am" target="_blank">git am command</a> and the <a href="https://git-scm.com/docs/git-apply" target="_blank">git apply command</a> is that the <em>git am</em> command will apply the commits and the <em>git apply</em> will only apply changes to the file instead of committing all though this is not the only difference.</p>
+
+<h4 id="git-apply-command">git apply command</h4>
+
+<p>There are some advantages to using the <em>git apply</em> command because we can check whether a patch file is okay and we can reverse a git apply change as well.</p>
+
+<p>In the following session we will create a file change and use the <em>git diff</em> command to generate our patch file, then we will checkout back to master branch and try to apply local changes but first check the patch file for validity.</p>
+
+<figure>
+    <img src="/media/git-diff-apply-check-flow.png"/> 
+</figure>
+
+
+<p>Notice that in this session that the <em>&ndash;check</em> flag complained since we were trying to apply changes that already existed but were never committed into the branch. This flow is useful to do before applying a patch change.</p>
+
+<h4 id="using-git-diff-command-and-patch-command-to-apply-changes">using git diff command and patch command to apply changes</h4>
+
+<p>We can create a new file based off of an original file like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp docs/mongodb_indexes_partII.md docs/mongodb_indexes_partII_new.md
+
+<span style="color:#75715e">## Then we will generate the diff between these 2 files.</span>
+diff -u docs/mongodb_indexes_partII.md docs/mongodb_indexes_partII_new.md &gt; ../patches/nosql-workshop/diff-between-two-files.patch
+
+<span style="color:#75715e"># Next we will create patch to the old file like this</span>
+patch docs/mongodb_indexes_partII.md ../patches/nosql-workshop/diff-between-two-files.patch</code></pre></div>
+
+<p>Notice that we applied the changes that we made to new file to the old file.</p>
+
+<p><em>There are some distinct disadvantages to using the patch commmand and it is generally better to use the git apply command in git instead.</em></p>
+
+<p>Using the patch command can leave your working directory in a bad state in a bad patch and also the <em>git apply</em> command handles file adds, deletes, and renames if they&rsquo;re described in the git diff format.</p>
+
+<p>If you like this post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a> for more related type posts.</p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/debugging-rust-with-lldb/"><span
+      aria-hidden="true">&larr;</span> Debugging Rust With Lldb</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+

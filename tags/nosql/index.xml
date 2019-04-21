@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nosql on Software Musings</title>
+    <title>nosql on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/nosql/</link>
-    <description>Recent content in Nosql on Software Musings</description>
+    <description>Recent content in nosql on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,10 +18,7 @@
       <pubDate>Wed, 20 Feb 2019 18:38:15 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</guid>
-      <description>In this second blog post I go over how to loads scripts in the mongo shell and how to automate tasks in mongo shell
-Loading scripts in the Mongo Shell You can load scripts in the mongo shell as long as the mongo shell knows the path.
-Let us get mongodb running with the following bash script:
-#! /bin/bash docker run --name jbelmont-mongo-image-4 \ --rm \ -v ~/mongod_data.4.0.5:/data/db \ -p 27017:27017 \ -v /var/run/docker.</description>
+      <description>Tips and Tricks with Mongo Scripts</description>
     </item>
     
     <item>
@@ -30,11 +27,7 @@ Let us get mongodb running with the following bash script:
       <pubDate>Sat, 12 Jan 2019 16:46:47 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</guid>
-      <description>In this blog post I go over some tips and tricks with MongoDB and focus on using the mongodbshell.
-What is MongoDB MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
-Installing MongoDB MongoDB is released as two editions: Community and Enterprise.
-Community is the open source release of MongoDB.
-Enterprise provides additional administration, authentication, and monitoring features.</description>
+      <description>A list of Tips and Tricks with MongoDB</description>
     </item>
     
   </channel>

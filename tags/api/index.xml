@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Api on Software Musings</title>
+    <title>API on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/api/</link>
-    <description>Recent content in Api on Software Musings</description>
+    <description>Recent content in API on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,8 +18,7 @@
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-design/</guid>
-      <description>The Little Manual of API Design Jasmin Blanchette
-Table of Contents  Introduction Characteristics of Good APIs  Easy to learn and memorize Leads to readable code Hard to misuse Easy to extend Complete  The Design Process  Know the requirements Write use cases before you write any other code Look for similar APIs in the same library Define the API before you implement it Have your peers review your API Write several examples against the API Prepare for extensions Don’t publish internal APIs without review When in doubt, leave it out  Design Guidelines  Choose self-explanatory names and signatures Choose unambiguous names for related things Beware of false consistency Avoid abbreviations Prefer specific names to general names Don&amp;rsquo;t be a slave of an underlying API&amp;rsquo;s naming practices  Semantics  Choose good defaults Avoid making your apis overly clever Pay attention to edge cases Be careful when defining virtual APIs  Structural  Strive for property-based APIs The best API is no API  Bread Crumb Navigation Github Repository  Introduction  An application programming interface, or API, is the set of symbols that are exported and available to the users of a library to write their applications.</description>
+      <description>Little Manual of API Design</description>
     </item>
     
   </channel>

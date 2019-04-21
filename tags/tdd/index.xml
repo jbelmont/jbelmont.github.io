@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tdd on Software Musings</title>
+    <title>TDD on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/tdd/</link>
-    <description>Recent content in Tdd on Software Musings</description>
+    <description>Recent content in TDD on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,9 +18,7 @@
       <pubDate>Thu, 31 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/software-testing/</guid>
-      <description>Unit Testing Integration Testing Test-Driven Development Behavior-Driven Development End-to-End Testing Mocking Test Fixtures Property Based Testing  Unit Testing To view lecture notes for this course, please consult the github-pages.
-Rediscovery of TDD
-Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.test.js and go to each TODO block. 3. Complete each todo block by adding unit tests. 4. Please run the following script to npm run unit:test in order to do the unit test exercises</description>
+      <description>Software Testing Foundations</description>
     </item>
     
     <item>
@@ -29,7 +27,7 @@ Instructions for Unit Exercises: 1. Go to unit folder cd unit 2. Open program.te
       <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</guid>
-      <description>Growing Object Oriented Software Guided By Tests  What is the Point of Test-Driven Development Test-Driven Development with Objects An Introduction to the Tools Kick-Starting the Test-Driven Cycle Maintaining The Test-Driven Cycle Object-Oriented Style Achieving Object-Oriented Design Building on Third-Party Code Commissioning on Auction Sniper The Walking Skeleton Passing the First Test Chapters 12 to 18 Sniping for Multiple Items Teasing apart Main Filling in the Details Listening to the Tests Test Readability Constructing Complex Test Data Test Diagnostics Test Flexibility Chapters 25 to 27  What is the Point of Test-Driven Development  Feedback is the most fundamental tool at our disposal TDD is a practice that supports change You should never write new functionality without a failing test.</description>
+      <description>Growing Object-Oriented Software, Guided by Tests</description>
     </item>
     
   </channel>

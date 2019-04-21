@@ -18,7 +18,7 @@
       <pubDate>Sun, 13 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/caching-and-memoization/</guid>
-      <description>Caching What Is Caching?  Caching is the term for storing reusable responses in order to make subsequent requests faster. There are different types of caching available. Application caches and memory caches are both popular for their ability to speed up certain responses.  Types of Cache  Disk cache: The page cache in main memory is managed by the operating system kernel. Web cache Memoization  A cache can store data that is computed on demand rather than retrieved from a backing store.</description>
+      <description>Deep Dive into Caching, Memoization and Redis.</description>
     </item>
     
   </channel>

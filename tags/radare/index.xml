@@ -18,11 +18,7 @@
       <pubDate>Wed, 19 Dec 2018 20:37:56 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/introduction-to-reverse-engineering/</guid>
-      <description>Reverse Engineering What is Reverse Engineering?
-According to Wikipedia Reverse Engineering is:
- is the process by which a man-made object is deconstructed to reveal its designs, architecture, or to extract knowledge from the object; similar to scientific research, the only difference being that scientific research is about a natural phenomenon.
- According to the c2Wiki Reverse Engineering is:
- is about presenting a piece of software at a higher level of abstraction.</description>
+      <description>An Introduction to Reverse Engineering</description>
     </item>
     
   </channel>

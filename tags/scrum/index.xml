@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scrum on Software Musings</title>
+    <title>scrum on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/scrum/</link>
-    <description>Recent content in Scrum on Software Musings</description>
+    <description>Recent content in scrum on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,8 +18,7 @@
       <pubDate>Sun, 28 Jan 2018 15:48:12 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/agile-patterns/</guid>
-      <description>Table Of Contents:  12 Principles of Agile Manifesto Agile Terminology Sprint Duration Sprint Ceremonies Stories, Tasks and Bugs QA User Acceptance Testing Releases Integration with DevOps Jira Workflow Definition of Ready and Definition of Done  12 Principles of Agile Manifesto  Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
- Welcome changing requirements, even late in development. Agile processes harness change for the customer&amp;rsquo;s competitive advantage.</description>
+      <description>An explanation on Agile Software Development and Sprint Terminology</description>
     </item>
     
   </channel>

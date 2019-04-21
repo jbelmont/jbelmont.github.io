@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Postman on Software Musings</title>
+    <title>postman on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/postman/</link>
-    <description>Recent content in Postman on Software Musings</description>
+    <description>Recent content in postman on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,10 +18,7 @@
       <pubDate>Sun, 04 Feb 2018 20:21:03 -0500</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-testing/</guid>
-      <description>Restful API Testing API testing is a necessary task to do while building APIs.
-Instead of using a browser or typing into a UI and clicking buttons, you can test APIs using tools such as Curl and Postman.
-Using a Rest Client you can make Rest calls such as for HTTP Verbs such as:
- GET POST PUT DELETE PATCH  When we test an API, we deal with JSON, XML, and Web Services.</description>
+      <description>Restful API Testing</description>
     </item>
     
   </channel>

@@ -18,11 +18,7 @@
       <pubDate>Sat, 28 Apr 2018 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/tips-and-tricks-golang/</guid>
-      <description>In this Blog Post I go over Tips and Tricks with Golang Make sure to have Golang Installed and you have the GOPATH variable set.
-Set your GOPATH variable in Mac OS X by setting it in ~/.bashrc, ~/.zshrc etc
-Add the following entry to your .zshrc: export GOPATH=$HOME/go
-Run source ~/.zshrc to get the environment variable set in your current shell process.
-Once golang is installed run the following command to see what is set:</description>
+      <description>Tips and Tricks with Golang</description>
     </item>
     
     <item>
@@ -31,9 +27,7 @@ Once golang is installed run the following command to see what is set:</descript
       <pubDate>Tue, 10 Oct 2017 18:49:29 -0400</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/compare-and-contrast-golang-and-nodejs-for-commandline-apps/</guid>
-      <description>Command Line Applications Building command line applications is a refreshing change to building UIs. In this blog post I go over briefly my thoughts on building commandline apps with Node.js and Golang
-Node.js CommandLine First off I did not use a commander.js or any third party libraries to make my contrived application. I used vanilla node.js
-&#39;use strict&#39;; const process = require(&#39;process&#39;); const fs = require(&#39;fs&#39;); const lib = require(&#39;.</description>
+      <description>A Look at Golang and Node.js for Command Line applications</description>
     </item>
     
   </channel>

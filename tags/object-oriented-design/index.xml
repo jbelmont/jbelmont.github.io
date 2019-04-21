@@ -18,7 +18,7 @@
       <pubDate>Tue, 22 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/growing-object-oriented-software-guided-by-tests/</guid>
-      <description>Growing Object Oriented Software Guided By Tests  What is the Point of Test-Driven Development Test-Driven Development with Objects An Introduction to the Tools Kick-Starting the Test-Driven Cycle Maintaining The Test-Driven Cycle Object-Oriented Style Achieving Object-Oriented Design Building on Third-Party Code Commissioning on Auction Sniper The Walking Skeleton Passing the First Test Chapters 12 to 18 Sniping for Multiple Items Teasing apart Main Filling in the Details Listening to the Tests Test Readability Constructing Complex Test Data Test Diagnostics Test Flexibility Chapters 25 to 27  What is the Point of Test-Driven Development  Feedback is the most fundamental tool at our disposal TDD is a practice that supports change You should never write new functionality without a failing test.</description>
+      <description>Growing Object-Oriented Software, Guided by Tests</description>
     </item>
     
   </channel>

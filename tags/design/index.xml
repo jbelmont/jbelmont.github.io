@@ -18,7 +18,7 @@
       <pubDate>Wed, 13 Sep 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-book-review-of-designing-interface-animation/</guid>
-      <description>A Book Review of Designing Interface Animation  The Case for animation  Why you can&amp;rsquo;t ignore animation You Already know more about animation than you think Modern Principles of Interactive Animation  Using Animation to Solve Design Problems  Using Animation to Orient and Give Context Using Animation to Direct Focus and Attention Using Animation to Show Cause and Effect Using Animation for Feedback Using Animation to Demonstrate Using Animation to Express Your Brand  Animation in Your Work and Process  Where Animation Fits in your Design Process Prototyping Your Animation Ideas Animating Responsibly  Purchase Designing Interface Animation  The Case for animation PART I</description>
+      <description>A Book Review of Designing Interface Animation</description>
     </item>
     
     <item>
@@ -27,8 +27,7 @@
       <pubDate>Fri, 10 Feb 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/api-design/</guid>
-      <description>The Little Manual of API Design Jasmin Blanchette
-Table of Contents  Introduction Characteristics of Good APIs  Easy to learn and memorize Leads to readable code Hard to misuse Easy to extend Complete  The Design Process  Know the requirements Write use cases before you write any other code Look for similar APIs in the same library Define the API before you implement it Have your peers review your API Write several examples against the API Prepare for extensions Don’t publish internal APIs without review When in doubt, leave it out  Design Guidelines  Choose self-explanatory names and signatures Choose unambiguous names for related things Beware of false consistency Avoid abbreviations Prefer specific names to general names Don&amp;rsquo;t be a slave of an underlying API&amp;rsquo;s naming practices  Semantics  Choose good defaults Avoid making your apis overly clever Pay attention to edge cases Be careful when defining virtual APIs  Structural  Strive for property-based APIs The best API is no API  Bread Crumb Navigation Github Repository  Introduction  An application programming interface, or API, is the set of symbols that are exported and available to the users of a library to write their applications.</description>
+      <description>Little Manual of API Design</description>
     </item>
     
   </channel>

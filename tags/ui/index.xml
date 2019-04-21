@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ui on Software Musings</title>
+    <title>UI on Software Musings</title>
     <link>https://www.marcelbelmont.com/tags/ui/</link>
-    <description>Recent content in Ui on Software Musings</description>
+    <description>Recent content in UI on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
@@ -18,8 +18,7 @@
       <pubDate>Wed, 16 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-review-of-design-like-a-pro/</guid>
-      <description>Design Like a Pro Review This is a review of Mark Miller&amp;rsquo;s Course (Design Like a Pro)
- Interesting Points of the Course What was surprising What Mark Miller did well What could have been done better Purchase the Course  Interesting Points of the Course  An interesting fact of the course is how much proximity plays a role with UI. If elements of a UI are placed in close proximity, users typically assume they are related  So if you should group related items in a UI in close proximity</description>
+      <description>Design Like a Pro</description>
     </item>
     
     <item>
@@ -28,8 +27,7 @@
       <pubDate>Tue, 01 Aug 2017 12:00:00 +0000</pubDate>
       
       <guid>https://www.marcelbelmont.com/post/a-review-of-science-of-great-ui/</guid>
-      <description>The Science of Great UI Review This repository is a review of Mark Miller&amp;rsquo;s Course (The Science of Great UI)
- Introduction Converting Light into Understanding Certainty, Ambiguity, Context Grouping Symbols Cognitive Load Granularity Visual Search Background and Foreground (part 1) Noise, Weak Signal, and Clarity Recognition vs. Recall, Orienteering, and Paths Responsiveness &amp;amp; The Feedback Loop Discoverability Wrapping Up Efficiency in Thought and Motion Resources Personal Thoughts Purchase the Course  Introduction  Mark Miller discusses high level concepts that the course will review Miller also talks about a concept called Dark Design patterns very briefly  Converting Light into Understanding  Interesting facts about the eye and brain are discussed The fovea is responsible for sharp central vision (also called foveal vision)  Necessary in humans for activities where visual detail is of primary importance, such as reading and driving  Rods in Human eye  120 Million  Cones in Human eye  7 million  Fovea and rapid eye movement help make a visual field   Most of what we think is true is a series of shortcuts designed to keep us alive</description>
+      <description>Science of Great UI.</description>
     </item>
     
   </channel>
