@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Using Lucene Queries</title>
+      <link>https://www.marcelbelmont.com/post/using-lucene-queries/</link>
+      <pubDate>Fri, 24 May 2019 20:20:59 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/using-lucene-queries/</guid>
+      <description>Using Apache Lucene Query Syntax</description>
+    </item>
+    
+    <item>
       <title>Patches in Software</title>
       <link>https://www.marcelbelmont.com/post/using-patches-in-git/</link>
       <pubDate>Sun, 21 Apr 2019 09:38:33 -0400</pubDate>

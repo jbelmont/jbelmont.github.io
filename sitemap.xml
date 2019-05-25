@@ -4,17 +4,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/post/using-patches-in-git/</loc>
-      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/</loc>
-      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -24,8 +15,46 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/</loc>
-      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
       <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/post/using-lucene-queries/</loc>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/apache/</loc>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/lucene/</loc>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/post/using-patches-in-git/</loc>
+      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
     </url>
     
   

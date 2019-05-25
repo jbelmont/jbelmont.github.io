@@ -6,8 +6,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 21 Apr 2019 09:38:33 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 20:20:59 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Lucene Queries</title>
+      <link>https://www.marcelbelmont.com/post/using-lucene-queries/</link>
+      <pubDate>Fri, 24 May 2019 20:20:59 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/using-lucene-queries/</guid>
+      <description>
+
+&lt;h1 id=&#34;apache-lucene&#34;&gt;Apache Lucene&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Apache_Lucene&#34; target=&#34;_blank&#34;&gt;Apache Lucene Wikipedia&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Patches in Software</title>
@@ -2810,273 +2824,6 @@ curl -X GET \
 &lt;li&gt;&lt;a href=&#34;https://ec.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl book&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/jbelmont/tips-and-tricks-with-curl-and-jq&#34; target=&#34;_blank&#34;&gt;Repo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Browser Automation</title>
-      <link>https://www.marcelbelmont.com/post/browser-automation/</link>
-      <pubDate>Sun, 24 Jun 2018 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/browser-automation/</guid>
-      <description>
-
-&lt;p&gt;In this blog post we will look at cypress.io and puppeteer as viable replacements to Selenium WebDriver. Selenium WebDriver is still a good option for writing End to End Tests but over the years some newer libraries have spawned that use Chrome DevTools Protocol or to be more specific use Chrome to UI Tests.&lt;/p&gt;
-
-&lt;h2 id=&#34;selenium-webdriver&#34;&gt;Selenium WebDriver&lt;/h2&gt;
-
-&lt;p&gt;Selenium WebDriver has been in use for a long while and Selenium WebDriver drives the browser by utilizing an Object Oriented API that is built in Java. Selenium has client apis in Java, C#, Ruby, Python, and JavaScript.&lt;/p&gt;
-
-&lt;h4 id=&#34;some-drawbacks-to-selenium&#34;&gt;Some Drawbacks to Selenium&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;End to End tests written in Selenium tend to be brittle&lt;/li&gt;
-&lt;li&gt;Setup can be very complicated&lt;/li&gt;
-&lt;li&gt;Tests can be really slow as each tests spins up a browser instance.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;options-to-selenium&#34;&gt;Options to Selenium&lt;/h2&gt;
-
-&lt;p&gt;There are other options instead of Selenium now and in this blog post we will examine &lt;a href=&#34;https://pptr.dev/#?product=Puppeteer&amp;amp;version=v1.5.0&amp;amp;show=api-overview&#34; target=&#34;_blank&#34;&gt;Puppeteer&lt;/a&gt; and &lt;a href=&#34;https://docs.cypress.io/guides/overview/why-cypress.html&#34; target=&#34;_blank&#34;&gt;Cypress.io&lt;/a&gt; in detail.&lt;/p&gt;
-
-&lt;h2 id=&#34;puppeteer&#34;&gt;Puppeteer&lt;/h2&gt;
-
-&lt;p&gt;Puppeteer is a Node library which provides a high-level API to control Chromium or Chrome over the DevTools Protocol. Puppeteer is relatively new as it was released in 2017 as an open source project by a Googler. Puppeteer is a good option to replace &lt;a href=&#34;http://phantomjs.org/&#34; target=&#34;_blank&#34;&gt;Phantomjs&lt;/a&gt; which has been suspended from further development.&lt;/p&gt;
-
-&lt;h4 id=&#34;advantages-of-puppeteer&#34;&gt;Advantages of Puppeteer&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Puppeteer has support for parallelization for running tests in a CI Build&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spawn multiple browser sessions to help simulate load that a particular service may encounter with multiple clients&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Record snapshots of tests while they run&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;setup-puppeteer&#34;&gt;Setup Puppeteer&lt;/h4&gt;
-
-&lt;p&gt;Installing &lt;a href=&#34;https://pptr.dev/&#34; target=&#34;_blank&#34;&gt;Puppeteer&lt;/a&gt; is easy as you can just use npm to install it.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;npm install --save-dev puppeteer&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;After you have installed puppeteer onto your project the next thing to do is to require puppeteer and to use the puppeteer api to launch a Chrome browser and run your tests.&lt;/p&gt;
-
-&lt;h4 id=&#34;puppeteer-usage-requirements&#34;&gt;Puppeteer Usage Requirements&lt;/h4&gt;
-
-&lt;p&gt;Puppeteer can work with Node v6.4.0 or greater but most of the examples in Puppeteer use async and await which is only supported in Node v7.6.0 or greater. So consider adding this to your package.json.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;engines&amp;quot;: {
-  &amp;quot;node&amp;quot;: &amp;quot;&amp;gt;=7.6.0&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;This will ensure that only node version 7.6.0 or greater is used&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;puppeteer-example&#34;&gt;Puppeteer Example&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;const puppeteer = require(&#39;puppeteer&#39;);
-
-(async () =&amp;gt; {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto(&#39;https://marcelbelmont.com&#39;);
-  await page.screenshot({path: &#39;blog.png&#39;});
-
-  await browser.close();
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that in the code snippet above we are using async and await in node.js. Take note that async and await are a way to deal with asynchronous action in JavaScript. It is a nicer way to work with asynchronous code over callbacks and promises.&lt;/p&gt;
-
-&lt;h4 id=&#34;adding-a-web-scraping-test-with-jest&#34;&gt;Adding a Web Scraping Test with Jest&lt;/h4&gt;
-
-&lt;p&gt;We will be writing a test with the &lt;a href=&#34;https://facebook.github.io/jest/&#34; target=&#34;_blank&#34;&gt;Jest Testing Library&lt;/a&gt; by Facebook and using Puppeteer.&lt;/p&gt;
-
-&lt;p&gt;In order to install jest run &lt;code&gt;npm install --save-dev jest&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Jest has mocha like syntax and can be used with many different types of FrontEnd Libraries.&lt;/p&gt;
-
-&lt;p&gt;For the purposes of this blog post we will simply be using to write node.js code.&lt;/p&gt;
-
-&lt;h6 id=&#34;code-snippet-with-blog-test&#34;&gt;Code Snippet with Blog Test&lt;/h6&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
-
-const puppeteer = require(&amp;quot;puppeteer&amp;quot;);
-
-let page;
-let browser;
-const webpage = &amp;quot;https://github.com/GoogleChrome/puppeteer&amp;quot;;
-const width = 1440;
-const height = 900;
-const myBlog = &amp;quot;blog.png&amp;quot;
-
-describe(&amp;quot;Scrape the Puppeteer github repository&amp;quot;, () =&amp;gt; {
-
-  beforeAll(async () =&amp;gt; {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: [&amp;quot;--no-sandbox&amp;quot;, &amp;quot;--disable-setuid-sandbox&amp;quot;]
-    });
-    page = await browser.newPage();
-    await page.setViewport({ width, height });
-  });
-
-  afterAll(async () =&amp;gt; {
-    await page.screenshot({path: myBlog});
-    browser.close();
-  });
-
-  it(&amp;quot;Should have a list of uls for features in Puppeteer&amp;quot;, async () =&amp;gt; {
-    await page.goto(webpage);
-    const textContent = await page.evaluate(() =&amp;gt; document.querySelector(&#39;.markdown-body.entry-content blockquote p&#39;).textContent);
-    expect(textContent).toEqual(&amp;quot;Puppeteer is a Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.&amp;quot;);
-  });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that in this code snippet we are writing a test that launches puppeteer and then uses the Puppeteer api to navigate to Puppeteer github repository and web scrape the offical quote for Puppeteer.&lt;/p&gt;
-
-&lt;p&gt;The Puppeteer api is very intuitive to use as the code is almost self documenting.&lt;/p&gt;
-
-&lt;p&gt;Using async and await features makes writing this test very nice!!&lt;/p&gt;
-
-&lt;h6 id=&#34;output-of-running-test&#34;&gt;Output of running test&lt;/h6&gt;
-
-&lt;p&gt;In the scripts section of your package.json file and the following entry:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;scripts&amp;quot;: {
-  &amp;quot;test&amp;quot;: &amp;quot;jest&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now all you have to do is run &lt;code&gt;npm test&lt;/code&gt; and the test will run and you will get output in your Terminal and or Command Shell in Windows.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/puppeteer-console-log.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;cypress-io&#34;&gt;Cypress.io&lt;/h2&gt;
-
-&lt;p&gt;Next we will look at the &lt;a href=&#34;https://docs.cypress.io/guides/overview/why-cypress.html#&#34; target=&#34;_blank&#34;&gt;Cypress.io Testing Library&lt;/a&gt; which is a newer testing tool that has some exciting features.&lt;/p&gt;
-
-&lt;p&gt;Cypress also uses node.js and can be installed with npm&lt;/p&gt;
-
-&lt;h4 id=&#34;advantages-of-cypress-io&#34;&gt;Advantages of Cypress.io&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.cypress.io/guides/overview/key-differences.html#Architecture&#34; target=&#34;_blank&#34;&gt;Key Differences in Cypress.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Most testing tools (like Selenium) operate by running outside of the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application.&lt;/p&gt;
-
-&lt;p&gt;Behind Cypress is a Node.js server process. Cypress and the Node.js process constantly communicate, synchronize, and perform tasks on behalf of each other. Having access to both parts (front and back) gives us the ability to respond to your application’s events in real time, while at the same time work outside of the browser for tasks that require a higher privilege.&lt;/p&gt;
-
-&lt;p&gt;Cypress also operates at the network layer by reading and altering web traffic on the fly. This enables Cypress to not only modify everything coming in and out of the browser, but also to change code that may interfere with its ability to automate the browser.&lt;/p&gt;
-
-&lt;p&gt;Cypress ultimately controls the entire automation process from top to bottom, which puts it in the unique position of being able to understand everything happening in and outside of the browser. This means Cypress is capable of delivering more consistent results than any other testing tool.&lt;/p&gt;
-
-&lt;p&gt;Because Cypress is installed locally on your machine, it can additionally tap into the operating system for automation tasks. This makes performing tasks such as taking screenshots, recording videos, general file system operations and network operations possible.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&#34;setup-cypress-io&#34;&gt;Setup Cypress.io&lt;/h4&gt;
-
-&lt;p&gt;Installing &lt;a href=&#34;https://docs.cypress.io/guides/getting-started/installing-cypress.html&#34; target=&#34;_blank&#34;&gt;Cypress.io&lt;/a&gt; is easy as all you have to do is run &lt;code&gt;npm install --save-dev cypress&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Once you have installed Cypress.io all you have to do is require it and then start writing your tests.&lt;/p&gt;
-
-&lt;h4 id=&#34;cypress-io-usage-requirements&#34;&gt;Cypress.io Usage Requirements&lt;/h4&gt;
-
-&lt;p&gt;Cypress is a desktop application that is installed on your computer.&lt;/p&gt;
-
-&lt;p&gt;The desktop application supports these operating systems:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Mac OS 10.9+ (Mavericks+), only 64bit binaries are provided for macOS.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Linux Ubuntu 12.04+, Fedora 21, Debian 8&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Windows 7+, only 32bit binaries are provided for Windows.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;cypress-io-example&#34;&gt;Cypress.io Example&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;describe(&#39;My First Test&#39;, function() {
-  it(&#39;Does not do much!&#39;, function() {
-    expect(true).to.equal(true)
-  })
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This code snippet above has a mocha like syntax and running it is very easy&lt;/p&gt;
-
-&lt;h6 id=&#34;running-cypress-tests&#34;&gt;Running Cypress Tests&lt;/h6&gt;
-
-&lt;p&gt;Add the following entry into the scripts section of your package.json file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;scripts&amp;quot;: {
-  &amp;quot;cypress:open&amp;quot;: &amp;quot;cypress open&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now all you have to do to run the test file is to execute the command like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;npm run cypress:open&lt;/code&gt; and this will open desktop application and run any of your tests&lt;/p&gt;
-
-&lt;h4 id=&#34;writing-a-test-that-will-web-scrape-my-github-repository&#34;&gt;Writing a Test that will Web Scrape my github repository&lt;/h4&gt;
-
-&lt;p&gt;Let us now write a test in Cypress.io that will Web Scrape my github repository called browser automation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;&amp;quot;use strict&amp;quot;;
-
-const url = &amp;quot;https://github.com/jbelmont/browser-automation&amp;quot;
-
-describe(&amp;quot;Web Scraping&amp;quot;, function() {
-    it(&amp;quot;Visits the browser-automation repository&amp;quot;, function() {
-        cy.visit(url);
-
-        cy
-        .get(&amp;quot;.markdown-body.entry-content h1&amp;quot;)
-        .should(&amp;quot;contain&amp;quot;, &amp;quot;browser-automation&amp;quot;);
-    });
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice the conciseness in the syntax for Cypress you say you want to visit provided url and then use get to get the dom node and make your assertion.&lt;/p&gt;
-
-&lt;p&gt;The DOM Manipulation code that you have to write is abstracted away for you with the nice Cypress.io api.&lt;/p&gt;
-
-&lt;h6 id=&#34;output-of-running-desktop-application-for-cypress&#34;&gt;Output of Running Desktop Application for Cypress&lt;/h6&gt;
-
-&lt;p&gt;In the screenshot below we have a running Desktop application for Cypress.io which opened after we gave command &lt;code&gt;npm run cypress:open&lt;/code&gt; in the terminal.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-desktop-running.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice that in the screenshot we have blog_spec.js at the top.&lt;/p&gt;
-
-&lt;p&gt;In order for your tests to run in Cypress.io you will need to add them into &lt;code&gt;cypress/integration&lt;/code&gt; folder which is automatically created with examples when you first open Cypress.&lt;/p&gt;
-
-&lt;p&gt;While the desktop client is running it will watch for file changes and update in real time.&lt;/p&gt;
-
-&lt;p&gt;If we click the the entry &lt;em&gt;blog_spec.js&lt;/em&gt; it will start running our tests in Cypress.io&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/cypress-test-running.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice that the Cypress Desktop Application has our test results and visually shows us the web page that we are visiting.&lt;/p&gt;
-
-&lt;h4 id=&#34;thoughts-on-cypress-io-and-puppeteer&#34;&gt;Thoughts on Cypress.io and Puppeteer&lt;/h4&gt;
-
-&lt;p&gt;I believe that both Cypress.io and Puppeteer are great options to using Selenium. I would say that Cypress.io has many compelling features and the Desktop Client is a joy to use.&lt;/p&gt;
-
-&lt;p&gt;If you would like to look at the &lt;a href=&#34;https://github.com/jbelmont/browser-automation&#34; target=&#34;_blank&#34;&gt;browser-automation repository go here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
 </description>
