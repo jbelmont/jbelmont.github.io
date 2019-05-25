@@ -251,6 +251,151 @@
 
 <p><a href="https://en.wikipedia.org/wiki/Apache_Lucene" target="_blank">Apache Lucene Wikipedia</a></p>
 
+<blockquote>
+<p>Apache Lucene is a free and open-source information retrieval software library, originally written completely in Java by Doug Cutting. It is supported by the Apache Software Foundation and is released under the Apache Software License.</p>
+</blockquote>
+
+<h2 id="common-uses-and-features-of-lucene">Common Uses and Features of Lucene</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Apache_Lucene#Features_and_common_use" target="_blank">Features and Common Use</a></p>
+
+<blockquote>
+<p>While suitable for any application that requires full text indexing and searching capability, Lucene has been widely recognized for its utility in the implementation of Internet search engines and local, single-site searching.</p>
+
+<p>Lucene includes a feature to perform a fuzzy search based on edit distance.</p>
+
+<p>Lucene has also been used to implement recommendation systems. For example, Lucene&rsquo;s &lsquo;MoreLikeThis&rsquo; Class can generate recommendations for similar documents. In a comparison of the term vector-based similarity approach of &lsquo;MoreLikeThis&rsquo; with citation-based document similarity measures, such as Co-citation and Co-citation Proximity Analysis Lucene&rsquo;s approach excelled at recommending documents with very similar structural characteristics and more narrow relatedness. In contrast, citation-based document similarity measures tended to be more suitable for recommending more broadly related documents, meaning citation-based approaches may be more suitable for generating serendipitous recommendations, as long as documents to be recommended contain in-text citations.</p>
+
+<p>At the core of Lucene&rsquo;s logical architecture is the idea of a document containing fields of text. This flexibility allows Lucene&rsquo;s API (Application Programming Interface) to be independent of the file format. Text from PDFs, HTML, Microsoft Word, Mind Maps, and OpenDocument documents, as well as many others (except images), can all be indexed as long as their textual information can be extracted.</p>
+</blockquote>
+
+<h2 id="lucene-based-projects">Lucene-based projects</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Apache_Lucene#Lucene-based_projects" target="_blank">Lucene-based projects</a></p>
+
+<ul>
+<li><p>Apache Nutch — provides web crawling and HTML parsing[citation needed]</p></li>
+
+<li><p>Apache Solr — an enterprise search server.</p></li>
+
+<li><p>Compass — the predecessor to Elasticsearch</p></li>
+
+<li><p>CrateDB — open source, distributed SQL database built on Lucene</p></li>
+
+<li><p>DocFetcher — a multiplatform desktop search application</p></li>
+
+<li><p>Elasticsearch — an enterprise search server released in 2010.</p></li>
+
+<li><p>Kinosearch — a search engine written in Perl and C and a loose port of Lucene. The Socialtext wiki software uses this search engine, and so does the MojoMojo wiki. It is also used by the Human
+Metabolome Database (HMDB) and the Toxin and Toxin-Target Database (T3DB).</p></li>
+
+<li><p>Swiftype — an enterprise search startup based on Lucene.</p></li>
+</ul>
+
+<h4 id="lucene-queries-in-action">Lucene Queries in Action</h4>
+
+<p>We will look at using lucene queries with Auth0 apis and we will use curl and bash to make rest calls.</p>
+
+<p>Here is a bash script that gets API Token from Auth0 Management API and then uses user search api:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#! /usr/local/bin/bash
+</span><span style="color:#75715e"></span>
+TOKEN<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --silent <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --request POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --url <span style="color:#e6db74">&#34;</span>$PERSONAL_AUTH0_DOMAIN<span style="color:#e6db74">/oauth/token&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --header <span style="color:#e6db74">&#39;content-type: application/x-www-form-urlencoded&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --data <span style="color:#e6db74">&#34;audience=</span>$PERSONAL_AUTH0_AUDIENCE<span style="color:#e6db74">&amp;grant_type=client_credentials&amp;client_id=</span>$PERSONAL_AUTH0_CLIENTID<span style="color:#e6db74">&amp;client_secret=</span>$PERSONAL_AUTH0_CLIENT_SECRET<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    | jq <span style="color:#e6db74">&#39;.access_token&#39;</span> | sed <span style="color:#e6db74">&#39;s/^&#34;//g;s/&#34;$//g&#39;</span><span style="color:#66d9ef">)</span>
+
+curl --request GET <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --url <span style="color:#e6db74">&#34;</span>$PERSONAL_AUTH0_DOMAIN<span style="color:#e6db74">/api/v2/users?q=name:jean*&amp;search_engine=v3&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --header <span style="color:#e6db74">&#34;authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span></code></pre></div>
+
+<p>Here we use a feature in Lucene Queries called: <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Wildcard%20Searches" target="_blank">Wildcard matching</a></p>
+
+<p>This lucene query will search the auth0 user search api for any user that has name starting with &ldquo;jean&rdquo;</p>
+
+<p>Here is the request payload:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
+  {
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Jean-Marcel Belmont&#34;</span>,
+    <span style="color:#f92672">&#34;picture&#34;</span>: <span style="color:#e6db74">&#34;https://pbs.twimg.com/profile_images/960991755108868097/HvHXkEYN_normal.jpg&#34;</span>,
+    <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Golang Programmer, Rustlang Enthusiast, JavaScript and NodeJS Artisan, Reverse Engineering Noob, Published Author, Christian, Father, Engineer @FoodLogiq&#34;</span>,
+    <span style="color:#f92672">&#34;lang&#34;</span>: <span style="color:#e6db74">&#34;en&#34;</span>,
+    <span style="color:#f92672">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;North Carolina, USA&#34;</span>,
+    <span style="color:#f92672">&#34;screen_name&#34;</span>: <span style="color:#e6db74">&#34;jbelmont80&#34;</span>,
+    <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://t.co/GOLxaCPccZ&#34;</span>,
+    <span style="color:#f92672">&#34;updated_at&#34;</span>: <span style="color:#e6db74">&#34;2019-01-19T1808.722Z&#34;</span>,
+    <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#e6db74">&#34;twitter|2921946821&#34;</span>,
+    <span style="color:#f92672">&#34;nickname&#34;</span>: <span style="color:#e6db74">&#34;Jean-Marcel Belmont&#34;</span>,
+    <span style="color:#f92672">&#34;identities&#34;</span>: [
+      {
+        <span style="color:#f92672">&#34;provider&#34;</span>: <span style="color:#e6db74">&#34;twitter&#34;</span>,
+        <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#e6db74">&#34;2921946821&#34;</span>,
+        <span style="color:#f92672">&#34;connection&#34;</span>: <span style="color:#e6db74">&#34;twitter&#34;</span>,
+        <span style="color:#f92672">&#34;isSocial&#34;</span>: <span style="color:#66d9ef">true</span>
+      }
+    ],
+    <span style="color:#f92672">&#34;created_at&#34;</span>: <span style="color:#e6db74">&#34;2019-01-19T1808.722Z&#34;</span>,
+    <span style="color:#f92672">&#34;last_login&#34;</span>: <span style="color:#e6db74">&#34;2019-01-19T1808.720Z&#34;</span>,
+    <span style="color:#f92672">&#34;last_ip&#34;</span>: <span style="color:#e6db74">&#34;174.110.45.244&#34;</span>,
+    <span style="color:#f92672">&#34;logins_count&#34;</span>: <span style="color:#ae81ff">1</span>
+  },
+]</code></pre></div>
+
+<p>I left out some entries but you get the idea of what wildcard matching.</p>
+
+<p>This is analogous to matching you would get with grep like this:</p>
+
+<figure>
+    <img src="/media/grep-wildcard-example.png"/> 
+</figure>
+
+
+<p>The next example lucene query uses keyword matching with the <em>AND</em> operator:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --request GET <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --url <span style="color:#e6db74">&#34;</span>$PERSONAL_AUTH0_DOMAIN<span style="color:#e6db74">/api/v2/users?q=name:jean*%20AND%20nickname:marcelbelmont&amp;search_engine=v3&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --header <span style="color:#e6db74">&#34;authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span></code></pre></div>
+
+<p>I percent encoded the space with %20 but notice that the query is now:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">?q<span style="color:#f92672">=</span>name:jean AND nickname:marcelbelmont&amp;search_engine<span style="color:#f92672">=</span>v3</code></pre></div>
+
+<p>We can even group queries and use an OR operator with lucene syntax:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --request GET <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --url <span style="color:#e6db74">&#34;</span>$PERSONAL_AUTH0_DOMAIN<span style="color:#e6db74">/api/v2/users?%28q=name:jean*%20AND%20nickname:marcelbelmont%29%20OR%20nickname:Jean-Marcel%20Belmont&amp;search_engine=v3&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --header <span style="color:#e6db74">&#34;authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span></code></pre></div>
+
+<p>Notice that in this query I percent encoded the left parenthesis &ldquo;(&rdquo; &ldquo;%28&rdquo; and right parenthesis &ldquo;%29&rdquo; and percent encoded spaces &ldquo; &rdquo; &ldquo;%20&rdquo;</p>
+
+<p>Here is the query with no percent encoding:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">?<span style="color:#f92672">(</span>q<span style="color:#f92672">=</span>name:jean* AND nickname:marcelbelmont<span style="color:#f92672">)</span> OR nickname:Jean-Marcel+Belmont&amp;search_engine<span style="color:#f92672">=</span>v3</code></pre></div>
+
+<p>You can use range queries in lucene here is a possible auth0 query with ranges:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --request GET <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --url <span style="color:#e6db74">&#34;</span>$PERSONAL_AUTH0_DOMAIN<span style="color:#e6db74">/api/v2/users?q=last_login=%5B2018-03-06+TO+2019-01-19%5D&amp;search_engine=v3&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --header <span style="color:#e6db74">&#34;authorization: Bearer </span>$TOKEN<span style="color:#e6db74">&#34;</span></code></pre></div>
+
+<p>Here is the query with no percent encoding:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">?q<span style="color:#f92672">=</span>last_login<span style="color:#f92672">=[</span><span style="color:#ae81ff">2018</span>-03-06 TO <span style="color:#ae81ff">2019</span>-01-19<span style="color:#f92672">]</span>&amp;search_engine<span style="color:#f92672">=</span>v3</code></pre></div>
+
+<p>There is a whole lot more that you can do with lucene query syntax which you can read at:</p>
+
+<p><a href="http://lucene.apache.org/java/3_5_0/queryparsersyntax.html" target="_blank">Query Parser Syntax</a></p>
+
+<p>If you like this post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a> for more related type posts.</p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
     </div>
   </div>
 
