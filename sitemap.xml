@@ -4,8 +4,17 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/post/awk-programming/</loc>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/</loc>
-      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -15,7 +24,37 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/</loc>
-      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/awk/</loc>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/shell/</loc>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/unix/</loc>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -159,16 +198,6 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/tags/bash/</loc>
-      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/unix/</loc>
       <lastmod>2019-02-16T10:59:02-05:00</lastmod>
       <priority>0</priority>
     </url>

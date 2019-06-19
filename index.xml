@@ -6,8 +6,666 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Fri, 24 May 2019 20:20:59 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 18 Jun 2019 18:40:22 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Awk Programming</title>
+      <link>https://www.marcelbelmont.com/post/awk-programming/</link>
+      <pubDate>Tue, 18 Jun 2019 18:40:22 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/awk-programming/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Mastering Awk Programming&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;AWK is a special-purpose programming language designed for text processing and typically used as a data extraction and reporting tool. It is a standard feature of most Unix-like operating systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Usually awk is used in combination with sed but awk unlike sed is a Turing Complete Programming Language and can be used for many different tasks.&lt;/p&gt;
+
+&lt;p&gt;Awk shines when used for pattern matching and can aid when used for reporting purposes.&lt;/p&gt;
+
+&lt;h2 id=&#34;awk-downloading-instructions&#34;&gt;Awk Downloading Instructions&lt;/h2&gt;
+
+&lt;h4 id=&#34;build-awk-from-source&#34;&gt;Build awk from source&lt;/h4&gt;
+
+&lt;p&gt;You can download gawk from ftp site at &lt;a href=&#34;https://ftp.gnu.org/gnu/gawk/&#34; target=&#34;_blank&#34;&gt;gawk gnu sources&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We will download gawk version 5 with the following command:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;wget http://ftp.gnu.org/gnu/gawk/gawk-5.0.0.tar.xz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can then unpack this file with the following command:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# This command unpacks the tar ball into a folder called gawk-5.0.0&lt;/span&gt;
+tar xvf gawk-5.0.0.tar.xz
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# next change into this directory&lt;/span&gt;
+cd gawk-5.0.0.tar.xz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When you build from source you will generally need to run the following commands:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./configure
+make &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h6 id=&#34;configure-explanation-in-readme-from-gawk-source&#34;&gt;Configure explanation in README from gawk source&lt;/h6&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;configure&#39; shell script attempts to guess correct values for
+various system-dependent variables used during compilation.  It uses
+those values to create a&lt;/code&gt;Makefile&amp;rsquo; in each directory of the package.
+It may also create one or more &lt;code&gt;.h&#39; files containing system-dependent
+definitions.  Finally, it creates a shell script&lt;/code&gt;config.status&amp;rsquo; that
+you can run in the future to recreate the current configuration, and a
+file &lt;code&gt;config.log&#39; containing compiler output (useful mainly for
+debugging&lt;/code&gt;configure&amp;rsquo;).&lt;/p&gt;
+
+&lt;p&gt;It can also use an optional file (typically called &lt;code&gt;config.cache&#39;
+and enabled with&lt;/code&gt;&amp;ndash;cache-file=config.cache&amp;rsquo; or simply `-C&amp;rsquo;) that saves
+the results of its tests to speed up reconfiguring.  Caching is
+disabled by default to prevent problems with accidental use of stale
+cache files.&lt;/p&gt;
+
+&lt;p&gt;If you need to do unusual things to compile the package, please try
+to figure out how &lt;code&gt;configure&#39; could check whether to do them, and mail
+diffs or instructions to the address given in the&lt;/code&gt;README&amp;rsquo; so they can
+be considered for the next release.  If you are using the cache, and at
+some point `config.cache&amp;rsquo; contains results you don&amp;rsquo;t want to keep, you
+may remove or edit it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Building from source is generally not necessary anymore since you use package managers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;setup-awk-in-homebrew-package-manager-in-mac-os-x&#34;&gt;Setup awk in Homebrew Package Manager in Mac OS X&lt;/h4&gt;
+
+&lt;h6 id=&#34;install-homebrew&#34;&gt;Install Homebrew&lt;/h6&gt;
+
+&lt;p&gt;You can install homebrew on Mac OS X using this script:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/usr/bin/ruby -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can then simply run: &lt;code&gt;brew install gawk&lt;/code&gt; to install the latest gawk or awk.&lt;/p&gt;
+
+&lt;h6 id=&#34;setup-awk-in-linux&#34;&gt;Setup awk in Linux&lt;/h6&gt;
+
+&lt;p&gt;You can use the following command to install gawk on GNU Linux variants&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get update -y
+sudo apt-get install gawk -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;If you have other linux distribution then please consult its documentation to install awk.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;awk-hello-world-example&#34;&gt;Awk Hello World Example&lt;/h2&gt;
+
+&lt;p&gt;awk is a turing complete language but it is typically used in pattern matching&lt;/p&gt;
+
+&lt;p&gt;We will write a hello world equivalent program in awk like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN { print &amp;#34;Hello World&amp;#34; }&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This prints out &amp;ldquo;Hello World&amp;rdquo; to standard output in your terminal&lt;/p&gt;
+
+&lt;h2 id=&#34;awk-workflow-diagram&#34;&gt;awk workflow diagram&lt;/h2&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/Awk_Workflow_Programming.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;read-operation&#34;&gt;Read Operation:&lt;/h4&gt;
+
+&lt;p&gt;In the read operation awk reads a line from the input stream (file, pipe, or stdin) and stores it in memory.&lt;/p&gt;
+
+&lt;h4 id=&#34;execute-operation&#34;&gt;Execute OPERATION:&lt;/h4&gt;
+
+&lt;p&gt;All AWK commands are applied sequentially on the input (records and fields). By default, AWK executes commands on each record/line. This behavior of AWK can be restricted by the use of patterns.&lt;/p&gt;
+
+&lt;h4 id=&#34;repeat-operation&#34;&gt;REPEAT OPERATION:&lt;/h4&gt;
+
+&lt;p&gt;The process of read and execute is repeated until the end of the file is reached.&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-actions-in-awk&#34;&gt;Basic actions in awk&lt;/h2&gt;
+
+&lt;p&gt;Basic actions in awk consist of a pattern and an action&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;BEGIN &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;executing-awk-in-a-unix-linux-pipeline&#34;&gt;Executing awk in a Unix/Linux Pipeline&lt;/h4&gt;
+
+&lt;p&gt;awk is useful in a unix pipeline is the following example illustrates:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-pipeline.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;In the following Unix Pipeline we print current processes into awk and print the lines 2 to the nth line using &lt;em&gt;awk&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;regular-expressions-in-awk&#34;&gt;Regular expressions in awk&lt;/h2&gt;
+
+&lt;p&gt;Awk is a pattern matching language but comes with strong regular expression support.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A regular expression is a set of characters used to describe a pattern.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A regular expression is generally used to match lines in a file that contain a particular pattern.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Many Unix utilities operate on plain text files line by line, such as grep, sed, and awk.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Regular expressions search for a pattern on a single line in a file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;types-of-regular-expressions&#34;&gt;Types of Regular Expressions&lt;/h4&gt;
+
+&lt;p&gt;Remember that there are 3 different types of Regular Expressions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Basic Regular Expressions (RE)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Extended Regular Expressions (ERE)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Simple Regular Expressions (Deprecated)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;The 3rd type is deprecated and should not be used anymore.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;regular-expressions-wikipedia-post&#34;&gt;Regular Expressions Wikipedia Post&lt;/h6&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts&#34; target=&#34;_blank&#34;&gt;Regular Expressions Wikipedia Post&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &amp;ldquo;Handel&amp;rdquo;, &amp;ldquo;Händel&amp;rdquo;, and &amp;ldquo;Haendel&amp;rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regular expression that matches a particular set then there exists an infinite number of other regular expressions that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Boolean &amp;ldquo;or&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* A vertical bar separates alternatives. For example, gray|grey can match &amp;quot;gray&amp;quot; or &amp;quot;grey&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Grouping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &amp;quot;gray&amp;quot; or &amp;quot;grey&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Quantification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* A quantifier after a token (such as a character) or group specifies how often that a preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).
+
+* `?` The question mark indicates zero or one occurrences of the preceding element. For example, colou?r matches both &amp;quot;color&amp;quot; and &amp;quot;colour&amp;quot;.
+* \* The asterisk indicates zero or more occurrences of the preceding element. For example, ab*c matches &amp;quot;ac&amp;quot;, &amp;quot;abc&amp;quot;, &amp;quot;abbc&amp;quot;, &amp;quot;abbbc&amp;quot;, and so on.
+* \+ The plus sign indicates one or more occurrences of the preceding element. For example, ab+c matches &amp;quot;abc&amp;quot;, &amp;quot;abbc&amp;quot;, &amp;quot;abbbc&amp;quot;, and so on, but not &amp;quot;ac&amp;quot;.
+
+* `{n}[18]` The preceding item is matched exactly n times.
+    * `{min,}[18]` The preceding item is matched min or more times.
+    * `{min,max}[18]` The preceding item is matched at least min times, but not more than max times.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Wildcard&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The wildcard *.* matches any character. For example, a.b matches any string that contains an &amp;quot;a&amp;quot;, then any other character and then a &amp;quot;b&amp;quot;, a.*b matches any string that contains an &amp;quot;a&amp;quot; and a &amp;quot;b&amp;quot; at some later point.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&#34;differences-between-basic-and-ere-regular-expressions&#34;&gt;Differences between Basic and ERE Regular Expressions&lt;/h6&gt;
+
+&lt;p&gt;ERE (Extended Regular Expressions) adds ?, +, and |, and EREs removes the need to escape the metacharacters ( ) and { }, which are required in BREs.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;?&lt;/code&gt; operator matches on zero or 1&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;+&lt;/code&gt; operator matches on 1 or more&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;|&lt;/code&gt; operator adds alternation, the &lt;em&gt;or&lt;/em&gt; operator to regexes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Furthermore, as long as the POSIX standard syntax for regexes is adhered to, there can be, and often is, additional syntax to serve specific (yet POSIX compliant) applications&lt;/p&gt;
+
+&lt;p&gt;The meaning of metacharacters escaped with a backslash is reversed for some characters in the POSIX Extended Regular Expression (ERE) syntax.&lt;/p&gt;
+
+&lt;p&gt;With this syntax, a backslash causes the metacharacter to be treated as a literal character.&lt;/p&gt;
+
+&lt;p&gt;So, for example, ( ) is now ( ) and { } is now { }.&lt;/p&gt;
+
+&lt;p&gt;Additionally, support is removed for \n backreferences.&lt;/p&gt;
+
+&lt;h6 id=&#34;using-regexes-in-awk&#34;&gt;Using Regexes in Awk&lt;/h6&gt;
+
+&lt;p&gt;Let us look at an example of matching on a regex pattern with awk.&lt;/p&gt;
+
+&lt;p&gt;We have the following text file with the following information:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;emp.dat&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Jack    Jones       &lt;span style=&#34;color:#ae81ff&#34;&gt;9857532312&lt;/span&gt;  jack@gmail.com       M   hr      &lt;span style=&#34;color:#ae81ff&#34;&gt;2000&lt;/span&gt;
+Jane    Kaur        &lt;span style=&#34;color:#ae81ff&#34;&gt;9837432312&lt;/span&gt;  jane@gmail.com       F   hr      &lt;span style=&#34;color:#ae81ff&#34;&gt;1800&lt;/span&gt;
+Eva     Bostick     &lt;span style=&#34;color:#ae81ff&#34;&gt;8827232115&lt;/span&gt;  eva@gmail.com        F   lgs     &lt;span style=&#34;color:#ae81ff&#34;&gt;2100&lt;/span&gt;
+Amit    Mendez      &lt;span style=&#34;color:#ae81ff&#34;&gt;9911887766&lt;/span&gt;  amit@yahoo.com       M   lgs     &lt;span style=&#34;color:#ae81ff&#34;&gt;2350&lt;/span&gt;
+Julie   Nicholson   &lt;span style=&#34;color:#ae81ff&#34;&gt;8826234556&lt;/span&gt;  julie@yahoo.com      F   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2500&lt;/span&gt;
+Ana     Johnson     &lt;span style=&#34;color:#ae81ff&#34;&gt;9856422312&lt;/span&gt;  anaj@hotmail.com     F   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2700&lt;/span&gt;
+Hari    Jones       &lt;span style=&#34;color:#ae81ff&#34;&gt;8827255666&lt;/span&gt;  harij@yahoo.com      M   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2350&lt;/span&gt;
+Victor  Mendez      &lt;span style=&#34;color:#ae81ff&#34;&gt;8826567898&lt;/span&gt;  vicm@hotmail.com     M   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2500&lt;/span&gt;
+John    Nicholson   &lt;span style=&#34;color:#ae81ff&#34;&gt;9911556789&lt;/span&gt;  johnn@gmail.com      M   hr      &lt;span style=&#34;color:#ae81ff&#34;&gt;2200&lt;/span&gt;
+Billy   Bostick     &lt;span style=&#34;color:#ae81ff&#34;&gt;9911664321&lt;/span&gt;  billyb@yahoo.com     M   lgs     &lt;span style=&#34;color:#ae81ff&#34;&gt;1900&lt;/span&gt;
+Sam     Johnson     &lt;span style=&#34;color:#ae81ff&#34;&gt;8856345512&lt;/span&gt;  samj@hotmail.com     F   lgs     &lt;span style=&#34;color:#ae81ff&#34;&gt;2300&lt;/span&gt;
+Ginny   Jones       &lt;span style=&#34;color:#ae81ff&#34;&gt;9857123466&lt;/span&gt;  ginnyj@yahoo.com     F   hr      &lt;span style=&#34;color:#ae81ff&#34;&gt;2250&lt;/span&gt;
+Emily   Kaur        &lt;span style=&#34;color:#ae81ff&#34;&gt;8826175812&lt;/span&gt;  emilyk@gmail.com     F   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2100&lt;/span&gt;
+Amy     Mendez      &lt;span style=&#34;color:#ae81ff&#34;&gt;9857536898&lt;/span&gt;  amym@hotmail.com     F   Ops     &lt;span style=&#34;color:#ae81ff&#34;&gt;2500&lt;/span&gt;
+Tina    Jones       &lt;span style=&#34;color:#ae81ff&#34;&gt;8811776612&lt;/span&gt;  tinaj@yahoo.com      F   lgs     &lt;span style=&#34;color:#ae81ff&#34;&gt;2300&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let us match on the following lines: Nicholson and Mendez&lt;/p&gt;
+
+&lt;p&gt;We can use alternation with awk and match on the lines like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-regex-pattern.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we enclosed our regex pattern in &lt;code&gt;/&amp;lt;pattern&amp;gt;/&lt;/code&gt; backslashes and that we used alternation and 4 lines were returned to standard output like expected.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-variables-in-awk&#34;&gt;Using Variables in awk&lt;/h2&gt;
+
+&lt;p&gt;awk has some builtin variables that can be used like:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;FS&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FS is the field separator variable which by default is the &amp;lsquo; &amp;rsquo; (space) character&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let us look at an example awk command using it:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ifconfig en0 inet | awk -F &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/inet/ { print  }&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we use the command line option of &lt;code&gt;-F&lt;/code&gt; but we can also use it in an inline awk script like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ifconfig en0 inet | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN { FS=&amp;#34; &amp;#34; } /inet/ { print $2 }&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Please read the following GNU docs for &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html&#34; target=&#34;_blank&#34;&gt;Predefined variables in Awk&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;environment-variables-in-awk&#34;&gt;Environment variables in awk&lt;/h4&gt;
+
+&lt;p&gt;Let us pass some variables into our awk script we will just use the begin block in this example:&lt;/p&gt;
+
+&lt;p&gt;Let us look at the &lt;em&gt;environ.awk&lt;/em&gt; awk script:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /usr/local/bin/awk -f
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+BEGIN &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&amp;lt;ARGC; i++&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+		print ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+	&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-environ-script.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that in this example we used the &lt;code&gt;-f&lt;/code&gt; command line option to specify a file.&lt;/p&gt;
+
+&lt;p&gt;We can also invoke the awk script like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-executable-script.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;You will need to change permissions to the script executable with the command:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;chmod +x ./usage_scripts/environ.awk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;string-conversion-in-awk&#34;&gt;String conversion in awk&lt;/h4&gt;
+
+&lt;p&gt;The conversion to string and numeric values occurs automatically in AWK as per demand.&lt;/p&gt;
+
+&lt;p&gt;This means that if a numeric value appears in a string concatenation in awk it is automatically converted to a string.&lt;/p&gt;
+
+&lt;p&gt;Therefore if you want to treat a numeric value as a number you will need to do the following:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;BEGIN &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    num1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+    num2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;;
+    print num1 num2;
+    print num1 + num2;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Look at the following terminal run:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-strconv.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice how the first line prints the string 45 and the second line prints out the value of 9.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-arrays-in-awk&#34;&gt;Using arrays in awk&lt;/h2&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Array-Intro.html#Array-Intro&#34; target=&#34;_blank&#34;&gt;Awk GNU Documentation on Arrays&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The awk language provides one-dimensional arrays for storing groups of related strings or numbers. Every awk array must have a name. Array names have the same syntax as variable names; any valid variable name would also be a valid array name. But one name cannot be used in both ways (as an array and as a variable) in the same awk program.&lt;/p&gt;
+
+&lt;p&gt;Arrays in awk superficially resemble arrays in other programming languages, but there are fundamental differences. In awk, it isn&amp;rsquo;t necessary to specify the size of an array before starting to use it. Additionally, any number or string, not just consecutive integers, may be used as an array index.&lt;/p&gt;
+
+&lt;p&gt;In most other languages, arrays must be declared before use, including a specification of how many elements or components they contain. In such languages, the declaration causes a contiguous block of memory to be allocated for that many elements. Usually, an index in the array must be a nonnegative integer. For example, the index zero specifies the first element in the array, which is actually stored at the beginning of the block of memory. Index one specifies the second element, which is stored in memory right after the first element, and so on. It is impossible to add more elements to the array, because it has room only for as many elements as given in the declaration. (Some languages allow arbitrary starting and ending indices—e.g., &amp;lsquo;15 .. 27&amp;rsquo;—but the size of the array is still fixed when the array is declared.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Basically arrays in awk are like a dictionary in Python or map in Golang also known as associative arrays.&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /usr/local/bin/awk -f
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+BEGIN &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;apples&amp;#34;&lt;/span&gt;;
+    fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;oranges&amp;#34;&lt;/span&gt;;
+    fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;strawberries&amp;#34;&lt;/span&gt;;
+    fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bananas&amp;#34;&lt;/span&gt;;
+    fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mangoes&amp;#34;&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;fruit in fruits&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 
+        print fruits&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;fruit&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Notice how we used the for &amp;hellip; in operator with arrays in awk to print each value in the awk array.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a sample run of the awk script:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-arrays.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;standard-output-formatting-in-awk&#34;&gt;Standard Output Formatting in Awk&lt;/h2&gt;
+
+&lt;p&gt;You have seen how to use the print command with awk but you can also use the printf command.&lt;/p&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;https://en.wikipedia.org/wiki/Printf_format_string&#34; target=&#34;_blank&#34;&gt;printf format string Wikipedia post&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;printf format string refers to a control parameter used by a class of functions in the input/output libraries of C and many other programming languages. The string is written in a simple template language: characters are usually copied literally into the function&amp;rsquo;s output, but format specifiers, which start with a % character, indicate the location and method to translate a piece of data (such as a number) to characters.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The printf command in awk is very similar to the printf command in C and it has the following operators:&lt;/p&gt;
+
+&lt;p&gt;A format specifier starts with the character &amp;lsquo;%&amp;rsquo; and ends with a format-control letter—it tells the printf statement how to output one item. The format-control letter specifies what kind of value to print. The rest of the format specifier is made up of optional modifiers that control how to print the value, such as the field width. Here is a list of the format-control letters:&lt;/p&gt;
+
+&lt;h4 id=&#34;a-a&#34;&gt;%a, %A&lt;/h4&gt;
+
+&lt;p&gt;A floating point number of the form [-]0xh.hhhhp+-dd (C99 hexadecimal floating point format). For %A, uppercase letters are used instead of lowercase ones.&lt;/p&gt;
+
+&lt;p&gt;NOTE: The current POSIX standard requires support for %a and %A in awk. As far as we know, besides gawk, the only other version of awk that actually implements it is BWK awk. It&amp;rsquo;s use is thus highly nonportable!&lt;/p&gt;
+
+&lt;p&gt;Furthermore, these formats are not available on any system where the underlying C library printf() function does not support them. As of this writing, among current systems, only OpenVMS is known to not support them.&lt;/p&gt;
+
+&lt;h4 id=&#34;c&#34;&gt;%c&lt;/h4&gt;
+
+&lt;p&gt;Print a number as a character; thus, &amp;lsquo;printf &amp;ldquo;%c&amp;rdquo;, 65&amp;rsquo; outputs the letter &amp;lsquo;A&amp;rsquo;. The output for a string value is the first character of the string.&lt;/p&gt;
+
+&lt;p&gt;NOTE: The POSIX standard says the first character of a string is printed. In locales with multibyte characters, gawk attempts to convert the leading bytes of the string into a valid wide character and then to print the multibyte encoding of that character. Similarly, when printing a numeric value, gawk allows the value to be within the numeric range of values that can be held in a wide character. If the conversion to multibyte encoding fails, gawk uses the low eight bits of the value as the character to print.&lt;/p&gt;
+
+&lt;p&gt;Other awk versions generally restrict themselves to printing the first byte of a string or to numeric values within the range of a single byte (0–255). (d.c.)&lt;/p&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Control-Letters.html#Control-Letters&#34; target=&#34;_blank&#34;&gt;awk printf control letters documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;d-i&#34;&gt;%d, %i&lt;/h4&gt;
+
+&lt;p&gt;Print a decimal integer. The two control letters are equivalent. (The &amp;lsquo;%i&amp;rsquo; specification is for compatibility with ISO C.)&lt;/p&gt;
+
+&lt;h4 id=&#34;e-e&#34;&gt;%e, %E&lt;/h4&gt;
+
+&lt;p&gt;Print a number in scientific (exponential) notation. For example:&lt;/p&gt;
+
+&lt;p&gt;printf &amp;ldquo;%4.3e\n&amp;rdquo;, 1950
+prints &amp;lsquo;1.950e+03&amp;rsquo;, with a total of four significant figures, three of which follow the decimal point. (The &amp;lsquo;4.3&amp;rsquo; represents two modifiers, discussed in the next subsection.) &amp;lsquo;%E&amp;rsquo; uses &amp;lsquo;E&amp;rsquo; instead of &amp;lsquo;e&amp;rsquo; in the output.&lt;/p&gt;
+
+&lt;h4 id=&#34;f&#34;&gt;%f&lt;/h4&gt;
+
+&lt;p&gt;Print a number in floating-point notation. For example:&lt;/p&gt;
+
+&lt;p&gt;printf &amp;ldquo;%4.3f&amp;rdquo;, 1950
+prints &amp;lsquo;1950.000&amp;rsquo;, with a minimum of four significant figures, three of which follow the decimal point. (The &amp;lsquo;4.3&amp;rsquo; represents two modifiers, discussed in the next subsection.)&lt;/p&gt;
+
+&lt;p&gt;On systems supporting IEEE 754 floating-point format, values representing negative infinity are formatted as &amp;lsquo;-inf&amp;rsquo; or &amp;lsquo;-infinity&amp;rsquo;, and positive infinity as &amp;lsquo;inf&amp;rsquo; or &amp;lsquo;infinity&amp;rsquo;. The special “not a number” value formats as &amp;lsquo;-nan&amp;rsquo; or &amp;lsquo;nan&amp;rsquo; (see section Other Stuff to Know).&lt;/p&gt;
+
+&lt;h4 id=&#34;f-1&#34;&gt;%F&lt;/h4&gt;
+
+&lt;p&gt;Like &amp;lsquo;%f&amp;rsquo;, but the infinity and “not a number” values are spelled using uppercase letters.&lt;/p&gt;
+
+&lt;p&gt;The &amp;lsquo;%F&amp;rsquo; format is a POSIX extension to ISO C; not all systems support it. On those that don&amp;rsquo;t, gawk uses &amp;lsquo;%f&amp;rsquo; instead.&lt;/p&gt;
+
+&lt;h4 id=&#34;g-g&#34;&gt;%g, %G&lt;/h4&gt;
+
+&lt;p&gt;Print a number in either scientific notation or in floating-point notation, whichever uses fewer characters; if the result is printed in scientific notation, &amp;lsquo;%G&amp;rsquo; uses &amp;lsquo;E&amp;rsquo; instead of &amp;lsquo;e&amp;rsquo;.&lt;/p&gt;
+
+&lt;h4 id=&#34;o&#34;&gt;%o&lt;/h4&gt;
+
+&lt;p&gt;Print an unsigned octal integer (see section Octal and Hexadecimal Numbers).&lt;/p&gt;
+
+&lt;h4 id=&#34;s&#34;&gt;%s&lt;/h4&gt;
+
+&lt;p&gt;Print a string.&lt;/p&gt;
+
+&lt;h4 id=&#34;u&#34;&gt;%u&lt;/h4&gt;
+
+&lt;p&gt;Print an unsigned decimal integer. (This format is of marginal use, because all numbers in awk are floating point; it is provided primarily for compatibility with C.)&lt;/p&gt;
+
+&lt;h4 id=&#34;x-x&#34;&gt;%x, %X&lt;/h4&gt;
+
+&lt;p&gt;Print an unsigned hexadecimal integer; &amp;lsquo;%X&amp;rsquo; uses the letters &amp;lsquo;A&amp;rsquo; through &amp;lsquo;F&amp;rsquo; instead of &amp;lsquo;a&amp;rsquo; through &amp;lsquo;f&amp;rsquo; (see section Octal and Hexadecimal Numbers).&lt;/p&gt;
+
+&lt;h4 id=&#34;toc_34&#34;&gt;%%&lt;/h4&gt;
+
+&lt;p&gt;Print a single &amp;lsquo;%&amp;rsquo;. This does not consume an argument and it ignores any modifiers.&lt;/p&gt;
+
+&lt;h4 id=&#34;format-modifiers-in-awk&#34;&gt;Format Modifiers in awk&lt;/h4&gt;
+
+&lt;p&gt;Please read the following &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Format-Modifiers.html#Format-Modifiers&#34; target=&#34;_blank&#34;&gt;awk documentation on modifiers with printf&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6 id=&#34;awk-printf-example&#34;&gt;Awk printf example&lt;/h6&gt;
+
+&lt;p&gt;Let us look at an example script using printf with awk&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &amp;lt; NF; i++&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i % 2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%-5s &amp;#34;&lt;/span&gt;, $i;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%10s &amp;#34;&lt;/span&gt;, $i;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice here that we use the NF builtin variable that is the number of fields we also use the &lt;code&gt;-&lt;/code&gt; format modifier to left justify any even numbered fields 2, 4, 6, etc. and then use &lt;code&gt;%10&lt;/code&gt; to right justify strings&lt;/p&gt;
+
+&lt;p&gt;Here is a sample run of the script:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-printf-example.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;control-flow-in-awk&#34;&gt;Control flow in awk&lt;/h2&gt;
+
+&lt;p&gt;As you have seen with awk there is control flow operators such as &lt;code&gt;for&lt;/code&gt;, &lt;code&gt;for ... in&lt;/code&gt;, &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;else&lt;/code&gt;, &lt;code&gt;else if&lt;/code&gt; and so on&lt;/p&gt;
+
+&lt;p&gt;We can use relational operators such as the and operator &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; and the or operator &lt;code&gt;||&lt;/code&gt; in awk.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You can also use break and continue statements in awk and while loops.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us look at a sample script where we use a while loop and if statements.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &amp;lt; NF&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i % 2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            print $i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; Ding Dong&amp;#34;&lt;/span&gt;;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            print $i;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        i++;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is a sample run of the script using a data file that looks like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;honda           civic       2005        60000       3
+chevy           silverado   2016        33000       2
+chevy           tavera      1999        10000       4
+toyota          corolla     1995        95000       2
+ford            escape      2012        80000       1
+honda           accord      2000        60000       2
+fiat            punto       2007        45000       3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-control-flow1.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;functions-in-awk&#34;&gt;Functions in awk&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Awk has both builtin functions that you can utilize as well as user defined function that you can define yourself.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Please check out the &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din&#34; target=&#34;_blank&#34;&gt;gnu documentation on awk builtin functions&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a list of builtin functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Numeric Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions that work with numbers, including int(), sin() and rand().&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;String Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for string manipulation, such as split(), match() and sprintf().&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I/O Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for files and shell commands.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Time Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for dealing with timestamps.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Bitwise Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for bitwise operations.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Type Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for type information.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I18N Functions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functions for string translation.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;One thing of note is that some of the builtin functions only work for the GNU Implementation of awk and not BSD Awk or other awk variants.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example program using builtin functions in awk and user defined functions.&lt;/p&gt;
+
+&lt;h4 id=&#34;user-defined-awk-functions&#34;&gt;User Defined Awk functions&lt;/h4&gt;
+
+&lt;p&gt;We can create functions in awk with the following syntax&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; someFunc&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arg1, argn&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    ......
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; someArg
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h6 id=&#34;awk-builtin-function-and-user-defined-functions-example&#34;&gt;Awk Builtin Function and User Defined Functions example&lt;/h6&gt;
+
+&lt;p&gt;In the following example we use builtin awk functions and user defined ones&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /usr/local/bin/awk -f
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+BEGIN &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;# Numeric Functions examples&lt;/span&gt;
+    print sqrt&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+    print rand&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;# String Functions examples&lt;/span&gt;
+    nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;one&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;one&amp;#34;&lt;/span&gt;;
+    nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;two&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;two&amp;#34;&lt;/span&gt;;
+    nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;three&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;three&amp;#34;&lt;/span&gt;;
+    asort&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num in nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+        print nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;; i++&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        arr&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i+1;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;# globally subsitute each record that matches on honda to mercury&lt;/span&gt;
+    gsub&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;/honda/, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mercury&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;; print;
+    split&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;$6, strings, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+    print strings&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; average&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arr&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;; i &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; length&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arr&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;; i++&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        sum &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; i;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum / length&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arr&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;; 
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+END &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    avg &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; average&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arr&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;;
+    print avg;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/awk-functions.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Here is a sample run of our awk script notice that we used and END block here.&lt;/p&gt;
+
+&lt;h4 id=&#34;startup-and-cleanup-actions&#34;&gt;Startup and Cleanup Actions&lt;/h4&gt;
+
+&lt;p&gt;You can use the BEGIN block in awk for any startup actions and the END block for any cleanup actions in awk.&lt;/p&gt;
+
+&lt;p&gt;the body block will operate on 1 or more records which consist of 1 or more fields in a record.&lt;/p&gt;
+
+&lt;p&gt;Notice that the BEGIN and END blocks will be done once although you can define multiple BEGIN and END blocks depending on how elaborate of an awk script you are writing.&lt;/p&gt;
+
+&lt;h2 id=&#34;further-reading&#34;&gt;Further reading&lt;/h2&gt;
+
+&lt;p&gt;Please read the official awk guide on &lt;a href=&#34;https://www.gnu.org/software/gawk/manual/html_node/&#34; target=&#34;_blank&#34;&gt;GNU Awk Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For a modern and current book on awk I would suggest reading this Packt Publishing Book &lt;a href=&#34;https://www.packtpub.com/big-data-and-business-intelligence/learning-awk-programming&#34; target=&#34;_blank&#34;&gt;Learning Awk Programming&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;contact-information&#34;&gt;Contact Information&lt;/h2&gt;
+
+&lt;p&gt;If you like this post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt; for more related type posts.&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Using Lucene Queries</title>
@@ -2757,220 +3415,6 @@ mod tests {
 &lt;p&gt;Check out all the community related information &lt;a href=&#34;https://www.rust-lang.org/en-US/community.html&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you like this Blog Post please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Tips and Tricks With Curl and Jq</title>
-      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</link>
-      <pubDate>Sun, 22 Jul 2018 09:13:27 -0400</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-curl-and-jq/</guid>
-      <description>
-
-&lt;h1 id=&#34;tips-and-tricks-with-curl-and-jq&#34;&gt;Tips and Tricks With Curl and Jq&lt;/h1&gt;
-
-&lt;p&gt;In this blog post we will work with Restful APIs and use jq, which is a command line processor for json. We will use curl to make Rest calls and then use jq to parse the json response into more useful information. By using jq we can do many useful transformation with json such as aggregating data like averages from a json response payload and extracting only the fields that we are interested in working with instead of an entire payload and much more.&lt;/p&gt;
-
-&lt;h2 id=&#34;prerequisites-for-the-blog-post&#34;&gt;Prerequisites for the Blog Post&lt;/h2&gt;
-
-&lt;h4 id=&#34;jq-installation&#34;&gt;jq installation&lt;/h4&gt;
-
-&lt;p&gt;To install jq please read the instructions in the &lt;a href=&#34;https://stedolan.github.io/jq/download/&#34; target=&#34;_blank&#34;&gt;jq installation documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mac OS X users can use &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; to install &lt;a href=&#34;https://stedolan.github.io/jq/&#34; target=&#34;_blank&#34;&gt;jq&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run this command to install jq with homebrew:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install jq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;curl-installation&#34;&gt;curl installation&lt;/h4&gt;
-
-&lt;p&gt;To install curl please read the instructions in the &lt;a href=&#34;https://curl.haxx.se/download.html&#34; target=&#34;_blank&#34;&gt;curl installation documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mac OS X users already have curl installed by default but can also use &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;homebrew&lt;/a&gt; to install &lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run this command to install curl with homebrew:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install curl
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;list-of-public-apis&#34;&gt;List of Public APIs&lt;/h2&gt;
-
-&lt;p&gt;You can get a list of public apis in &lt;a href=&#34;https://github.com/toddmotto/public-apis&#34; target=&#34;_blank&#34;&gt;Todd Motto&amp;rsquo;s github repo&lt;/a&gt;.
-We will use some of the public apis listed in this repo.&lt;/p&gt;
-
-&lt;h2 id=&#34;using-curl-to-make-restful-api-calls&#34;&gt;Using curl to make restful api calls&lt;/h2&gt;
-
-&lt;h4 id=&#34;brief-description-of-curl&#34;&gt;Brief description of curl&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://curl.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl&lt;/a&gt; is used in command line applications or scripts to transfer data. It is used in a broad range of applications ranging from cars, tvs to audio equipment. We will be using curl to work with HTTP APIs but curl can work with many other protocols besides HTTP.&lt;/p&gt;
-
-&lt;h4 id=&#34;making-a-restful-api-call-with-curl&#34;&gt;Making a restful api call with curl&lt;/h4&gt;
-
-&lt;p&gt;Let us work with the &lt;a href=&#34;https://www.goodreads.com/&#34; target=&#34;_blank&#34;&gt;goodreads&lt;/a&gt; api to list some good book recommendations and first we need to authorize the &lt;a href=&#34;https://www.goodreads.com/api&#34; target=&#34;_blank&#34;&gt;goodreads api&lt;/a&gt; by creating an account with goodreads or by authorizing twitter or facebook as an oauth application with the goodreads application. You will need to go the &lt;a href=&#34;https://www.goodreads.com/api/keys&#34; target=&#34;_blank&#34;&gt;API Key page in good reads&lt;/a&gt; to register your oauth application with good reads.&lt;/p&gt;
-
-&lt;h6 id=&#34;rest-call-to-get-the-reviews-for-a-book-given-a-title-string&#34;&gt;Rest call to get the reviews for a book given a title string&lt;/h6&gt;
-
-&lt;p&gt;We will make a rest call to the following endpoint with the goodreads api:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;GET https://www.goodreads.com/book/title.json??author=Erich+Gamma&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Design Patterns&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Where &lt;em&gt;format&lt;/em&gt; can be either json or xml as the data-interchange format and isbn is the the ISBN of the book to lookup.&lt;/p&gt;
-
-&lt;p&gt;Now we will use curl in the command line to make a GET request to the goodreads api by running the following command in a command prompt or terminal application:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl &#39;https://www.goodreads.com/book/title.json?author=Arthur+Conan+Doyle&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Hound+of+the+Baskervilles&#39; -H &#39;Accept: application/json&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is json that we get back from the API:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{&amp;quot;reviews_widget&amp;quot;:&amp;quot;\u003cstyle\u003e\n  #goodreads-widget {\n    font-family: georgia, serif;\n    padding: 18px 0;\n    width:565px;\n  }\n  #goodreads-widget h1 {\n    font-weight:normal;\n    font-size: 16px;\n    border-bottom: 1px solid #BBB596;\n    margin-bottom: 0;\n  }\n  #goodreads-widget a {\n    text-decoration: none;\n    color:#660;\n  }\n  iframe{\n    background-color: #fff;\n  }\n  #goodreads-widget a:hover { text-decoration: underline; }\n  #goodreads-widget a:active {\n    color:#660;\n  }\n  #gr_footer {\n    width: 100%;\n    border-top: 1px solid #BBB596;\n    text-align: right;\n  }\n  #goodreads-widget .gr_branding{\n    color: #382110;\n    font-size: 11px;\n    text-decoration: none;\n    font-family: \&amp;quot;Helvetica Neue\&amp;quot;, Helvetica, Arial, sans-serif;\n  }\n\u003c/style\u003e\n\u003cdiv id=\&amp;quot;goodreads-widget\&amp;quot;\u003e\n  \u003cdiv id=\&amp;quot;gr_header\&amp;quot;\u003e\u003ch1\u003e\u003ca rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles\&amp;quot;\u003eThe Hound of the Baskervilles Reviews\u003c/a\u003e\u003c/h1\u003e\u003c/div\u003e\n  \u003ciframe id=\&amp;quot;the_iframe\&amp;quot; src=\&amp;quot;https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID\u0026amp;format=html\u0026amp;isbn=0451528018\u0026amp;links=660\u0026amp;review_back=fff\u0026amp;stars=000\u0026amp;text=000\&amp;quot; width=\&amp;quot;565\&amp;quot; height=\&amp;quot;400\&amp;quot; frameborder=\&amp;quot;0\&amp;quot;\u003e\u003c/iframe\u003e\n  \u003cdiv id=\&amp;quot;gr_footer\&amp;quot;\u003e\n    \u003ca class=\&amp;quot;gr_branding\&amp;quot; target=\&amp;quot;_blank\&amp;quot; rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles?utm_medium=api\u0026amp;utm_source=reviews_widget\&amp;quot;\u003eReviews from Goodreads.com\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n&amp;quot;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Notice here that the json output is not very pretty let us now use the jq command line processor to pretty print our json.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;We will now use a Unix Pipe to pipe the output of our rest call into jq which will pretty print our json by default.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl &#39;https://www.goodreads.com/book/title.json?author=Arthur+Conan+Doyle&amp;amp;key=hTDxFOV2GPZTzvzp4FZDlw&amp;amp;title=Hound+of+the+Baskervilles&#39; -H &#39;Pragma: no-cache&#39; -H &#39;Accept: application/json&#39; | jq
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is the output of the json using jq:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
-  &amp;quot;reviews_widget&amp;quot;: &amp;quot;&amp;lt;style&amp;gt;\n  #goodreads-widget {\n    font-family: georgia, serif;\n    padding: 18px 0;\n    width:565px;\n  }\n  #goodreads-widget h1 {\n    font-weight:normal;\n    font-size: 16px;\n    border-bottom: 1px solid #BBB596;\n    margin-bottom: 0;\n  }\n  #goodreads-widget a {\n    text-decoration: none;\n    color:#660;\n  }\n  iframe{\n    background-color: #fff;\n  }\n  #goodreads-widget a:hover { text-decoration: underline; }\n  #goodreads-widget a:active {\n    color:#660;\n  }\n  #gr_footer {\n    width: 100%;\n    border-top: 1px solid #BBB596;\n    text-align: right;\n  }\n  #goodreads-widget .gr_branding{\n    color: #382110;\n    font-size: 11px;\n    text-decoration: none;\n    font-family: \&amp;quot;Helvetica Neue\&amp;quot;, Helvetica, Arial, sans-serif;\n  }\n&amp;lt;/style&amp;gt;\n&amp;lt;div id=\&amp;quot;goodreads-widget\&amp;quot;&amp;gt;\n  &amp;lt;div id=\&amp;quot;gr_header\&amp;quot;&amp;gt;&amp;lt;h1&amp;gt;&amp;lt;a rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles\&amp;quot;&amp;gt;The Hound of the Baskervilles Reviews&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;\n  &amp;lt;iframe id=\&amp;quot;the_iframe\&amp;quot; src=\&amp;quot;https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID&amp;amp;amp;format=html&amp;amp;amp;isbn=0451528018&amp;amp;amp;links=660&amp;amp;amp;review_back=fff&amp;amp;amp;stars=000&amp;amp;amp;text=000\&amp;quot; width=\&amp;quot;565\&amp;quot; height=\&amp;quot;400\&amp;quot; frameborder=\&amp;quot;0\&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;\n  &amp;lt;div id=\&amp;quot;gr_footer\&amp;quot;&amp;gt;\n    &amp;lt;a class=\&amp;quot;gr_branding\&amp;quot; target=\&amp;quot;_blank\&amp;quot; rel=\&amp;quot;nofollow\&amp;quot; href=\&amp;quot;https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles?utm_medium=api&amp;amp;amp;utm_source=reviews_widget\&amp;quot;&amp;gt;Reviews from Goodreads.com&amp;lt;/a&amp;gt;\n  &amp;lt;/div&amp;gt;\n&amp;lt;/div&amp;gt;\n&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;post-request-with-curl&#34;&gt;POST Request with curl&lt;/h4&gt;
-
-&lt;p&gt;Curl has many command line options for dealing with HTTP APIs and we will have a section for each option.&lt;/p&gt;
-
-&lt;h6 id=&#34;http-request-option-for-curl&#34;&gt;HTTP Request Option for curl&lt;/h6&gt;
-
-&lt;p&gt;The command line option for http requests is either &lt;code&gt;-X&lt;/code&gt; or &lt;code&gt;--request&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can find all the HTTP Verbs documented in the HTTP 1.1 specification:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;OPTIONS&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PUT&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;DELETE&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;TRACE&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;CONNECT&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;GET&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;POST&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HEAD&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The &lt;code&gt;PATCH&lt;/code&gt; HTTP Verb came later and is documented in &lt;a href=&#34;https://tools.ietf.org/html/rfc5789#section-1&#34; target=&#34;_blank&#34;&gt;RFC 5789&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can read more about this in &lt;a href=&#34;https://tools.ietf.org/html/rfc2616#section-9&#34; target=&#34;_blank&#34;&gt;RFC 2616 Section 9&lt;/a&gt;&lt;/p&gt;
-
-&lt;h6 id=&#34;example-post-request-to-circle-ci-api&#34;&gt;Example POST Request to CIRCLE CI API&lt;/h6&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://circleci.com/docs/api/v1-reference/&#34; target=&#34;_blank&#34;&gt;CIRCLE CI API V1 Reference&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We will make a POST request to Circle CI to test out a local configuration script:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl --user ${CIRCLECI_API_TOKEN_GITHUB}: \
-    --request POST \
-    --form revision=7d7c87e2c35df34f74f5b0cdfc47244f296c5fed \
-    --form config=@config.yml \
-    --form notify=false \
-    https://circleci.com/api/v1.1/project/github/packtci/go-template-example-with-circle-ci/tree/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here we are providing the option &amp;ndash;user which takes &lt;code&gt;USER[:PASSWORD]  Server user and password&lt;/code&gt;
-The &lt;code&gt;--form&lt;/code&gt; which takes &lt;code&gt;CONTENT  Specify HTTP multipart POST data (H)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;using-curl-and-jq-to-parse-out-response-payloads&#34;&gt;Using curl and jq to parse out response payloads&lt;/h2&gt;
-
-&lt;h4 id=&#34;extract-top-level-attribute-in-json-payload&#34;&gt;Extract top level attribute in JSON Payload&lt;/h4&gt;
-
-&lt;p&gt;We will now make a GET Request to the CIRCLE CI API to get information about the user and extract an attribute.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X GET \
-    --header &amp;quot;Accept: application/json&amp;quot; \
-    &amp;quot;https://circleci.com/api/v1.1/me?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;quot; \
-    | jq &#39;.name&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here we use the &lt;a href=&#34;https://stedolan.github.io/jq/manual/#Basicfilters&#34; target=&#34;_blank&#34;&gt;jq&lt;/a&gt; utility to pluck out the name attribute which is a top level attribute in the response payload for the &lt;code&gt;GET&lt;/code&gt; request.&lt;/p&gt;
-
-&lt;h4 id=&#34;parse-out-nested-attribute-in-big-response-payload&#34;&gt;Parse out nested attribute in big response payload&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -X GET \
-    --header &amp;quot;Accept: application/json&amp;quot; \
-    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
-    | jq &#39;.[] | .subject&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here we iterate through all the elements of the array and then parse out the nested subject attribute from the response&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-parse.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;using-jq-play-to-interactively-experiment&#34;&gt;Using jq play to interactively experiment&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jqplay.org/&#34; target=&#34;_blank&#34;&gt;jq play&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can craft more complicated jq queries with ease if you use the jq playground.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/jq-play.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice in this screenshot above that we used a combination of builtin functions in jq such as:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;select&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;map&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/#Builtinoperatorsandfunctions&#34; target=&#34;_blank&#34;&gt;length&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Notice that we were able to use the JavaScript equivalence operator of &lt;code&gt;==&lt;/code&gt; to check our condition&lt;/p&gt;
-
-&lt;h6 id=&#34;add-the-jq-query-to-our-curl-command&#34;&gt;Add the jq query to our curl command&lt;/h6&gt;
-
-&lt;p&gt;Let use add the jq query in the bottom of the screenshot to an existing curl command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/bash
-
-curl -X GET \
-    --header &amp;quot;Accept: application/json&amp;quot; \
-    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
-    | jq &#39;map(select(.ssh_disabled == false)) | length&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice how useful the jq playground editor is in crafting jq queries&lt;/p&gt;
-
-&lt;h6 id=&#34;compute-average-build-times-with-jq&#34;&gt;Compute average build times with jq&lt;/h6&gt;
-
-&lt;p&gt;Now let us compute the average build time in Circle CI using jq.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#! /bin/bash
-
-curl -X GET \
-    --header &amp;quot;Accept: application/json&amp;quot; \
-    &amp;quot;https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_PERSONAL_API_TOKEN&amp;amp;limit=20&amp;amp;offset=5&amp;quot; \
-    | jq &#39;(reduce .[].build_time_millis as $build_time (0; . + $build_time) ) / length&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/manual/&#34; target=&#34;_blank&#34;&gt;jq manual&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://jqplay.org/&#34; target=&#34;_blank&#34;&gt;jq playground&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://ec.haxx.se/&#34; target=&#34;_blank&#34;&gt;curl book&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jbelmont/tips-and-tricks-with-curl-and-jq&#34; target=&#34;_blank&#34;&gt;Repo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

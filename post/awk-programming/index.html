@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/awk-programming/">
+
+  
+
+  <title>Awk Programming | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Awk Programming</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-06-18 18:40:22 -0400 EDT" itemprop="datePublished">
+      Tue, Jun 18, 2019
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/shell">shell</a
+    >, 
+    
+    <a href="/tags/awk">awk</a
+    >, 
+    
+    <a href="/tags/unix">unix</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fawk-programming%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Awk%20Programming&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fawk-programming%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fawk-programming%2f&amp;title=Awk%20Programming"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fawk-programming%2f&amp;title=Awk%20Programming"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Awk%20Programming&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fawk-programming%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><strong>Mastering Awk Programming</strong></p>
+
+<blockquote>
+<p>AWK is a special-purpose programming language designed for text processing and typically used as a data extraction and reporting tool. It is a standard feature of most Unix-like operating systems.</p>
+</blockquote>
+
+<p>Usually awk is used in combination with sed but awk unlike sed is a Turing Complete Programming Language and can be used for many different tasks.</p>
+
+<p>Awk shines when used for pattern matching and can aid when used for reporting purposes.</p>
+
+<h2 id="awk-downloading-instructions">Awk Downloading Instructions</h2>
+
+<h4 id="build-awk-from-source">Build awk from source</h4>
+
+<p>You can download gawk from ftp site at <a href="https://ftp.gnu.org/gnu/gawk/" target="_blank">gawk gnu sources</a></p>
+
+<p>We will download gawk version 5 with the following command:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget http://ftp.gnu.org/gnu/gawk/gawk-5.0.0.tar.xz</code></pre></div>
+
+<p>You can then unpack this file with the following command:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># This command unpacks the tar ball into a folder called gawk-5.0.0</span>
+tar xvf gawk-5.0.0.tar.xz
+
+<span style="color:#75715e"># next change into this directory</span>
+cd gawk-5.0.0.tar.xz</code></pre></div>
+
+<p>When you build from source you will generally need to run the following commands:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure
+make <span style="color:#f92672">&amp;&amp;</span> make install</code></pre></div>
+
+<h6 id="configure-explanation-in-readme-from-gawk-source">Configure explanation in README from gawk source</h6>
+
+<blockquote>
+<p>The <code>configure' shell script attempts to guess correct values for
+various system-dependent variables used during compilation.  It uses
+those values to create a</code>Makefile&rsquo; in each directory of the package.
+It may also create one or more <code>.h' files containing system-dependent
+definitions.  Finally, it creates a shell script</code>config.status&rsquo; that
+you can run in the future to recreate the current configuration, and a
+file <code>config.log' containing compiler output (useful mainly for
+debugging</code>configure&rsquo;).</p>
+
+<p>It can also use an optional file (typically called <code>config.cache'
+and enabled with</code>&ndash;cache-file=config.cache&rsquo; or simply `-C&rsquo;) that saves
+the results of its tests to speed up reconfiguring.  Caching is
+disabled by default to prevent problems with accidental use of stale
+cache files.</p>
+
+<p>If you need to do unusual things to compile the package, please try
+to figure out how <code>configure' could check whether to do them, and mail
+diffs or instructions to the address given in the</code>README&rsquo; so they can
+be considered for the next release.  If you are using the cache, and at
+some point `config.cache&rsquo; contains results you don&rsquo;t want to keep, you
+may remove or edit it.</p>
+</blockquote>
+
+<p><strong>Building from source is generally not necessary anymore since you use package managers</strong></p>
+
+<h4 id="setup-awk-in-homebrew-package-manager-in-mac-os-x">Setup awk in Homebrew Package Manager in Mac OS X</h4>
+
+<h6 id="install-homebrew">Install Homebrew</h6>
+
+<p>You can install homebrew on Mac OS X using this script:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+
+<p>You can then simply run: <code>brew install gawk</code> to install the latest gawk or awk.</p>
+
+<h6 id="setup-awk-in-linux">Setup awk in Linux</h6>
+
+<p>You can use the following command to install gawk on GNU Linux variants</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update -y
+sudo apt-get install gawk -y</code></pre></div>
+
+<p><em>If you have other linux distribution then please consult its documentation to install awk.</em></p>
+
+<h2 id="awk-hello-world-example">Awk Hello World Example</h2>
+
+<p>awk is a turing complete language but it is typically used in pattern matching</p>
+
+<p>We will write a hello world equivalent program in awk like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;BEGIN { print &#34;Hello World&#34; }&#39;</span></code></pre></div>
+
+<p>This prints out &ldquo;Hello World&rdquo; to standard output in your terminal</p>
+
+<h2 id="awk-workflow-diagram">awk workflow diagram</h2>
+
+<figure>
+    <img src="/media/Awk_Workflow_Programming.png"/> 
+</figure>
+
+
+<h4 id="read-operation">Read Operation:</h4>
+
+<p>In the read operation awk reads a line from the input stream (file, pipe, or stdin) and stores it in memory.</p>
+
+<h4 id="execute-operation">Execute OPERATION:</h4>
+
+<p>All AWK commands are applied sequentially on the input (records and fields). By default, AWK executes commands on each record/line. This behavior of AWK can be restricted by the use of patterns.</p>
+
+<h4 id="repeat-operation">REPEAT OPERATION:</h4>
+
+<p>The process of read and execute is repeated until the end of the file is reached.</p>
+
+<h2 id="basic-actions-in-awk">Basic actions in awk</h2>
+
+<p>Basic actions in awk consist of a pattern and an action</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">BEGIN <span style="color:#f92672">{</span>
+    printf <span style="color:#e6db74">&#34;Hello World&#34;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+<h4 id="executing-awk-in-a-unix-linux-pipeline">Executing awk in a Unix/Linux Pipeline</h4>
+
+<p>awk is useful in a unix pipeline is the following example illustrates:</p>
+
+<figure>
+    <img src="/media/awk-pipeline.png"/> 
+</figure>
+
+
+<p>In the following Unix Pipeline we print current processes into awk and print the lines 2 to the nth line using <em>awk</em>.</p>
+
+<h2 id="regular-expressions-in-awk">Regular expressions in awk</h2>
+
+<p>Awk is a pattern matching language but comes with strong regular expression support.</p>
+
+<ul>
+<li><p>A regular expression is a set of characters used to describe a pattern.</p></li>
+
+<li><p>A regular expression is generally used to match lines in a file that contain a particular pattern.</p></li>
+
+<li><p>Many Unix utilities operate on plain text files line by line, such as grep, sed, and awk.</p></li>
+
+<li><p>Regular expressions search for a pattern on a single line in a file.</p></li>
+</ul>
+
+<h4 id="types-of-regular-expressions">Types of Regular Expressions</h4>
+
+<p>Remember that there are 3 different types of Regular Expressions:</p>
+
+<ol>
+<li><p>Basic Regular Expressions (RE)</p></li>
+
+<li><p>Extended Regular Expressions (ERE)</p></li>
+
+<li><p>Simple Regular Expressions (Deprecated)</p></li>
+</ol>
+
+<p><em>The 3rd type is deprecated and should not be used anymore.</em></p>
+
+<h6 id="regular-expressions-wikipedia-post">Regular Expressions Wikipedia Post</h6>
+
+<p>Please read the <a href="https://en.wikipedia.org/wiki/Regular_expression#Basic_concepts" target="_blank">Regular Expressions Wikipedia Post</a></p>
+
+<blockquote>
+<p>A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &ldquo;Handel&rdquo;, &ldquo;Händel&rdquo;, and &ldquo;Haendel&rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regular expression that matches a particular set then there exists an infinite number of other regular expressions that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.</p>
+</blockquote>
+
+<p><strong>Boolean &ldquo;or&rdquo;</strong></p>
+
+<pre><code>* A vertical bar separates alternatives. For example, gray|grey can match &quot;gray&quot; or &quot;grey&quot;.
+</code></pre>
+
+<p><strong>Grouping</strong></p>
+
+<pre><code>* Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &quot;gray&quot; or &quot;grey&quot;.
+</code></pre>
+
+<p><strong>Quantification</strong></p>
+
+<pre><code>* A quantifier after a token (such as a character) or group specifies how often that a preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).
+
+* `?` The question mark indicates zero or one occurrences of the preceding element. For example, colou?r matches both &quot;color&quot; and &quot;colour&quot;.
+* \* The asterisk indicates zero or more occurrences of the preceding element. For example, ab*c matches &quot;ac&quot;, &quot;abc&quot;, &quot;abbc&quot;, &quot;abbbc&quot;, and so on.
+* \+ The plus sign indicates one or more occurrences of the preceding element. For example, ab+c matches &quot;abc&quot;, &quot;abbc&quot;, &quot;abbbc&quot;, and so on, but not &quot;ac&quot;.
+
+* `{n}[18]` The preceding item is matched exactly n times.
+    * `{min,}[18]` The preceding item is matched min or more times.
+    * `{min,max}[18]` The preceding item is matched at least min times, but not more than max times.
+</code></pre>
+
+<p><strong>Wildcard</strong></p>
+
+<pre><code>The wildcard *.* matches any character. For example, a.b matches any string that contains an &quot;a&quot;, then any other character and then a &quot;b&quot;, a.*b matches any string that contains an &quot;a&quot; and a &quot;b&quot; at some later point.
+</code></pre>
+
+<blockquote>
+<p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
+</blockquote>
+
+<h6 id="differences-between-basic-and-ere-regular-expressions">Differences between Basic and ERE Regular Expressions</h6>
+
+<p>ERE (Extended Regular Expressions) adds ?, +, and |, and EREs removes the need to escape the metacharacters ( ) and { }, which are required in BREs.</p>
+
+<ul>
+<li>The <code>?</code> operator matches on zero or 1</li>
+<li>The <code>+</code> operator matches on 1 or more</li>
+<li>The <code>|</code> operator adds alternation, the <em>or</em> operator to regexes</li>
+</ul>
+
+<p>Furthermore, as long as the POSIX standard syntax for regexes is adhered to, there can be, and often is, additional syntax to serve specific (yet POSIX compliant) applications</p>
+
+<p>The meaning of metacharacters escaped with a backslash is reversed for some characters in the POSIX Extended Regular Expression (ERE) syntax.</p>
+
+<p>With this syntax, a backslash causes the metacharacter to be treated as a literal character.</p>
+
+<p>So, for example, ( ) is now ( ) and { } is now { }.</p>
+
+<p>Additionally, support is removed for \n backreferences.</p>
+
+<h6 id="using-regexes-in-awk">Using Regexes in Awk</h6>
+
+<p>Let us look at an example of matching on a regex pattern with awk.</p>
+
+<p>We have the following text file with the following information:</p>
+
+<p><em>emp.dat</em></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Jack    Jones       <span style="color:#ae81ff">9857532312</span>  jack@gmail.com       M   hr      <span style="color:#ae81ff">2000</span>
+Jane    Kaur        <span style="color:#ae81ff">9837432312</span>  jane@gmail.com       F   hr      <span style="color:#ae81ff">1800</span>
+Eva     Bostick     <span style="color:#ae81ff">8827232115</span>  eva@gmail.com        F   lgs     <span style="color:#ae81ff">2100</span>
+Amit    Mendez      <span style="color:#ae81ff">9911887766</span>  amit@yahoo.com       M   lgs     <span style="color:#ae81ff">2350</span>
+Julie   Nicholson   <span style="color:#ae81ff">8826234556</span>  julie@yahoo.com      F   Ops     <span style="color:#ae81ff">2500</span>
+Ana     Johnson     <span style="color:#ae81ff">9856422312</span>  anaj@hotmail.com     F   Ops     <span style="color:#ae81ff">2700</span>
+Hari    Jones       <span style="color:#ae81ff">8827255666</span>  harij@yahoo.com      M   Ops     <span style="color:#ae81ff">2350</span>
+Victor  Mendez      <span style="color:#ae81ff">8826567898</span>  vicm@hotmail.com     M   Ops     <span style="color:#ae81ff">2500</span>
+John    Nicholson   <span style="color:#ae81ff">9911556789</span>  johnn@gmail.com      M   hr      <span style="color:#ae81ff">2200</span>
+Billy   Bostick     <span style="color:#ae81ff">9911664321</span>  billyb@yahoo.com     M   lgs     <span style="color:#ae81ff">1900</span>
+Sam     Johnson     <span style="color:#ae81ff">8856345512</span>  samj@hotmail.com     F   lgs     <span style="color:#ae81ff">2300</span>
+Ginny   Jones       <span style="color:#ae81ff">9857123466</span>  ginnyj@yahoo.com     F   hr      <span style="color:#ae81ff">2250</span>
+Emily   Kaur        <span style="color:#ae81ff">8826175812</span>  emilyk@gmail.com     F   Ops     <span style="color:#ae81ff">2100</span>
+Amy     Mendez      <span style="color:#ae81ff">9857536898</span>  amym@hotmail.com     F   Ops     <span style="color:#ae81ff">2500</span>
+Tina    Jones       <span style="color:#ae81ff">8811776612</span>  tinaj@yahoo.com      F   lgs     <span style="color:#ae81ff">2300</span></code></pre></div>
+
+<p>Now let us match on the following lines: Nicholson and Mendez</p>
+
+<p>We can use alternation with awk and match on the lines like this:</p>
+
+<figure>
+    <img src="/media/awk-regex-pattern.png"/> 
+</figure>
+
+
+<p>Notice here that we enclosed our regex pattern in <code>/&lt;pattern&gt;/</code> backslashes and that we used alternation and 4 lines were returned to standard output like expected.</p>
+
+<h2 id="using-variables-in-awk">Using Variables in awk</h2>
+
+<p>awk has some builtin variables that can be used like:</p>
+
+<ul>
+<li><code>FS</code>
+
+<ul>
+<li>FS is the field separator variable which by default is the &lsquo; &rsquo; (space) character</li>
+</ul></li>
+</ul>
+
+<p>Let us look at an example awk command using it:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifconfig en0 inet | awk -F <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#e6db74">&#39;/inet/ { print  }&#39;</span></code></pre></div>
+
+<p>Here we use the command line option of <code>-F</code> but we can also use it in an inline awk script like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifconfig en0 inet | awk <span style="color:#e6db74">&#39;BEGIN { FS=&#34; &#34; } /inet/ { print $2 }&#39;</span></code></pre></div>
+
+<p>Please read the following GNU docs for <a href="https://www.gnu.org/software/gawk/manual/html_node/Built_002din-Variables.html" target="_blank">Predefined variables in Awk</a></p>
+
+<h4 id="environment-variables-in-awk">Environment variables in awk</h4>
+
+<p>Let us pass some variables into our awk script we will just use the begin block in this example:</p>
+
+<p>Let us look at the <em>environ.awk</em> awk script:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#! /usr/local/bin/awk -f
+</span><span style="color:#75715e"></span>
+BEGIN <span style="color:#f92672">{</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i&lt;ARGC; i++<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		print ARGV<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>;
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+<figure>
+    <img src="/media/awk-environ-script.png"/> 
+</figure>
+
+
+<p>Notice that in this example we used the <code>-f</code> command line option to specify a file.</p>
+
+<p>We can also invoke the awk script like this:</p>
+
+<figure>
+    <img src="/media/awk-executable-script.png"/> 
+</figure>
+
+
+<p>You will need to change permissions to the script executable with the command:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x ./usage_scripts/environ.awk</code></pre></div>
+
+<h4 id="string-conversion-in-awk">String conversion in awk</h4>
+
+<p>The conversion to string and numeric values occurs automatically in AWK as per demand.</p>
+
+<p>This means that if a numeric value appears in a string concatenation in awk it is automatically converted to a string.</p>
+
+<p>Therefore if you want to treat a numeric value as a number you will need to do the following:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">BEGIN <span style="color:#f92672">{</span>
+    num1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+    num2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+    print num1 num2;
+    print num1 + num2;
+<span style="color:#f92672">}</span></code></pre></div>
+
+<p>Look at the following terminal run:</p>
+
+<figure>
+    <img src="/media/awk-strconv.png"/> 
+</figure>
+
+
+<p>Notice how the first line prints the string 45 and the second line prints out the value of 9.</p>
+
+<h2 id="using-arrays-in-awk">Using arrays in awk</h2>
+
+<p>Please read the <a href="https://www.gnu.org/software/gawk/manual/html_node/Array-Intro.html#Array-Intro" target="_blank">Awk GNU Documentation on Arrays</a></p>
+
+<blockquote>
+<p>The awk language provides one-dimensional arrays for storing groups of related strings or numbers. Every awk array must have a name. Array names have the same syntax as variable names; any valid variable name would also be a valid array name. But one name cannot be used in both ways (as an array and as a variable) in the same awk program.</p>
+
+<p>Arrays in awk superficially resemble arrays in other programming languages, but there are fundamental differences. In awk, it isn&rsquo;t necessary to specify the size of an array before starting to use it. Additionally, any number or string, not just consecutive integers, may be used as an array index.</p>
+
+<p>In most other languages, arrays must be declared before use, including a specification of how many elements or components they contain. In such languages, the declaration causes a contiguous block of memory to be allocated for that many elements. Usually, an index in the array must be a nonnegative integer. For example, the index zero specifies the first element in the array, which is actually stored at the beginning of the block of memory. Index one specifies the second element, which is stored in memory right after the first element, and so on. It is impossible to add more elements to the array, because it has room only for as many elements as given in the declaration. (Some languages allow arbitrary starting and ending indices—e.g., &lsquo;15 .. 27&rsquo;—but the size of the array is still fixed when the array is declared.)</p>
+</blockquote>
+
+<p><em>Basically arrays in awk are like a dictionary in Python or map in Golang also known as associative arrays.</em></p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#! /usr/local/bin/awk -f
+</span><span style="color:#75715e"></span>
+BEGIN <span style="color:#f92672">{</span>
+    fruits<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;apples&#34;</span>;
+    fruits<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;oranges&#34;</span>;
+    fruits<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;strawberries&#34;</span>;
+    fruits<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bananas&#34;</span>;
+    fruits<span style="color:#f92672">[</span><span style="color:#ae81ff">4</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mangoes&#34;</span>;
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>fruit in fruits<span style="color:#f92672">)</span> 
+        print fruits<span style="color:#f92672">[</span>fruit<span style="color:#f92672">]</span>;
+<span style="color:#f92672">}</span></code></pre></div>
+
+<p><em>Notice how we used the for &hellip; in operator with arrays in awk to print each value in the awk array.</em></p>
+
+<p>Here is a sample run of the awk script:</p>
+
+<figure>
+    <img src="/media/awk-arrays.png"/> 
+</figure>
+
+
+<h2 id="standard-output-formatting-in-awk">Standard Output Formatting in Awk</h2>
+
+<p>You have seen how to use the print command with awk but you can also use the printf command.</p>
+
+<p>Please read the <a href="https://en.wikipedia.org/wiki/Printf_format_string" target="_blank">printf format string Wikipedia post</a></p>
+
+<blockquote>
+<p>printf format string refers to a control parameter used by a class of functions in the input/output libraries of C and many other programming languages. The string is written in a simple template language: characters are usually copied literally into the function&rsquo;s output, but format specifiers, which start with a % character, indicate the location and method to translate a piece of data (such as a number) to characters.</p>
+</blockquote>
+
+<p>The printf command in awk is very similar to the printf command in C and it has the following operators:</p>
+
+<p>A format specifier starts with the character &lsquo;%&rsquo; and ends with a format-control letter—it tells the printf statement how to output one item. The format-control letter specifies what kind of value to print. The rest of the format specifier is made up of optional modifiers that control how to print the value, such as the field width. Here is a list of the format-control letters:</p>
+
+<h4 id="a-a">%a, %A</h4>
+
+<p>A floating point number of the form [-]0xh.hhhhp+-dd (C99 hexadecimal floating point format). For %A, uppercase letters are used instead of lowercase ones.</p>
+
+<p>NOTE: The current POSIX standard requires support for %a and %A in awk. As far as we know, besides gawk, the only other version of awk that actually implements it is BWK awk. It&rsquo;s use is thus highly nonportable!</p>
+
+<p>Furthermore, these formats are not available on any system where the underlying C library printf() function does not support them. As of this writing, among current systems, only OpenVMS is known to not support them.</p>
+
+<h4 id="c">%c</h4>
+
+<p>Print a number as a character; thus, &lsquo;printf &ldquo;%c&rdquo;, 65&rsquo; outputs the letter &lsquo;A&rsquo;. The output for a string value is the first character of the string.</p>
+
+<p>NOTE: The POSIX standard says the first character of a string is printed. In locales with multibyte characters, gawk attempts to convert the leading bytes of the string into a valid wide character and then to print the multibyte encoding of that character. Similarly, when printing a numeric value, gawk allows the value to be within the numeric range of values that can be held in a wide character. If the conversion to multibyte encoding fails, gawk uses the low eight bits of the value as the character to print.</p>
+
+<p>Other awk versions generally restrict themselves to printing the first byte of a string or to numeric values within the range of a single byte (0–255). (d.c.)</p>
+
+<p>Please read the <a href="https://www.gnu.org/software/gawk/manual/html_node/Control-Letters.html#Control-Letters" target="_blank">awk printf control letters documentation</a></p>
+
+<h4 id="d-i">%d, %i</h4>
+
+<p>Print a decimal integer. The two control letters are equivalent. (The &lsquo;%i&rsquo; specification is for compatibility with ISO C.)</p>
+
+<h4 id="e-e">%e, %E</h4>
+
+<p>Print a number in scientific (exponential) notation. For example:</p>
+
+<p>printf &ldquo;%4.3e\n&rdquo;, 1950
+prints &lsquo;1.950e+03&rsquo;, with a total of four significant figures, three of which follow the decimal point. (The &lsquo;4.3&rsquo; represents two modifiers, discussed in the next subsection.) &lsquo;%E&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&rsquo; in the output.</p>
+
+<h4 id="f">%f</h4>
+
+<p>Print a number in floating-point notation. For example:</p>
+
+<p>printf &ldquo;%4.3f&rdquo;, 1950
+prints &lsquo;1950.000&rsquo;, with a minimum of four significant figures, three of which follow the decimal point. (The &lsquo;4.3&rsquo; represents two modifiers, discussed in the next subsection.)</p>
+
+<p>On systems supporting IEEE 754 floating-point format, values representing negative infinity are formatted as &lsquo;-inf&rsquo; or &lsquo;-infinity&rsquo;, and positive infinity as &lsquo;inf&rsquo; or &lsquo;infinity&rsquo;. The special “not a number” value formats as &lsquo;-nan&rsquo; or &lsquo;nan&rsquo; (see section Other Stuff to Know).</p>
+
+<h4 id="f-1">%F</h4>
+
+<p>Like &lsquo;%f&rsquo;, but the infinity and “not a number” values are spelled using uppercase letters.</p>
+
+<p>The &lsquo;%F&rsquo; format is a POSIX extension to ISO C; not all systems support it. On those that don&rsquo;t, gawk uses &lsquo;%f&rsquo; instead.</p>
+
+<h4 id="g-g">%g, %G</h4>
+
+<p>Print a number in either scientific notation or in floating-point notation, whichever uses fewer characters; if the result is printed in scientific notation, &lsquo;%G&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&rsquo;.</p>
+
+<h4 id="o">%o</h4>
+
+<p>Print an unsigned octal integer (see section Octal and Hexadecimal Numbers).</p>
+
+<h4 id="s">%s</h4>
+
+<p>Print a string.</p>
+
+<h4 id="u">%u</h4>
+
+<p>Print an unsigned decimal integer. (This format is of marginal use, because all numbers in awk are floating point; it is provided primarily for compatibility with C.)</p>
+
+<h4 id="x-x">%x, %X</h4>
+
+<p>Print an unsigned hexadecimal integer; &lsquo;%X&rsquo; uses the letters &lsquo;A&rsquo; through &lsquo;F&rsquo; instead of &lsquo;a&rsquo; through &lsquo;f&rsquo; (see section Octal and Hexadecimal Numbers).</p>
+
+<h4 id="toc_34">%%</h4>
+
+<p>Print a single &lsquo;%&rsquo;. This does not consume an argument and it ignores any modifiers.</p>
+
+<h4 id="format-modifiers-in-awk">Format Modifiers in awk</h4>
+
+<p>Please read the following <a href="https://www.gnu.org/software/gawk/manual/html_node/Format-Modifiers.html#Format-Modifiers" target="_blank">awk documentation on modifiers with printf</a></p>
+
+<h6 id="awk-printf-example">Awk printf example</h6>
+
+<p>Let us look at an example script using printf with awk</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i &lt; NF; i++<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i % 2 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            printf <span style="color:#e6db74">&#34;%-5s &#34;</span>, $i;
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            printf <span style="color:#e6db74">&#34;%10s &#34;</span>, $i;
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+<p>Notice here that we use the NF builtin variable that is the number of fields we also use the <code>-</code> format modifier to left justify any even numbered fields 2, 4, 6, etc. and then use <code>%10</code> to right justify strings</p>
+
+<p>Here is a sample run of the script:</p>
+
+<figure>
+    <img src="/media/awk-printf-example.png"/> 
+</figure>
+
+
+<h2 id="control-flow-in-awk">Control flow in awk</h2>
+
+<p>As you have seen with awk there is control flow operators such as <code>for</code>, <code>for ... in</code>, <code>if</code>, <code>else</code>, <code>else if</code> and so on</p>
+
+<p>We can use relational operators such as the and operator <code>&amp;&amp;</code> and the or operator <code>||</code> in awk.</p>
+
+<p><em>You can also use break and continue statements in awk and while loops.</em></p>
+
+<p>Let us look at a sample script where we use a while loop and if statements.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span>
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>i &lt; NF<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i % 2 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            print $i <span style="color:#e6db74">&#34; Ding Dong&#34;</span>;
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            print $i;
+        <span style="color:#f92672">}</span>
+        i++;
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+<p>Here is a sample run of the script using a data file that looks like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">honda           civic       2005        60000       3
+chevy           silverado   2016        33000       2
+chevy           tavera      1999        10000       4
+toyota          corolla     1995        95000       2
+ford            escape      2012        80000       1
+honda           accord      2000        60000       2
+fiat            punto       2007        45000       3</code></pre></div>
+
+<figure>
+    <img src="/media/awk-control-flow1.png"/> 
+</figure>
+
+
+<h2 id="functions-in-awk">Functions in awk</h2>
+
+<p><em>Awk has both builtin functions that you can utilize as well as user defined function that you can define yourself.</em></p>
+
+<p>Please check out the <a href="https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din" target="_blank">gnu documentation on awk builtin functions</a></p>
+
+<p>Here is a list of builtin functions:</p>
+
+<ul>
+<li><p>Numeric Functions:</p>
+
+<ul>
+<li>Functions that work with numbers, including int(), sin() and rand().</li>
+</ul></li>
+
+<li><p>String Functions:</p>
+
+<ul>
+<li>Functions for string manipulation, such as split(), match() and sprintf().</li>
+</ul></li>
+
+<li><p>I/O Functions:</p>
+
+<ul>
+<li>Functions for files and shell commands.</li>
+</ul></li>
+
+<li><p>Time Functions:</p>
+
+<ul>
+<li>Functions for dealing with timestamps.</li>
+</ul></li>
+
+<li><p>Bitwise Functions:</p>
+
+<ul>
+<li>Functions for bitwise operations.</li>
+</ul></li>
+
+<li><p>Type Functions:</p>
+
+<ul>
+<li>Functions for type information.</li>
+</ul></li>
+
+<li><p>I18N Functions:</p>
+
+<ul>
+<li>Functions for string translation.</li>
+</ul></li>
+</ul>
+
+<p><strong>One thing of note is that some of the builtin functions only work for the GNU Implementation of awk and not BSD Awk or other awk variants.</strong></p>
+
+<p>Here is an example program using builtin functions in awk and user defined functions.</p>
+
+<h4 id="user-defined-awk-functions">User Defined Awk functions</h4>
+
+<p>We can create functions in awk with the following syntax</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> someFunc<span style="color:#f92672">(</span>arg1, argn<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    ......
+    <span style="color:#66d9ef">return</span> someArg
+<span style="color:#f92672">}</span></code></pre></div>
+
+<h6 id="awk-builtin-function-and-user-defined-functions-example">Awk Builtin Function and User Defined Functions example</h6>
+
+<p>In the following example we use builtin awk functions and user defined ones</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#! /usr/local/bin/awk -f
+</span><span style="color:#75715e"></span>
+BEGIN <span style="color:#f92672">{</span>
+    <span style="color:#75715e"># Numeric Functions examples</span>
+    print sqrt<span style="color:#f92672">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">)</span>;
+    print rand<span style="color:#f92672">()</span>;
+
+    <span style="color:#75715e"># String Functions examples</span>
+    nums<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;one&#34;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;one&#34;</span>;
+    nums<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;two&#34;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;two&#34;</span>;
+    nums<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;three&#34;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;three&#34;</span>;
+    asort<span style="color:#f92672">(</span>nums<span style="color:#f92672">)</span>;
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>num in nums<span style="color:#f92672">)</span>
+        print nums<span style="color:#f92672">[</span>num<span style="color:#f92672">]</span>;
+    
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>; i &lt;<span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; i++<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> i+1;
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#75715e"># globally subsitute each record that matches on honda to mercury</span>
+    gsub<span style="color:#f92672">(</span>/honda/, <span style="color:#e6db74">&#34;mercury&#34;</span><span style="color:#f92672">)</span>; print;
+    split<span style="color:#f92672">(</span>$6, strings, <span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">)</span>;
+    print strings<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>;
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">function</span> average<span style="color:#f92672">(</span>arr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i &lt;<span style="color:#f92672">=</span> length<span style="color:#f92672">(</span>arr<span style="color:#f92672">)</span>; i++<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        sum <span style="color:#f92672">+=</span> i;
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> sum / length<span style="color:#f92672">(</span>arr<span style="color:#f92672">)</span>; 
+<span style="color:#f92672">}</span>
+
+END <span style="color:#f92672">{</span>
+    avg <span style="color:#f92672">=</span> average<span style="color:#f92672">(</span>arr<span style="color:#f92672">)</span>;
+    print avg;
+<span style="color:#f92672">}</span></code></pre></div>
+
+<figure>
+    <img src="/media/awk-functions.png"/> 
+</figure>
+
+
+<p>Here is a sample run of our awk script notice that we used and END block here.</p>
+
+<h4 id="startup-and-cleanup-actions">Startup and Cleanup Actions</h4>
+
+<p>You can use the BEGIN block in awk for any startup actions and the END block for any cleanup actions in awk.</p>
+
+<p>the body block will operate on 1 or more records which consist of 1 or more fields in a record.</p>
+
+<p>Notice that the BEGIN and END blocks will be done once although you can define multiple BEGIN and END blocks depending on how elaborate of an awk script you are writing.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>Please read the official awk guide on <a href="https://www.gnu.org/software/gawk/manual/html_node/" target="_blank">GNU Awk Guide</a></p>
+
+<p>For a modern and current book on awk I would suggest reading this Packt Publishing Book <a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-awk-programming" target="_blank">Learning Awk Programming</a></p>
+
+<h2 id="contact-information">Contact Information</h2>
+
+<p>If you like this post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a> for more related type posts.</p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/using-lucene-queries/"><span
+      aria-hidden="true">&larr;</span> Using Lucene Queries</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+
