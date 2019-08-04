@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.56.3" />
   <meta name="author" content="Jean-Marcel Belmont">
   <meta name="description" content="Senior Software Engineer">
 
@@ -22,9 +22,9 @@
     
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
@@ -42,7 +42,7 @@
     </script>
     <script async src="//www.google-analytics.com/analytics.js"></script>
     
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
     
   
 
@@ -689,43 +689,44 @@ The ability to read your tests like a sentence is a cognitive shift in how you w
 <h4 id="nightwatch-operations">Nightwatch Operations</h4>
 
 <ul>
-<li>Nightwatch needs to send at least 2 requests to the WebDriver server in order to perform a command or assertion
+<li><p>Nightwatch needs to send at least 2 requests to the WebDriver server in order to perform a command or assertion</p>
 
 <ul>
 <li>The first request to locate an element given a CSS selector (or Xpath expression)</li>
-<li>The second request to perform the actual command/assertion on the given element.</li>
-</ul></li>
-</ul>
+
+<li><p>The second request to perform the actual command/assertion on the given element.</p>
 
 <pre><code class="language-javascript">module.exports = {
-  'Code Craftsmanship Saturdays': browser =&gt; {
-    browser
-      .url('http://localhost:3000')
-        .waitForElementVisible('.code-craftsmanship-container-label', 1000)
-        .assert.containsText('.code-craftsmanship-container-label &gt; strong', 'Code Craftsmanship Saturdays')
+'Code Craftsmanship Saturdays': browser =&gt; {
+browser
+.url('http://localhost:3000')
+.waitForElementVisible('.code-craftsmanship-container-label', 1000)
+.assert.containsText('.code-craftsmanship-container-label &gt; strong', 'Code Craftsmanship Saturdays')
 
-    browser
-      .click('.users-container .users-container-trash-bin')
-      .assert.elementNotPresent('[data-email=&quot;tcox0@dion.ne.jp&quot;]')
+browser
+.click('.users-container .users-container-trash-bin')
+.assert.elementNotPresent('[data-email=&quot;tcox0@dion.ne.jp&quot;]')
 
-    browser
-      .click('#addSomeUserBtn')
+browser
+.click('#addSomeUserBtn')
 
-    setInput('#emailInput', 'chuck@badass.net')
-    setInput('#firstNameInput', 'Chuck')
-    setInput('#lastNameInput', 'Norris')
+setInput('#emailInput', 'chuck@badass.net')
+setInput('#firstNameInput', 'Chuck')
+setInput('#lastNameInput', 'Norris')
 
-    browser
-      .click('#addUserSubmit')
-      .waitForElementVisible('[data-email=&quot;chuck@badass.net&quot;]', 1000)
-      .end();
+browser
+.click('#addUserSubmit')
+.waitForElementVisible('[data-email=&quot;chuck@badass.net&quot;]', 1000)
+.end();
 
-    function setInput(input, value) {
-      browser.setValue(input, value);
-    }
-  }
+function setInput(input, value) {
+browser.setValue(input, value);
+}
+}
 };
-</code></pre>
+</code></pre></li>
+</ul></li>
+</ul>
 
 <p>Above is a sample End To End Test for Nightwatch.js</p>
 
@@ -1063,21 +1064,21 @@ An example could be loading up a database with known parameters from a customer 
 <ul>
 <li>By providing a specification of the JavaScript program in the form of properties</li>
 <li>Properties can be tested to remain true for a large number of randomly generated cases.</li>
-<li>In the case of a test failure, the smallest possible failing test case is found.</li>
-</ul>
+
+<li><p>In the case of a test failure, the smallest possible failing test case is found.</p>
 
 <pre><code class="language-javascript">const { check, gen, property } = require('testcheck');
 const test = require('tape');
 
 test('addition is commutative', check(gen.int, gen.int, (t, numA, numB) =&gt; {
-  t.plan(1);
-  t.equal(numA + numB, numB + numA)
+t.plan(1);
+t.equal(numA + numB, numB + numA)
 }));
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>Read the <a href="https://www.marcelbelmont.com/software-testing/" target="_blank">Software Testing Gitbook</a></li>
-<li>You will be able to copy and paste examples using the Gitbook</li>
+<li><p>Read the <a href="https://www.marcelbelmont.com/software-testing/" target="_blank">Software Testing Gitbook</a></p></li>
+
+<li><p>You will be able to copy and paste examples using the Gitbook</p></li>
 </ul>
 
 <p><strong>If you like this post please star <a href="https://github.com/jbelmont/software-testing" target="_blank">Software Testing on Gitub</a></strong></p>
@@ -1156,12 +1157,12 @@ test('addition is commutative', check(gen.int, gen.int, (t, numA, numB) =&gt; {
 </footer>
 
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
     
     <script src="/js/hugo-academic.js"></script>
     
@@ -1184,7 +1185,7 @@ test('addition is commutative', check(gen.int, gen.int, (t, numA, numB) =&gt; {
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
     </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 

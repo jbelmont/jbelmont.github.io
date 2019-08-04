@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.56.3" />
   <meta name="author" content="Jean-Marcel Belmont">
   <meta name="description" content="Senior Software Engineer">
 
@@ -22,9 +22,9 @@
     
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="%!s(<nil>)" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
   
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
@@ -42,7 +42,7 @@
     </script>
     <script async src="//www.google-analytics.com/analytics.js"></script>
     
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
     
   
 
@@ -511,14 +511,15 @@
 
 <ul>
 <li>If the selector is not a string, instead selects the specified array of nodes</li>
-<li>this is useful if you already have a reference to nodes, such as this.childNodes within an event listener or a global such as document.links</li>
-</ul>
+
+<li><p>this is useful if you already have a reference to nodes, such as this.childNodes within an event listener or a global such as document.links</p>
 
 <pre><code class="language-js">d3.selectAll(document.links).style(&quot;color&quot;, &quot;red&quot;);
 </code></pre>
 
 <pre><code class="language-js">var even = d3.selectAll(&quot;tr&quot;).filter(&quot;:nth-child(even)&quot;);
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>Notice here that you can a css pseudo selector and you can also pass a function</p>
 
@@ -635,19 +636,16 @@
 
 <li><p>The enter selection is typically used to create “missing” elements corresponding to new data.</p></li>
 
-<li><p>For example, to create DIV elements from an array of numbers:</p></li>
-</ul>
+<li><p>For example, to create DIV elements from an array of numbers:</p>
 
 <pre><code class="language-js">const div = d3.select(&quot;body&quot;)
-  .selectAll(&quot;div&quot;)
-  .data([4, 8, 15, 16, 23, 42])
-  .enter().append(&quot;div&quot;)
-    .text(d =&gt; d);
-</code></pre>
+.selectAll(&quot;div&quot;)
+.data([4, 8, 15, 16, 23, 42])
+.enter().append(&quot;div&quot;)
+.text(d =&gt; d);
+</code></pre></li>
 
-<ul>
-<li>If the body is initially empty, the above code will create six new DIV elements, append them to the body in-order, and assign their text content as the associated (string-coerced) number:</li>
-</ul>
+<li><p>If the body is initially empty, the above code will create six new DIV elements, append them to the body in-order, and assign their text content as the associated (string-coerced) number:</p>
 
 <pre><code class="language-html">&lt;div&gt;4&lt;/div&gt;
 &lt;div&gt;8&lt;/div&gt;
@@ -655,7 +653,8 @@
 &lt;div&gt;16&lt;/div&gt;
 &lt;div&gt;23&lt;/div&gt;
 &lt;div&gt;42&lt;/div&gt;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h4 id="enter-and-append-demo">Enter and Append Demo</h4>
 
@@ -997,16 +996,17 @@ For the rectangle, this means the x, y, width and height information.</p>
 <li>If domain is specified, sets the scale’s domain to the specified array of numbers.</li>
 <li>The array must contain two or more elements.</li>
 <li>If the elements in the given array are not numbers, they will be coerced to numbers.</li>
-<li>If domain is not specified, returns a copy of the scale’s current domain.</li>
-</ul>
+
+<li><p>If domain is not specified, returns a copy of the scale’s current domain.</p>
 
 <pre><code class="language-js">var color = d3.scaleLinear()
-    .domain([-1, 0, 1])
-    .range([&quot;red&quot;, &quot;white&quot;, &quot;green&quot;]);
+.domain([-1, 0, 1])
+.range([&quot;red&quot;, &quot;white&quot;, &quot;green&quot;]);
 
 color(-0.5); // &quot;rgb(255, 128, 128)&quot;
 color(+0.5); // &quot;rgb(128, 192, 128)&quot;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p><a href="https://github.com/d3/d3-scale" target="_blank">D3 Axis Docs</a></p>
 
@@ -1018,19 +1018,20 @@ color(+0.5); // &quot;rgb(128, 192, 128)&quot;
 
 <ul>
 <li>Returns a new request for the CSV file at the specified url with the default mime type text/csv.</li>
-<li>If no callback is specified, this is equivalent to:</li>
+
+<li><p>If no callback is specified, this is equivalent to:</p>
+
+<pre><code class="language-js">d3.request(url)
+.mimeType(&quot;text/csv&quot;)
+.response(function(xhr) { return d3.csvParse(xhr.responseText, row); });
+</code></pre>
+
+<pre><code class="language-js">d3.request(url)
+.mimeType(&quot;text/csv&quot;)
+.response(function(xhr) { return d3.csvParse(xhr.responseText, row); })
+.get(callback);
+</code></pre></li>
 </ul>
-
-<pre><code class="language-js">d3.request(url)
-    .mimeType(&quot;text/csv&quot;)
-    .response(function(xhr) { return d3.csvParse(xhr.responseText, row); });
-</code></pre>
-
-<pre><code class="language-js">d3.request(url)
-    .mimeType(&quot;text/csv&quot;)
-    .response(function(xhr) { return d3.csvParse(xhr.responseText, row); })
-    .get(callback);
-</code></pre>
 
 <p>Here is our function in the blockbuilder file</p>
 
@@ -1273,19 +1274,20 @@ arc(); // &quot;M0,-100A100,100,0,0,1,100,0L0,0Z&quot;
 <ul>
 <li>Returns a new transition on the given selection with the specified name.</li>
 <li>If a name is not specified, null is used.</li>
-<li>The new transition is only exclusive with other transitions of the same name.</li>
-</ul>
+
+<li><p>The new transition is only exclusive with other transitions of the same name.</p>
 
 <pre><code class="language-js">var t = d3.transition()
-    .duration(750)
-    .ease(d3.easeLinear);
+.duration(750)
+.ease(d3.easeLinear);
 
 d3.selectAll(&quot;.apple&quot;).transition(t)
-    .style(&quot;fill&quot;, &quot;red&quot;);
+.style(&quot;fill&quot;, &quot;red&quot;);
 
 d3.selectAll(&quot;.orange&quot;).transition(t)
-    .style(&quot;fill&quot;, &quot;orange&quot;);
-</code></pre>
+.style(&quot;fill&quot;, &quot;orange&quot;);
+</code></pre></li>
+</ul>
 
 <p><a href="http://blockbuilder.org/jbelmont/dd2b58748e79855d1baa9d11fb76cef8" target="_blank">Circle Transitions</a></p>
 
@@ -1333,40 +1335,40 @@ d3.selectAll(&quot;.orange&quot;).transition(t)
 
 <li><p>Add one or more force functions (forceManyBody, forceCenter, forceCollide, etc) to the system</p></li>
 
-<li><p>Set up callback function to update the element positions after each tick.</p></li>
-</ol>
+<li><p>Set up callback function to update the element positions after each tick.</p>
 
 <pre><code class="language-js">const dimensions = {
-  width: 300,
-  height: 300
+width: 300,
+height: 300
 };
 
 const nodes = [{}, {}, {}, {}, {}];
 
 let simulation = d3.forceSimulation(nodes)
-  .force('charge', d3.forceManyBody())
-  .force('center', d3.forceCenter(dimensions.width / 2, dimensions.height / 2))
-  .on('tick', ticked);
+.force('charge', d3.forceManyBody())
+.force('center', d3.forceCenter(dimensions.width / 2, dimensions.height / 2))
+.on('tick', ticked);
 
 function ticked() {
-  var u = d3.select('svg')
-    .selectAll('circle')
-    .data(nodes)
+var u = d3.select('svg')
+.selectAll('circle')
+.data(nodes)
 
-  u.enter()
-    .append('circle')
-    .attr('r', 5)
-    .merge(u)
-    .attr('cx', function(d) {
-      return d.x
-    })
-    .attr('cy', function(d) {
-      return d.y
-    })
+u.enter()
+.append('circle')
+.attr('r', 5)
+.merge(u)
+.attr('cx', function(d) {
+  return d.x
+})
+.attr('cy', function(d) {
+  return d.y
+})
 
-  u.exit().remove()
+u.exit().remove()
 }
-</code></pre>
+</code></pre></li>
+</ol>
 
 <h4 id="d3-force-functions">D3 Force Functions</h4>
 
@@ -1474,20 +1476,21 @@ If links is not specified, it defaults to the empty array.</p>
 
 <ul>
 <li>forceLink pushes linked elements to be a fixed distance apart.</li>
-<li>It requires an array of links that specify which elements we want to link together. * Each link object specifies a source and target element, where the value is the element’s array index:</li>
-</ul>
+
+<li><p>It requires an array of links that specify which elements we want to link together. * Each link object specifies a source and target element, where the value is the element’s array index:</p>
 
 <pre><code class="language-js">var links = [
-  {source: 0, target: 1},
-  {source: 0, target: 2},
-  {source: 0, target: 3},
-  {source: 1, target: 6},
-  {source: 3, target: 4},
-  {source: 3, target: 7},
-  {source: 4, target: 5},
-  {source: 4, target: 7}
+{source: 0, target: 1},
+{source: 0, target: 2},
+{source: 0, target: 3},
+{source: 1, target: 6},
+{source: 3, target: 4},
+{source: 3, target: 7},
+{source: 4, target: 5},
+{source: 4, target: 7}
 ]
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>We pass our links array into the forceLink function using .links():</p>
 
@@ -1610,12 +1613,12 @@ If links is not specified, it defaults to the empty array.</p>
 </footer>
 
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
     
     <script src="/js/hugo-academic.js"></script>
     
@@ -1638,7 +1641,7 @@ If links is not specified, it defaults to the empty array.</p>
         MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
     </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="%!s(<nil>)" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 

@@ -6,8 +6,216 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Tue, 18 Jun 2019 18:40:22 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 16:47:14 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Intro to Data Science</title>
+      <link>https://www.marcelbelmont.com/post/intro-to-data-science/</link>
+      <pubDate>Sun, 04 Aug 2019 16:47:14 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/intro-to-data-science/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Full Disclaimer I am not a Data Scientist and these are just my getting started notes.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;introduction-to-data-science&#34;&gt;Introduction to Data Science&lt;/h1&gt;
+
+&lt;p&gt;According to wikipedia Data Science can be summarized as follows:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Data science is a multi-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data. Data science is the same concept as data mining and big data: &amp;ldquo;use the most powerful hardware, the most powerful programming systems, and the most efficient algorithms to solve problems&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;important-subjects-to-grasp-about-data-science&#34;&gt;Important subjects to grasp about Data Science&lt;/h2&gt;
+
+&lt;p&gt;It is important to have knowledge about statistics and be well versed in Mathematics to be an effective Data Science from what I have read.&lt;/p&gt;
+
+&lt;h4 id=&#34;math-prerequisites-for-data-science&#34;&gt;Math Prerequisites for Data Science&lt;/h4&gt;
+
+&lt;h6 id=&#34;linear-algebra&#34;&gt;Linear Algebra&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Linear_algebra&#34; target=&#34;_blank&#34;&gt;Linear Algebra&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;According to Wolfram Alpha:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Linear algebra is the study of linear sets of equations and their transformation properties. Linear algebra allows the analysis of rotations in space, least squares fitting, solution of coupled differential equations, determination of a circle passing through three given points, as well as many other problems in mathematics, physics, and engineering. Confusingly, linear algebra is not actually an algebra in the technical sense of the word &amp;ldquo;algebra&amp;rdquo; (i.e., a vector space V over a field F, and so on).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&#34;single-variate-and-multi-variate-calculus&#34;&gt;Single Variate and Multi Variate Calculus&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Calculus&#34; target=&#34;_blank&#34;&gt;Calculus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Calculus, originally called infinitesimal calculus or &amp;ldquo;the calculus of infinitesimals&amp;rdquo;, is the mathematical study of continuous change, in the same way that geometry is the study of shape and algebra is the study of generalizations of arithmetic operations.&lt;/p&gt;
+
+&lt;p&gt;It has two major branches, differential calculus and integral calculus. Differential calculus concerns instantaneous rates of change and the slopes of curves. Integral calculus concerns accumulation of quantities and the areas under and between curves. These two branches are related to each other by the fundamental theorem of calculus. Both branches make use of the fundamental notions of convergence of infinite sequences and infinite series to a well-defined limit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&#34;statistics&#34;&gt;Statistics&lt;/h6&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Statistics&#34; target=&#34;_blank&#34;&gt;Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Statistics is a branch of mathematics working with data collection, organization, analysis, interpretation and presentation. In applying statistics to a scientific, industrial, or social problem, it is conventional to begin with a statistical population or a statistical model to be studied. Populations can be diverse groups of people or objects such as &amp;ldquo;all people living in a country&amp;rdquo; or &amp;ldquo;every atom composing a crystal&amp;rdquo;. Statistics deals with every aspect of data, including the planning of data collection in terms of the design of surveys and experiments.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;data-science-concepts-and-terminology&#34;&gt;Data Science Concepts and Terminology&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Artificial_intelligence&#34; target=&#34;_blank&#34;&gt;Articial Intelligence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Machine_learning&#34; target=&#34;_blank&#34;&gt;Machine Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Supervised_learning&#34; target=&#34;_blank&#34;&gt;Supervised Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unsupervised_learning&#34; target=&#34;_blank&#34;&gt;Unsupervised Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Neural_network&#34; target=&#34;_blank&#34;&gt;Neural Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Natural_language_processing&#34; target=&#34;_blank&#34;&gt;Natural Language Processing (NLP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Deep_learning&#34; target=&#34;_blank&#34;&gt;Deep Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;artificial-intelligence&#34;&gt;Artificial Intelligence&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;In computer science, artificial intelligence (AI), sometimes called machine intelligence, is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans. Colloquially, the term &amp;ldquo;artificial intelligence&amp;rdquo; is often used to describe machines (or computers) that mimic &amp;ldquo;cognitive&amp;rdquo; functions that humans associate with the human mind, such as &amp;ldquo;learning&amp;rdquo; and &amp;ldquo;problem solving&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;machine-learning&#34;&gt;Machine Learning&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Machine learning (ML) is the scientific study of algorithms and statistical models that computer systems use in order to perform a specific task effectively without using explicit instructions, relying on patterns and inference instead. It is seen as a subset of artificial intelligence. Machine learning algorithms build a mathematical model based on sample data, known as &amp;ldquo;training data&amp;rdquo;, in order to make predictions or decisions without being explicitly programmed to perform the task. Machine learning algorithms are used in a wide variety of applications, such as email filtering, and computer vision, where it is infeasible to develop an algorithm of specific instructions for performing the task. Machine learning is closely related to computational statistics, which focuses on making predictions using computers. The study of mathematical optimization delivers methods, theory and application domains to the field of machine learning. Data mining is a field of study within machine learning, and focuses on exploratory data analysis through unsupervised learning.In its application across business problems, machine learning is also referred to as predictive analytics.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;supervised-learning&#34;&gt;Supervised Learning&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Supervised learning is the machine learning task of learning a function that maps an input to an output based on example input-output pairs. It infers a function from labeled training data consisting of a set of training examples. In supervised learning, each example is a pair consisting of an input object (typically a vector) and a desired output value (also called the supervisory signal). A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a &amp;ldquo;reasonable&amp;rdquo; way (see inductive bias).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;unsupervised-learning&#34;&gt;Unsupervised Learning&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Unsupervised learning is a type of self-organized Hebbian learning that helps find previously unknown patterns in data set without pre-existing labels. It is also known as self-organization and allows modeling probability densities of given inputs. It is one of the main three categories of machine learning, along with supervised and reinforcement learning. Semi-supervised learning has also been described, and is a hybridization of supervised and unsupervised techniques.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;neural-network&#34;&gt;Neural Network&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A neural network is a network or circuit of neurons, or in a modern sense, an artificial neural network, composed of artificial neurons or nodes. Thus a neural network is either a biological neural network, made up of real biological neurons, or an artificial neural network, for solving artificial intelligence (AI) problems. The connections of the biological neuron are modeled as weights. A positive weight reflects an excitatory connection, while negative values mean inhibitory connections. All inputs are modified by a weight and summed. This activity is referred as a linear combination. Finally, an activation function controls the amplitude of the output. For example, an acceptable range of output is usually between 0 and 1, or it could be −1 and 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;natural-language-processing&#34;&gt;Natural Language Processing&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Natural language processing (NLP) is a subfield of computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;deep-learning&#34;&gt;Deep Learning&lt;/h4&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Deep learning (also known as deep structured learning or hierarchical learning) is part of a broader family of machine learning methods based on artificial neural networks. Learning can be supervised, semi-supervised or unsupervised.&lt;/p&gt;
+
+&lt;p&gt;Deep learning architectures such as deep neural networks, deep belief networks, recurrent neural networks and convolutional neural networks have been applied to fields including computer vision, speech recognition, natural language processing, audio recognition, social network filtering, machine translation, bioinformatics, drug design, medical image analysis, material inspection and board game programs, where they have produced results comparable to and in some cases superior to human experts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;data-science-tools&#34;&gt;Data Science Tools&lt;/h2&gt;
+
+&lt;p&gt;The following blog post in the &lt;a href=&#34;https://towardsdatascience.com/10-data-science-tools-i-explored-in-2018-d8226f99f342&#34; target=&#34;_blank&#34;&gt;Towards Data Science blog proved helpful to me&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It seems that Python and the R Programming Languages are most popular for data scientists.&lt;/p&gt;
+
+&lt;h4 id=&#34;python-programming-language&#34;&gt;Python Programming Language&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.python.org/&#34; target=&#34;_blank&#34;&gt;Python&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;According to Wikipedia:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python&amp;rsquo;s design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;r-programming-language&#34;&gt;R Programming Language&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.r-project.org/about.html&#34; target=&#34;_blank&#34;&gt;R Programming&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;R is a language and environment for statistical computing and graphics. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;amp;T, now Lucent Technologies) by John Chambers and colleagues. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;jupyter-notebooks&#34;&gt;Jupyter Notebooks&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter.org/&#34; target=&#34;_blank&#34;&gt;Jupyter Notebooks&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&#34;install-jupyter-notebook-with-pip&#34;&gt;Install Jupyter Notebook with Pip&lt;/h6&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pip install jupyterlab
+
+git clone https://github.com/jakevdp/PythonDataScienceHandbook.git
+
+&lt;span style=&#34;color:#75715e&#34;&gt;## Run Jupyter Notebook&lt;/span&gt;
+cd notebooks&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h6 id=&#34;running-jupyter-notebook&#34;&gt;Running Jupyter Notebook&lt;/h6&gt;
+
+&lt;p&gt;Here is a screenshot where I run a specific notebook:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/jupyter-notebook.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that in my machine a browser was opened and the Jupyter Notebook is running on port 8888 and here is the following url: &lt;a href=&#34;http://localhost:8888/notebooks/notebooks/01.00-IPython-Beyond-Normal-Python.ipynb*&#34; target=&#34;_blank&#34;&gt;http://localhost:8888/notebooks/notebooks/01.00-IPython-Beyond-Normal-Python.ipynb*&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;python-pandas&#34;&gt;Python Pandas&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pandas.pydata.org/&#34; target=&#34;_blank&#34;&gt;Pandas&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;other-resources-for-getting-started-with-data-science&#34;&gt;Other Resources for getting started with Data Science&lt;/h2&gt;
+
+&lt;p&gt;Check out the &lt;a href=&#34;https://towardsdatascience.com/&#34; target=&#34;_blank&#34;&gt;Towards Data Science Blog&lt;/a&gt; and look at some udemy and udacity courses.&lt;/p&gt;
+
+&lt;h4 id=&#34;data-science-cheat-sheet-github&#34;&gt;Data Science Cheat Sheet Github&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/abhat222/Data-Science--Cheat-Sheet&#34; target=&#34;_blank&#34;&gt;Data Science Cheat Sheet&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;contact-information&#34;&gt;Contact Information&lt;/h2&gt;
+
+&lt;p&gt;If you like this post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt; for more related type posts.&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Awk Programming</title>
@@ -3201,221 +3409,6 @@ workflows:
       
       <guid>https://www.marcelbelmont.com/publication/ci_cd_book/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Getting started with Rustlang</title>
-      <link>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</link>
-      <pubDate>Sun, 26 Aug 2018 20:30:37 -0400</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/getting_started_with_rustlang/</guid>
-      <description>
-
-&lt;h1 id=&#34;in-this-blog-post-i-go-over-getting-started-with-rustlang&#34;&gt;In this Blog Post I go over getting started with Rustlang&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;installing-rust-in-mac-os-x-linux&#34;&gt;Installing Rust in Mac OS X / Linux&lt;/h2&gt;
-
-&lt;p&gt;To install Rust in Linux and Mac OS X run the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl https://sh.rustup.rs -sSf | sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For other installation methods please read the following &lt;a href=&#34;https://www.rust-lang.org/en-US/other-installers.html&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Add the cargo binaries to your path by adding the following entry in &lt;em&gt;~/.profile&lt;/em&gt;, &lt;em&gt;~/.bash_profile&lt;/em&gt; &lt;em&gt;~/.bashrc&lt;/em&gt;, &lt;em&gt;~/.zshrc&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;export PATH=&amp;quot;$HOME/.cargo/bin:$PATH&amp;quot;&amp;quot; &amp;gt;&amp;gt; ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note here that I appended this using &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; to &lt;em&gt;~/.zshrc&lt;/em&gt; but you may choose &lt;em&gt;~/.bashrc&lt;/em&gt; or another file.&lt;/p&gt;
-
-&lt;h4 id=&#34;installing-rust-in-windows&#34;&gt;Installing Rust in Windows&lt;/h4&gt;
-
-&lt;p&gt;On Windows, go to &lt;a href=&#34;https://www.rust-lang.org/install.html&#34; target=&#34;_blank&#34;&gt;install&lt;/a&gt; and follow the instructions for installing Rust.&lt;/p&gt;
-
-&lt;p&gt;You will need to install C++ build tools for Visual Studio 2013 or later here but it is best to just install &lt;a href=&#34;https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017&#34; target=&#34;_blank&#34;&gt;Visual Studio Build Tools&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The tools are in the Other Tools and Frameworks section which looks like this:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/vs-build-tools.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;check-rust-installation&#34;&gt;Check Rust Installation&lt;/h4&gt;
-
-&lt;p&gt;If Rust is installed then you should be able to run the following command in your terminal windows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustc --version
-rustc 1.26.2 (594fb253c 2018-06-01)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;updating-rustlang&#34;&gt;Updating Rustlang&lt;/h2&gt;
-
-&lt;p&gt;In order to update the rust binaries you need to run the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustup update
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now when we run the &lt;code&gt;--version&lt;/code&gt; options with rustc a new version should be reported if the update found a new version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustc --version
-rustc 1.28.0 (9634041f0 2018-07-30)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;viewing-local-documentation&#34;&gt;Viewing Local Documentation&lt;/h2&gt;
-
-&lt;p&gt;In order to see local documentation you can run the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rustup doc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;cargo-package-manager&#34;&gt;Cargo Package Manager&lt;/h2&gt;
-
-&lt;p&gt;Rust comes with a powerful package manager called &lt;strong&gt;cargo&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can create new rust packages by using the cargo package manager.&lt;/p&gt;
-
-&lt;p&gt;The command you use is: &lt;code&gt;cargo new&lt;/code&gt; with options and provide a name&lt;/p&gt;
-
-&lt;h4 id=&#34;create-a-new-binary-template-package&#34;&gt;Create a new binary template package&lt;/h4&gt;
-
-&lt;p&gt;If you want to create a new rust binary template application then run the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo new PACKAGE_NAME --bin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;create-a-new-library-template-package&#34;&gt;Create a new library template package&lt;/h4&gt;
-
-&lt;p&gt;If you want to create a new rust library template application then run the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo new PACKAGE_NAME --lib
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;the-contents-of-a-new-binary-template-package&#34;&gt;The contents of a new binary template package&lt;/h4&gt;
-
-&lt;p&gt;When you create a new binary application cargo will create the following files:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/new_rust_package_contents.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice that the following files were created:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Cargo.lock
-
-&lt;ul&gt;
-&lt;li&gt;This file locks your dependencies&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Cargo.toml
-
-&lt;ul&gt;
-&lt;li&gt;This file will have basic metadata for the rust package and dependencies&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;src directory
-
-&lt;ul&gt;
-&lt;li&gt;main.rs
-
-&lt;ul&gt;
-&lt;li&gt;This will be main program for the application&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Contents of &lt;em&gt;Cargo.toml&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[package]
-name = &amp;quot;hello-world&amp;quot;
-version = &amp;quot;0.1.0&amp;quot;
-authors = [&amp;quot;Jean-Marcel Belmont &amp;lt;marcelbelmont@gmail.com&amp;gt;&amp;quot;]
-
-[dependencies]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Contents of &lt;em&gt;src/main.rs&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;fn main() {
-    println!(&amp;quot;Hello, world!&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;build-rust-package&#34;&gt;Build Rust package&lt;/h4&gt;
-
-&lt;p&gt;In order to build the rust package you can run the following command:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/cargo-build.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;This command generates the &lt;em&gt;target&lt;/em&gt; directory with the following content:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/target-directory.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;running-rust-package&#34;&gt;Running Rust package&lt;/h4&gt;
-
-&lt;p&gt;You could run rust packages by issuing the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cargo run
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will build and run the rust package.&lt;/p&gt;
-
-&lt;h4 id=&#34;check-the-rust-package-for-build-issues&#34;&gt;Check the Rust package for build issues&lt;/h4&gt;
-
-&lt;p&gt;You can use the &lt;code&gt;cargo check&lt;/code&gt; command to see if your package will build but it will not create an executable.&lt;/p&gt;
-
-&lt;h4 id=&#34;running-tests-with-cargo&#34;&gt;Running tests with Cargo&lt;/h4&gt;
-
-&lt;p&gt;You can easily run tests by using the &lt;code&gt;cargo test&lt;/code&gt; command in the root of your project.&lt;/p&gt;
-
-&lt;p&gt;Whenever you create a new library it will stub out a test for you in &lt;em&gt;src/lib.rs&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-rust&#34;&gt;#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Notice here that there is an annotation of &lt;code&gt;#[cfg(test)]&lt;/code&gt; for the tests module and &lt;code&gt;#[test]&lt;/code&gt; for the test case.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;resources-to-learn-rustlang&#34;&gt;Resources to learn Rustlang&lt;/h2&gt;
-
-&lt;p&gt;Arguably the best resource to learn Rust is the &lt;a href=&#34;https://doc.rust-lang.org/book/2018-edition/index.html&#34; target=&#34;_blank&#34;&gt;Official Rust Book&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The Rust Book will walk you through each and every aspect of the Rust Language so please read it!&lt;/p&gt;
-
-&lt;h4 id=&#34;read-the-standard-library&#34;&gt;Read the Standard Library&lt;/h4&gt;
-
-&lt;p&gt;Another way to learn Rust well is to read the Standard Library &lt;a href=&#34;https://doc.rust-lang.org/std/index.html&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You should also read &lt;a href=&#34;https://doc.rust-lang.org/std/index.html#a-tour-of-the-rust-standard-library&#34; target=&#34;_blank&#34;&gt;A tour of the standard library&lt;/a&gt; which will list all the primitive types, modules, and macros in Rust.&lt;/p&gt;
-
-&lt;h4 id=&#34;using-the-rust-playground&#34;&gt;Using the Rust Playground&lt;/h4&gt;
-
-&lt;p&gt;Much like Golang has a playground so does Rust.&lt;/p&gt;
-
-&lt;p&gt;Here is a link to the Rust Playground that uses Rust nightly and has debugging mode enabled &lt;a href=&#34;https://play.rust-lang.org/?version=nightly&amp;amp;mode=debug&amp;amp;edition=2018&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;community-links&#34;&gt;Community Links&lt;/h2&gt;
-
-&lt;p&gt;Check out all the community related information &lt;a href=&#34;https://www.rust-lang.org/en-US/community.html&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you like this Blog Post please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont at Github&lt;/a&gt;&lt;/p&gt;
-</description>
     </item>
     
   </channel>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.56.3" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/intro-to-data-science/">
+
+  
+
+  <title>Intro to Data Science | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Intro to Data Science</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-08-04 16:47:14 -0400 EDT" itemprop="datePublished">
+      Sun, Aug 4, 2019
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/data-science">data science</a
+    >, 
+    
+    <a href="/tags/python">python</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintro-to-data-science%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Intro%20to%20Data%20Science&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintro-to-data-science%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintro-to-data-science%2f&amp;title=Intro%20to%20Data%20Science"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintro-to-data-science%2f&amp;title=Intro%20to%20Data%20Science"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Intro%20to%20Data%20Science&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fintro-to-data-science%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><strong>Full Disclaimer I am not a Data Scientist and these are just my getting started notes.</strong></p>
+
+<h1 id="introduction-to-data-science">Introduction to Data Science</h1>
+
+<p>According to wikipedia Data Science can be summarized as follows:</p>
+
+<blockquote>
+<p>Data science is a multi-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data. Data science is the same concept as data mining and big data: &ldquo;use the most powerful hardware, the most powerful programming systems, and the most efficient algorithms to solve problems&rdquo;.</p>
+</blockquote>
+
+<h2 id="important-subjects-to-grasp-about-data-science">Important subjects to grasp about Data Science</h2>
+
+<p>It is important to have knowledge about statistics and be well versed in Mathematics to be an effective Data Science from what I have read.</p>
+
+<h4 id="math-prerequisites-for-data-science">Math Prerequisites for Data Science</h4>
+
+<h6 id="linear-algebra">Linear Algebra</h6>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Linear_algebra" target="_blank">Linear Algebra</a></li>
+</ul>
+
+<p>According to Wolfram Alpha:</p>
+
+<blockquote>
+<p>Linear algebra is the study of linear sets of equations and their transformation properties. Linear algebra allows the analysis of rotations in space, least squares fitting, solution of coupled differential equations, determination of a circle passing through three given points, as well as many other problems in mathematics, physics, and engineering. Confusingly, linear algebra is not actually an algebra in the technical sense of the word &ldquo;algebra&rdquo; (i.e., a vector space V over a field F, and so on).</p>
+</blockquote>
+
+<h6 id="single-variate-and-multi-variate-calculus">Single Variate and Multi Variate Calculus</h6>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Calculus" target="_blank">Calculus</a></li>
+</ul>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Calculus, originally called infinitesimal calculus or &ldquo;the calculus of infinitesimals&rdquo;, is the mathematical study of continuous change, in the same way that geometry is the study of shape and algebra is the study of generalizations of arithmetic operations.</p>
+
+<p>It has two major branches, differential calculus and integral calculus. Differential calculus concerns instantaneous rates of change and the slopes of curves. Integral calculus concerns accumulation of quantities and the areas under and between curves. These two branches are related to each other by the fundamental theorem of calculus. Both branches make use of the fundamental notions of convergence of infinite sequences and infinite series to a well-defined limit.</p>
+</blockquote>
+
+<h6 id="statistics">Statistics</h6>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Statistics" target="_blank">Statistics</a></li>
+</ul>
+
+<blockquote>
+<p>Statistics is a branch of mathematics working with data collection, organization, analysis, interpretation and presentation. In applying statistics to a scientific, industrial, or social problem, it is conventional to begin with a statistical population or a statistical model to be studied. Populations can be diverse groups of people or objects such as &ldquo;all people living in a country&rdquo; or &ldquo;every atom composing a crystal&rdquo;. Statistics deals with every aspect of data, including the planning of data collection in terms of the design of surveys and experiments.</p>
+</blockquote>
+
+<h2 id="data-science-concepts-and-terminology">Data Science Concepts and Terminology</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank">Articial Intelligence</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">Machine Learning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank">Supervised Learning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" target="_blank">Unsupervised Learning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Neural_network" target="_blank">Neural Network</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Natural_language_processing" target="_blank">Natural Language Processing (NLP)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Deep_learning" target="_blank">Deep Learning</a></li>
+</ul>
+
+<h4 id="artificial-intelligence">Artificial Intelligence</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>In computer science, artificial intelligence (AI), sometimes called machine intelligence, is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans. Colloquially, the term &ldquo;artificial intelligence&rdquo; is often used to describe machines (or computers) that mimic &ldquo;cognitive&rdquo; functions that humans associate with the human mind, such as &ldquo;learning&rdquo; and &ldquo;problem solving&rdquo;.</p>
+</blockquote>
+
+<h4 id="machine-learning">Machine Learning</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Machine learning (ML) is the scientific study of algorithms and statistical models that computer systems use in order to perform a specific task effectively without using explicit instructions, relying on patterns and inference instead. It is seen as a subset of artificial intelligence. Machine learning algorithms build a mathematical model based on sample data, known as &ldquo;training data&rdquo;, in order to make predictions or decisions without being explicitly programmed to perform the task. Machine learning algorithms are used in a wide variety of applications, such as email filtering, and computer vision, where it is infeasible to develop an algorithm of specific instructions for performing the task. Machine learning is closely related to computational statistics, which focuses on making predictions using computers. The study of mathematical optimization delivers methods, theory and application domains to the field of machine learning. Data mining is a field of study within machine learning, and focuses on exploratory data analysis through unsupervised learning.In its application across business problems, machine learning is also referred to as predictive analytics.</p>
+</blockquote>
+
+<h4 id="supervised-learning">Supervised Learning</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Supervised learning is the machine learning task of learning a function that maps an input to an output based on example input-output pairs. It infers a function from labeled training data consisting of a set of training examples. In supervised learning, each example is a pair consisting of an input object (typically a vector) and a desired output value (also called the supervisory signal). A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a &ldquo;reasonable&rdquo; way (see inductive bias).</p>
+</blockquote>
+
+<h4 id="unsupervised-learning">Unsupervised Learning</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Unsupervised learning is a type of self-organized Hebbian learning that helps find previously unknown patterns in data set without pre-existing labels. It is also known as self-organization and allows modeling probability densities of given inputs. It is one of the main three categories of machine learning, along with supervised and reinforcement learning. Semi-supervised learning has also been described, and is a hybridization of supervised and unsupervised techniques.</p>
+</blockquote>
+
+<h4 id="neural-network">Neural Network</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>A neural network is a network or circuit of neurons, or in a modern sense, an artificial neural network, composed of artificial neurons or nodes. Thus a neural network is either a biological neural network, made up of real biological neurons, or an artificial neural network, for solving artificial intelligence (AI) problems. The connections of the biological neuron are modeled as weights. A positive weight reflects an excitatory connection, while negative values mean inhibitory connections. All inputs are modified by a weight and summed. This activity is referred as a linear combination. Finally, an activation function controls the amplitude of the output. For example, an acceptable range of output is usually between 0 and 1, or it could be −1 and 1.</p>
+</blockquote>
+
+<h4 id="natural-language-processing">Natural Language Processing</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Natural language processing (NLP) is a subfield of computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data.</p>
+</blockquote>
+
+<h4 id="deep-learning">Deep Learning</h4>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Deep learning (also known as deep structured learning or hierarchical learning) is part of a broader family of machine learning methods based on artificial neural networks. Learning can be supervised, semi-supervised or unsupervised.</p>
+
+<p>Deep learning architectures such as deep neural networks, deep belief networks, recurrent neural networks and convolutional neural networks have been applied to fields including computer vision, speech recognition, natural language processing, audio recognition, social network filtering, machine translation, bioinformatics, drug design, medical image analysis, material inspection and board game programs, where they have produced results comparable to and in some cases superior to human experts.</p>
+</blockquote>
+
+<h2 id="data-science-tools">Data Science Tools</h2>
+
+<p>The following blog post in the <a href="https://towardsdatascience.com/10-data-science-tools-i-explored-in-2018-d8226f99f342" target="_blank">Towards Data Science blog proved helpful to me</a></p>
+
+<p>It seems that Python and the R Programming Languages are most popular for data scientists.</p>
+
+<h4 id="python-programming-language">Python Programming Language</h4>
+
+<p><a href="https://www.python.org/" target="_blank">Python</a></p>
+
+<p>According to Wikipedia:</p>
+
+<blockquote>
+<p>Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python&rsquo;s design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.</p>
+</blockquote>
+
+<h4 id="r-programming-language">R Programming Language</h4>
+
+<p><a href="https://www.r-project.org/about.html" target="_blank">R Programming</a></p>
+
+<blockquote>
+<p>R is a language and environment for statistical computing and graphics. It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.</p>
+</blockquote>
+
+<h4 id="jupyter-notebooks">Jupyter Notebooks</h4>
+
+<p><a href="https://jupyter.org/" target="_blank">Jupyter Notebooks</a></p>
+
+<blockquote>
+<p>The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.</p>
+</blockquote>
+
+<h6 id="install-jupyter-notebook-with-pip">Install Jupyter Notebook with Pip</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install jupyterlab
+
+git clone https://github.com/jakevdp/PythonDataScienceHandbook.git
+
+<span style="color:#75715e">## Run Jupyter Notebook</span>
+cd notebooks</code></pre></div>
+
+<h6 id="running-jupyter-notebook">Running Jupyter Notebook</h6>
+
+<p>Here is a screenshot where I run a specific notebook:</p>
+
+<figure>
+    <img src="/media/jupyter-notebook.png"/> 
+</figure>
+
+
+<p>Notice here that in my machine a browser was opened and the Jupyter Notebook is running on port 8888 and here is the following url: <a href="http://localhost:8888/notebooks/notebooks/01.00-IPython-Beyond-Normal-Python.ipynb*" target="_blank">http://localhost:8888/notebooks/notebooks/01.00-IPython-Beyond-Normal-Python.ipynb*</a></p>
+
+<h4 id="python-pandas">Python Pandas</h4>
+
+<p><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></p>
+
+<blockquote>
+<p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+</blockquote>
+
+<h2 id="other-resources-for-getting-started-with-data-science">Other Resources for getting started with Data Science</h2>
+
+<p>Check out the <a href="https://towardsdatascience.com/" target="_blank">Towards Data Science Blog</a> and look at some udemy and udacity courses.</p>
+
+<h4 id="data-science-cheat-sheet-github">Data Science Cheat Sheet Github</h4>
+
+<p><a href="https://github.com/abhat222/Data-Science--Cheat-Sheet" target="_blank">Data Science Cheat Sheet</a></p>
+
+<h2 id="contact-information">Contact Information</h2>
+
+<p>If you like this post then please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a> for more related type posts.</p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/awk-programming/"><span
+      aria-hidden="true">&larr;</span> Awk Programming</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+
