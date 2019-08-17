@@ -4,7 +4,25 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/data-science/</loc>
+      <lastmod>2019-08-04T16:47:14-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/post/intro-to-data-science/</loc>
+      <lastmod>2019-08-04T16:47:14-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/python/</loc>
       <lastmod>2019-08-04T16:47:14-04:00</lastmod>
     </url>
     
@@ -15,7 +33,6 @@
     
       <loc>https://www.marcelbelmont.com/</loc>
       <lastmod>2019-08-04T16:47:14-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -25,7 +42,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/</loc>
       <lastmod>2019-08-04T16:47:14-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -33,19 +49,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/data-science/</loc>
-      <lastmod>2019-08-04T16:47:14-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/python/</loc>
-      <lastmod>2019-08-04T16:47:14-04:00</lastmod>
-      <priority>0</priority>
+      <loc>https://www.marcelbelmont.com/tags/awk/</loc>
+      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
     </url>
     
   
@@ -62,19 +67,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/awk/</loc>
-      <lastmod>2019-06-18T18:40:22-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/tags/shell/</loc>
       <lastmod>2019-06-18T18:40:22-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -84,7 +78,24 @@
     
       <loc>https://www.marcelbelmont.com/tags/unix/</loc>
       <lastmod>2019-06-18T18:40:22-04:00</lastmod>
-      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/apache/</loc>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/lucene/</loc>
+      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
     </url>
     
   
@@ -101,38 +112,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/apache/</loc>
-      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/lucene/</loc>
-      <lastmod>2019-05-24T20:20:59-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/post/using-patches-in-git/</loc>
-      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/tags/git/</loc>
       <lastmod>2019-04-21T09:38:33-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -142,7 +123,15 @@
     
       <loc>https://www.marcelbelmont.com/tags/patch/</loc>
       <lastmod>2019-04-21T09:38:33-04:00</lastmod>
-      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/post/using-patches-in-git/</loc>
+      <lastmod>2019-04-21T09:38:33-04:00</lastmod>
     </url>
     
   
@@ -161,7 +150,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/lldb/</loc>
       <lastmod>2019-03-26T19:25:45-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -171,7 +159,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/rust/</loc>
       <lastmod>2019-03-26T19:25:45-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -188,18 +175,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</loc>
-      <lastmod>2019-02-20T18:38:15-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/tags/mongodb/</loc>
       <lastmod>2019-02-20T18:38:15-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -209,7 +186,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/nosql/</loc>
       <lastmod>2019-02-20T18:38:15-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -217,8 +193,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</loc>
-      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
+      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb-part2/</loc>
+      <lastmod>2019-02-20T18:38:15-05:00</lastmod>
     </url>
     
   
@@ -228,7 +204,15 @@
     
       <loc>https://www.marcelbelmont.com/tags/bash/</loc>
       <lastmod>2019-02-16T10:59:02-05:00</lastmod>
-      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/post/tips-and-tricks-with-bash/</loc>
+      <lastmod>2019-02-16T10:59:02-05:00</lastmod>
     </url>
     
   
@@ -256,7 +240,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/radare/</loc>
       <lastmod>2018-12-19T20:37:56-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -266,7 +249,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/reverse-engineering/</loc>
       <lastmod>2018-12-19T20:37:56-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -285,7 +267,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/latex/</loc>
       <lastmod>2018-11-11T21:26:43-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -295,7 +276,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/tex/</loc>
       <lastmod>2018-11-11T21:26:43-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -305,7 +285,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/typesetting/</loc>
       <lastmod>2018-11-11T21:26:43-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -333,7 +312,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/editor/</loc>
       <lastmod>2018-10-17T19:22:45-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -352,7 +330,6 @@
     
       <loc>https://www.marcelbelmont.com/publication_types/5/</loc>
       <lastmod>2018-08-28T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -371,7 +348,6 @@
     
       <loc>https://www.marcelbelmont.com/publication_types/</loc>
       <lastmod>2018-08-28T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -390,7 +366,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/languages/</loc>
       <lastmod>2018-08-26T20:30:37-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -400,7 +375,15 @@
     
       <loc>https://www.marcelbelmont.com/tags/rustlang/</loc>
       <lastmod>2018-08-26T20:30:37-04:00</lastmod>
-      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/rest/</loc>
+      <lastmod>2018-07-22T09:13:27-04:00</lastmod>
     </url>
     
   
@@ -417,9 +400,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/rest/</loc>
-      <lastmod>2018-07-22T09:13:27-04:00</lastmod>
-      <priority>0</priority>
+      <loc>https://www.marcelbelmont.com/tags/automation/</loc>
+      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
     </url>
     
   
@@ -436,19 +418,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/automation/</loc>
-      <lastmod>2018-06-24T12:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/tags/e2e/</loc>
       <lastmod>2018-06-24T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -458,7 +429,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/testing/</loc>
       <lastmod>2018-06-24T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -477,7 +447,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/debugging/</loc>
       <lastmod>2018-04-28T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -487,7 +456,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/golang/</loc>
       <lastmod>2018-04-28T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -506,7 +474,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/tricks/</loc>
       <lastmod>2018-04-28T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -525,7 +492,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/elastic-search/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -535,7 +501,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/filebeat/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -545,7 +510,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/kibana/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -555,7 +519,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/logstash/</loc>
       <lastmod>2018-03-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -574,7 +537,15 @@
     
       <loc>https://www.marcelbelmont.com/tags/postman/</loc>
       <lastmod>2018-02-04T20:21:03-05:00</lastmod>
-      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/agile/</loc>
+      <lastmod>2018-01-28T15:48:12-05:00</lastmod>
     </url>
     
   
@@ -591,19 +562,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/agile/</loc>
-      <lastmod>2018-01-28T15:48:12-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.marcelbelmont.com/tags/scrum/</loc>
       <lastmod>2018-01-28T15:48:12-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -631,7 +591,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/page-objects/</loc>
       <lastmod>2017-12-06T10:09:18-05:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -641,7 +600,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/command-line-apps/</loc>
       <lastmod>2017-10-10T18:49:29-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -660,7 +618,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/node.js/</loc>
       <lastmod>2017-10-10T18:49:29-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -679,7 +636,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/d3/</loc>
       <lastmod>2017-09-24T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -689,7 +645,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/data-visualization/</loc>
       <lastmod>2017-09-24T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -708,7 +663,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/animation/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -718,7 +672,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/design/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -728,7 +681,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/interface/</loc>
       <lastmod>2017-09-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -738,7 +690,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/jwt/</loc>
       <lastmod>2017-09-06T14:41:25-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -748,7 +699,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/oauth/</loc>
       <lastmod>2017-09-06T14:41:25-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -758,17 +708,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/saml/</loc>
       <lastmod>2017-09-06T14:41:25-04:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/sso/</loc>
-      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -777,6 +716,15 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/post/concepts-in-single-sign-on-using-jwt-and-saml/</loc>
+      <lastmod>2017-09-06T14:41:25-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/tags/sso/</loc>
       <lastmod>2017-09-06T14:41:25-04:00</lastmod>
     </url>
     
@@ -796,7 +744,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/tdd/</loc>
       <lastmod>2017-08-31T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -824,7 +771,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/object-oriented-design/</loc>
       <lastmod>2017-08-22T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -834,7 +780,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/owasp/</loc>
       <lastmod>2017-08-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -853,7 +798,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/security/</loc>
       <lastmod>2017-08-18T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -872,7 +816,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/course-review/</loc>
       <lastmod>2017-08-16T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -882,7 +825,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/ui/</loc>
       <lastmod>2017-08-16T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -892,7 +834,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/caching/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -911,7 +852,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/memoization/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -921,7 +861,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/redis/</loc>
       <lastmod>2017-08-13T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -956,9 +895,17 @@
     
     <url>
     
+      <loc>https://www.marcelbelmont.com/tags/academic/</loc>
+      <lastmod>2017-04-10T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.marcelbelmont.com/tags/paper/</loc>
       <lastmod>2017-04-10T12:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -986,16 +933,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/api/</loc>
       <lastmod>2017-02-10T12:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.marcelbelmont.com/tags/academic/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -1030,9 +967,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/project/</loc>
+      <loc>https://www.marcelbelmont.com/tags/papers-we-love/</loc>
       <lastmod>2016-12-14T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -1040,9 +976,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/tags/papers-we-love/</loc>
+      <loc>https://www.marcelbelmont.com/project/</loc>
       <lastmod>2016-12-14T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -1079,7 +1014,6 @@
     
       <loc>https://www.marcelbelmont.com/tags/code-craftsmanship-saturdays/</loc>
       <lastmod>2016-06-25T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -1088,7 +1022,6 @@
     <url>
     
       <loc>https://www.marcelbelmont.com/categories/</loc>
-      <priority>0</priority>
     </url>
     
   
