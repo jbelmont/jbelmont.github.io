@@ -6,8 +6,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 16:47:14 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Reverse Engineering Tools a DevOps Engineer can use</title>
+      <link>https://www.marcelbelmont.com/talk/reverse-engineering-tools-a-devops-engineer-can-use/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/reverse-engineering-tools-a-devops-engineer-can-use/</guid>
+      <description>&lt;p&gt;An ignite talk focusing on several reverse engineering tools in the unix platform such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;objdump&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strings&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xxd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;radare2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lldb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rust-lldb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ghidra&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The purpose of the talk is to introduce Reverse Engineering tooling and the general concept as it implies to security and software.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Intro to Data Science</title>
@@ -3400,15 +3422,6 @@ workflows:
 
 &lt;p&gt;Leave a comment if you like this.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Hands-On Continuous Integration and Delivery</title>
-      <link>https://www.marcelbelmont.com/publication/ci_cd_book/</link>
-      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/publication/ci_cd_book/</guid>
-      <description></description>
     </item>
     
   </channel>

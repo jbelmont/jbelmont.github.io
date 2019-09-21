@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Reverse Engineering Tools a DevOps Engineer can use</title>
+      <link>https://www.marcelbelmont.com/talk/reverse-engineering-tools-a-devops-engineer-can-use/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/reverse-engineering-tools-a-devops-engineer-can-use/</guid>
+      <description>An ignite talk focusing on several reverse engineering tools in the unix platform such as:
+ objdump strings xxd radare2 lldb rust-lldb ghidra  The purpose of the talk is to introduce Reverse Engineering tooling and the general concept as it implies to security and software.</description>
+    </item>
+    
+    <item>
       <title>Writing Rust Commandline Applications</title>
       <link>https://www.marcelbelmont.com/talk/writing-rust-commandline-apps/</link>
       <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
@@ -50,7 +60,7 @@
       <description>A Modern Web Demonstration using Golang, Docker, and Vue.js
 Learning about how to build containerized @golang applications with @docker and @vuejs at our event tonight in the Triangle w @jbelmont80 pic.twitter.com/XtE4r1rv0a
 &amp;mdash; Modern Web (@moderndotweb) July 25, 2017  There&amp;#39;s @jbelmont80 speaking about Golang, Docker, and Vue; @ben336 talking about @gatsbyjs; and @ladyleet talking about #RxJS ! MANY here!
-&amp;mdash; Rob Ocel (@robocell) July 25, 2017  Had a blast paneling with @ben336 @jbelmont80 at @moderndotweb last night!</description>
+&amp;mdash; Rob Ocel @ AngularConnect (@robocell) July 25, 2017  Had a blast paneling with @ben336 @jbelmont80 at @moderndotweb last night!</description>
     </item>
     
     <item>
