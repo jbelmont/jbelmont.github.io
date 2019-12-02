@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.58.0-DEV" />
+  <meta name="author" content="Jean-Marcel Belmont">
+  <meta name="description" content="Senior Software Engineer">
+
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.0/css/academicons.min.css" integrity="sha512-GGGNUPDhnG8LEAEDsjqYIQns+Gu8RBs4j5XGlxl7UfRaZBhCCm5jenJkeJL8uPuOXGqgl8/H1gjlWQDRjd3cUQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-118360144-1', 'auto');
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  <link rel="alternate" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+  <link rel="feed" href="https://www.marcelbelmont.com/index.xml" type="application/rss+xml" title="Software Musings">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://www.marcelbelmont.com/post/creating-documentation-with-groff/">
+
+  
+
+  <title>Creating Documentation With Groff | Software Musings</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Software Musings</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#talks">
+            
+            <span>Talks</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+          </a>
+        </li>
+
+        
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Creating Documentation With Groff</h1>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2019-12-01 15:03:59 -0500 EST" itemprop="datePublished">
+      Sun, Dec 1, 2019
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/terminal">terminal</a
+    >, 
+    
+    <a href="/tags/documentation">documentation</a
+    >, 
+    
+    <a href="/tags/linux">linux</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcreating-documentation-with-groff%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Creating%20Documentation%20With%20Groff&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcreating-documentation-with-groff%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcreating-documentation-with-groff%2f&amp;title=Creating%20Documentation%20With%20Groff"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcreating-documentation-with-groff%2f&amp;title=Creating%20Documentation%20With%20Groff"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Creating%20Documentation%20With%20Groff&amp;body=https%3a%2f%2fwww.marcelbelmont.com%2fpost%2fcreating-documentation-with-groff%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>In this blog post I go over using groff which is a *nix utility that you can use to format documentation like LaTex but with a much reduced learning curve and simpler syntax.</p>
+
+<h2 id="definition-of-groff">Definition of groff</h2>
+
+<p><a href="https://www.gnu.org/software/groff/manual/html_node/What-Is-groff_003f.html#What-Is-groff_003f" target="_blank">What is groff?</a></p>
+
+<blockquote>
+<p>groff belongs to an older generation of document preparation systems, which operate more like compilers than the more recent interactive WYSIWYG systems. groff and its contemporary counterpart, TeX, both work using a batch paradigm: The input (or source) files are normal text files with embedded formatting commands. These files can then be processed by groff to produce a typeset document on a variety of devices.</p>
+</blockquote>
+
+<h4 id="groff-usages">Groff usages</h4>
+
+<p><em>The main uses for groff is for creating man pages in linux.</em></p>
+
+<p>You can also use groff to generate pdf files and post script files.</p>
+
+<h6 id="groff-generated-post-script">Groff generated post script</h6>
+
+<figure>
+    <img src="/media/groff_hello_world.png"/> 
+</figure>
+
+
+<p>Notice that we just simple created a file with the groff utility and groff generated a postscript file for use.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/PostScript" target="_blank">PostScript Wikipedia definition</a></p>
+
+<blockquote>
+<p>PostScript (PS) is a page description language in the electronic publishing and desktop publishing business. It is a dynamically typed, concatenative programming language and was created at Adobe Systems by John Warnock, Charles Geschke, Doug Brotz, Ed Taft and Bill Paxton from 1982 to 1984.</p>
+</blockquote>
+
+<p>Interestingly, PostScript is a turing-comple programming language but most of the time post script is used as an intermediate document format.</p>
+
+<p>Another reasen that PostScript is used is because you can create documents programatically with it and PostScript is heavily used with LaTex/Tex formatting.</p>
+
+<p><em>Editors typically will use Post Script files along with Pdf files since they can be edited, while pdf files cannot.</em></p>
+
+<p>If you have the original PostScript file then you can easily fix formatting issues then with a pdf file.</p>
+
+<p><strong>With that sidebar out of the way let us get back to talking about groff.</strong></p>
+
+<h4 id="groff-macro-packages">Groff macro packages</h4>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">man groff | col -b | awk <span style="color:#e6db74">&#39;/Macro Packages/,/Programming Language/&#39;</span></code></pre></div>
+
+<p>The man pages are generally created using <code>groff</code> command and so if you need to do any <code>grep</code> then you should use the <code>col</code> command.</p>
+
+<h6 id="col-command">col command</h6>
+
+<blockquote>
+<p>The col utility filters out reverse (and half reverse) line feeds so that the output is in the correct order with only forward and half forward line feeds, and replaces white-space characters with tabs where possible.  This can be useful in processing the output of nroff(1) and tbl(1).</p>
+</blockquote>
+
+<p>Macro Packages:</p>
+
+<p>Macro  packages  can be included by option -m.  The groff system implements and extends all classical macro packages in a compatible way and adds
+some packages of its own.  Actually, the following macro packages come with groff:</p>
+
+<ul>
+<li><p><code>man</code></p>
+
+<ul>
+<li>The traditional man page format; see groff_man(7).  It can be specified on the command line as -man or -m man.</li>
+</ul></li>
+
+<li><p><code>mandoc</code></p>
+
+<ul>
+<li>The general package for man pages; it automatically recognizes whether the documents uses the man or the mdoc format and branches  to  the corresponding macro package.<br /></li>
+<li>It can be specified on the command line as -mandoc or -m mandoc.</li>
+</ul></li>
+
+<li><p><code>mdoc</code></p>
+
+<ul>
+<li>The BSD-style man page format; see groff_mdoc(7).<br /></li>
+<li>It can be specified on the command line as -mdoc or -m mdoc.</li>
+</ul></li>
+
+<li><p><code>me</code></p>
+
+<ul>
+<li>The classical me document format; see groff_me(7).  It can be specified on the command line as -me or -m me.</li>
+</ul></li>
+
+<li><p><code>mm</code></p>
+
+<ul>
+<li>The classical mm document format; see groff_mm(7).  It can be specified on the command line as -mm or -m mm.</li>
+</ul></li>
+
+<li><p><code>ms</code></p>
+
+<ul>
+<li>The classical ms document format; see groff_ms(7).  It can be specified on the command line as -ms or -m ms.</li>
+</ul></li>
+
+<li><p><code>www</code></p>
+
+<ul>
+<li>HTML-like macros for inclusion in arbitrary groff documents; see groff_www(7).</li>
+</ul></li>
+</ul>
+
+<p>For the purposes of this blog post we will only look at using <code>me</code> macros for the groff command.</p>
+
+<h4 id="groff-command-syntax-with-me-macros">Groff command syntax with <code>me</code> macros</h4>
+
+<p>You use commands in groff in their own separate line and prefix them with a <code>.</code> character.</p>
+
+<p>The <code>me</code> macros is typically used for technical papers and so it may not be appropriate for other intended usages and/or audiences.</p>
+
+<p>Please read the <a href="http://man7.org/linux/man-pages/man7/groff_me.7.html" target="_blank">groff_me man page</a> for more information on the available request command macros</p>
+
+<p>All macro requests must be on their own line else they won&rsquo;t work and they must be by themselves:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">\&#34;</span> This works
+.pp
+
+<span style="color:#ae81ff">\&#34;</span> This does not work
+Here I am .pp</code></pre></div>
+
+<h6 id="basics-of-me-with-groff-example">basics of <code>me</code> with groff example</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">\&#34;</span> paragraph request
+.pp
+You can make a paragraph like this:
+<span style="color:#ae81ff">\&#34;</span> bulleted lists start with .bu
+.bu
+Rocky
+.bu
+Rambo
+.bu
+Snake
+.pp
+Start a numbered list:
+.np
+I am the alpha
+.np
+and
+.np
+the omega
+.pp
+Any numbered lists are reset on the next occurrence of .pp</code></pre></div>
+
+<h6 id="page-layout-with-groff-me-macro">Page layout with groff <code>me</code> macro</h6>
+
+<p>You can use the <code>.b</code> request for bolding text and the <code>.i</code> macro request to italicize.</p>
+
+<p>You can also use the <code>.u</code> macro request for underlines and <code>.bu</code> for bold italic</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.pp
+I am going to 
+.b <span style="color:#e6db74">&#34;bold this text&#34;</span>
+and I am going to 
+.i <span style="color:#e6db74">&#34;italicize this text&#34;</span>
+and I will 
+.bu <span style="color:#e6db74">&#34;bold and italicize&#34;</span>
+this text</code></pre></div>
+
+<h4 id="making-lists-with-me-macro">Making lists with <code>me</code> macro</h4>
+
+<p>You can make some lists using the <code>.(l \n\nSome stuff.)l</code></p>
+
+<p>Here is an example of a list:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.<span style="color:#f92672">(</span>l
+Shine Shoes
+Cut Hair
+Get Dressed
+.<span style="color:#f92672">)</span>l</code></pre></div>
+
+<h4 id="setting-font-size">Setting font size</h4>
+
+<p>you can use the <code>.ps</code> request to set font size:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.ps <span style="color:#ae81ff">24</span>
+I am large text
+.ps <span style="color:#ae81ff">6</span> 
+I am tiny text</code></pre></div>
+
+<h4 id="set-leading-paragraph">Set leading paragraph</h4>
+
+<p>You can use the <code>.lp</code> macro request for leading paragraphs.</p>
+
+<h4 id="quote-text">Quote text</h4>
+
+<p>You can quote text using <code>\*(lqMy Text is quoted.\*(rq</code></p>
+
+<p>Here is an example:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">You can quote text using <span style="color:#e6db74">`</span><span style="color:#ae81ff">\*</span><span style="color:#f92672">(</span>lqMy Text is quoted.<span style="color:#ae81ff">\*</span><span style="color:#f92672">(</span>rq<span style="color:#e6db74">`</span></code></pre></div>
+
+<h4 id="combining-example-into-one-groff-file">Combining example into one <code>groff</code> file</h4>
+
+<p>Let us combine all of the example we have shown thus far into one larger example like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">\&#34;</span> paragraph request
+.pp
+You can make a paragraph like this:
+<span style="color:#ae81ff">\&#34;</span> bulleted lists start with .bu
+.bu
+Rocky
+.bu
+Rambo
+.bu
+Snake
+.pp
+Start a numbered list:
+.np
+I am the alpha
+.np
+and
+.np
+the omega
+.pp
+Any numbered lists are reset on the next occurrence of .pp
+.pp
+I am going to 
+.b <span style="color:#e6db74">&#34;bold this text&#34;</span>
+and I am going to 
+.i <span style="color:#e6db74">&#34;italicize this text&#34;</span>
+and I will 
+.bu <span style="color:#e6db74">&#34;bold and italicize&#34;</span>
+this text
+.<span style="color:#f92672">(</span>l
+Shine Shoes
+Cut Hair
+Get Dressed
+.<span style="color:#f92672">)</span>l
+.ps <span style="color:#ae81ff">24</span>
+I am large text
+.ps <span style="color:#ae81ff">6</span> 
+I am tiny text
+You can quote text using <span style="color:#e6db74">`</span><span style="color:#ae81ff">\*</span><span style="color:#f92672">(</span>lqMy Text is quoted.<span style="color:#ae81ff">\*</span><span style="color:#f92672">(</span>rq<span style="color:#e6db74">`</span></code></pre></div>
+
+<p>Using the text above we will create a new groff file and add the <code>.groff</code> file extension.</p>
+
+<figure>
+    <img src="/media/groff-vim.png"/> 
+</figure>
+
+
+<h4 id="generating-a-postscript-file-with-groff">Generating a <code>PostScript</code> file with groff</h4>
+
+<figure>
+    <img src="/media/groff-create-postscript.png"/> 
+</figure>
+
+
+<p>In the example above we create a new post script file using <code>groff</code> utility</p>
+
+<h4 id="generating-a-pdf-file-with-ps2pdf-command">Generating a <code>pdf</code> file with <code>ps2pdf</code> command</h4>
+
+<p>Next we can use the <code>ps2pdf</code> command to create a pdf with our postscript file like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps2pdf example.ps example.pdf</code></pre></div>
+
+<h4 id="generated-pdf-example">Generated pdf example</h4>
+
+<p>Here is our beautifully made pdf :)</p>
+
+<figure>
+    <img src="/media/groff-pdf.png"/> 
+</figure>
+
+
+<p>If you like this blog post then please consider following me on the following social media outlets:</p>
+
+<h2 id="twitter-github-account">Twitter &amp; Github Account</h2>
+
+<p>Please follow me at <a href="https://github.com/jbelmont" target="_blank">jbelmont @ github</a> and <a href="https://twitter.com/jbelmont80" target="_blank">jbelmont80 @ twitter</a></p>
+
+<p>Feel free to leave a comment if you like.</p>
+
+<p>Until Next Time :)</p>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://www.marcelbelmont.com/post/intro-to-data-science-part2/"><span
+      aria-hidden="true">&larr;</span> Intro to Data Science Part II</a></li>
+    
+
+    
+  </ul>
+</nav>
+
+</div>
+
+<div class="article-container">
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marcelbelmont-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Jean-Marcel Belmont &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.2/imagesloaded.pkgd.min.js" integrity="sha512-iHzEu7GbSc705hE2skyH6/AlTpOfBmkx7nUqTLGzPYR+C1tRaItbRlJ7hT/D3YQ9SV0fqLKzp4XY9wKulTBGTw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" integrity="sha512-Z5heTz36xTemt1TbtbfXtTq5lMfYnOkXM2/eWcTTiLU01+Sw4ku1i7vScDc8fWhrP2abz9GQzgKH5NGBLoYlAw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js" integrity="sha512-CDeU7pRtkPX6XJtF/gcFWlEwyaX7mcAp5sO3VIu/ylsdR74wEw4wmBpD5yYTrmMAiAboi9thyBUr1vXRPA7t0Q==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1624619104728238",
+        enable_page_level_ads: true
+      });
+    </script>
+
+  </body>
+</html>
+

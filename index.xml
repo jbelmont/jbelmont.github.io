@@ -6,8 +6,295 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Thu, 03 Oct 2019 18:05:17 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2019 15:03:59 -0500</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Creating Documentation With Groff</title>
+      <link>https://www.marcelbelmont.com/post/creating-documentation-with-groff/</link>
+      <pubDate>Sun, 01 Dec 2019 15:03:59 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/creating-documentation-with-groff/</guid>
+      <description>
+
+&lt;p&gt;In this blog post I go over using groff which is a *nix utility that you can use to format documentation like LaTex but with a much reduced learning curve and simpler syntax.&lt;/p&gt;
+
+&lt;h2 id=&#34;definition-of-groff&#34;&gt;Definition of groff&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/software/groff/manual/html_node/What-Is-groff_003f.html#What-Is-groff_003f&#34; target=&#34;_blank&#34;&gt;What is groff?&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;groff belongs to an older generation of document preparation systems, which operate more like compilers than the more recent interactive WYSIWYG systems. groff and its contemporary counterpart, TeX, both work using a batch paradigm: The input (or source) files are normal text files with embedded formatting commands. These files can then be processed by groff to produce a typeset document on a variety of devices.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;groff-usages&#34;&gt;Groff usages&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;The main uses for groff is for creating man pages in linux.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also use groff to generate pdf files and post script files.&lt;/p&gt;
+
+&lt;h6 id=&#34;groff-generated-post-script&#34;&gt;Groff generated post script&lt;/h6&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/groff_hello_world.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that we just simple created a file with the groff utility and groff generated a postscript file for use.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/PostScript&#34; target=&#34;_blank&#34;&gt;PostScript Wikipedia definition&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;PostScript (PS) is a page description language in the electronic publishing and desktop publishing business. It is a dynamically typed, concatenative programming language and was created at Adobe Systems by John Warnock, Charles Geschke, Doug Brotz, Ed Taft and Bill Paxton from 1982 to 1984.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Interestingly, PostScript is a turing-comple programming language but most of the time post script is used as an intermediate document format.&lt;/p&gt;
+
+&lt;p&gt;Another reasen that PostScript is used is because you can create documents programatically with it and PostScript is heavily used with LaTex/Tex formatting.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Editors typically will use Post Script files along with Pdf files since they can be edited, while pdf files cannot.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have the original PostScript file then you can easily fix formatting issues then with a pdf file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;With that sidebar out of the way let us get back to talking about groff.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;groff-macro-packages&#34;&gt;Groff macro packages&lt;/h4&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;man groff | col -b | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/Macro Packages/,/Programming Language/&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The man pages are generally created using &lt;code&gt;groff&lt;/code&gt; command and so if you need to do any &lt;code&gt;grep&lt;/code&gt; then you should use the &lt;code&gt;col&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;h6 id=&#34;col-command&#34;&gt;col command&lt;/h6&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The col utility filters out reverse (and half reverse) line feeds so that the output is in the correct order with only forward and half forward line feeds, and replaces white-space characters with tabs where possible.  This can be useful in processing the output of nroff(1) and tbl(1).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Macro Packages:&lt;/p&gt;
+
+&lt;p&gt;Macro  packages  can be included by option -m.  The groff system implements and extends all classical macro packages in a compatible way and adds
+some packages of its own.  Actually, the following macro packages come with groff:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;man&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The traditional man page format; see groff_man(7).  It can be specified on the command line as -man or -m man.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;mandoc&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The general package for man pages; it automatically recognizes whether the documents uses the man or the mdoc format and branches  to  the corresponding macro package.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;It can be specified on the command line as -mandoc or -m mandoc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;mdoc&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The BSD-style man page format; see groff_mdoc(7).&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;It can be specified on the command line as -mdoc or -m mdoc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;me&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The classical me document format; see groff_me(7).  It can be specified on the command line as -me or -m me.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;mm&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The classical mm document format; see groff_mm(7).  It can be specified on the command line as -mm or -m mm.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ms&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The classical ms document format; see groff_ms(7).  It can be specified on the command line as -ms or -m ms.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;www&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTML-like macros for inclusion in arbitrary groff documents; see groff_www(7).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the purposes of this blog post we will only look at using &lt;code&gt;me&lt;/code&gt; macros for the groff command.&lt;/p&gt;
+
+&lt;h4 id=&#34;groff-command-syntax-with-me-macros&#34;&gt;Groff command syntax with &lt;code&gt;me&lt;/code&gt; macros&lt;/h4&gt;
+
+&lt;p&gt;You use commands in groff in their own separate line and prefix them with a &lt;code&gt;.&lt;/code&gt; character.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;me&lt;/code&gt; macros is typically used for technical papers and so it may not be appropriate for other intended usages and/or audiences.&lt;/p&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;http://man7.org/linux/man-pages/man7/groff_me.7.html&#34; target=&#34;_blank&#34;&gt;groff_me man page&lt;/a&gt; for more information on the available request command macros&lt;/p&gt;
+
+&lt;p&gt;All macro requests must be on their own line else they won&amp;rsquo;t work and they must be by themselves:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; This works
+.pp
+
+&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; This does not work
+Here I am .pp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h6 id=&#34;basics-of-me-with-groff-example&#34;&gt;basics of &lt;code&gt;me&lt;/code&gt; with groff example&lt;/h6&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; paragraph request
+.pp
+You can make a paragraph like this:
+&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; bulleted lists start with .bu
+.bu
+Rocky
+.bu
+Rambo
+.bu
+Snake
+.pp
+Start a numbered list:
+.np
+I am the alpha
+.np
+and
+.np
+the omega
+.pp
+Any numbered lists are reset on the next occurrence of .pp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h6 id=&#34;page-layout-with-groff-me-macro&#34;&gt;Page layout with groff &lt;code&gt;me&lt;/code&gt; macro&lt;/h6&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;.b&lt;/code&gt; request for bolding text and the &lt;code&gt;.i&lt;/code&gt; macro request to italicize.&lt;/p&gt;
+
+&lt;p&gt;You can also use the &lt;code&gt;.u&lt;/code&gt; macro request for underlines and &lt;code&gt;.bu&lt;/code&gt; for bold italic&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;.pp
+I am going to 
+.b &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bold this text&amp;#34;&lt;/span&gt;
+and I am going to 
+.i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;italicize this text&amp;#34;&lt;/span&gt;
+and I will 
+.bu &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bold and italicize&amp;#34;&lt;/span&gt;
+this text&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;making-lists-with-me-macro&#34;&gt;Making lists with &lt;code&gt;me&lt;/code&gt; macro&lt;/h4&gt;
+
+&lt;p&gt;You can make some lists using the &lt;code&gt;.(l \n\nSome stuff.)l&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example of a list:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;.&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l
+Shine Shoes
+Cut Hair
+Get Dressed
+.&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;l&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;setting-font-size&#34;&gt;Setting font size&lt;/h4&gt;
+
+&lt;p&gt;you can use the &lt;code&gt;.ps&lt;/code&gt; request to set font size:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;.ps &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;
+I am large text
+.ps &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt; 
+I am tiny text&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;set-leading-paragraph&#34;&gt;Set leading paragraph&lt;/h4&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;.lp&lt;/code&gt; macro request for leading paragraphs.&lt;/p&gt;
+
+&lt;h4 id=&#34;quote-text&#34;&gt;Quote text&lt;/h4&gt;
+
+&lt;p&gt;You can quote text using &lt;code&gt;\*(lqMy Text is quoted.\*(rq&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;You can quote text using &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;lqMy Text is quoted.&lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;rq&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;combining-example-into-one-groff-file&#34;&gt;Combining example into one &lt;code&gt;groff&lt;/code&gt; file&lt;/h4&gt;
+
+&lt;p&gt;Let us combine all of the example we have shown thus far into one larger example like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; paragraph request
+.pp
+You can make a paragraph like this:
+&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; bulleted lists start with .bu
+.bu
+Rocky
+.bu
+Rambo
+.bu
+Snake
+.pp
+Start a numbered list:
+.np
+I am the alpha
+.np
+and
+.np
+the omega
+.pp
+Any numbered lists are reset on the next occurrence of .pp
+.pp
+I am going to 
+.b &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bold this text&amp;#34;&lt;/span&gt;
+and I am going to 
+.i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;italicize this text&amp;#34;&lt;/span&gt;
+and I will 
+.bu &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bold and italicize&amp;#34;&lt;/span&gt;
+this text
+.&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l
+Shine Shoes
+Cut Hair
+Get Dressed
+.&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;l
+.ps &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;
+I am large text
+.ps &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt; 
+I am tiny text
+You can quote text using &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;lqMy Text is quoted.&lt;span style=&#34;color:#ae81ff&#34;&gt;\*&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;rq&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Using the text above we will create a new groff file and add the &lt;code&gt;.groff&lt;/code&gt; file extension.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/groff-vim.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h4 id=&#34;generating-a-postscript-file-with-groff&#34;&gt;Generating a &lt;code&gt;PostScript&lt;/code&gt; file with groff&lt;/h4&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/groff-create-postscript.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;In the example above we create a new post script file using &lt;code&gt;groff&lt;/code&gt; utility&lt;/p&gt;
+
+&lt;h4 id=&#34;generating-a-pdf-file-with-ps2pdf-command&#34;&gt;Generating a &lt;code&gt;pdf&lt;/code&gt; file with &lt;code&gt;ps2pdf&lt;/code&gt; command&lt;/h4&gt;
+
+&lt;p&gt;Next we can use the &lt;code&gt;ps2pdf&lt;/code&gt; command to create a pdf with our postscript file like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ps2pdf example.ps example.pdf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;generated-pdf-example&#34;&gt;Generated pdf example&lt;/h4&gt;
+
+&lt;p&gt;Here is our beautifully made pdf :)&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/groff-pdf.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;If you like this blog post then please consider following me on the following social media outlets:&lt;/p&gt;
+
+&lt;h2 id=&#34;twitter-github-account&#34;&gt;Twitter &amp;amp; Github Account&lt;/h2&gt;
+
+&lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Intro to Data Science Part II</title>
@@ -3068,300 +3355,6 @@ This subsubsection&#39;s content...
 &lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;😀Learning to build &lt;a href=&#34;https://twitter.com/hashtag/rustlang?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#rustlang&lt;/a&gt; CLI applications with &lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; &lt;a href=&#34;https://twitter.com/AllThingsOpen?ref_src=twsrc%5Etfw&#34;&gt;@AllThingsOpen&lt;/a&gt; !! 🧠 &lt;a href=&#34;https://t.co/Nw0AIHjlPK&#34;&gt;pic.twitter.com/Nw0AIHjlPK&lt;/a&gt;&lt;/p&gt;&amp;mdash; 乃ﾑ尺刀ﾑ乃ﾑ丂 乃uﾚｱ乇ｲｲ (@_bulpett) &lt;a href=&#34;https://twitter.com/_bulpett/status/1054830077870071813?ref_src=twsrc%5Etfw&#34;&gt;October 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
-</description>
-    </item>
-    
-    <item>
-      <title>A review of Hands On Continuous Integration and Delivery Book</title>
-      <link>https://www.marcelbelmont.com/post/ci-cd-book/</link>
-      <pubDate>Wed, 17 Oct 2018 19:22:45 -0400</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/ci-cd-book/</guid>
-      <description>
-
-&lt;h1 id=&#34;hands-on-continuous-integration-and-delivery&#34;&gt;Hands-On Continuous Integration and Delivery&lt;/h1&gt;
-
-&lt;p&gt;There are several terms that are important when trying to learn about Continuous Integration and Continuous Delivery:&lt;/p&gt;
-
-&lt;h2 id=&#34;definition-of-automation&#34;&gt;Definition of Automation&lt;/h2&gt;
-
-&lt;p&gt;Automation is essentially any task that is completed without human interaction.
-Let us say that you manually test a UI feature, if you write a script instead of manually test it than it can be said that you have automated the task.&lt;/p&gt;
-
-&lt;h2 id=&#34;definition-of-continuous-integration&#34;&gt;Definition of Continuous Integration&lt;/h2&gt;
-
-&lt;p&gt;Continuous Integration can be viewed as a software engineering task where source code is merged and tested in a version controlled project such as Git.&lt;/p&gt;
-
-&lt;p&gt;Usually a Continuous Integration Build is triggered via source control management, meaning a developer pushes a commit to a version control system such as git.&lt;/p&gt;
-
-&lt;p&gt;A Continuous Integration Build is more than just a compilation step.
-It can consist of a compilation step, a testing phase, a code inspection phase, and a deployment phase.&lt;/p&gt;
-
-&lt;p&gt;A Continuous Integration Build can act as a kind of verification step that checks that your software is working as a cohesive unit.&lt;/p&gt;
-
-&lt;h2 id=&#34;definition-of-continuous-delivery&#34;&gt;Definition of Continuous Delivery&lt;/h2&gt;
-
-&lt;p&gt;Continuous Delivery (CD) is the point at which you deliver a software product to your end users.&lt;/p&gt;
-
-&lt;p&gt;A product is only useful if your intended users can actually use the product.&lt;/p&gt;
-
-&lt;h2 id=&#34;business-impact-of-ci-cd-and-automation&#34;&gt;Business Impact of CI/CD and automation&lt;/h2&gt;
-
-&lt;p&gt;Good CI/CD practices can fundamentally change the way an organization runs.&lt;/p&gt;
-
-&lt;p&gt;If automation practices are effectively added on a CI/CD pipeline the quality of the software product will improve drastically.&lt;/p&gt;
-
-&lt;p&gt;It is important to have a good set of unit tests in the first build of a CI/CD pipeline.&lt;/p&gt;
-
-&lt;p&gt;We may add additional CI builds that serve as a full regression test suite for our software product.&lt;/p&gt;
-
-&lt;p&gt;Later builds may incorporate Load Tests and Smoke Tests.&lt;/p&gt;
-
-&lt;h2 id=&#34;using-jenkins-for-ci-cd&#34;&gt;Using Jenkins for CI/CD&lt;/h2&gt;
-
-&lt;p&gt;You can use freestyle scripting in Jenkins and the new Jenkins 2.0 Pipeline Syntax along with Docker to create a more declarative CI Build System.&lt;/p&gt;
-
-&lt;p&gt;Here is an example of a Jenkins Pipeline File:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pipeline {
-  agent {
-    docker {
-      image &#39;node:10-alpine&#39;
-      args &#39;-v /Users/jean-marcelbelmont/jenkins_data&#39;
-    }
-
-  }
-  stages {
-    stage(&#39;Build&#39;) {
-      steps {
-        sh &#39;npm install&#39;
-      }
-    }
-    stage(&#39;Cucumber Tests&#39;) {
-      steps {
-        sh &#39;npm run acceptance:tests&#39;
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here we create a series of stages with the first stage creating a docker image to setup our environment.&lt;/p&gt;
-
-&lt;p&gt;Notice that the docker block has &lt;em&gt;image&lt;/em&gt; for the docker image and &lt;em&gt;args&lt;/em&gt; for the arguments which in this case specify the location of the data mount.&lt;/p&gt;
-
-&lt;p&gt;In the next stage of the pipeline we get our environment ready to build by issuing the command &lt;em&gt;npm install&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In the last stage we run an acceptance test suite.&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot of the Jenkins Pipeline:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-jenkins-pipeline.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;using-travis-ci-for-ci-cd&#34;&gt;Using Travis CI for CI/CD&lt;/h2&gt;
-
-&lt;p&gt;Travis CI is a hosted and automated solution for CI Builds.&lt;/p&gt;
-
-&lt;p&gt;The main difference between Travis CI and Jenkins is that Jenkins is a self managed automation solution for CI/CD. You can configure Jenkins in a fully customized manner whereas Travis CI is generally used in open source software projects.&lt;/p&gt;
-
-&lt;p&gt;Here is a &lt;em&gt;.travis.yml&lt;/em&gt; script to show a possible CI/CD setup:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;language: go
-services:
-  - docker
-go:
-  - 1.9.x
-os:
-  - linux
-sudo: false
-env:
-  matrix:
-    - PORT=8080 ENVIRONMENT_NAME=travis
-  global:
-    secure: AvDa6vD77eIF3JifNegQ0cat2SS0vZpa9ami7E8LqYcnl4iJ3D47RHpR1eSkRrSwT6hJIsSG93y8Yi3WRSI3N8UkAuPs/tbr6mpaFwAHpZ0A+gxOf0Xt/SdV7xc2JEOuBjlwAoK23EXvvNyJwJxzAmg+ye5OzTv57LZu7tbWDoCT5Y1D8WD4IkDoFJUSDoG6SLwY0MWgd8YblhnpSIdWxn7H8cadJsjqhvnTkdyslx7s0rtpLsslNmBOgKu9yHdxAtxHXgBZnLHC9xLv41MDKJ1YNU6PqI/JUK4zHgWEHzXd4ZEATdDiq29WKtMIyJvcoVV8Kr8Tcm41ZuyFH6ZtzQGZOj1lyCmrI+qenMEhr7CvsPFOHpx0zZFQkjPYN9qDQAexzs5zEODMA9qjwpaaBXYm3xC7GHxLYUlXB+LpgB8bgmGIy0jax8Eyqlw8VRsmqyLBuPr5VU4W2ZV7GNYladNCLsNk/0VKWb6qdwzt4nXvCUZwbLeG8+TPIvceItxPA9MBxqdydVyfmwUB4aZSs76KJiALTxn0RcthgN+PE4RP6rcHlmsksd3/uup/LBASaK3yZH+DfFRh5VdzHGSqsYwP1Y2vxmnnWNltUfZMBW3WgPEO2sN29aMplcSFAVK8O2RNbBC2PDPRbmLzT7vrVZYKwCDQi6ywCVeS0xuv7js=
-    # This creates the following global variable `COVERALLS_TOKEN`
-before_install:
-  - export PATH=$PATH:$HOME/gopath/bin
-install:
-  - make travis-install
-before_script:
-  - echo -e &amp;quot;Host github.com\n\tHostName github.com\n\tIdentityFile ~/.ssh/id_rsa\n&amp;quot; &amp;gt;&amp;gt; ~/.ssh/config
-script:
-  - make travis-script
-after_success:
-  - if [ -n &amp;quot;$TRAVIS_TAG&amp;quot; ]; then rm -rf ./bin; fi
-  - if [ -n &amp;quot;$TRAVIS_TAG&amp;quot; ]; then curl -sL https://git.io/goreleaser | bash; fi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is a breakdown of the travis yml script:&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;language&lt;/em&gt; field we specify the programming language which is &lt;a href=&#34;https://golang.org/&#34; target=&#34;_blank&#34;&gt;Golang&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;services&lt;/em&gt; field we specify the services we expect the Travis Virtual Machine to start on each CI build for us.&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;go&lt;/em&gt; field we specify the go version we want to use&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;os&lt;/em&gt; field we specify the operating system we expect to use which can be mac or linux which you can read more about in &lt;a href=&#34;https://docs.travis-ci.com/user/reference/osx/&#34; target=&#34;_blank&#34;&gt;Travis Docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;sudo&lt;/em&gt; field you specify the following values:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;required
-
-&lt;ul&gt;
-&lt;li&gt;You will get a fully virtualized environment&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;false
-
-&lt;ul&gt;
-&lt;li&gt;You will get a container based environment&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In the &lt;em&gt;env&lt;/em&gt; field we specify environment variables to be set for our CI build, which in this case consist of a &lt;em&gt;matrix&lt;/em&gt; field which has the environment variables of &lt;strong&gt;PORT&lt;/strong&gt; and &lt;strong&gt;ENVIRONMENT&lt;/strong&gt;. The &lt;em&gt;global&lt;/em&gt; field has an encrypted variable that we created with the travis cli.&lt;/p&gt;
-
-&lt;p&gt;There are several lifecycle events that we can use in travis ci:&lt;/p&gt;
-
-&lt;h4 id=&#34;before-install-lifecycle-event&#34;&gt;before_install lifecycle event&lt;/h4&gt;
-
-&lt;p&gt;This event is useful when you want to set some values and/or install some dependencies before the actual default &lt;em&gt;install&lt;/em&gt; lifecycle event&lt;/p&gt;
-
-&lt;h4 id=&#34;install-lifecycle-event&#34;&gt;install lifecycle event&lt;/h4&gt;
-
-&lt;p&gt;This event is done on every build and essentially gets the environment ready for use to run your tests, lint code and more.&lt;/p&gt;
-
-&lt;h4 id=&#34;before-script-lifecycle-event&#34;&gt;before_script lifecycle event&lt;/h4&gt;
-
-&lt;p&gt;This event is useful when you want to run some actions before the actual &lt;em&gt;script&lt;/em&gt; lifecycle event.&lt;/p&gt;
-
-&lt;h4 id=&#34;script-lifecycle-event&#34;&gt;script lifecycle event&lt;/h4&gt;
-
-&lt;p&gt;This event will comprise the bulk of the actions you will do in your CI build&lt;/p&gt;
-
-&lt;h4 id=&#34;after-success-lifecycle-event&#34;&gt;after_success lifecycle event&lt;/h4&gt;
-
-&lt;p&gt;This event is used when you want to do some actions on a successful CI build.&lt;/p&gt;
-
-&lt;p&gt;Notice that we are using Makefile tasks in the script section.&lt;/p&gt;
-
-&lt;h2 id=&#34;makefile-contents&#34;&gt;Makefile Contents&lt;/h2&gt;
-
-&lt;p&gt;Here are the contents of the makefile:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;travis-install:
-								go get -u github.com/mattn/goveralls
-								go get -u github.com/philwinder/gocoverage
-								go get -u github.com/alecthomas/gometalinter
-								go get -u github.com/golang/dep/cmd/dep
-								go get -u golang.org/x/tools/cmd/cover
-								dep ensure
-
-travis-script:
-								set -e
-								CGO_ENABLED=0 go build -i -o ${BIN_DIR} ${APID_MAIN}
-								gometalinter --install
-								gometalinter ./cmd/... ./internal/...
-								go test ./... -cover
-								gocoverage
-								goveralls -coverprofile=profile.cov -repotoken=${COVERALLS_TOKEN}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In the &lt;em&gt;travis-install&lt;/em&gt; makefile task we install all the golang library dependencies required for a CI build.&lt;/p&gt;
-
-&lt;p&gt;In the &lt;em&gt;travis-script&lt;/em&gt; makefile task we run a lint task, run tests, and push a code coverage report.&lt;/p&gt;
-
-&lt;h2 id=&#34;using-circle-ci-for-ci-cd&#34;&gt;Using Circle CI for CI/CD&lt;/h2&gt;
-
-&lt;p&gt;Circle CI like Travis CI is a hosted and managed automation solution.&lt;/p&gt;
-
-&lt;p&gt;Circle CI uses a yaml syntax like Travis CI but has a very nice dashboard for viewing CI Builds.&lt;/p&gt;
-
-&lt;p&gt;Here is a sample yml file with CI/CD tasks:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: 2
-jobs:
-  build:
-    working_directory: /go/src/github.com/packtci/go-template-example-with-circle-ci
-    docker:
-      - image: circleci/golang:1.9
-    steps:
-      - checkout
-      - run:
-          name: &amp;quot;Print go version&amp;quot;
-          command: go version
-      - run:
-          name: &amp;quot;Run Unit Tests&amp;quot;
-          command: go test
-  integration:
-    docker:
-      - image: cypress/base:8
-        environment:
-          ## this enables colors in the output
-          TERM: xterm
-    steps:
-      - checkout
-      # special step to restore the dependency cache
-      - restore_cache:
-          key: v2-{{ checksum &amp;quot;package.json&amp;quot; }}
-      - run: npm install
-      # special step to save the dependency cache
-      - save_cache:
-          key: v2-{{ checksum &amp;quot;package.json&amp;quot; }}
-          paths:
-            - ~/.npm
-            - ~/.cache
-      - run: 
-          name: &amp;quot;Run Integration Tests&amp;quot;
-          command: npm test
-  deploy:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-workflows:
-  version: 2
-  build_integration_and_deploy:
-    jobs:
-      - build
-      - integration:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - integration
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that here we create several steps for the CI/CD build.&lt;/p&gt;
-
-&lt;p&gt;This is using a yaml syntax like Travis CI with different fields obviously.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;version&lt;/em&gt; field is where we specify the particular version of Circle CI syntax.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;jobs&lt;/em&gt; field is where we specify each job we want to run for Circle CI.&lt;/p&gt;
-
-&lt;p&gt;Using the &lt;em&gt;docker&lt;/em&gt; field we can specify the particular docker images we need for our CI builds.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;workflows&lt;/em&gt; field is where we can schedule the jobs to run.&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot of the Circle CI build steps:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/ci-cd-circle-ci.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;hands-on-continuous-integration-and-delivery-1&#34;&gt;Hands On Continuous Integration and Delivery&lt;/h2&gt;
-
-&lt;p&gt;You can read more about Continuous Integration and Delivery by reading my books:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.packtpub.com/virtualization-and-cloud/hands-continuous-integration-and-delivery&#34; target=&#34;_blank&#34;&gt;Hands On Continuous Integration and Delivery&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
