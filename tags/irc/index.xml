@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>terminal on Software Musings</title>
-    <link>https://www.marcelbelmont.com/tags/terminal/</link>
-    <description>Recent content in terminal on Software Musings</description>
+    <title>irc on Software Musings</title>
+    <link>https://www.marcelbelmont.com/tags/irc/</link>
+    <description>Recent content in irc on Software Musings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
     <lastBuildDate>Sun, 26 Jan 2020 12:17:38 -0500</lastBuildDate>
     
-	<atom:link href="https://www.marcelbelmont.com/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.marcelbelmont.com/tags/irc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://www.marcelbelmont.com/post/irc/</guid>
       <description>Internet Relay Chat is a protocol for facilitating</description>
-    </item>
-    
-    <item>
-      <title>Creating Documentation With Groff</title>
-      <link>https://www.marcelbelmont.com/post/creating-documentation-with-groff/</link>
-      <pubDate>Sun, 01 Dec 2019 15:03:59 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/creating-documentation-with-groff/</guid>
-      <description>An introduction to using groff to generate documentation in the terminal.</description>
     </item>
     
   </channel>

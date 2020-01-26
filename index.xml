@@ -6,8 +6,226 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 01 Dec 2019 15:03:59 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jan 2020 12:17:38 -0500</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Internet Relay Chat (IRC) with Screen Multiplexer</title>
+      <link>https://www.marcelbelmont.com/post/irc/</link>
+      <pubDate>Sun, 26 Jan 2020 12:17:38 -0500</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/irc/</guid>
+      <description>
+
+&lt;h1 id=&#34;internet-relay-chat-and-screen&#34;&gt;Internet Relay Chat and Screen&lt;/h1&gt;
+
+&lt;p&gt;Internet Relay Chat (IRC) hs been around since 1988 and was created by &lt;a href=&#34;https://en.wikipedia.org/wiki/Jarkko_Oikarinen&#34; target=&#34;_blank&#34;&gt;Jarkko Oikarinen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;IRC was borne out of the need to have a real time communication system while using an operating system to communicate with other users.&lt;/p&gt;
+
+&lt;p&gt;IRC is an open protocol that uses Transmission Control Protocol (TCP).&lt;/p&gt;
+
+&lt;p&gt;You can read more about IRC in the official &lt;a href=&#34;https://tools.ietf.org/html/rfc1459&#34; target=&#34;_blank&#34;&gt;Internet Relay Chat Protocol RFC 1459&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;During an IRC session, client will send 1 line messages to a server.&lt;/p&gt;
+
+&lt;p&gt;I am mostly a terminal user so my ideal irc client would be terminal based.&lt;/p&gt;
+
+&lt;h2 id=&#34;irssi&#34;&gt;IRSSI&lt;/h2&gt;
+
+&lt;p&gt;IRSSI is an IRC client that you can use in Linux, Mac and Windows.&lt;/p&gt;
+
+&lt;p&gt;Since I primarily work in Mac OS X I will show how I setup IRSSI on the Mac but you can find you particular install and setup directions at &lt;a href=&#34;https://irssi.org/download/&#34; target=&#34;_blank&#34;&gt;irssi.org/download&lt;/a&gt; official website.&lt;/p&gt;
+
+&lt;h4 id=&#34;irssi-mac-setup&#34;&gt;IRSSI Mac Setup&lt;/h4&gt;
+
+&lt;p&gt;Now with that let us get irssi up and running in a terminal environment.&lt;/p&gt;
+
+&lt;p&gt;If you have &lt;a href=&#34;https://brew.sh/&#34; target=&#34;_blank&#34;&gt;Homebrew&lt;/a&gt; installed you can install irssi in one command like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew install irssi&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I already have irssi installed in my Macbook Pro as you can tell:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/homebrew-irssi.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;starting-an-irssi-session&#34;&gt;Starting an IRSSI session&lt;/h2&gt;
+
+&lt;p&gt;You can simply type &lt;code&gt;irssi&lt;/code&gt; in a terminal session after installing irssi and you will see a screen like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-basic-session.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that we are being prompted for a &lt;code&gt;status&lt;/code&gt; since we haven&amp;rsquo;t really connected to anything yet.&lt;/p&gt;
+
+&lt;h4 id=&#34;starting-a-screen-session&#34;&gt;Starting a screen session&lt;/h4&gt;
+
+&lt;p&gt;Instead of simply typing in &lt;code&gt;irssi&lt;/code&gt; in a terminal let us first start a screen session.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Screen&lt;/code&gt; is a terminal multiplexer that has been around for a long time like over 30 years and has many possible uses.&lt;/p&gt;
+
+&lt;p&gt;The nice thing about using screen with irssi is that we can keep a long running session that won&amp;rsquo;t be interrupted if we decide to logoff of our current computer session and we can detach it for later use.&lt;/p&gt;
+
+&lt;p&gt;With that being said if you are already on a mac then you will already have it installed most probably.&lt;/p&gt;
+
+&lt;p&gt;We can kill our current irssi session by simply typing &lt;code&gt;/exit&lt;/code&gt; or &lt;code&gt;/EXIT&lt;/code&gt; in the status prompt in the bottom.&lt;/p&gt;
+
+&lt;p&gt;Let us create a new screen session like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;screen -S irc-chat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We named our screen session &lt;code&gt;irc-chat&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we will simply type in &lt;code&gt;irssi&lt;/code&gt; like we did before except we now have a screen session running as well.&lt;/p&gt;
+
+&lt;h2 id=&#34;connecting-to-a-network&#34;&gt;Connecting to a network&lt;/h2&gt;
+
+&lt;p&gt;In order for us to do anything useful we need to connect to an actual IRC Network.&lt;/p&gt;
+
+&lt;p&gt;For the purposes of this blog post we will connect to the Mozilla IRC Server of &lt;code&gt;irc.mozilla.org&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;using-the-help-in-irssi&#34;&gt;Using the /help in irssi&lt;/h4&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;/help&lt;/code&gt; command in irssi to understand each command and by the way each command begins with the &lt;code&gt;/&lt;/code&gt; character in an irssi session.&lt;/p&gt;
+
+&lt;p&gt;Let us connect to the &lt;code&gt;irc.mozilla.org&lt;/code&gt; irc server with the following command:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/connnect irc.mozilla.org&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Once connected you will see a screen like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-irc-server-connect.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;We can type the following command to see a list of all available Channels in the particular IRC Server we are connected to:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/LIST -YES&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice that we put &lt;code&gt;-YES&lt;/code&gt; after our command because of a particular warning prompt you get with the &lt;code&gt;/LIST&lt;/code&gt; command&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/channels-irc.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;connecting-to-rust&#34;&gt;Connecting to Rust&lt;/h2&gt;
+
+&lt;p&gt;Since we are in a screen session we need to type in &lt;code&gt;Control Character A then [&lt;/code&gt; or &lt;code&gt;C-a [&lt;/code&gt; so that we can scroll back and look at channels.&lt;/p&gt;
+
+&lt;h4 id=&#34;reading-help-menu-for-channel-command&#34;&gt;Reading help menu for &lt;code&gt;/channel&lt;/code&gt; command&lt;/h4&gt;
+
+&lt;p&gt;Let us read some help documentation for the &lt;code&gt;/channel&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-channel-help.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;There is quite a bit of options but we will simply type in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/join &lt;span style=&#34;color:#75715e&#34;&gt;#rust-servo&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To join the &lt;code&gt;#rust-servo&lt;/code&gt; channel.&lt;/p&gt;
+
+&lt;p&gt;Now that we have joined we should see a session like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-channel-appear.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;setting-a-nickname&#34;&gt;Setting a nickname&lt;/h2&gt;
+
+&lt;p&gt;You can set a nickname by typing in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/set nick &amp;lt;nick_name&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can leave an IRC channel by simply typing in &lt;code&gt;/leave&lt;/code&gt; and we will leave the channel.&lt;/p&gt;
+
+&lt;h2 id=&#34;list-names-of-current-users-in-channel&#34;&gt;List names of current users in channel&lt;/h2&gt;
+
+&lt;p&gt;We can see a list of current users in a channel by typing in&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/names&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You will see a screen like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-names.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;You won&amp;rsquo;t see any information about the user until you exit the channel so don&amp;rsquo;t be alarmed:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/irssi-whois.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;private-messenging&#34;&gt;Private Messenging&lt;/h2&gt;
+
+&lt;p&gt;You can privately message a user by using there nickname like this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/msg comey Hello There My friend!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;leaving-an-irc-server&#34;&gt;Leaving an IRC Server&lt;/h2&gt;
+
+&lt;p&gt;We can simply type in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;/quit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;to leave the IRC Server.&lt;/p&gt;
+
+&lt;h2 id=&#34;detach-screen-session&#34;&gt;Detach screen session&lt;/h2&gt;
+
+&lt;p&gt;Remember that we created a screen session if we want to detach from our current running session we simply type:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Ctrl+a d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;listing-screen-session&#34;&gt;Listing screen session&lt;/h2&gt;
+
+&lt;p&gt;If we don&amp;rsquo;t remember what we called our screen session then we can simply type in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;screen -ls&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and we will see something like this in the terminal:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/screen-session-list.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;reattaching-a-screen-session&#34;&gt;Reattaching a Screen session&lt;/h2&gt;
+
+&lt;p&gt;We can simply type in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;screen -r irc-chat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and we will be reattached to our previous irc session:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/screen-irssi-attach.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;There is much more you can do with irssi/screen than I have mentioned here and I would suggest trying it out on your own.&lt;/p&gt;
+
+&lt;h2 id=&#34;twitter-github-account&#34;&gt;Twitter &amp;amp; Github Account&lt;/h2&gt;
+
+&lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Creating Documentation With Groff</title>
@@ -3341,20 +3559,6 @@ This subsubsection&#39;s content...
 &lt;h2 id=&#34;how-to-find-me&#34;&gt;How to find me&lt;/h2&gt;
 
 &lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Writing Rust Commandline Applications</title>
-      <link>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</link>
-      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/talk/building-commandline-applications-in-rust/</guid>
-      <description>&lt;p&gt;An All Things Open Conference Presentation on building commandline applications in Rust and Golang.&lt;/p&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;😀Learning to build &lt;a href=&#34;https://twitter.com/hashtag/rustlang?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#rustlang&lt;/a&gt; CLI applications with &lt;a href=&#34;https://twitter.com/jbelmont80?ref_src=twsrc%5Etfw&#34;&gt;@jbelmont80&lt;/a&gt; &lt;a href=&#34;https://twitter.com/AllThingsOpen?ref_src=twsrc%5Etfw&#34;&gt;@AllThingsOpen&lt;/a&gt; !! 🧠 &lt;a href=&#34;https://t.co/Nw0AIHjlPK&#34;&gt;pic.twitter.com/Nw0AIHjlPK&lt;/a&gt;&lt;/p&gt;&amp;mdash; 乃ﾑ尺刀ﾑ乃ﾑ丂 乃uﾚｱ乇ｲｲ (@_bulpett) &lt;a href=&#34;https://twitter.com/_bulpett/status/1054830077870071813?ref_src=twsrc%5Etfw&#34;&gt;October 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
 </description>
     </item>
     
