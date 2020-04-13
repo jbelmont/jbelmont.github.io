@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 26 Jan 2020 12:17:38 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 16:08:28 -0400</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>sql</title>
+      <link>https://www.marcelbelmont.com/tags/sql/</link>
+      <pubDate>Mon, 13 Apr 2020 16:08:28 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlit</title>
+      <link>https://www.marcelbelmont.com/tags/sqlit/</link>
+      <pubDate>Mon, 13 Apr 2020 16:08:28 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/sqlit/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>irc</title>

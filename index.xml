@@ -6,8 +6,217 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Sun, 26 Jan 2020 12:17:38 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 16:08:28 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Intro to sqlite and SQL</title>
+      <link>https://www.marcelbelmont.com/post/sqlite/</link>
+      <pubDate>Mon, 13 Apr 2020 16:08:28 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/sqlite/</guid>
+      <description>
+
+&lt;h1 id=&#34;sqlite&#34;&gt;SQLite&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world. SQLite is built into all mobile phones and most computers and comes bundled inside countless other applications that people use every day.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are over 1 trillion sqlite databases in use in the world today and it is the most deployed SQL Database in the world&lt;/p&gt;
+
+&lt;h2 id=&#34;additional-information-on-sqlite&#34;&gt;Additional Information on SQLite&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.sqlite.org/about.html&#34; target=&#34;_blank&#34;&gt;About SQLite&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine. The code for SQLite is in the public domain and is thus free for use for any purpose, commercial or private. SQLite is the most widely deployed database in the world with more applications than we can count, including several high-profile projects.&lt;/p&gt;
+
+&lt;p&gt;SQLite is an embedded SQL database engine. Unlike most other SQL databases, SQLite does not have a separate server process. SQLite reads and writes directly to ordinary disk files. A complete SQL database with multiple tables, indices, triggers, and views, is contained in a single disk file. The database file format is cross-platform - you can freely copy a database between 32-bit and 64-bit systems or between big-endian and little-endian architectures. These features make SQLite a popular choice as an Application File Format. SQLite database files are a recommended storage format by the US Library of Congress. Think of SQLite not as a replacement for Oracle but as a replacement for fopen()&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;sqlite-uses&#34;&gt;SQLite Uses&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Embedded devices and the internet of things&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Client/server database engines are designed to live inside a lovingly-attended datacenter at the core of the network. SQLite works there too, but SQLite also thrives at the edge of the network, fending for itself while providing fast and reliable data services to applications that would otherwise have dodgy connectivity.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Application file format&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Websites&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Data analysis&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cache for enterprise data&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server-side database&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Please read about more uses on the &lt;a href=&#34;https://www.sqlite.org/whentouse.html&#34; target=&#34;_blank&#34;&gt;When To Use Document&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;sqlite-command-line-shell&#34;&gt;SQLite Command Line Shell&lt;/h2&gt;
+
+&lt;p&gt;If you have Mac OS X then sqlite is already installed in your system.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/sqlite3-shell.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;sqlite-help&#34;&gt;SQLite Help&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;sqlite&amp;gt; .help
+.archive ...             Manage SQL archives
+.auth ON|OFF             Show authorizer callbacks
+.backup ?DB? FILE        Backup DB (default &amp;quot;main&amp;quot;) to FILE
+.bail on|off             Stop after hitting an error.  Default OFF
+.binary on|off           Turn binary output on or off.  Default OFF
+.cd DIRECTORY            Change the working directory to DIRECTORY
+.changes on|off          Show number of rows changed by SQL
+.check GLOB              Fail if output since .testcase does not match
+.clone NEWDB             Clone data into NEWDB from the existing database
+.databases               List names and files of attached databases
+.dbconfig ?op? ?val?     List or change sqlite3_db_config() options
+.dbinfo ?DB?             Show status information about the database
+.dump ?TABLE? ...        Render all database content as SQL
+.echo on|off             Turn command echo on or off
+.eqp on|off|full|...     Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                   Display the output of next command in a spreadsheet
+.exit ?CODE?             Exit this program with return-code CODE
+.expert                  EXPERIMENTAL. Suggest indexes for specified queries
+.filectrl CMD ...        Run various sqlite3_file_control() operations
+.fullschema ?--indent?   Show schema and the content of sqlite_stat tables
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.import FILE TABLE       Import data from FILE into TABLE
+.imposter INDEX TABLE    Create imposter table TABLE on index INDEX
+.indexes ?TABLE?         Show names of indexes
+.limit ?LIMIT? ?VAL?     Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS            Report potential schema issues.
+.load FILE ?ENTRY?       Load an extension library
+.log FILE|off            Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?       Set output mode
+.nullvalue STRING        Use STRING in place of NULL values
+.once (-e|-x|FILE)       Output for the next SQL command only to FILE
+.open ?OPTIONS? ?FILE?   Close existing database and reopen FILE
+.output ?FILE?           Send output to FILE or stdout if FILE is omitted
+.parameter CMD ...       Manage SQL parameter bindings
+.print STRING...         Print literal STRING
+.progress N              Invoke progress handler after every N opcodes
+.prompt MAIN CONTINUE    Replace the standard prompts
+.quit                    Exit this program
+.read FILE               Read input from FILE
+.recover                 Recover as much data as possible from corrupt db.
+.restore ?DB? FILE       Restore content of DB (default &amp;quot;main&amp;quot;) from FILE
+.save FILE               Write in-memory database into FILE
+.scanstats on|off        Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.selftest ?OPTIONS?      Run tests defined in the SELFTEST table
+.separator COL ?ROW?     Change the column and row separators
+.sha3sum ...             Compute a SHA3 hash of database content
+.shell CMD ARGS...       Run CMD ARGS... in a system shell
+.show                    Show the current values for various settings
+.stats ?on|off?          Show stats or turn stats on or off
+.system CMD ARGS...      Run CMD ARGS... in a system shell
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+.testcase NAME           Begin redirecting output to &#39;testcase-out.txt&#39;
+.testctrl CMD ...        Run various sqlite3_test_control() operations
+.timeout MS              Try opening locked tables for MS milliseconds
+.timer on|off            Turn SQL timer on or off
+.trace ?OPTIONS?         Output each SQL statement as it is run
+.vfsinfo ?AUX?           Information about the top-level VFS
+.vfslist                 List all available VFSes
+.vfsname ?AUX?           Print the name of the VFS stack
+.width NUM1 NUM2 ...     Set column widths for &amp;quot;column&amp;quot; mode
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;show-all-the-databases-in-sqlite-in-current-session&#34;&gt;Show all the databases in sqlite in current session&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;sqlite&amp;gt; .databases
+main:
+sqlite&amp;gt; .tables
+sqlite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that I have no databases in this current session.&lt;/p&gt;
+
+&lt;p&gt;Let us do something more useful by loading up current Web Cookies in Chrome&lt;/p&gt;
+
+&lt;h4 id=&#34;load-current-cookies-for-chrome-browser&#34;&gt;Load current cookies for Chrome Browser&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; cd Library/Application\ Support/Google/Chrome/Default/
+
+Google/Chrome/Default on ☁️  us-east-1
+&amp;gt; sqlite3 Cookies
+SQLite version 3.29.0 2019-07-10 17:32:03
+Enter &amp;quot;.help&amp;quot; for usage hints.
+sqlite&amp;gt; .databases
+main: /Users/jean-marcelbelmont/Library/Application Support/Google/Chrome/Default/Cookies
+sqlite&amp;gt; .tables
+cookies  meta
+sqlite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Notice that here we load up the Cookies Database which also has a cookies table.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;query-all-fields-from-cookies-table&#34;&gt;Query all fields from cookies table&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;sqlite&amp;gt; SELECT * FROM cookies;
+&amp;lt;number&amp;gt;|.github.com|_octo||/|&amp;lt;...&amp;gt;|0|0|&amp;lt;...&amp;gt;|1|1|1|v107P)&amp;lt;digits&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;sql-syntax&#34;&gt;SQL Syntax&lt;/h4&gt;
+
+&lt;p&gt;You can query things using the following sql keywords&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT =&amp;gt; Fields to return
+FROM =&amp;gt; TABLE 
+WHERE =&amp;gt; Condition to reduce the dataset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;show-help-on-particular-sqlite-command-and-show-table-schema&#34;&gt;Show help on particular sqlite command and show table schema&lt;/h4&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/sqlite-help-schema.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that in this screenshot we get helpful information on the &lt;code&gt;.schema&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;We then call &lt;code&gt;.schema --indent cookies&lt;/code&gt; which shows all the available fields that we can use in our SELECT Query&lt;/p&gt;
+
+&lt;h4 id=&#34;select-from-where-query-in-cookies-table&#34;&gt;SELECT FROM WHERE Query in cookies table&lt;/h4&gt;
+
+&lt;p&gt;Let us now craft a query that matches on a specific condition and only show certain fields instead of all fields.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;sqlite&amp;gt; SELECT host_key, name, value FROM cookies WHERE host_key like &#39;%mongo%&#39;;
+.mongodb.com|_rtfl_s_unique_visitor_session|
+.mongodb.com|__gads|
+..........................................
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that in this query we project the &lt;em&gt;host_key, name, value&lt;/em&gt; fields and match on the host_key and use the like operator:&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;like&lt;/em&gt; operator takes a wildcard like the &lt;code&gt;%&lt;/code&gt; and it matches any host_key that has mongo text before and after&lt;/p&gt;
+
+&lt;h4 id=&#34;read-sqlite-language-guide&#34;&gt;Read SQLite Language Guide&lt;/h4&gt;
+
+&lt;p&gt;Please read the &lt;a href=&#34;https://www.sqlite.org/lang.html&#34; target=&#34;_blank&#34;&gt;SQLite Language guide&lt;/a&gt; for more information on using sqlite.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You can use the Chrome Developer Tools to see cookies but with sqlite you can see all of the cookies that websites use.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;twitter-github-account&#34;&gt;Twitter &amp;amp; Github Account&lt;/h2&gt;
+
+&lt;p&gt;Please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
+
+&lt;p&gt;Until Next Time :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Internet Relay Chat (IRC) with Screen Multiplexer</title>
@@ -3163,398 +3372,6 @@ stdio=/dev/pts/1
 
 
 &lt;p&gt;There are many more feature and options in Radare which you can read at in the official &lt;a href=&#34;https://radare.gitbooks.io/radare2book/&#34; target=&#34;_blank&#34;&gt;Radare2 Gitbook&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;how-to-find-me&#34;&gt;How to find me&lt;/h2&gt;
-
-&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Getting Started With Latex</title>
-      <link>https://www.marcelbelmont.com/post/getting-started-with-latex/</link>
-      <pubDate>Sun, 11 Nov 2018 21:26:43 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/getting-started-with-latex/</guid>
-      <description>
-
-&lt;p&gt;LaTex is a Typesetting system which was designed by &lt;a href=&#34;https://en.wikipedia.org/wiki/Leslie_Lamport&#34; target=&#34;_blank&#34;&gt;Leslie Lamport&lt;/a&gt; and derives much of its power from &lt;a href=&#34;https://en.wikipedia.org/wiki/TeX&#34; target=&#34;_blank&#34;&gt;Tex&lt;/a&gt;. It can be argued that LaTex is a set of macros.&lt;/p&gt;
-
-&lt;h2 id=&#34;difference-between-tex-and-latex&#34;&gt;Difference between Tex and LaTex&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;TeX is about formatting with document/template designers in mind while LaTeX is all about  the content for document writers.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Please read this &lt;a href=&#34;https://tex.stackexchange.com/questions/49/what-is-the-difference-between-tex-and-latex&#34; target=&#34;_blank&#34;&gt;stackexchange post for more details&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;why-is-latex-useful&#34;&gt;Why is LaTex useful?&lt;/h2&gt;
-
-&lt;p&gt;You can more fine grain control of the quality of your document by using LaTex.&lt;/p&gt;
-
-&lt;p&gt;Particularly if you are writing documents heavy in Mathematics, Science and Research Papers.&lt;/p&gt;
-
-&lt;p&gt;Also LaTex lets you separate out the content of your writing from the layout of your document.&lt;/p&gt;
-
-&lt;p&gt;LaTex lets you focus on the &amp;ldquo;what&amp;rdquo; of what you are writing and not &amp;ldquo;how&amp;rdquo; the final document will look.&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-latex-in-mac-os-x&#34;&gt;Installing LaTex in Mac OS X&lt;/h2&gt;
-
-&lt;p&gt;You can install LaTex in Mac OS X easily by going to &lt;a href=&#34;http://www.tug.org/mactex/&#34; target=&#34;_blank&#34;&gt;MacTex&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You will get all the LaTex macros, compilers, editors and more in this full blown LaTex working environment.&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-latext-in-windows&#34;&gt;Installing LaText in Windows&lt;/h2&gt;
-
-&lt;p&gt;You can install LaTex in Windows by going to &lt;a href=&#34;https://miktex.org/download&#34; target=&#34;_blank&#34;&gt;MikTex&lt;/a&gt; and to &lt;a href=&#34;http://www.tug.org/texlive/acquire-netinstall.html&#34; target=&#34;_blank&#34;&gt;Tex Live&lt;/a&gt;. It is best to install the full LaTex distribution.&lt;/p&gt;
-
-&lt;h2 id=&#34;basic-syntax-of-a-latex-document&#34;&gt;Basic syntax of a LaTex Document&lt;/h2&gt;
-
-&lt;p&gt;Here is a simple LaTex Document:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;helloWorld.tex&lt;/em&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{article}
-
-\begin{document}
-Hello world!
-\end{document}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You begin a LaTex document with &lt;code&gt;\documentclass&lt;/code&gt; command and then you use &lt;code&gt;\begin{document}&lt;/code&gt; command to start.&lt;/p&gt;
-
-&lt;p&gt;Notice that here we placed &lt;em&gt;Hello, world!&lt;/em&gt; in between &lt;code&gt;\begin{document}&lt;/code&gt; and &lt;code&gt;\end{document}&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;compile-latex-documents-with-latexmk-command&#34;&gt;Compile LaTex Documents with latexmk command&lt;/h2&gt;
-
-&lt;p&gt;We can compile our latex document with this command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;latexmk -pdf helloWorld.tex&lt;/code&gt;&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/latex-helloworld.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Here is the generated pdf with this command:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/latex-helloworld-pdf.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;compile-latex-documents-with-latex-command&#34;&gt;Compile LaTex Documents with latex command&lt;/h2&gt;
-
-&lt;p&gt;Let us look at another Tex document with tables now:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{article} 
-\usepackage[english]{babel}
-
-\begin{document}
-
-Without specifying width for last column:
-\begin{center}
-    \begin{tabular}{| l | l | l | l |}
-    \hline
-    Day &amp;amp; Min Temp &amp;amp; Max Temp &amp;amp; Summary \\ \hline
-    Monday &amp;amp; 11C &amp;amp; 22C &amp;amp; A clear day with lots of sunshine.
-    However, the strong breeze will bring down the temperatures. \\ \hline
-    Tuesday &amp;amp; 9C &amp;amp; 19C &amp;amp; Cloudy with rain, across many northern regions. Clear spells 
-    across most of Scotland and Northern Ireland, 
-    but rain reaching the far northwest. \\ \hline
-    Wednesday &amp;amp; 10C &amp;amp; 21C &amp;amp; Rain will still linger for the morning. 
-    Conditions will improve by early afternoon and continue 
-    throughout the evening. \\
-    \hline
-    \end{tabular}
-\end{center}
-
-With width specified:
-\begin{center}
-    \begin{tabular}{ | l | l | l | p{5cm} |}
-    \hline
-    Day &amp;amp; Min Temp &amp;amp; Max Temp &amp;amp; Summary \\ \hline
-    Monday &amp;amp; 11C &amp;amp; 22C &amp;amp; A clear day with lots of sunshine.  
-    However, the strong breeze will bring down the temperatures. \\ \hline
-    Tuesday &amp;amp; 9C &amp;amp; 19C &amp;amp; Cloudy with rain, across many northern regions. Clear spells 
-    across most of Scotland and Northern Ireland, 
-    but rain reaching the far northwest. \\ \hline
-    Wednesday &amp;amp; 10C &amp;amp; 21C &amp;amp; Rain will still linger for the morning. 
-    Conditions will improve by early afternoon and continue 
-    throughout the evening. \\
-    \hline
-    \end{tabular}
-\end{center}
-
-\end{document}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can compile this document with the the &lt;em&gt;latex&lt;/em&gt; command now and then use &lt;code&gt;dvipdfm&lt;/code&gt; to convert from dvi to pdf:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/convert-dvi-to-pdf.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;compile-latex-documents-with-pdflatex-command&#34;&gt;Compile LaTex documents with pdflatex command&lt;/h2&gt;
-
-&lt;p&gt;We can compile directly into pdf with the &lt;em&gt;pdflatex&lt;/em&gt; command:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/pdflatex-command.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;global-structure-of-latex-document&#34;&gt;Global Structure of LaTex Document&lt;/h2&gt;
-
-&lt;p&gt;Every file should have this structure but there are exceptions to this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass{...}
-
-\begin{document}
-...
-\end{document}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;The area between \documentclass{&amp;hellip;} and \begin{document} is called the preamble.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;It normally contains commands that affect the entire document.&lt;/p&gt;
-
-&lt;h4 id=&#34;document-classes&#34;&gt;Document Classes&lt;/h4&gt;
-
-&lt;p&gt;This table has a complete list of all LaTex Document Classes:&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Document Class&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;article&lt;/td&gt;
-&lt;td&gt;For articles in scientific journals, presentations, short reports, program documentation, invitations, &amp;hellip;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;IEEEtran&lt;/td&gt;
-&lt;td&gt;For articles with the IEEE Transactions format.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;proc&lt;/td&gt;
-&lt;td&gt;A class for proceedings based on the article class.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;report&lt;/td&gt;
-&lt;td&gt;For longer reports containing several chapters, small books, thesis, &amp;hellip;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;book&lt;/td&gt;
-&lt;td&gt;For real books.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;slides&lt;/td&gt;
-&lt;td&gt;For slides. The class uses big sans serif letters.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;memoir&lt;/td&gt;
-&lt;td&gt;For changing sensibly the output of the document. It is based on the book class, but you can create any kind of document with it&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;letter&lt;/td&gt;
-&lt;td&gt;For writing letters.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;beamer&lt;/td&gt;
-&lt;td&gt;For writing presentations (see LaTeX/Presentations).&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&#34;using-packages-in-latex&#34;&gt;Using Packages in LaTex&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Packages&#34; target=&#34;_blank&#34;&gt;Packages Wiki&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;While writing your document, you will probably find that there are some areas where basic LaTeX cannot solve your problem.&lt;/p&gt;
-
-&lt;p&gt;If you want to include graphics, colored text or source code from a file into your document, you need to enhance the capabilities of LaTeX.&lt;/p&gt;
-
-&lt;p&gt;Such enhancements are called packages. Some packages come with the LaTeX base distribution. Others are provided separately. Modern TeX distributions come with a large number of packages pre-installed. The command to use a package is pretty simple: \usepackage&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Here is an example usage for importing packages:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;using-sections-in-latex&#34;&gt;Using Sections in LaTex&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The commands for inserting sections are fairly intuitive. Of course, certain commands are appropriate to different document classes. For example, a book has chapters but an article doesn&amp;rsquo;t.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Here is an example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\chapter{Introduction}
-This chapter&#39;s content...
-
-\section{Structure}
-This section&#39;s content...
-
-\subsection{Top Matter}
-This subsection&#39;s content...
-
-\subsubsection{Article Information}
-This subsubsection&#39;s content...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;getting-started-with-travis-ci&#34;&gt;Getting started with Travis CI&lt;/h2&gt;
-
-&lt;p&gt;If you want to get setup with Travis CI please read this blog post:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/&#34; target=&#34;_blank&#34;&gt;https://harshjv.com/blog/setup-latex-pdf-build-using-travis-ci/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;getting-overall-advice-on-latex&#34;&gt;Getting overall advice on LaTex&lt;/h2&gt;
-
-&lt;p&gt;Please read this very informative Github Repo on &lt;a href=&#34;https://github.com/dspinellis/latex-advice&#34; target=&#34;_blank&#34;&gt;LaTex&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;different-types-of-file-types-in-latex&#34;&gt;Different Types of File Types in LaTex&lt;/h2&gt;
-
-&lt;p&gt;There are a myriad of different file types that LaTex can work with:&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;FileType&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.aux&lt;/td&gt;
-&lt;td&gt;A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.bbl&lt;/td&gt;
-&lt;td&gt;Bibliography file output by BiBTeX and used by LaTeX&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.bib&lt;/td&gt;
-&lt;td&gt;Bibliography database file. (where you can store a list of full bibliographic citations)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.blg&lt;/td&gt;
-&lt;td&gt;BiBTeX log file. (errors are logged here)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.bst&lt;/td&gt;
-&lt;td&gt;BiBTeX style file.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.cls&lt;/td&gt;
-&lt;td&gt;Class files define what your document looks like. They are selected with the \documentclass command.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.dtx&lt;/td&gt;
-&lt;td&gt;Documented TeX. This is the main distribution format for LaTeX style files. If you process a .dtx file you get documented macro code of the LaTeX package contained in the .dtx file.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.ins&lt;/td&gt;
-&lt;td&gt;The installer for the files contained in the matching .dtx file. If you download a LaTeX package from the net, you will normally get a .dtx and a .ins file. Run LaTeX on the .ins file to unpack the .dtx file.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.fd&lt;/td&gt;
-&lt;td&gt;Font description file telling LaTeX about new fonts.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.dvi&lt;/td&gt;
-&lt;td&gt;Device Independent File. This is the main result of a LaTeX compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.pdf&lt;/td&gt;
-&lt;td&gt;Portable Document Format. This is the main result of a LaTeX compile run with pdflatex. You can look at its content or print it with any PDF viewer.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.log&lt;/td&gt;
-&lt;td&gt;Gives a detailed account of what happened during the last compiler run.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.toc&lt;/td&gt;
-&lt;td&gt;Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.lof&lt;/td&gt;
-&lt;td&gt;This is like .toc but for the list of figures.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.lot&lt;/td&gt;
-&lt;td&gt;And again the same for the list of tables.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.idx&lt;/td&gt;
-&lt;td&gt;If your document contains an index. LaTeX stores all the words that go into the index in this file. Process this file with makeindex.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.ind&lt;/td&gt;
-&lt;td&gt;The processed .idx file, ready for inclusion into your document on the next compile cycle.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.ilg&lt;/td&gt;
-&lt;td&gt;Logfile telling what makeindex did.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.sty&lt;/td&gt;
-&lt;td&gt;LaTeX Macro package. This is a file you can load into your LaTeX document using the \usepackage command.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.tex&lt;/td&gt;
-&lt;td&gt;LaTeX or TeX input file. It can be compiled with latex.&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;.out&lt;/td&gt;
-&lt;td&gt;hyperref package file, just one for the master file.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;read-online-latex-book&#34;&gt;Read Online LaTex Book&lt;/h2&gt;
-
-&lt;p&gt;Please read the following &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX&#34; target=&#34;_blank&#34;&gt;LaTex Wiki Book&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;latex-workshop&#34;&gt;LaTex Workshop&lt;/h2&gt;
-
-&lt;p&gt;I will be building a LaTex workshop that you can follow if you wish &lt;a href=&#34;https://github.com/jbelmont/latex-workshop&#34; target=&#34;_blank&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;how-to-find-me&#34;&gt;How to find me&lt;/h2&gt;
 
