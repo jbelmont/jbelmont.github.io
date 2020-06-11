@@ -4,8 +4,8 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/post/sqlite/</loc>
-      <lastmod>2020-04-13T16:08:28-04:00</lastmod>
+      <loc>https://www.marcelbelmont.com/</loc>
+      <lastmod>2020-06-09T16:51:40-04:00</lastmod>
     </url>
     
   
@@ -13,7 +13,16 @@
     
     <url>
     
-      <loc>https://www.marcelbelmont.com/</loc>
+      <loc>https://www.marcelbelmont.com/talk/mongodb-live-conf/</loc>
+      <lastmod>2020-06-09T16:51:40-04:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.marcelbelmont.com/post/sqlite/</loc>
       <lastmod>2020-04-13T16:08:28-04:00</lastmod>
     </url>
     

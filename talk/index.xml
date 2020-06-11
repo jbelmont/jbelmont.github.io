@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Transcending from mere mortals to MongoDB Titans</title>
+      <link>https://www.marcelbelmont.com/talk/mongodb-live-conf/</link>
+      <pubDate>Tue, 09 Jun 2020 16:51:40 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/talk/mongodb-live-conf/</guid>
+      <description>Operating MongoDB effectively as a SaaS without a DBA takes discipline. Its schema-less design makes it perfect for fast-paced development teams; but that lower adoption cost can lull teams into believing that once they set-it; they can forget-it.
+In our talk, we&amp;rsquo;ll discuss some of the pitfalls that we experienced and how we, together with our MongoDB partners, were able to create a plan for remediation.</description>
+    </item>
+    
+    <item>
       <title>Reverse Engineering Tools a DevOps Engineer can use</title>
       <link>https://www.marcelbelmont.com/talk/reverse-engineering-tools-a-devops-engineer-can-use/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
