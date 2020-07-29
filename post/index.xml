@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Intro to Haskell</title>
+      <link>https://www.marcelbelmont.com/post/intro-to-haskell/</link>
+      <pubDate>Mon, 13 Jul 2020 10:49:02 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/intro-to-haskell/</guid>
+      <description>An introduction to Haskell, Stack and GHCI</description>
+    </item>
+    
+    <item>
       <title>Intro to sqlite and SQL</title>
       <link>https://www.marcelbelmont.com/post/sqlite/</link>
       <pubDate>Mon, 13 Apr 2020 16:08:28 -0400</pubDate>

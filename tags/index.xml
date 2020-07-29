@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Mon, 13 Apr 2020 16:08:28 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 10:49:02 -0400</lastBuildDate>
     
 	<atom:link href="https://www.marcelbelmont.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>functional programming</title>
+      <link>https://www.marcelbelmont.com/tags/functional-programming/</link>
+      <pubDate>Mon, 13 Jul 2020 10:49:02 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/tags/functional-programming/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>sql</title>

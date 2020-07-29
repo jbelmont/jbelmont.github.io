@@ -6,8 +6,147 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Jean-Marcel Belmont</copyright>
-    <lastBuildDate>Tue, 09 Jun 2020 16:51:40 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 10:49:02 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Intro to Haskell</title>
+      <link>https://www.marcelbelmont.com/post/intro-to-haskell/</link>
+      <pubDate>Mon, 13 Jul 2020 10:49:02 -0400</pubDate>
+      
+      <guid>https://www.marcelbelmont.com/post/intro-to-haskell/</guid>
+      <description>
+
+&lt;h1 id=&#34;haskell-programming-language&#34;&gt;Haskell Programming Language&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Haskell_%28programming_language%29&#34; target=&#34;_blank&#34;&gt;Haskell Wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Haskell is a general-purpose, statically typed, purely functional programming language with type inference and lazy evaluation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Haskell is a powerful programming language although many developers avoid it since it isn&amp;rsquo;t like other mainstream languages.&lt;/p&gt;
+
+&lt;p&gt;Most universities teach procedural like languages such as Java and C++ and so most developers start learning programming from this perspective.&lt;/p&gt;
+
+&lt;p&gt;Since Haskell is a purely functional programming languages you don&amp;rsquo;t rely on mutation and side effects.&lt;/p&gt;
+
+&lt;p&gt;Also due to the fact that it is a statically typed language and affords stronger compile time guarantees.&lt;/p&gt;
+
+&lt;h2 id=&#34;stack&#34;&gt;Stack&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.haskellstack.org/en/stable/GUIDE/&#34; target=&#34;_blank&#34;&gt;Stack&lt;/a&gt; is a build tool built for Haskell code.&lt;/p&gt;
+
+&lt;p&gt;We will use stack in order to create a Haskell project that we can both build and test.&lt;/p&gt;
+
+&lt;p&gt;We will also use the GHCI Repl with stack in order to do some introspection.&lt;/p&gt;
+
+&lt;h4 id=&#34;scafolding-new-haskell-project&#34;&gt;Scafolding new Haskell Project&lt;/h4&gt;
+
+&lt;p&gt;We can use stack to generate a new haskell project.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-templates-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice here that we can use the &lt;code&gt;stack templates&lt;/code&gt; to find available templates.&lt;/p&gt;
+
+&lt;p&gt;In this case we just want to use the default template so we will just not provide a template name.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;stack new helloworld&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The command above will generate a new haskell project with the following files:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls helloworld
+ChangeLog.md     README.md        app              package.yaml     stack.yaml
+LICENSE          Setup.hs         helloworld.cabal src              test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&#34;building-haskell-project&#34;&gt;Building Haskell Project&lt;/h4&gt;
+
+&lt;p&gt;Know that we have created our Haskell project let us build it.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-build-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that the &lt;code&gt;stack build&lt;/code&gt; command must be run from the project folder that got generated called helloworld.&lt;/p&gt;
+
+&lt;h4 id=&#34;running-the-newly-built-haskell-project&#34;&gt;Running the newly built Haskell project&lt;/h4&gt;
+
+&lt;p&gt;You can run the Haskell project in 2 ways:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-exec-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Here we used the &lt;code&gt;stack exec &amp;lt;name_of_binary&amp;gt;&lt;/code&gt; and we also run the binary executable from the root of our project:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;.stack-work/dist/x86_64-osx/Cabal-3.0.1.0/build/helloworld-exe/helloworld-exe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;updating-our-haskell-source-code&#34;&gt;Updating our Haskell Source Code&lt;/h4&gt;
+
+&lt;p&gt;Let us actually make a change to the string printed out and rebuild our project.&lt;/p&gt;
+
+&lt;p&gt;We will go inside of of &lt;code&gt;src/Lib.hs&lt;/code&gt; and edit the &lt;code&gt;putStrLn&lt;/code&gt; action with a new string.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;module&lt;/span&gt; Lib
+    ( &lt;span style=&#34;color:#a6e22e&#34;&gt;someFunc&lt;/span&gt;
+    ) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;someFunc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IO&lt;/span&gt; ()
+&lt;span style=&#34;color:#a6e22e&#34;&gt;someFunc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; putStrLn &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello New Haskellers!&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we updated to the string to &amp;lsquo;Hello New Haskellers!&amp;rsquo;&lt;/p&gt;
+
+&lt;h4 id=&#34;let-us-rebuild-the-haskell-project-and-see-our-new-i-o-action&#34;&gt;Let us rebuild the Haskell project and see our new I/O  Action&lt;/h4&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-build-and-exec.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that our change was picked up after reran &lt;code&gt;stack build&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;testing-our-haskell-code&#34;&gt;Testing our Haskell Code&lt;/h4&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-test-command.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that in this command execution that &lt;code&gt;stack&lt;/code&gt; run our defined tests.&lt;/p&gt;
+
+&lt;p&gt;Here is the test code that &lt;code&gt;stack&lt;/code&gt; stubbed out for us:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IO&lt;/span&gt; ()
+&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; putStrLn &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Test suite not yet implemented&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case our test simply does an I/O Action that prints out:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Test suite not yet implemented&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;When we are ready to actually write our application these stack commands will help us greatly!&lt;/p&gt;
+
+&lt;h4 id=&#34;invoking-ghci-with-stack&#34;&gt;Invoking GHCI with Stack&lt;/h4&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.marcelbelmont.com/media/stack-ghci-sample.png&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Notice that here we can call the Main routine by simply executing &lt;code&gt;main&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can also call Prelude Actions such as &lt;em&gt;putStrLn&lt;/em&gt; directly inside of the GHCI Repl.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-find-me&#34;&gt;How to find me&lt;/h2&gt;
+
+&lt;p&gt;If you like this blog post then please follow me at &lt;a href=&#34;https://github.com/jbelmont&#34; target=&#34;_blank&#34;&gt;jbelmont @ github&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/jbelmont80&#34; target=&#34;_blank&#34;&gt;jbelmont80 @ twitter&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Transcending from mere mortals to MongoDB Titans</title>
@@ -2934,152 +3073,6 @@ We then loop over words and create a running TEXT_INSIDE_PARENS variable and use
 &lt;p&gt;Feel free to leave a comment if you like.&lt;/p&gt;
 
 &lt;p&gt;Until Next Time :)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Tips and Tricks With Mongodb</title>
-      <link>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</link>
-      <pubDate>Sat, 12 Jan 2019 16:46:47 -0500</pubDate>
-      
-      <guid>https://www.marcelbelmont.com/post/tips-and-tricks-with-mongodb/</guid>
-      <description>
-
-&lt;p&gt;In this blog post I go over some tips and tricks with MongoDB and focus on using the mongodbshell.&lt;/p&gt;
-
-&lt;h1 id=&#34;what-is-mongodb&#34;&gt;What is MongoDB&lt;/h1&gt;
-
-&lt;p&gt;MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-mongodb&#34;&gt;Installing MongoDB&lt;/h2&gt;
-
-&lt;p&gt;MongoDB is released as two editions: Community and Enterprise.&lt;/p&gt;
-
-&lt;p&gt;Community is the open source release of MongoDB.&lt;/p&gt;
-
-&lt;p&gt;Enterprise provides additional administration, authentication, and monitoring features.&lt;/p&gt;
-
-&lt;p&gt;Installation steps vary depending on the edition; both procedures are outlined in this section.&lt;/p&gt;
-
-&lt;p&gt;Follow the &lt;a href=&#34;https://docs.mongodb.com/manual/installation/&#34; target=&#34;_blank&#34;&gt;Instructions to Download MongoDB per Platform&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;starting-interactive-mongodb-session&#34;&gt;Starting interactive mongodb session&lt;/h4&gt;
-
-&lt;p&gt;Once you have installed mongodb you need to make sure that is running and then you can simply type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; mongo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and then get into an interactive mongo shell session:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-interactive-shell.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;pretty-print-trick-for-mongodb&#34;&gt;Pretty Print trick for mongodb&lt;/h4&gt;
-
-&lt;p&gt;You can set global settings in mongodb interactive shell in the &lt;em&gt;$SHELL/.mongorc.js&lt;/em&gt; configuration file.&lt;/p&gt;
-
-&lt;p&gt;In mongodb shell if you want to pretty print collections you need to use the pretty() function like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;gt; db.heroes.find({}).pretty()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If we set the following values in our &lt;em&gt;~/.mongorc.js&lt;/em&gt;:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-pretty-print.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Now with this new setting we can simply query for documents and get pretty printing by default:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/pretty-print-by-default.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Notice here that we did not specify the &lt;code&gt;.pretty()&lt;/code&gt; function and got pretty print behavior by default.&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/using-unpretty-function.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;setting-default-number-of-documents-printed-to-standard-output&#34;&gt;Setting default number of documents printed to standard output&lt;/h4&gt;
-
-&lt;p&gt;You can set the number of documents to show at a time with the following setting in *$HOME/.mongorc.js:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;DBQuery.shellBatchSize = 25
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;set-the-settings-for-a-mongodb-server-with-the-following-command&#34;&gt;Set the settings for a mongodb server with the following command:&lt;/h4&gt;
-
-&lt;p&gt;You can see the setting for the mongodb server with this command in the interactive shell:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-admin-server-settings.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;using-interactive-mongodb-session-full-javascript-console&#34;&gt;Using interactive mongodb session full javascript console&lt;/h4&gt;
-
-&lt;p&gt;Remember that the mongodb interactive shell is full blown javascript repl:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-interactive-repl.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongodb-interactive-repl2.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;&lt;em&gt;Notice here that we were able to use the map javascript function in the mongodb shell session.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;extending-prototype-functions-in-javascript-available-in-mongo-shell&#34;&gt;Extending prototype functions in JavaScript available in mongo shell&lt;/h4&gt;
-
-&lt;p&gt;You can easily extend the available functions in mongo shell by adding them on &lt;em&gt;~/.mongorc.js&lt;/em&gt; configuration file:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/adding-prototype-functions-mongoshell.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;p&gt;Now you can easily use this new function in a new mongo shell session like this:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/list-proto-length.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;using-mongostat&#34;&gt;Using mongostat&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.mongodb.com/manual/reference/program/mongostat/&#34; target=&#34;_blank&#34;&gt;mongostat docs&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The mongostat utility provides a quick overview of the status of a currently running mongod or mongos instance.&lt;/p&gt;
-
-&lt;p&gt;mongostat is functionally similar to the UNIX/Linux file system utility vmstat, but provides data regarding mongod and mongos instances.&lt;/p&gt;
-
-&lt;h4 id=&#34;finding-the-timestamp-for-when-a-particular-document-was-added&#34;&gt;Finding the timestamp for when a particular document was added&lt;/h4&gt;
-
-&lt;p&gt;You can run the &lt;code&gt;ObjectId(&amp;quot;&amp;quot;).getTimestamp()&lt;/code&gt; to get the timestamp for the added mongo document&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-shell-timestamp-function.png&#34;/&gt; 
-&lt;/figure&gt;
-
-
-&lt;h4 id=&#34;using-esnext-features-in-mongo-shell-session&#34;&gt;Using ESNext features in mongo shell session&lt;/h4&gt;
-
-&lt;p&gt;You can use all the esnext features in JavaScript in the MongoShell session like this:&lt;/p&gt;
-
-&lt;figure&gt;
-    &lt;img src=&#34;https://www.marcelbelmont.com/media/mongo-shell-esnext-js.png&#34;/&gt; 
-&lt;/figure&gt;
-
 </description>
     </item>
     
